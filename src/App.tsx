@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/common/Header';
 import { Footer } from './components/common/Footer';
-import { ProPassModal } from './components/common/ProPassModal';
 import { CommandPalette } from './components/common/CommandPalette';
 import { SecurityAuditorModal } from './components/common/SecurityAuditorModal';
 import { KeyboardShortcutsModal } from './components/common/KeyboardShortcutsModal';
@@ -40,13 +39,10 @@ import { TableConverterView } from './components/tabular/TableConverterView';
 
 import { ToolCategory, ToolId, InvoiceData, InvoiceItem } from './types';
 import { decodePayLink } from './utils/invoiceStorage';
-import { SignIn1 } from '@/components/ui/modern-stunning-sign-in';
-import { getCurrentUser, loginUser, logoutUser, StoredUser } from './utils/userAuth';
 
 export function App() {
   const [currentTool, setCurrentTool] = useState<ToolId>('home');
   const [selectedCategory, setSelectedCategory] = useState<ToolCategory | 'all'>('all');
-  const [isProPassOpen, setIsProPassOpen] = useState(false);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
   const [isSecurityAuditorOpen, setIsSecurityAuditorOpen] = useState(false);
   const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
@@ -56,11 +52,6 @@ export function App() {
   const [savedTokensTotal, setSavedTokensTotal] = useState<number>(() => {
     const saved = localStorage.getItem('vayun_total_tokens_saved');
     return saved ? parseInt(saved, 10) : 48250;
-  });
-
-  const [currentUser, setCurrentUser] = useState<StoredUser | null>(() => getCurrentUser());
-  const [showSignInModal, setShowSignInModal] = useState<boolean>(() => {
-    return !localStorage.getItem('vayun_visited') && !getCurrentUser();
   });
 
   const [activePayLinkInvoice, setActivePayLinkInvoice] = useState<InvoiceData | null>(null);
@@ -114,7 +105,6 @@ export function App() {
         setIsCommandPaletteOpen(false);
         setIsSecurityAuditorOpen(false);
         setIsShortcutsOpen(false);
-        setIsProPassOpen(false);
         setIsApiSettingsOpen(false);
       }
     };
@@ -159,19 +149,12 @@ export function App() {
         selectedCategory={selectedCategory}
         onSelectCategory={setSelectedCategory}
         savedTokensTotal={savedTokensTotal}
-        onOpenProPass={() => setIsProPassOpen(true)}
         theme={theme}
         onToggleTheme={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
         onOpenSecurityAuditor={() => setIsSecurityAuditorOpen(true)}
         onOpenShortcuts={() => setIsShortcutsOpen(true)}
         onOpenApiSettings={() => setIsApiSettingsOpen(true)}
-        currentUser={currentUser}
-        onOpenSignIn={() => setShowSignInModal(true)}
-        onSignOut={() => {
-          logoutUser();
-          setCurrentUser(null);
-        }}
       />
 
       {/* Main Content Workspace */}
@@ -384,35 +367,6 @@ export function App() {
         theme={theme}
       />
 
-      {/* Pro Pass Modal */}
-      <ProPassModal
-        isOpen={isProPassOpen}
-        onClose={() => setIsProPassOpen(false)}
-        theme={theme}
-      />
-
-      {/* Modern Stunning Sign-In & History Authentication Modal */}
-      {showSignInModal && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center animate-fade-in">
-          <div className="w-full">
-            <SignIn1
-              onSuccess={(user) => {
-                const loggedIn = loginUser(user.email, user.name);
-                setCurrentUser(loggedIn);
-                setShowSignInModal(false);
-              }}
-              onSkip={() => {
-                localStorage.setItem('vayun_visited', 'true');
-                setShowSignInModal(false);
-              }}
-              brandName="Vayun.xyz"
-              allowGuest={true}
-              initialMode="signup"
-            />
-          </div>
-        </div>
-      )}
-
       {/* Owner Backend Log Console Modal */}
       <OwnerConsoleModal
         isOpen={isOwnerConsoleOpen}
@@ -423,7 +377,6 @@ export function App() {
       {/* Footer */}
       <Footer
         onSelectTool={handleSelectTool}
-        onOpenProPass={() => setIsProPassOpen(true)}
         onOpenSecurityAuditor={() => setIsSecurityAuditorOpen(true)}
         onOpenShortcuts={() => setIsShortcutsOpen(true)}
         onOpenOwnerConsole={() => setIsOwnerConsoleOpen(true)}

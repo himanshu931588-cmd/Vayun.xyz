@@ -16,29 +16,22 @@ import {
   Keyboard,
   ShieldCheck,
   Network,
-  Key,
-  User,
-  LogOut
+  Key
 } from 'lucide-react';
 import { getStoredApiKey } from '../../utils/geminiApi';
-import { StoredUser } from '../../utils/userAuth';
 
 interface HeaderProps {
   currentTool: ToolId;
   onSelectTool: (id: ToolId) => void;
   selectedCategory: ToolCategory | 'all';
   onSelectCategory: (cat: ToolCategory | 'all') => void;
-  savedTokensTotal: number;
-  onOpenProPass: () => void;
+  savedTokensTotal?: number;
   theme: 'dark' | 'light';
   onToggleTheme: () => void;
   onOpenCommandPalette: () => void;
   onOpenSecurityAuditor?: () => void;
   onOpenShortcuts?: () => void;
   onOpenApiSettings?: () => void;
-  currentUser?: StoredUser | null;
-  onOpenSignIn?: () => void;
-  onSignOut?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -51,10 +44,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenCommandPalette,
   onOpenSecurityAuditor,
   onOpenShortcuts,
-  onOpenApiSettings,
-  currentUser,
-  onOpenSignIn,
-  onSignOut
+  onOpenApiSettings
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isLight = theme === 'light';
@@ -245,46 +235,19 @@ export const Header: React.FC<HeaderProps> = ({
               {isLight ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
             </button>
 
-            {/* User Account / History Sign-In */}
-            {currentUser ? (
-              <div className="flex items-center gap-1.5 pl-1">
-                <div 
-                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-xs font-mono transition-all ${
-                    isLight 
-                      ? 'border-neutral-300 bg-neutral-100 text-neutral-800' 
-                      : 'border-neutral-800 bg-neutral-900 text-neutral-200'
-                  }`}
-                  title={`Logged in as ${currentUser.email} • History Saved`}
-                >
-                  <div className="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-400 font-bold flex items-center justify-center text-[10px]">
-                    {currentUser.name[0]?.toUpperCase() || 'U'}
-                  </div>
-                  <span className="hidden lg:inline max-w-[80px] truncate">{currentUser.name}</span>
-                </div>
-                {onSignOut && (
-                  <button
-                    onClick={onSignOut}
-                    title="Sign Out"
-                    className="p-1.5 rounded text-neutral-400 hover:text-red-400 transition-colors"
-                  >
-                    <LogOut className="w-3.5 h-3.5" />
-                  </button>
-                )}
-              </div>
-            ) : onOpenSignIn ? (
-              <button
-                onClick={onOpenSignIn}
-                className={`px-3 py-1.5 rounded-full text-xs font-mono font-medium flex items-center gap-1.5 transition-all shadow-xs ${
-                  isLight 
-                    ? 'bg-black text-white hover:bg-neutral-800' 
-                    : 'bg-white text-black hover:bg-neutral-200'
-                }`}
-                title="Create an account or sign in to save your history"
-              >
-                <User className="w-3 h-3" />
-                <span>Sign In / Up</span>
-              </button>
-            ) : null}
+            {/* Zero Tracking & No Accounts Badge */}
+            <div 
+              onClick={onOpenSecurityAuditor}
+              className={`hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-mono select-none cursor-pointer transition-colors ${
+                isLight 
+                  ? 'border-neutral-200 bg-neutral-100/70 text-neutral-700 hover:bg-neutral-200/60' 
+                  : 'border-neutral-800 bg-neutral-900/70 text-neutral-300 hover:bg-neutral-850'
+              }`}
+              title="Zero remote uploads, zero tracking, no accounts, no paywalls."
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>No Accounts • 100% Free</span>
+            </div>
 
             {/* Mobile Hamburger Menu Toggle */}
             <button

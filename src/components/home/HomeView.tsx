@@ -120,7 +120,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <p className={`text-sm sm:text-base leading-relaxed ${
             isLight ? 'text-neutral-600' : 'text-neutral-400'
           }`}>
-            The Anti-Black-Box Developer & Defense Platform for coding students and software engineers. Visualize multi-file execution traces in <strong>Vayun Flow</strong>, defend code in live Socratic <strong>Vayun Viva</strong> simulations, and create ATS resumes—all executed locally in browser memory.
+            The Anti-Black-Box Developer & Defense Platform for coding students and software engineers. Visualize multi-file execution traces in <strong>Vayun Flow</strong>, defend code in live Socratic <strong>Vayun Viva</strong> simulations, and edit documents. <strong>Zero remote uploads, zero tracking, no accounts, no paywalls.</strong>
           </p>
 
           <div className="flex flex-wrap items-center gap-2.5 pt-2">

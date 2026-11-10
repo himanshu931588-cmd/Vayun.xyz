@@ -6,9 +6,11 @@ Vayun.xyz is a privacy-first web platform designed for developers, engineering s
 
 ## Key Principles
 
-- **Zero-Upload Privacy:** File operations, document manipulation, and code traces are executed locally within the browser memory. Your files and source code remain on your machine.
+- **Zero Remote Uploads:** All document operations, PDF manipulations, and code execution traces occur strictly within client browser memory. Your files and code never leave your machine.
+- **Zero Tracking:** No behavioral trackers, advertising pixels, or third-party analytical cookies.
+- **No Accounts:** No sign-up walls, email verification, or passwords required. Access all utilities immediately.
+- **No Paywalls:** Every feature and tool is completely free with no subscription tiers or paywalls.
 - **Fast and Lightweight:** Built with React 18, Vite, and Tailwind CSS for rapid load times and responsive performance.
-- **Reliable Backend:** Includes a lightweight Node.js service for optional authentication, owner auditing, and data backup.
 
 ---
 
@@ -35,10 +37,9 @@ Vayun.xyz is a privacy-first web platform designed for developers, engineering s
 - **Invoice Generator:** Create clean, printable PDF invoices directly inside the browser.
 - **Payment Link Manager:** Store and share payment links for freelance and client billing.
 
-### 5. Authentication and Administration
-- **Secure Authentication:** User passwords are encrypted with PBKDF2-SHA512 and random 16-byte salts.
-- **Owner Audit Logs:** Silent audit logging records system access without exposing logs to regular visitors.
-- **Owner Console:** An administrative interface to review user activity, download logs, and run database backups.
+### 5. Owner Administration
+- **Owner Audit Logs:** Silent system event logging for the website administrator.
+- **Owner Command Console:** An administrative interface to review system health, download diagnostics, and run automated backups.
 
 ---
 
@@ -137,9 +138,9 @@ Vayun.xyz/
 
 ## Privacy and Data Security
 
-Vayun.xyz is built on a client-side execution model. All uploaded documents, PDFs, and code files are processed locally within the browser session memory and are never uploaded to our servers.
+Vayun.xyz operates on a strict zero-upload and zero-tracking model. All uploaded documents, PDFs, tables, and code files are processed locally within the browser session memory and are never uploaded to our servers.
 
-The backend service is strictly utilized for user authentication, preference storage, and system health monitoring.
+There are no user accounts, no sign-in requirements, and no paywalls. All functionality is available immediately upon opening the site.
 
 ---
 

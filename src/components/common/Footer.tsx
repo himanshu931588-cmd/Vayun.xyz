@@ -22,7 +22,6 @@ import {
 
 interface FooterProps {
   onSelectTool: (id: ToolId) => void;
-  onOpenProPass: () => void;
   onOpenSecurityAuditor?: () => void;
   onOpenShortcuts?: () => void;
   onOpenOwnerConsole?: () => void;
@@ -50,7 +49,7 @@ export const Footer: React.FC<FooterProps> = ({
               <VayunWordmark height={24} theme={theme} />
             </div>
             <p className={`text-xs leading-relaxed max-w-sm ${isLight ? 'text-neutral-500' : 'text-neutral-400'}`}>
-              The Anti-Black-Box Developer & Defense Platform for Coding Students. 100% in-browser execution, zero remote uploads.
+              The Anti-Black-Box Developer & Defense Platform. Zero remote uploads, zero tracking, no accounts, no paywalls.
             </p>
           </div>
 
