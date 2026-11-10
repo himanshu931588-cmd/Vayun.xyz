@@ -23,9 +23,7 @@ import {
   LifeBuoy,
   Bot,
   Download,
-  Gamepad2,
-  Clock,
-  Star
+  Gamepad2
 } from 'lucide-react';
 
 interface FooterProps {
@@ -37,7 +35,6 @@ interface FooterProps {
   onOpenExtension?: () => void;
   onOpenHelpdesk?: () => void;
   onOpenChatbot?: () => void;
-  onOpenRecentFiles?: (tab?: 'recent' | 'starred') => void;
   theme?: 'dark' | 'light';
 }
 
@@ -50,7 +47,6 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenExtension,
   onOpenHelpdesk,
   onOpenChatbot,
-  onOpenRecentFiles,
   theme = 'dark' 
 }) => {
   const isLight = theme === 'light';
@@ -243,25 +239,7 @@ export const Footer: React.FC<FooterProps> = ({
             © {new Date().getFullYear()} vayun.xyz • All operations execute client-side in RAM.
           </div>
 
-          <div className="flex items-center gap-4 flex-wrap">
-            {onOpenRecentFiles && (
-              <>
-                <button 
-                  onClick={() => onOpenRecentFiles('recent')} 
-                  className="hover:underline flex items-center gap-1 text-slate-600 dark:text-neutral-300 hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  <Clock className="w-3 h-3 opacity-70 shrink-0" />
-                  <span>Recent files</span>
-                </button>
-                <button 
-                  onClick={() => onOpenRecentFiles('starred')} 
-                  className="hover:underline flex items-center gap-1 text-slate-600 dark:text-neutral-300 hover:text-amber-500 dark:hover:text-amber-400"
-                >
-                  <Star className="w-3 h-3 opacity-70 shrink-0 fill-amber-400 text-amber-400" />
-                  <span>Starred</span>
-                </button>
-              </>
-            )}
+          <div className="flex items-center gap-4">
             {onOpenChatbot && (
               <button onClick={onOpenChatbot} className="hover:underline flex items-center gap-1 text-slate-600 dark:text-neutral-300 hover:text-blue-600 dark:hover:text-white">
                 <Bot className="w-3 h-3 opacity-70 shrink-0" />

@@ -9,7 +9,6 @@ import { OwnerConsoleModal } from './components/common/OwnerConsoleModal';
 import { SupportModal } from './components/common/SupportModal';
 import { InstallModal } from './components/common/InstallModal';
 import { HelpdeskModal } from './components/common/HelpdeskModal';
-import { RecentFilesModal } from './components/common/RecentFilesModal';
 import { VayunChatbot } from './components/ai/VayunChatbot';
 import { HomeView } from './components/home/HomeView';
 
@@ -52,7 +51,7 @@ import { decodePayLink } from './utils/invoiceStorage';
 
 export function App() {
   const [currentTool, setCurrentTool] = useState<ToolId>('home');
-  const [selectedCategory, setSelectedCategory] = useState<ToolCategory | 'all' | 'starred'>('all');
+  const [selectedCategory, setSelectedCategory] = useState<ToolCategory | 'all'>('all');
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
   const [isSecurityAuditorOpen, setIsSecurityAuditorOpen] = useState(false);
   const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
@@ -61,8 +60,6 @@ export function App() {
   const [isSupportOpen, setIsSupportOpen] = useState(false);
   const [isExtensionOpen, setIsExtensionOpen] = useState(false);
   const [isHelpdeskOpen, setIsHelpdeskOpen] = useState(false);
-  const [isRecentFilesOpen, setIsRecentFilesOpen] = useState(false);
-  const [recentFilesTab, setRecentFilesTab] = useState<'recent' | 'starred'>('recent');
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
@@ -209,10 +206,6 @@ export function App() {
         onOpenSupport={() => setIsSupportOpen(true)}
         onOpenExtension={() => setIsExtensionOpen(true)}
         onOpenHelpdesk={() => setIsHelpdeskOpen(true)}
-        onOpenRecentFiles={(tab = 'recent') => {
-          setRecentFilesTab(tab);
-          setIsRecentFilesOpen(true);
-        }}
       />
 
       {/* Main Content Workspace */}
@@ -226,10 +219,6 @@ export function App() {
             onOpenSupport={() => setIsSupportOpen(true)}
             onOpenExtension={() => setIsExtensionOpen(true)}
             onOpenHelpdesk={() => setIsHelpdeskOpen(true)}
-            onOpenRecentFiles={(tab = 'recent') => {
-              setRecentFilesTab(tab);
-              setIsRecentFilesOpen(true);
-            }}
             theme={theme}
           />
         )}
@@ -452,10 +441,6 @@ export function App() {
         onOpenExtension={() => setIsExtensionOpen(true)}
         onOpenHelpdesk={() => setIsHelpdeskOpen(true)}
         onOpenChatbot={() => setIsChatbotOpen(true)}
-        onOpenRecentFiles={(tab = 'recent') => {
-          setRecentFilesTab(tab);
-          setIsRecentFilesOpen(true);
-        }}
         theme={theme}
       />
 
@@ -522,15 +507,6 @@ export function App() {
         theme={theme}
       />
 
-      {/* Recent Files & Starred Modal */}
-      <RecentFilesModal
-        isOpen={isRecentFilesOpen}
-        onClose={() => setIsRecentFilesOpen(false)}
-        onSelectTool={handleSelectTool}
-        initialTab={recentFilesTab}
-        theme={theme}
-      />
-
       {/* Footer */}
       <Footer
         onSelectTool={handleSelectTool}
@@ -541,10 +517,6 @@ export function App() {
         onOpenExtension={() => setIsExtensionOpen(true)}
         onOpenHelpdesk={() => setIsHelpdeskOpen(true)}
         onOpenChatbot={() => setIsChatbotOpen(true)}
-        onOpenRecentFiles={(tab = 'recent') => {
-          setRecentFilesTab(tab);
-          setIsRecentFilesOpen(true);
-        }}
         theme={theme}
       />
     </div>
