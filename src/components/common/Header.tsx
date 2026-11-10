@@ -17,7 +17,8 @@ import {
   ShieldCheck,
   Network,
   Key,
-  Coffee
+  Coffee,
+  Puzzle
 } from 'lucide-react';
 import { getStoredApiKey } from '../../utils/geminiApi';
 
@@ -34,6 +35,7 @@ interface HeaderProps {
   onOpenShortcuts?: () => void;
   onOpenApiSettings?: () => void;
   onOpenSupport?: () => void;
+  onOpenExtension?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -47,7 +49,8 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenSecurityAuditor,
   onOpenShortcuts,
   onOpenApiSettings,
-  onOpenSupport
+  onOpenSupport,
+  onOpenExtension
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isLight = theme === 'light';
@@ -241,6 +244,22 @@ export const Header: React.FC<HeaderProps> = ({
               {isLight ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
             </button>
 
+            {/* Browser Extension Button */}
+            {onOpenExtension && (
+              <button
+                onClick={onOpenExtension}
+                title="Install Vayun Browser Extension (Chrome, Edge, Brave, Arc)"
+                className={`px-2.5 py-1.5 rounded-full border text-xs font-mono flex items-center gap-1.5 transition-colors ${
+                  isLight 
+                    ? 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100' 
+                    : 'border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-850'
+                }`}
+              >
+                <Puzzle className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Extension</span>
+              </button>
+            )}
+
             {/* Support / Contribute Button */}
             {onOpenSupport && (
               <button
@@ -405,6 +424,24 @@ export const Header: React.FC<HeaderProps> = ({
                 <div className="text-[10px] opacity-70">{hasApiKey ? 'Connected' : 'Configure'}</div>
               </div>
             </button>
+
+            {onOpenExtension && (
+              <button
+                onClick={() => {
+                  onOpenExtension();
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`p-2.5 rounded border text-left flex items-center gap-2 ${
+                  isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                }`}
+              >
+                <Puzzle className="w-4 h-4 shrink-0" />
+                <div>
+                  <div className="font-semibold">Extension</div>
+                  <div className="text-[10px] opacity-70">Chrome & Edge</div>
+                </div>
+              </button>
+            )}
           </div>
         </div>
       )}

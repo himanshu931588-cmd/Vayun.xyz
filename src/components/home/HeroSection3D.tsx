@@ -8,7 +8,8 @@ import {
   Cpu,
   Activity,
   CheckCircle2,
-  Lock
+  Lock,
+  Puzzle
 } from 'lucide-react';
 import { ToolId } from '../../types';
 import { VayunLogo } from '../common/VayunLogo';
@@ -18,6 +19,7 @@ interface HeroSection3DProps {
   theme: 'dark' | 'light';
   onSelectTool: (id: ToolId) => void;
   onOpenApiSettings?: () => void;
+  onOpenExtension?: () => void;
   hasApiKey: boolean;
 }
 
@@ -25,6 +27,7 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
   theme,
   onSelectTool,
   onOpenApiSettings,
+  onOpenExtension,
   hasApiKey
 }) => {
   const isLight = theme === 'light';
@@ -200,6 +203,21 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
               <FileText className="w-4 h-4" />
               <span>Resume Builder</span>
             </button>
+
+            {onOpenExtension && (
+              <button
+                onClick={onOpenExtension}
+                className={`px-4 py-3 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
+                  isLight 
+                    ? 'border-neutral-300 bg-white hover:bg-neutral-100 text-black' 
+                    : 'border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-white'
+                }`}
+                title="Download Vayun Browser Extension for Chrome, Edge, and Brave"
+              >
+                <Puzzle className="w-4 h-4 text-emerald-400" />
+                <span>Extension</span>
+              </button>
+            )}
 
             {onOpenApiSettings && (
               <button

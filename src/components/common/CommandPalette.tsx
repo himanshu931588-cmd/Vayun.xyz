@@ -21,7 +21,8 @@ import {
   FileCode2,
   Network,
   Flame,
-  Scale
+  Scale,
+  Puzzle
 } from 'lucide-react';
 import { TOOLS } from '../../utils/toolsData';
 import { ToolId } from '../../types';
@@ -31,6 +32,7 @@ interface CommandPaletteProps {
   onClose: () => void;
   onSelectTool: (id: ToolId) => void;
   onOpenOwnerConsole?: () => void;
+  onOpenExtension?: () => void;
   theme?: 'dark' | 'light';
 }
 
@@ -39,6 +41,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   onClose,
   onSelectTool,
   onOpenOwnerConsole,
+  onOpenExtension,
   theme = 'dark'
 }) => {
   const [query, setQuery] = useState('');
@@ -159,6 +162,28 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
 
         {/* Results List */}
         <div className="max-h-80 overflow-y-auto p-2 space-y-1">
+          {onOpenExtension && (!cleanQuery || cleanQuery.includes('ext') || cleanQuery.includes('chrome') || cleanQuery.includes('edge') || cleanQuery.includes('brave') || cleanQuery.includes('plugin') || cleanQuery.includes('browser')) && (
+            <div
+              onClick={() => {
+                onOpenExtension();
+                onClose();
+              }}
+              className="flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-colors text-xs border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20 mb-2"
+            >
+              <div className="flex items-center gap-2.5">
+                <Puzzle className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div>
+                  <div className="font-semibold text-white flex items-center gap-1.5 font-mono">
+                    <span>Vayun Browser Extension</span>
+                    <span className="text-[9px] px-1 rounded bg-emerald-500/30 text-emerald-300 font-bold">CHROME & EDGE</span>
+                  </div>
+                  <div className="text-[10px] text-neutral-400 font-mono">Download and load unpacked 1-click toolbar extension</div>
+                </div>
+              </div>
+              <CornerDownLeft className="w-3.5 h-3.5 opacity-60 text-emerald-400" />
+            </div>
+          )}
+
           {onOpenOwnerConsole && (cleanQuery.includes('owner') || cleanQuery.includes('log') || cleanQuery.includes('admin') || cleanQuery.includes('user')) && (
             <div
               onClick={() => {

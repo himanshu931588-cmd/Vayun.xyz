@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Vayun.xyz — Anti-Black-Box Developer & PDF Suite",
+  "version": "1.0.0",
+  "description": "Instant 1-click access to Vayun Flow, Socratic Viva Defense, High-Capacity PDF Tools, and Token Counter in browser memory.",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "default_title": "Vayun.xyz Quick Workstation"
+  },
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

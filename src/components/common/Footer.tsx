@@ -18,7 +18,8 @@ import {
   Network,
   Flame,
   Scale,
-  Coffee
+  Coffee,
+  Puzzle
 } from 'lucide-react';
 
 interface FooterProps {
@@ -27,6 +28,7 @@ interface FooterProps {
   onOpenShortcuts?: () => void;
   onOpenOwnerConsole?: () => void;
   onOpenSupport?: () => void;
+  onOpenExtension?: () => void;
   theme?: 'dark' | 'light';
 }
 
@@ -36,6 +38,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenShortcuts,
   onOpenOwnerConsole,
   onOpenSupport,
+  onOpenExtension,
   theme = 'dark' 
 }) => {
   const isLight = theme === 'light';
@@ -55,8 +58,8 @@ export const Footer: React.FC<FooterProps> = ({
               The Anti-Black-Box Developer & Defense Platform. Zero remote uploads, zero tracking, no accounts, no paywalls.
             </p>
 
-            {/* Support / Contribute button */}
-            <div className="pt-1">
+            {/* Support & Extension Action Buttons */}
+            <div className="pt-1 flex flex-wrap items-center gap-2">
               <button
                 onClick={onOpenSupport}
                 className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-mono transition-all ${
@@ -68,6 +71,20 @@ export const Footer: React.FC<FooterProps> = ({
                 <Coffee className="w-3.5 h-3.5" />
                 <span>Buy Me a Coffee</span>
               </button>
+
+              {onOpenExtension && (
+                <button
+                  onClick={onOpenExtension}
+                  className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-mono transition-all ${
+                    isLight 
+                      ? 'border-neutral-300 bg-white hover:bg-neutral-100 text-neutral-800' 
+                      : 'border-neutral-800 bg-neutral-900/50 hover:bg-neutral-850 text-neutral-300'
+                  }`}
+                >
+                  <Puzzle className="w-3.5 h-3.5" />
+                  <span>Browser Extension</span>
+                </button>
+              )}
             </div>
           </div>
 
@@ -201,6 +218,12 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           <div className="flex items-center gap-4">
+            {onOpenExtension && (
+              <button onClick={onOpenExtension} className="hover:underline flex items-center gap-1 text-emerald-400">
+                <Puzzle className="w-3 h-3" />
+                <span>Browser Extension</span>
+              </button>
+            )}
             {onOpenSecurityAuditor && (
               <button onClick={onOpenSecurityAuditor} className="hover:underline">
                 RAM Security Guarantee

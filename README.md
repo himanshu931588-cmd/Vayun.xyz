@@ -38,7 +38,19 @@ Vayun.xyz is a privacy-first web platform designed for developers, engineering s
 - **Invoice Generator:** Create clean, printable PDF invoices directly inside the browser.
 - **Payment Link Manager:** Store and share payment links for freelance and client billing.
 
-### 5. Owner Administration
+### 5. Browser Extension (Chrome, Edge, Brave, Arc, and Opera)
+- **Quick Toolbar Access:** Launch Vayun Flow, Viva Defense, Split PDF, and Merge PDF from any browser tab with a single click.
+- **Context Menu Inspection:** Highlight code or text on GitHub, LeetCode, or any web page, right-click, and select "Inspect selection in Vayun Flow" or "Prepare Viva Defense".
+- **Instant Token Counter:** Embedded popup widget to measure prompt length, character count, and token estimations in browser RAM.
+- **Privacy First:** Built on Manifest V3 with zero analytics, zero external network calls, and complete offline privacy.
+
+#### Installing the Browser Extension
+1. Download the extension package (`vayun-extension.zip`) from the Vayun website or locate the `public/extension/` directory in this repository.
+2. Open your browser and navigate to `chrome://extensions` (or `edge://extensions` in Microsoft Edge).
+3. Enable the **Developer mode** switch in the top-right corner.
+4. Click **Load unpacked** and select the unzipped extension directory.
+
+### 6. Owner Administration
 - **Owner Audit Logs:** Silent system event logging for the website administrator.
 - **Owner Command Console:** An administrative interface to review system health, download diagnostics, and run automated backups.
 
@@ -116,7 +128,9 @@ Vayun.xyz/
 |   |-- logger.cjs           # Event logging engine
 |   |-- routes.cjs           # API endpoint handlers
 |   `-- server.cjs           # Standalone HTTP server
-|-- public/                  # Public assets, favicon, and brand marks
+|-- public/                  # Public assets, favicon, extension package, and brand marks
+|   |-- extension/           # Chrome / Chromium Manifest V3 browser extension
+|   `-- vayun-extension.zip  # Downloadable extension package
 |-- src/
 |   |-- assets/              # Wordmarks and graphic assets
 |   |-- components/

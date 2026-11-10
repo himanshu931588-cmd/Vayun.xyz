@@ -7,6 +7,7 @@ import { KeyboardShortcutsModal } from './components/common/KeyboardShortcutsMod
 import { ApiSettingsModal } from './components/common/ApiSettingsModal';
 import { OwnerConsoleModal } from './components/common/OwnerConsoleModal';
 import { SupportModal } from './components/common/SupportModal';
+import { ExtensionModal } from './components/common/ExtensionModal';
 import { HomeView } from './components/home/HomeView';
 
 // Developer Flow & Viva Suite (Flagship)
@@ -50,6 +51,7 @@ export function App() {
   const [isApiSettingsOpen, setIsApiSettingsOpen] = useState(false);
   const [isOwnerConsoleOpen, setIsOwnerConsoleOpen] = useState(false);
   const [isSupportOpen, setIsSupportOpen] = useState(false);
+  const [isExtensionOpen, setIsExtensionOpen] = useState(false);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [savedTokensTotal, setSavedTokensTotal] = useState<number>(() => {
     const saved = localStorage.getItem('vayun_total_tokens_saved');
@@ -109,6 +111,7 @@ export function App() {
         setIsShortcutsOpen(false);
         setIsApiSettingsOpen(false);
         setIsSupportOpen(false);
+        setIsExtensionOpen(false);
       }
     };
 
@@ -159,6 +162,7 @@ export function App() {
         onOpenShortcuts={() => setIsShortcutsOpen(true)}
         onOpenApiSettings={() => setIsApiSettingsOpen(true)}
         onOpenSupport={() => setIsSupportOpen(true)}
+        onOpenExtension={() => setIsExtensionOpen(true)}
       />
 
       {/* Main Content Workspace */}
@@ -170,6 +174,7 @@ export function App() {
             onSelectCategory={setSelectedCategory}
             onOpenApiSettings={() => setIsApiSettingsOpen(true)}
             onOpenSupport={() => setIsSupportOpen(true)}
+            onOpenExtension={() => setIsExtensionOpen(true)}
             theme={theme}
           />
         )}
@@ -348,6 +353,7 @@ export function App() {
         onClose={() => setIsCommandPaletteOpen(false)}
         onSelectTool={handleSelectTool}
         onOpenOwnerConsole={() => setIsOwnerConsoleOpen(true)}
+        onOpenExtension={() => setIsExtensionOpen(true)}
         theme={theme}
       />
 
@@ -386,6 +392,13 @@ export function App() {
         theme={theme}
       />
 
+      {/* Browser Extension Modal */}
+      <ExtensionModal
+        isOpen={isExtensionOpen}
+        onClose={() => setIsExtensionOpen(false)}
+        theme={theme}
+      />
+
       {/* Footer */}
       <Footer
         onSelectTool={handleSelectTool}
@@ -393,6 +406,7 @@ export function App() {
         onOpenShortcuts={() => setIsShortcutsOpen(true)}
         onOpenOwnerConsole={() => setIsOwnerConsoleOpen(true)}
         onOpenSupport={() => setIsSupportOpen(true)}
+        onOpenExtension={() => setIsExtensionOpen(true)}
         theme={theme}
       />
     </div>

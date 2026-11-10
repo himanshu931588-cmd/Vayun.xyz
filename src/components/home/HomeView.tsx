@@ -39,6 +39,7 @@ interface HomeViewProps {
   onSelectCategory: (cat: ToolCategory | 'all') => void;
   onOpenApiSettings?: () => void;
   onOpenSupport?: () => void;
+  onOpenExtension?: () => void;
   theme?: 'dark' | 'light';
 }
 
@@ -48,6 +49,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   onSelectCategory,
   onOpenApiSettings,
   onOpenSupport,
+  onOpenExtension,
   theme = 'dark'
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -107,6 +109,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         theme={theme}
         onSelectTool={onSelectTool}
         onOpenApiSettings={onOpenApiSettings}
+        onOpenExtension={onOpenExtension}
         hasApiKey={hasApiKey}
       />
 
