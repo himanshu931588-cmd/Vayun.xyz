@@ -10,7 +10,8 @@ import {
   Lock,
   Puzzle,
   LifeBuoy,
-  Download
+  Download,
+  Presentation
 } from 'lucide-react';
 import { ToolId } from '../../types';
 import { VayunLogo } from '../common/VayunLogo';
@@ -126,7 +127,7 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                 : 'bg-white/5 border-white/10 text-neutral-300'
             }`}>
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Anti-Black-Box Platform</span>
+              <span>The Startup Developer OS</span>
             </div>
           </div>
 
@@ -134,23 +135,23 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
           <div className="space-y-3">
             <div className={`inline-block text-xs font-mono font-bold tracking-widest uppercase px-2.5 py-0.5 rounded ${
               isLight
-                ? 'bg-slate-100/90 text-slate-700 border border-slate-200/80'
-                : 'bg-white/10 text-neutral-300 border border-white/10'
+                ? 'bg-blue-100/80 text-blue-800 border border-blue-200/80'
+                : 'bg-blue-950/60 text-blue-400 border border-blue-800/60'
             }`}>
-              Zero-Knowledge Engineering • 100% Client-Side RAM
+              🚀 Zero-Data-Leakage Platform • 100% In-Browser RAM
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-5xl font-serif tracking-tight leading-[1.12] text-slate-900 dark:text-white">
-              Understand Every Line <br className="hidden sm:inline" />
+              The Autonomous Platform <br className="hidden sm:inline" />
               <span className={`italic font-serif ${isLight ? 'text-blue-700' : 'text-neutral-200'}`}>
-                You Ship to Production.
+                For Fast-Moving Startups.
               </span>
             </h1>
 
             <p className={`text-sm sm:text-base leading-relaxed max-w-xl ${
               isLight ? 'text-slate-600 font-normal' : 'text-neutral-400'
             }`}>
-              The developer workstation built for engineers and students who refuse to ship blind. Trace multi-file runtime logic in <strong className={isLight ? 'text-slate-900 font-semibold' : 'text-white'}>Vayun Flow</strong> and defend code in interactive Socratic <strong className={isLight ? 'text-slate-900 font-semibold' : 'text-white'}>Vayun Viva</strong> simulations.
+              Engineered for founders, CTOs, and high-velocity engineers. Generate 10-second McKinsey-grade pitch decks from PDF/CSV, eliminate AI code smells in <strong className={isLight ? 'text-slate-900 font-semibold' : 'text-white'}>Vayun Flow</strong>, and slash LLM API burn by 60%—without ever sending your startup's IP to an external cloud.
             </p>
           </div>
 
@@ -178,23 +179,35 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                 : 'border-neutral-800 bg-neutral-900/80 text-neutral-300'
             }`}>
               <CheckCircle2 className={`w-3.5 h-3.5 ${isLight ? 'text-emerald-600' : 'text-emerald-400'}`} />
-              <span>No Accounts • No Paywalls</span>
+              <span>Free for Early-Stage Startups</span>
             </span>
           </div>
 
           {/* Action Buttons */}
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <button
-              onClick={() => onSelectTool('vayun-flow')}
+              onClick={() => onSelectTool('data-analytics')}
               className={`px-5 py-3 rounded-xl text-xs font-mono font-semibold flex items-center gap-2.5 transition-all shadow-md group ${
                 isLight 
                   ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30 border border-blue-600' 
                   : 'bg-white text-black hover:bg-neutral-200 hover:shadow-lg hover:shadow-white/10'
               }`}
             >
-              <Network className="w-4 h-4 transition-transform group-hover:scale-110" />
-              <span>Launch Vayun Flow</span>
+              <Presentation className="w-4 h-4 transition-transform group-hover:scale-110" />
+              <span>10s Pitch Deck AI</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </button>
+
+            <button
+              onClick={() => onSelectTool('vayun-flow')}
+              className={`px-4 py-3 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
+                isLight 
+                  ? 'border-slate-200/90 bg-white hover:bg-slate-50 text-slate-700 shadow-xs hover:border-slate-300' 
+                  : 'border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-white'
+              }`}
+            >
+              <Network className="w-4 h-4" />
+              <span>Launch Vayun Flow</span>
             </button>
 
             <button
@@ -206,7 +219,7 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
               }`}
             >
               <ShieldCheck className="w-4 h-4" />
-              <span>Vayun Viva Defense</span>
+              <span>Socratic Viva</span>
             </button>
 
             {onOpenExtension && (
@@ -284,12 +297,12 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                 <span className="w-2.5 h-2.5 rounded-full bg-amber-400/90" />
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/90" />
                 <span className={`text-[11px] font-mono ml-2 ${isLight ? 'text-slate-600 font-medium' : 'text-neutral-400'}`}>
-                  vayun-flow://inspect
+                  startup-radar://live-audit
                 </span>
               </div>
               <div className="flex items-center gap-1.5 text-[10px] font-mono">
                 <span className={`w-1.5 h-1.5 rounded-full ${isLight ? 'bg-emerald-500' : 'bg-emerald-400'} animate-pulse`} />
-                <span className={isLight ? 'text-emerald-700 font-semibold' : 'text-emerald-400'}>ACTIVE TRACE</span>
+                <span className={isLight ? 'text-emerald-700 font-semibold' : 'text-emerald-400'}>STARTUP ACTIVE</span>
               </div>
             </div>
 
@@ -306,7 +319,7 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                 <path d="M 4 10 L 4 110" strokeDasharray="3 3" strokeWidth="1.5" />
               </svg>
 
-              {/* Node 1: Entry Point */}
+              {/* Node 1: 10s Pitch Deck AI */}
               <div className={`p-3 rounded-xl border transition-all flex items-center justify-between ${
                 pulseStep === 0 || pulseStep === 1
                   ? isLight 
@@ -328,12 +341,12 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                   </div>
                   <div>
                     <div className="text-xs font-mono font-semibold flex items-center gap-1.5 text-slate-900 dark:text-white">
-                      <span>main.ts &rarr; handleRequest()</span>
+                      <span>seed_metrics.csv &rarr; 5-Slide PPT</span>
                     </div>
                     <div className={`text-[10px] font-mono ${
                       (pulseStep === 0 || pulseStep === 1) && isLight ? 'text-slate-500' : 'text-neutral-400'
                     }`}>
-                      Multi-file execution root
+                      10s Investor Pitch Deck Ready
                     </div>
                   </div>
                 </div>
@@ -342,11 +355,11 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                     ? 'bg-emerald-50 text-emerald-700 border-emerald-200 font-semibold'
                     : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
                 }`}>
-                  200 OK
+                  SYNTHESIZED
                 </span>
               </div>
 
-              {/* Node 2: Socratic Defense Check */}
+              {/* Node 2: AI Smells & Logic Radar */}
               <div className={`p-3 rounded-xl border transition-all flex items-center justify-between ${
                 pulseStep === 2
                   ? isLight 
@@ -368,12 +381,12 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                   </div>
                   <div>
                     <div className="text-xs font-mono font-semibold text-slate-900 dark:text-white">
-                      viva_defense.ts &rarr; verify()
+                      ai_smells_radar &rarr; scanAST()
                     </div>
                     <div className={`text-[10px] font-mono ${
                       pulseStep === 2 && isLight ? 'text-slate-500' : 'text-neutral-400'
                     }`}>
-                      Socratic logic examination
+                      Zero silent promise leaks
                     </div>
                   </div>
                 </div>
@@ -382,11 +395,11 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                     ? 'bg-blue-50 text-blue-700 border-blue-200 font-semibold'
                     : 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20'
                 }`}>
-                  DEFENDED
+                  AIR-GAPPED
                 </span>
               </div>
 
-              {/* Node 3: Zero-Upload Local Memory Isolation */}
+              {/* Node 3: Token Slimmer & Secret Detonator */}
               <div className={`p-3 rounded-xl border transition-all flex items-center justify-between ${
                 pulseStep === 3
                   ? isLight 
@@ -408,12 +421,12 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                   </div>
                   <div>
                     <div className="text-xs font-mono font-semibold text-slate-900 dark:text-white">
-                      ram_sandbox.wasm
+                      token_slimmer &rarr; -62%
                     </div>
                     <div className={`text-[10px] font-mono ${
                       pulseStep === 3 && isLight ? 'text-slate-500' : 'text-neutral-400'
                     }`}>
-                      Client-side RAM execution
+                      Saved $1,400/mo API burn
                     </div>
                   </div>
                 </div>

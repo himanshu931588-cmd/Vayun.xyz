@@ -63,7 +63,7 @@ export const Footer: React.FC<FooterProps> = ({
               <VayunWordmark height={24} theme={theme} />
             </div>
             <p className={`text-xs leading-relaxed max-w-sm ${isLight ? 'text-slate-500' : 'text-neutral-400'}`}>
-              The Anti-Black-Box Developer & Defense Platform. Zero remote uploads, zero tracking, no accounts, no paywalls.
+              The Autonomous Developer & AI Workstation for Modern Startups. Zero remote uploads, zero data leakage, no accounts, and no paywalls.
             </p>
 
             {/* Support & Extension Action Buttons */}
