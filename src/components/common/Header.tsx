@@ -19,15 +19,17 @@ import {
   Key,
   Coffee,
   ShieldCheck,
-  Download
+  Download,
+  Clock,
+  Star
 } from 'lucide-react';
 import { getStoredApiKey } from '../../utils/geminiApi';
 
 interface HeaderProps {
   currentTool: ToolId;
   onSelectTool: (id: ToolId) => void;
-  selectedCategory: ToolCategory | 'all';
-  onSelectCategory: (cat: ToolCategory | 'all') => void;
+  selectedCategory: ToolCategory | 'all' | 'starred';
+  onSelectCategory: (cat: ToolCategory | 'all' | 'starred') => void;
   savedTokensTotal?: number;
   theme: 'dark' | 'light';
   onToggleTheme: () => void;
@@ -38,6 +40,7 @@ interface HeaderProps {
   onOpenSupport?: () => void;
   onOpenExtension?: () => void;
   onOpenHelpdesk?: () => void;
+  onOpenRecentFiles?: (tab?: 'recent' | 'starred') => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -52,7 +55,8 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenApiSettings,
   onOpenSupport,
   onOpenExtension,
-  onOpenHelpdesk
+  onOpenHelpdesk,
+  onOpenRecentFiles
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isLight = theme === 'light';
@@ -214,6 +218,38 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Right: Clean, Balanced Action Controls (Zero overflow, enlarged icons) */}
           <div className="flex items-center gap-2.5 shrink-0">
+            {/* Recent files button */}
+            {onOpenRecentFiles && (
+              <button
+                onClick={() => onOpenRecentFiles('recent')}
+                title="Recent files processed in RAM"
+                className={`h-10 px-3 rounded-xl border text-xs sm:text-[13px] font-mono hidden md:inline-flex items-center gap-1.5 transition-all select-none active:scale-95 group ${
+                  isLight 
+                    ? 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 shadow-xs' 
+                    : 'border-neutral-800 bg-neutral-900/70 text-neutral-300 hover:text-white hover:bg-neutral-850 hover:border-neutral-700'
+                }`}
+              >
+                <Clock className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity shrink-0" />
+                <span className="hidden xl:inline">Recent files</span>
+              </button>
+            )}
+
+            {/* Starred button */}
+            {onOpenRecentFiles && (
+              <button
+                onClick={() => onOpenRecentFiles('starred')}
+                title="Starred tools & pinned files"
+                className={`h-10 px-3 rounded-xl border text-xs sm:text-[13px] font-mono hidden md:inline-flex items-center gap-1.5 transition-all select-none active:scale-95 group ${
+                  isLight 
+                    ? 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 shadow-xs' 
+                    : 'border-neutral-800 bg-neutral-900/70 text-neutral-300 hover:text-white hover:bg-neutral-850 hover:border-neutral-700'
+                }`}
+              >
+                <Star className="w-4 h-4 opacity-70 group-hover:opacity-100 text-amber-400 fill-amber-400/80 transition-opacity shrink-0" />
+                <span className="hidden xl:inline">Starred</span>
+              </button>
+            )}
+
             {/* Quick Search Spotlight (⌘K) */}
             <button
               onClick={onOpenCommandPalette}
@@ -408,6 +444,48 @@ export const Header: React.FC<HeaderProps> = ({
                 <div className="text-[10px] opacity-70">CSV & Tables</div>
               </div>
             </button>
+          </div>
+
+          <div className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 font-semibold px-1 pt-2">
+            Workstation Quick Access
+          </div>
+
+          <div className="grid grid-cols-2 gap-2 text-xs">
+            {onOpenRecentFiles && (
+              <button
+                onClick={() => {
+                  onOpenRecentFiles('recent');
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
+                  isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                }`}
+              >
+                <Clock className="w-4 h-4 opacity-80 shrink-0 text-blue-500" />
+                <div>
+                  <div className="font-semibold">Recent files</div>
+                  <div className="text-[10px] opacity-70">RAM file history</div>
+                </div>
+              </button>
+            )}
+
+            {onOpenRecentFiles && (
+              <button
+                onClick={() => {
+                  onOpenRecentFiles('starred');
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
+                  isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                }`}
+              >
+                <Star className="w-4 h-4 opacity-80 shrink-0 text-amber-400 fill-amber-400/80" />
+                <div>
+                  <div className="font-semibold">Starred</div>
+                  <div className="text-[10px] opacity-70">Pinned items</div>
+                </div>
+              </button>
+            )}
           </div>
 
           <div className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 font-semibold px-1 pt-2">

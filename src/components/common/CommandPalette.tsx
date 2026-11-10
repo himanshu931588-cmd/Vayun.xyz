@@ -30,7 +30,9 @@ import {
   Wind,
   KeyRound,
   Cpu,
-  Download
+  Download,
+  Clock,
+  Star
 } from 'lucide-react';
 import { TOOLS } from '../../utils/toolsData';
 import { ToolId } from '../../types';
@@ -43,6 +45,7 @@ interface CommandPaletteProps {
   onOpenExtension?: () => void;
   onOpenHelpdesk?: () => void;
   onOpenChatbot?: () => void;
+  onOpenRecentFiles?: (tab?: 'recent' | 'starred') => void;
   theme?: 'dark' | 'light';
 }
 
@@ -54,6 +57,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   onOpenExtension,
   onOpenHelpdesk,
   onOpenChatbot,
+  onOpenRecentFiles,
   theme = 'dark'
 }) => {
   const [query, setQuery] = useState('');
@@ -334,7 +338,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
         </div>
 
         {/* Footer Hints */}
-        <div className={`px-4 py-2 border-t text-[11px] font-mono flex items-center justify-between ${
+        <div className={`px-4 py-2 border-t text-[11px] font-mono flex items-center justify-between flex-wrap gap-2 ${
           isLight ? 'bg-neutral-50 border-neutral-200 text-neutral-500' : 'bg-black/60 border-neutral-800 text-neutral-400'
         }`}>
           <div className="flex items-center gap-3">
@@ -342,9 +346,32 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
             <span>↵ Select</span>
             <span>ESC Close</span>
           </div>
-          <div className="text-[10px]">
-            RAM Local Workstation
-          </div>
+          {onOpenRecentFiles && (
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  onOpenRecentFiles('recent');
+                }}
+                className="hover:underline flex items-center gap-1 text-blue-600 dark:text-blue-400"
+              >
+                <Clock className="w-3 h-3" />
+                <span>Recent files</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  onOpenRecentFiles('starred');
+                }}
+                className="hover:underline flex items-center gap-1 text-amber-500 dark:text-amber-400"
+              >
+                <Star className="w-3 h-3 fill-amber-400" />
+                <span>Starred</span>
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

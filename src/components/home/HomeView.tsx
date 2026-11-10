@@ -28,7 +28,9 @@ import {
   Radar,
   Award,
   Wind,
-  KeyRound
+  KeyRound,
+  Star,
+  Clock
 } from 'lucide-react';
 import { ToolCategory, ToolId } from '../../types';
 import { TOOLS } from '../../utils/toolsData';
@@ -38,15 +40,17 @@ import { VayunWordmark } from '../common/VayunWordmark';
 import { HeroSection3D } from './HeroSection3D';
 import { ToolCardLivePreview } from './ToolCardLivePreview';
 import { SnakeGameSection } from '../game/SnakeGameSection';
+import { getStarredTools, toggleStarTool } from '../../utils/recentFilesStorage';
 
 interface HomeViewProps {
   onSelectTool: (id: ToolId) => void;
-  selectedCategory: ToolCategory | 'all';
-  onSelectCategory: (cat: ToolCategory | 'all') => void;
+  selectedCategory: ToolCategory | 'all' | 'starred';
+  onSelectCategory: (cat: ToolCategory | 'all' | 'starred') => void;
   onOpenApiSettings?: () => void;
   onOpenSupport?: () => void;
   onOpenExtension?: () => void;
   onOpenHelpdesk?: () => void;
+  onOpenRecentFiles?: (tab?: 'recent' | 'starred') => void;
   theme?: 'dark' | 'light';
 }
 
@@ -58,11 +62,18 @@ export const HomeView: React.FC<HomeViewProps> = ({
   onOpenSupport,
   onOpenExtension,
   onOpenHelpdesk,
+  onOpenRecentFiles,
   theme = 'dark'
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [starredTools, setStarredTools] = useState<ToolId[]>(getStarredTools);
   const isLight = theme === 'light';
   const hasApiKey = Boolean(getStoredApiKey());
+
+  const handleToggleStar = (toolId: ToolId) => {
+    const updated = toggleStarTool(toolId);
+    setStarredTools(updated);
+  };
 
   const cleanQuery = searchQuery.trim().toLowerCase();
 
@@ -70,7 +81,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
     const matchesCategory = 
       cleanQuery.length > 0 
         ? true 
-        : selectedCategory === 'all' || tool.category === selectedCategory;
+        : selectedCategory === 'all'
+        ? true
+        : selectedCategory === 'starred'
+        ? starredTools.includes(tool.id)
+        : tool.category === selectedCategory;
 
     if (!cleanQuery) {
       return matchesCategory;
@@ -172,6 +187,38 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <LayoutGrid className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
               <span>All ({TOOLS.length})</span>
             </button>
+
+            {/* Starred Tools Filter */}
+            <button
+              onClick={() => {
+                onSelectCategory('starred');
+                setSearchQuery('');
+              }}
+              className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap group ${
+                selectedCategory === 'starred' && !searchQuery
+                  ? isLight ? 'bg-amber-500 text-white font-semibold shadow-xs' : 'bg-amber-400 text-black font-medium'
+                  : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
+              }`}
+            >
+              <Star className={`w-4.5 h-4.5 shrink-0 ${starredTools.length > 0 ? 'fill-amber-400 text-amber-400' : 'opacity-80 group-hover:opacity-100'}`} />
+              <span>Starred ({starredTools.length})</span>
+            </button>
+
+            {/* Recent Files Button */}
+            {onOpenRecentFiles && (
+              <button
+                type="button"
+                onClick={() => onOpenRecentFiles('recent')}
+                className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap group ${
+                  isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
+                }`}
+                title="View recent client-side files"
+              >
+                <Clock className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 text-blue-500 dark:text-blue-400" />
+                <span>Recent files</span>
+              </button>
+            )}
+
             <button
               onClick={() => {
                 onSelectCategory('developer');
@@ -281,11 +328,33 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   }`}>
                     {getToolIcon(tool.icon)}
                   </div>
-                  <span className={`text-[11px] font-mono font-medium tracking-wide uppercase px-2 py-0.5 rounded border ${
-                    isLight ? 'border-slate-200 bg-slate-50 text-slate-600' : 'border-neutral-800 bg-neutral-900 text-neutral-400'
-                  }`}>
-                    {tool.categoryName}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className={`text-[11px] font-mono font-medium tracking-wide uppercase px-2 py-0.5 rounded border ${
+                      isLight ? 'border-slate-200 bg-slate-50 text-slate-600' : 'border-neutral-800 bg-neutral-900 text-neutral-400'
+                    }`}>
+                      {tool.categoryName}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleToggleStar(tool.id);
+                      }}
+                      title={starredTools.includes(tool.id) ? "Remove from starred" : "Star this tool"}
+                      aria-label={starredTools.includes(tool.id) ? "Remove from starred" : "Star this tool"}
+                      className={`p-1.5 rounded-lg border transition-all ${
+                        starredTools.includes(tool.id)
+                          ? isLight 
+                            ? 'bg-amber-50 border-amber-200 text-amber-500' 
+                            : 'bg-amber-500/10 border-amber-500/30 text-amber-400'
+                          : isLight 
+                            ? 'border-transparent text-slate-300 hover:text-amber-500 hover:bg-slate-100' 
+                            : 'border-transparent text-neutral-600 hover:text-amber-400 hover:bg-neutral-800'
+                      }`}
+                    >
+                      <Star className={`w-3.5 h-3.5 ${starredTools.includes(tool.id) ? 'fill-amber-400 text-amber-400' : ''}`} />
+                    </button>
+                  </div>
                 </div>
 
                 {/* Editorial Serif Headline Paired with Crisp Mono Tagline */}
