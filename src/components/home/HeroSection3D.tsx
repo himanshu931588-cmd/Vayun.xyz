@@ -138,7 +138,7 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                 ? 'bg-blue-100/80 text-blue-800 border border-blue-200/80'
                 : 'bg-blue-950/60 text-blue-400 border border-blue-800/60'
             }`}>
-              🚀 Zero-Data-Leakage Platform • 100% In-Browser RAM
+              Zero-Data-Leakage Platform • 100% In-Browser RAM
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-5xl font-serif tracking-tight leading-[1.12] text-slate-900 dark:text-white">

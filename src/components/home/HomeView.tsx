@@ -39,10 +39,6 @@ import { VayunWordmark } from '../common/VayunWordmark';
 import { HeroSection3D } from './HeroSection3D';
 import { ToolCardLivePreview } from './ToolCardLivePreview';
 import { SnakeGameSection } from '../game/SnakeGameSection';
-import { StartupMetricsBar } from './StartupMetricsBar';
-import { StartupSolutionsSection } from './StartupSolutionsSection';
-import { StartupTestimonials } from './StartupTestimonials';
-import { StartupPricingFaq } from './StartupPricingFaq';
 
 interface HomeViewProps {
   onSelectTool: (id: ToolId) => void;
@@ -134,12 +130,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
         onOpenHelpdesk={onOpenHelpdesk}
         hasApiKey={hasApiKey}
       />
-
-      {/* Startup Velocity Telemetry Bar */}
-      <StartupMetricsBar theme={theme} />
-
-      {/* Startup Solutions Stack (Founders, CTOs, AI Ops) */}
-      <StartupSolutionsSection onSelectTool={onSelectTool} theme={theme} />
 
       {/* Toolbar & Filter Tabs */}
       <div className={`pb-4 border-b ${isLight ? 'border-slate-200/80' : 'border-neutral-800'}`}>
@@ -365,16 +355,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </button>
         </div>
       )}
-
-      {/* Startup Testimonials: Wall of Proof */}
-      <StartupTestimonials theme={theme} />
-
-      {/* Startup Pricing Tiers & Founder Knowledge Base FAQ */}
-      <StartupPricingFaq 
-        onSelectTool={onSelectTool} 
-        onOpenApiSettings={onOpenApiSettings} 
-        theme={theme} 
-      />
 
       {/* Community Contribution & Support Section */}
       <div className={`p-6 sm:p-8 rounded-2xl border transition-all ${
