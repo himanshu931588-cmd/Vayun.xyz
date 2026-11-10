@@ -574,6 +574,45 @@ export const ResumeBuilderView: React.FC<ResumeBuilderViewProps> = ({
         </div>
       </div>
 
+      {/* Choice of 6 Professional Resume Formats */}
+      <div className={`p-3 rounded-xl border mt-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 no-print ${
+        isLight ? 'bg-neutral-50/80 border-neutral-200' : 'bg-neutral-950 border-neutral-800'
+      }`}>
+        <div className="flex items-center gap-2 shrink-0">
+          <Layout className="w-4 h-4 text-emerald-400" />
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider">
+            Resume Format (6 Styles):
+          </span>
+        </div>
+
+        <div className="flex items-center gap-1.5 flex-wrap w-full md:w-auto">
+          {[
+            { id: 'classic', label: 'Classic Executive' },
+            { id: 'modern', label: 'Modern Tech' },
+            { id: 'two-column', label: 'Two-Column Split' },
+            { id: 'minimal', label: 'Minimalist Swiss' },
+            { id: 'technical', label: 'Engineering ATS' },
+            { id: 'academic', label: 'Academic CV' }
+          ].map(tmpl => (
+            <button
+              key={tmpl.id}
+              onClick={() => updateData(prev => ({ ...prev, template: tmpl.id as any }))}
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all flex items-center gap-1.5 active:scale-95 ${
+                data.template === tmpl.id
+                  ? isLight
+                    ? 'bg-black text-white font-semibold shadow-xs'
+                    : 'bg-white text-black font-semibold shadow-xs'
+                  : isLight
+                    ? 'border border-neutral-200 bg-white hover:bg-neutral-100 text-neutral-700'
+                    : 'border border-neutral-800 bg-neutral-900/50 hover:bg-neutral-900 text-neutral-400 hover:text-white'
+              }`}
+            >
+              <span>{tmpl.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* Mobile Screen Segmented Switcher (Editor vs Preview) */}
       <div className={`flex lg:hidden items-center p-1 rounded-lg border mt-4 mb-2 w-full text-xs font-mono no-print ${
         isLight ? 'bg-neutral-100 border-neutral-200' : 'bg-neutral-950 border-neutral-800'
@@ -1329,10 +1368,12 @@ export const ResumeBuilderView: React.FC<ResumeBuilderViewProps> = ({
                 </label>
                 <div className="grid grid-cols-2 gap-2">
                   {[
-                    { id: 'classic', name: 'Classic Executive', desc: 'Editorial serif headers with clean rule dividers' },
-                    { id: 'modern', name: 'Modern Minimal', desc: 'Crisp sans-serif with metadata chips' },
-                    { id: 'two-column', name: 'Two Column', desc: 'Structured left sidebar with contact & skills' },
-                    { id: 'minimal', name: 'Editorial Whitespace', desc: 'High-density focus on content and typography' }
+                    { id: 'classic', name: 'Classic Executive', desc: 'Editorial serif headers with clean rule dividers; corporate & legal' },
+                    { id: 'modern', name: 'Modern Tech', desc: 'Crisp sans-serif with metadata chips; startups & product' },
+                    { id: 'two-column', name: 'Two-Column Split', desc: 'Structured left sidebar with contact & skills; spacious experience' },
+                    { id: 'minimal', name: 'Minimalist Swiss', desc: 'High-density focus on content, generous whitespace, stark monochrome' },
+                    { id: 'technical', name: 'Engineering ATS', desc: 'Terminal-inspired monospace headers, skill matrix & ATS-optimized structure' },
+                    { id: 'academic', name: 'Academic CV', desc: 'LaTeX-inspired typography with institutional sections & research emphasis' }
                   ].map(tmpl => (
                     <button
                       key={tmpl.id}
@@ -1382,7 +1423,11 @@ export const ResumeBuilderView: React.FC<ResumeBuilderViewProps> = ({
                 minWidth: '320px',
                 maxWidth: '794px', // A4 pixel width at 96 DPI
                 minHeight: '1123px', // A4 pixel height at 96 DPI
-                fontFamily: data.template === 'classic' ? 'Newsreader, Georgia, serif' : 'system-ui, -apple-system, sans-serif',
+                fontFamily: data.template === 'classic' || data.template === 'academic' 
+                  ? 'Newsreader, Georgia, "Times New Roman", serif' 
+                  : data.template === 'technical'
+                  ? 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace'
+                  : 'system-ui, -apple-system, sans-serif',
                 boxSizing: 'border-box'
               }}
             >
@@ -1931,6 +1976,297 @@ export const ResumeBuilderView: React.FC<ResumeBuilderViewProps> = ({
                           <span className="text-neutral-500 font-mono text-[10px]">{edu.endDate}</span>
                         </div>
                       ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* LAYOUT 5: ENGINEERING & SYSTEMS ATS */}
+              {data.template === 'technical' && (
+                <div className="space-y-5 text-neutral-900 font-mono">
+                  {/* Terminal-inspired ATS Header */}
+                  <div className="border-b-2 border-black pb-4">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h1 className="text-2xl font-bold tracking-tight text-black font-sans uppercase">
+                          {data.personal.fullName || 'Full Name'}
+                        </h1>
+                        <div className="text-xs text-neutral-800 font-mono font-medium mt-0.5">
+                          &gt; {data.personal.title || 'Software Engineer / Architect'}
+                        </div>
+                      </div>
+                      {data.personal.showPhoto && data.personal.photoUrl && (
+                        <img
+                          src={data.personal.photoUrl}
+                          alt="Portrait"
+                          className="w-16 h-16 object-cover border border-black shadow-sm"
+                        />
+                      )}
+                    </div>
+
+                    {/* Contact Line */}
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-mono text-neutral-700 pt-2 border-t border-dashed border-neutral-300 mt-2">
+                      {data.personal.email && <span>email: {data.personal.email}</span>}
+                      {data.personal.phone && <span>tel: {data.personal.phone}</span>}
+                      {data.personal.location && <span>loc: {data.personal.location}</span>}
+                      {data.personal.github && <span>git: {data.personal.github}</span>}
+                      {data.personal.website && <span>web: {data.personal.website}</span>}
+                      {data.personal.linkedin && <span>in: {data.personal.linkedin}</span>}
+                    </div>
+                  </div>
+
+                  {/* Section 01: Architecture & Technical Summary */}
+                  {data.summary && (
+                    <div className="space-y-1.5 font-sans">
+                      <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-black border-b border-neutral-300 pb-0.5">
+                        // 01. TECHNICAL PROFILE & SUMMARY
+                      </div>
+                      <p className="text-xs text-neutral-800 leading-relaxed text-justify">
+                        {data.summary}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Section 02: Skills Matrix */}
+                  {data.skills.length > 0 && (
+                    <div className="space-y-2">
+                      <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-black border-b border-neutral-300 pb-0.5">
+                        // 02. TECHNICAL PROFICIENCIES & STACK
+                      </div>
+                      <div className="grid grid-cols-1 gap-1.5 text-xs">
+                        {data.skills.map((cat, i) => (
+                          <div key={i} className="flex items-start gap-2">
+                            <span className="font-semibold text-black min-w-[140px] text-[11px] shrink-0 font-mono">
+                              {cat.category}:
+                            </span>
+                            <div className="flex flex-wrap gap-1 font-mono text-[11px]">
+                              {cat.items.map((item, j) => (
+                                <span key={j} className="px-1.5 py-0.5 rounded bg-neutral-100 border border-neutral-300 text-neutral-900">
+                                  [{item}]
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Section 03: Engineering Experience */}
+                  {data.experience.length > 0 && (
+                    <div className="space-y-3 font-sans">
+                      <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-black border-b border-neutral-300 pb-0.5">
+                        // 03. PROFESSIONAL EXPERIENCE
+                      </div>
+                      <div className="space-y-3.5">
+                        {data.experience.map(exp => (
+                          <div key={exp.id} className="space-y-1">
+                            <div className="flex justify-between items-baseline text-xs font-mono">
+                              <div>
+                                <span className="font-bold text-black font-sans">{exp.role}</span>
+                                <span className="text-neutral-600"> @ {exp.company}</span>
+                                {exp.location && <span className="text-neutral-500 text-[10px]"> ({exp.location})</span>}
+                              </div>
+                              <span className="text-neutral-600 text-[10px] shrink-0">
+                                {exp.startDate} — {exp.current ? 'Present' : exp.endDate}
+                              </span>
+                            </div>
+                            <ul className="list-disc pl-4 text-xs text-neutral-800 space-y-1 font-sans">
+                              {exp.bullets.map((b, idx) => (
+                                <li key={idx} className="leading-snug">{b}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Section 04: Projects & Open Source */}
+                  {data.projects.length > 0 && (
+                    <div className="space-y-2 font-sans">
+                      <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-black border-b border-neutral-300 pb-0.5">
+                        // 04. SYSTEMS & PROJECTS
+                      </div>
+                      <div className="grid grid-cols-1 gap-2 text-xs">
+                        {data.projects.map(p => (
+                          <div key={p.id} className="p-2 rounded border border-neutral-200 bg-neutral-50/50 space-y-0.5">
+                            <div className="flex justify-between items-baseline font-mono text-[11px]">
+                              <span className="font-bold text-black font-sans">{p.name}</span>
+                              {p.date && <span className="text-neutral-500 text-[10px]">{p.date}</span>}
+                            </div>
+                            {p.link && (
+                              <div className="text-[10px] font-mono text-neutral-600 truncate">{p.link}</div>
+                            )}
+                            <p className="text-neutral-800 text-xs font-sans leading-snug">{p.description}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Section 05: Education */}
+                  {data.education.length > 0 && (
+                    <div className="space-y-1.5 font-sans">
+                      <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-black border-b border-neutral-300 pb-0.5">
+                        // 05. EDUCATION & CREDENTIALS
+                      </div>
+                      <div className="space-y-1.5">
+                        {data.education.map(edu => (
+                          <div key={edu.id} className="flex justify-between items-baseline text-xs">
+                            <div>
+                              <span className="font-bold text-black">{edu.institution}</span>
+                              <span className="text-neutral-700"> — {edu.degree}</span>
+                              {edu.gpaOrHonors && (
+                                <span className="text-[11px] text-neutral-600 block">{edu.gpaOrHonors}</span>
+                              )}
+                            </div>
+                            <span className="text-neutral-600 font-mono text-[10px] shrink-0">
+                              {edu.startDate ? `${edu.startDate} - ${edu.endDate}` : edu.endDate}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* LAYOUT 6: ACADEMIC & RESEARCH CV */}
+              {data.template === 'academic' && (
+                <div className="space-y-6 text-neutral-900 font-serif">
+                  {/* Classical University / Paper Header */}
+                  <div className="text-center space-y-1.5 pb-4 border-b-2 border-black">
+                    <h1 className="text-2xl font-bold tracking-normal uppercase text-black font-serif">
+                      {data.personal.fullName || 'Full Name'}
+                    </h1>
+                    <div className="text-xs font-medium text-neutral-800 tracking-wide font-serif italic">
+                      {data.personal.title || 'Curriculum Vitae'}
+                    </div>
+                    
+                    {/* Centered Academic Metadata */}
+                    <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-0.5 text-xs text-neutral-700 pt-1 font-serif">
+                      {data.personal.location && <span>{data.personal.location}</span>}
+                      {data.personal.email && <span>• {data.personal.email}</span>}
+                      {data.personal.phone && <span>• {data.personal.phone}</span>}
+                      {data.personal.website && <span>• {data.personal.website}</span>}
+                      {data.personal.github && <span>• {data.personal.github}</span>}
+                      {data.personal.linkedin && <span>• {data.personal.linkedin}</span>}
+                    </div>
+                  </div>
+
+                  {/* Summary / Research Statement */}
+                  {data.summary && (
+                    <div className="space-y-1.5">
+                      <h2 className="text-xs font-bold uppercase tracking-widest text-black border-b border-black pb-0.5">
+                        Research Statement & Abstract
+                      </h2>
+                      <p className="text-xs leading-relaxed text-neutral-800 text-justify">
+                        {data.summary}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Education First (Standard in Academic CVs) */}
+                  {data.education.length > 0 && (
+                    <div className="space-y-2">
+                      <h2 className="text-xs font-bold uppercase tracking-widest text-black border-b border-black pb-0.5">
+                        Education
+                      </h2>
+                      <div className="space-y-2 text-xs">
+                        {data.education.map(edu => (
+                          <div key={edu.id} className="space-y-0.5">
+                            <div className="flex justify-between font-bold text-black">
+                              <span>{edu.institution}</span>
+                              <span className="font-normal text-neutral-600 text-[11px] font-sans">
+                                {edu.startDate ? `${edu.startDate} — ${edu.endDate}` : edu.endDate}
+                              </span>
+                            </div>
+                            <div className="italic text-neutral-800 text-[11px]">
+                              {edu.degree}
+                            </div>
+                            {edu.gpaOrHonors && (
+                              <div className="text-[11px] text-neutral-700 pl-3">
+                                Honors: {edu.gpaOrHonors}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Academic Appointments & Research Experience */}
+                  {data.experience.length > 0 && (
+                    <div className="space-y-3">
+                      <h2 className="text-xs font-bold uppercase tracking-widest text-black border-b border-black pb-0.5">
+                        Research & Academic Appointments
+                      </h2>
+                      <div className="space-y-3">
+                        {data.experience.map(exp => (
+                          <div key={exp.id} className="space-y-1">
+                            <div className="flex justify-between text-xs">
+                              <div>
+                                <span className="font-bold text-black">{exp.role}</span>
+                                <span className="italic text-neutral-800">, {exp.company}</span>
+                                {exp.location && <span className="text-neutral-600 text-[11px]"> ({exp.location})</span>}
+                              </div>
+                              <span className="text-neutral-600 text-[11px] font-sans">
+                                {exp.startDate} — {exp.current ? 'Present' : exp.endDate}
+                              </span>
+                            </div>
+                            <ul className="list-disc pl-5 text-xs text-neutral-800 space-y-0.5 leading-snug">
+                              {exp.bullets.map((b, i) => (
+                                <li key={i}>{b}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Publications & Project Contributions */}
+                  {data.projects.length > 0 && (
+                    <div className="space-y-2">
+                      <h2 className="text-xs font-bold uppercase tracking-widest text-black border-b border-black pb-0.5">
+                        Selected Projects & Publications
+                      </h2>
+                      <div className="space-y-2 text-xs">
+                        {data.projects.map(p => (
+                          <div key={p.id} className="space-y-0.5 pl-3 border-l border-neutral-300">
+                            <div className="flex justify-between font-bold text-black">
+                              <span>{p.name}</span>
+                              {p.date && <span className="font-normal text-neutral-600 text-[11px] font-sans">{p.date}</span>}
+                            </div>
+                            {p.link && (
+                              <div className="text-[10px] text-neutral-600 font-mono">{p.link}</div>
+                            )}
+                            <p className="text-neutral-800 text-xs leading-snug">{p.description}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Skills & Methods */}
+                  {data.skills.length > 0 && (
+                    <div className="space-y-1.5">
+                      <h2 className="text-xs font-bold uppercase tracking-widest text-black border-b border-black pb-0.5">
+                        Methodologies & Technical Proficiencies
+                      </h2>
+                      <div className="space-y-1 text-xs">
+                        {data.skills.map((cat, i) => (
+                          <div key={i} className="flex items-baseline gap-2">
+                            <span className="font-bold text-black min-w-[130px] shrink-0 text-[11px]">
+                              {cat.category}:
+                            </span>
+                            <span className="text-neutral-800 leading-snug">
+                              {cat.items.join(', ')}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>

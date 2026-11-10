@@ -326,7 +326,7 @@ export interface ResumeData {
     items: string[];
   }[];
   projects: ResumeProject[];
-  template: 'classic' | 'modern' | 'minimal' | 'two-column';
+  template: 'classic' | 'modern' | 'minimal' | 'two-column' | 'technical' | 'academic';
 }
 
 

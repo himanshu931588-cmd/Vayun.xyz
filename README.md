@@ -27,6 +27,7 @@ Vayun.xyz is a privacy-first web platform designed for developers, engineering s
 - **Split & Extract PDF:** High-capacity extraction supporting multi-hundred page ranges (e.g. 1-100, 1-500), fixed-size chunking (every 10, 25, or 50 pages), and individual page separation with batch downloads.
 - **Compress PDF:** Reduce file size while preserving legibility.
 - **Image to PDF:** Convert image files directly into formatted PDF documents in browser memory.
+- **Resume Builder:** Professional ATS-friendly resume creator supporting 6 formats (Classic Executive, Modern Tech, Two-Column Split, Minimalist Swiss, Engineering ATS, and Academic CV) with live A4 preview and client-side vector PDF export.
 
 ### 3. AI and Context Utilities
 - **Vayun AI Chatbot:** An in-browser AI copilot named Vayun accessible via the floating assistant widget or `⌘J` / `Ctrl+J`. It answers questions across all workstation tools, explains client-side RAM privacy, assists with code debugging, and provides one-click tool launch actions. Powered by Gemini 2.0 Flash when configured, with a comprehensive built-in offline knowledge engine.
