@@ -31,6 +31,7 @@ import { TOOLS } from '../../utils/toolsData';
 import { getStoredApiKey } from '../../utils/geminiApi';
 import { VayunLogo } from '../common/VayunLogo';
 import { VayunWordmark } from '../common/VayunWordmark';
+import { HeroSection3D } from './HeroSection3D';
 
 interface HomeViewProps {
   onSelectTool: (id: ToolId) => void;
@@ -101,86 +102,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
   return (
     <div className="space-y-10 py-10 max-w-7xl mx-auto px-4 sm:px-6">
-      {/* Clean Hero Header */}
-      <div className={`p-6 sm:p-10 rounded-lg border transition-all ${
-        isLight 
-          ? 'bg-neutral-50/50 border-neutral-200 text-black' 
-          : 'bg-neutral-950/50 border-neutral-800 text-white'
-      }`}>
-        <div className="max-w-3xl space-y-4">
-          <div className="flex items-center gap-3">
-            <VayunLogo size={40} />
-            <div className="flex items-center gap-2.5">
-              <VayunWordmark height={32} theme={theme} />
-              <span className="text-neutral-500 font-mono text-xs">/</span>
-              <span className="text-neutral-400 font-mono text-xs">anti-black-box</span>
-            </div>
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif tracking-tight leading-[1.15]">
-            Understand Every Line You Ship.
-          </h1>
-
-          <p className={`text-sm sm:text-base leading-relaxed ${
-            isLight ? 'text-neutral-600' : 'text-neutral-400'
-          }`}>
-            The Anti-Black-Box Developer & Defense Platform for coding students and software engineers. Visualize multi-file execution traces in <strong>Vayun Flow</strong>, defend code in live Socratic <strong>Vayun Viva</strong> simulations, and edit documents. <strong>Zero remote uploads, zero tracking, no accounts, no paywalls.</strong>
-          </p>
-
-          <div className="flex flex-wrap items-center gap-2.5 pt-2">
-            <button
-              onClick={() => onSelectTool('vayun-flow')}
-              className={`px-4 py-2 rounded text-xs font-mono font-medium flex items-center gap-2 transition-all ${
-                isLight 
-                  ? 'bg-black text-white hover:bg-neutral-800' 
-                  : 'bg-white text-black hover:bg-neutral-200'
-              }`}
-            >
-              <Network className="w-4 h-4" />
-              <span>Vayun Flow</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-
-            <button
-              onClick={() => onSelectTool('vayun-viva')}
-              className={`px-4 py-2 rounded text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
-                isLight 
-                  ? 'border-neutral-300 bg-white text-black hover:bg-neutral-100' 
-                  : 'border-neutral-700 bg-neutral-900 text-white hover:bg-neutral-800'
-              }`}
-            >
-              <ShieldCheck className="w-4 h-4" />
-              <span>Vayun Viva Defense</span>
-            </button>
-
-            <button
-              onClick={() => onSelectTool('resume-builder')}
-              className={`px-4 py-2 rounded text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
-                isLight 
-                  ? 'border-neutral-300 bg-white text-black hover:bg-neutral-100' 
-                  : 'border-neutral-700 bg-neutral-900 text-white hover:bg-neutral-800'
-              }`}
-            >
-              <FileText className="w-4 h-4" />
-              <span>Resume Builder</span>
-            </button>
-
-            {onOpenApiSettings && (
-              <button
-                onClick={onOpenApiSettings}
-                className={`px-4 py-2 rounded text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
-                  isLight 
-                    ? 'border-neutral-300 bg-white text-neutral-700 hover:bg-neutral-100' 
-                    : 'border-neutral-700 bg-neutral-900 text-neutral-300 hover:bg-neutral-800'
-                }`}
-              >
-                <Key className="w-4 h-4" />
-                <span>{hasApiKey ? 'Gemini API Connected' : 'Configure API'}</span>
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
+      {/* Interactive 3D Perspective Hero Header */}
+      <HeroSection3D
+        theme={theme}
+        onSelectTool={onSelectTool}
+        onOpenApiSettings={onOpenApiSettings}
+        hasApiKey={hasApiKey}
+      />
 
       {/* Toolbar & Filter Tabs */}
       <div className={`pb-4 border-b ${isLight ? 'border-neutral-200' : 'border-neutral-800'}`}>
