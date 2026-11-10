@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import wordmarkWhite from '../../assets/brand-wordmark-white.png';
+import wordmarkBlack from '../../assets/brand-wordmark-black.png';
 
 interface VayunWordmarkProps {
   height?: number;
@@ -15,38 +17,59 @@ export const VayunWordmark: React.FC<VayunWordmarkProps> = ({
   theme = 'dark',
   alt = 'vayun.xyz_'
 }) => {
+  const [imageError, setImageError] = useState(false);
   const isLight = theme === 'light';
 
   // Sizing map (aspect ratio is 865 / 132 ≈ 6.55)
-  let resolvedHeight = 24;
+  let resolvedHeight = 28;
   if (height) {
     resolvedHeight = height;
   } else if (size === 'sm') {
-    resolvedHeight = 20;
+    resolvedHeight = 22;
   } else if (size === 'md') {
-    resolvedHeight = 26;
+    resolvedHeight = 28;
   } else if (size === 'lg') {
-    resolvedHeight = 34;
+    resolvedHeight = 36;
   } else if (size === 'xl') {
-    resolvedHeight = 44;
+    resolvedHeight = 48;
   }
+
+  // Pre-rendered pure white (#ffffff) for dark theme, pure black (#000000) for light theme
+  // Zero CSS filter dependency to guarantee 100% visibility on all browsers & displays
+  const imageSrc = isLight ? wordmarkBlack : wordmarkWhite;
 
   return (
     <div 
-      className={`inline-flex items-center justify-center select-none shrink-0 ${className}`}
-      style={{ height: `${resolvedHeight}px` }}
+      className={`inline-flex items-center justify-start select-none shrink-0 ${className}`}
+      style={{ height: `${resolvedHeight}px`, minWidth: `${Math.round(resolvedHeight * 4.5)}px` }}
     >
-      <img
-        src="/brand-wordmark.png"
-        alt={alt}
-        style={{ height: `${resolvedHeight}px`, width: 'auto' }}
-        className={`object-contain transition-all duration-150 ${
-          isLight 
-            ? 'filter brightness-0 opacity-90 hover:opacity-100' 
-            : 'filter brightness-0 invert opacity-95 hover:opacity-100'
-        }`}
-        loading="eager"
-      />
+      {!imageError ? (
+        <img
+          src={imageSrc}
+          alt={alt}
+          onError={() => setImageError(true)}
+          style={{ 
+            height: `${resolvedHeight}px`, 
+            width: 'auto',
+            maxHeight: '100%',
+            display: 'block'
+          }}
+          className="object-contain transition-opacity duration-150 opacity-95 hover:opacity-100"
+          loading="eager"
+        />
+      ) : (
+        /* Guaranteed Typographic Fallback if Image fails to render */
+        <span 
+          style={{ fontSize: `${Math.round(resolvedHeight * 0.72)}px`, lineHeight: 1 }}
+          className={`font-mono font-bold tracking-tight inline-flex items-center ${
+            isLight ? 'text-black' : 'text-white'
+          }`}
+        >
+          <span>vayun</span>
+          <span className={isLight ? 'text-neutral-500' : 'text-neutral-400'}>.xyz</span>
+          <span className="text-emerald-500 animate-pulse font-normal ml-0.5">_</span>
+        </span>
+      )}
     </div>
   );
 };
