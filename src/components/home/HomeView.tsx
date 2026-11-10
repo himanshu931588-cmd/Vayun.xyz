@@ -318,10 +318,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <div className={`pt-3 border-t flex items-center justify-between text-xs font-mono transition-colors ${
                 isLight ? 'border-slate-100 text-[#0A2540]/70 group-hover:text-[#0A2540] font-semibold' : 'border-neutral-900 text-neutral-400 group-hover:text-white'
               }`}>
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>Launch appliance</span>
-                </span>
+                <span>Open tool</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </div>
             </div>

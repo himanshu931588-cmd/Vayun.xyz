@@ -494,7 +494,7 @@ export const VayunFlowView: React.FC<VayunFlowViewProps> = ({
                     <div className={`p-2 rounded text-[11px] italic font-mono ${
                       isLight ? 'bg-neutral-100 text-neutral-800' : 'bg-neutral-900 text-neutral-300'
                     }`}>
-                      💡 Question: "{hotspot.socraticHint}"
+                      Question: "{hotspot.socraticHint}"
                     </div>
                   </div>
                 );

@@ -196,61 +196,61 @@ export const ChaosWindTunnelView: React.FC<ChaosWindTunnelViewProps> = ({
 
     if (gustType === 'race_condition') {
       setWindSpeedKnots(74);
-      addLog('🌪️ [GUST: RACE CONDITION] Injecting 5 simultaneous concurrent requests to processOrder()...');
+      addLog('[GUST: RACE CONDITION] Injecting 5 simultaneous concurrent requests to processOrder()...');
       setTimeout(() => {
         if (isCodeHardened) {
-          addLog('⚡ [MUTEX ACTIVE] Request #1 acquired lock. Balance decremented atomically.');
-          addLog('🛡️ [LOCK DEFENSE] Requests #2, #3, #4 rejected with 429 Too Many Requests. No double-spend.');
-          addLog('✅ [PASS] 0 balance leakage detected. Race condition neutralized.');
+          addLog('[MUTEX ACTIVE] Request #1 acquired lock. Balance decremented atomically.');
+          addLog('[LOCK DEFENSE] Requests #2, #3, #4 rejected with 429 Too Many Requests. No double-spend.');
+          addLog('[PASS] 0 balance leakage detected. Race condition neutralized.');
           setResilienceScore(96);
         } else {
-          addLog('💥 [CRITICAL ERROR] Race condition triggered! Account balance decremented twice in parallel (-$100 & -$100).');
-          addLog('🚨 [CORRUPTION] Negative balance observed: -$100. Double-charge bug confirmed.');
+          addLog('[CRITICAL ERROR] Race condition triggered! Account balance decremented twice in parallel (-$100 & -$100).');
+          addLog('[CORRUPTION] Negative balance observed: -$100. Double-charge bug confirmed.');
           setResilienceScore(18);
         }
         setIsRunning(false);
       }, 700);
     } else if (gustType === 'slow_3g') {
       setWindSpeedKnots(85);
-      addLog('⏱️ [GUST: HIGH LATENCY] Throttling network link to 3G profile (2400ms synthetic delay)...');
+      addLog('[GUST: HIGH LATENCY] Throttling network link to 3G profile (2400ms synthetic delay)...');
       setTimeout(() => {
         if (isCodeHardened) {
-          addLog('⏳ [DEADLINE ENFORCED] AbortController fired at 2000ms threshold.');
-          addLog('✅ [PASS] Gracefully threw 504 Gateway Timeout. Connection socket closed cleanly.');
+          addLog('[DEADLINE ENFORCED] AbortController fired at 2000ms threshold.');
+          addLog('[PASS] Gracefully threw 504 Gateway Timeout. Connection socket closed cleanly.');
           setResilienceScore(94);
         } else {
-          addLog('💥 [STALL CRASH] Handler hung indefinitely awaiting remote promise resolution.');
-          addLog('🚨 [RESOURCE EXHAUSTION] Thread pool connection timed out with uncaught socket starvation.');
+          addLog('[STALL CRASH] Handler hung indefinitely awaiting remote promise resolution.');
+          addLog('[RESOURCE EXHAUSTION] Thread pool connection timed out with uncaught socket starvation.');
           setResilienceScore(22);
         }
         setIsRunning(false);
       }, 800);
     } else if (gustType === 'drop_socket') {
       setWindSpeedKnots(92);
-      addLog('⚡ [GUST: SOCKET SEVER] Dropping TCP connection mid-handshake [RST packet]...');
+      addLog('[GUST: SOCKET SEVER] Dropping TCP connection mid-handshake [RST packet]...');
       setTimeout(() => {
         if (isCodeHardened) {
-          addLog('🔄 [BACKOFF TRIGGERED] Exponential retry attempt 1 scheduled in 1000ms.');
-          addLog('✅ [PASS] Stream re-established without browser UI crash.');
+          addLog('[BACKOFF TRIGGERED] Exponential retry attempt 1 scheduled in 1000ms.');
+          addLog('[PASS] Stream re-established without browser UI crash.');
           setResilienceScore(98);
         } else {
-          addLog('💥 [UNCAUGHT EXCEPTION] WebSocket connection to ws:// dropped without handler.');
-          addLog('🚨 [MEMORY LEAK] Unclosed socket event listener remains active in heap.');
+          addLog('[UNCAUGHT EXCEPTION] WebSocket connection to ws:// dropped without handler.');
+          addLog('[MEMORY LEAK] Unclosed socket event listener remains active in heap.');
           setResilienceScore(15);
         }
         setIsRunning(false);
       }, 700);
     } else if (gustType === 'malformed_json') {
       setWindSpeedKnots(68);
-      addLog('💥 [GUST: MALFORMED FUZZ] Injecting corrupted JSON payload: { "price": NaN, "token": [null] }...');
+      addLog('[GUST: MALFORMED FUZZ] Injecting corrupted JSON payload: { "price": NaN, "token": [null] }...');
       setTimeout(() => {
         if (isCodeHardened) {
-          addLog('🛡️ [SCHEMA GUARD] Corrupted payload dropped silently via safeParse.');
-          addLog('✅ [PASS] Application state preserved.');
+          addLog('[SCHEMA GUARD] Corrupted payload dropped silently via safeParse.');
+          addLog('[PASS] Application state preserved.');
           setResilienceScore(92);
         } else {
-          addLog('💥 [TYPE ERROR] Uncaught TypeError: Cannot read properties of null.');
-          addLog('🚨 [CRASH] Subprocess exited with code 1.');
+          addLog('[TYPE ERROR] Uncaught TypeError: Cannot read properties of null.');
+          addLog('[CRASH] Subprocess exited with code 1.');
           setResilienceScore(20);
         }
         setIsRunning(false);
@@ -262,7 +262,7 @@ export const ChaosWindTunnelView: React.FC<ChaosWindTunnelViewProps> = ({
     setCode(scenario.hardenedCode);
     setIsHardened(true);
     setResilienceScore(95);
-    addLog('✨ [HARDENING APPLIED] Injected resilience guards into the test harness.');
+    addLog('[HARDENING APPLIED] Injected resilience guards into the test harness.');
   };
 
   const handleReset = () => {
@@ -271,7 +271,7 @@ export const ChaosWindTunnelView: React.FC<ChaosWindTunnelViewProps> = ({
     setResilienceScore(35);
     setWindSpeedKnots(0);
     setActiveGust(null);
-    addLog('🔄 [RESET] Code and wind speed restored to baseline.');
+    addLog('[RESET] Code and wind speed restored to baseline.');
   };
 
   return (

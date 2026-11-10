@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { 
   Network, 
   ShieldCheck, 
-  FileText, 
   Key, 
   ArrowRight, 
   Cpu,
@@ -10,9 +9,7 @@ import {
   CheckCircle2,
   Lock,
   Puzzle,
-  LifeBuoy,
-  Radar,
-  Wind
+  LifeBuoy
 } from 'lucide-react';
 import { ToolId } from '../../types';
 import { VayunLogo } from '../common/VayunLogo';
@@ -200,32 +197,6 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
             </button>
 
             <button
-              onClick={() => onSelectTool('ai-smells-radar')}
-              className={`px-4 py-3 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
-                isLight 
-                  ? 'border-[#0A2540]/30 bg-white hover:bg-[#0A2540] hover:text-white text-[#0A2540] shadow-xs' 
-                  : 'border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-white'
-              }`}
-              title="Detect AI code hallucinations, missing guards & memory leaks locally"
-            >
-              <Radar className="w-4 h-4 text-emerald-400" />
-              <span>AI Smells Radar</span>
-            </button>
-
-            <button
-              onClick={() => onSelectTool('chaos-wind-tunnel')}
-              className={`px-4 py-3 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
-                isLight 
-                  ? 'border-[#0A2540]/30 bg-white hover:bg-[#0A2540] hover:text-white text-[#0A2540] shadow-xs' 
-                  : 'border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-white'
-              }`}
-              title="Stress-test code with race conditions, 3G delays & dropped sockets"
-            >
-              <Wind className="w-4 h-4 text-cyan-400" />
-              <span>Chaos Wind Tunnel</span>
-            </button>
-
-            <button
               onClick={() => onSelectTool('vayun-viva')}
               className={`px-4 py-3 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
                 isLight 
@@ -235,18 +206,6 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
             >
               <ShieldCheck className="w-4 h-4" />
               <span>Vayun Viva Defense</span>
-            </button>
-
-            <button
-              onClick={() => onSelectTool('resume-builder')}
-              className={`px-4 py-3 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
-                isLight 
-                  ? 'border-[#0A2540]/30 bg-white hover:bg-[#0A2540] hover:text-white text-[#0A2540] shadow-xs' 
-                  : 'border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-white'
-              }`}
-            >
-              <FileText className="w-4 h-4" />
-              <span>Resume Builder</span>
             </button>
 
             {onOpenExtension && (
