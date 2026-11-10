@@ -17,7 +17,8 @@ import {
   FileCode2,
   Network,
   Flame,
-  Scale
+  Scale,
+  Coffee
 } from 'lucide-react';
 
 interface FooterProps {
@@ -25,6 +26,7 @@ interface FooterProps {
   onOpenSecurityAuditor?: () => void;
   onOpenShortcuts?: () => void;
   onOpenOwnerConsole?: () => void;
+  onOpenSupport?: () => void;
   theme?: 'dark' | 'light';
 }
 
@@ -33,6 +35,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenSecurityAuditor,
   onOpenShortcuts,
   onOpenOwnerConsole,
+  onOpenSupport,
   theme = 'dark' 
 }) => {
   const isLight = theme === 'light';
@@ -51,6 +54,21 @@ export const Footer: React.FC<FooterProps> = ({
             <p className={`text-xs leading-relaxed max-w-sm ${isLight ? 'text-neutral-500' : 'text-neutral-400'}`}>
               The Anti-Black-Box Developer & Defense Platform. Zero remote uploads, zero tracking, no accounts, no paywalls.
             </p>
+
+            {/* Support / Contribute button */}
+            <div className="pt-1">
+              <button
+                onClick={onOpenSupport}
+                className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-mono transition-all ${
+                  isLight 
+                    ? 'border-neutral-300 bg-neutral-100 hover:bg-neutral-200 text-neutral-800' 
+                    : 'border-neutral-800 bg-neutral-900 hover:bg-neutral-850 text-neutral-200'
+                }`}
+              >
+                <Coffee className="w-3.5 h-3.5" />
+                <span>Buy Me a Coffee</span>
+              </button>
+            </div>
           </div>
 
           {/* Developer Flow */}

@@ -6,6 +6,7 @@ import { SecurityAuditorModal } from './components/common/SecurityAuditorModal';
 import { KeyboardShortcutsModal } from './components/common/KeyboardShortcutsModal';
 import { ApiSettingsModal } from './components/common/ApiSettingsModal';
 import { OwnerConsoleModal } from './components/common/OwnerConsoleModal';
+import { SupportModal } from './components/common/SupportModal';
 import { HomeView } from './components/home/HomeView';
 
 // Developer Flow & Viva Suite (Flagship)
@@ -48,6 +49,7 @@ export function App() {
   const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
   const [isApiSettingsOpen, setIsApiSettingsOpen] = useState(false);
   const [isOwnerConsoleOpen, setIsOwnerConsoleOpen] = useState(false);
+  const [isSupportOpen, setIsSupportOpen] = useState(false);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [savedTokensTotal, setSavedTokensTotal] = useState<number>(() => {
     const saved = localStorage.getItem('vayun_total_tokens_saved');
@@ -106,6 +108,7 @@ export function App() {
         setIsSecurityAuditorOpen(false);
         setIsShortcutsOpen(false);
         setIsApiSettingsOpen(false);
+        setIsSupportOpen(false);
       }
     };
 
@@ -155,6 +158,7 @@ export function App() {
         onOpenSecurityAuditor={() => setIsSecurityAuditorOpen(true)}
         onOpenShortcuts={() => setIsShortcutsOpen(true)}
         onOpenApiSettings={() => setIsApiSettingsOpen(true)}
+        onOpenSupport={() => setIsSupportOpen(true)}
       />
 
       {/* Main Content Workspace */}
@@ -165,6 +169,7 @@ export function App() {
             selectedCategory={selectedCategory}
             onSelectCategory={setSelectedCategory}
             onOpenApiSettings={() => setIsApiSettingsOpen(true)}
+            onOpenSupport={() => setIsSupportOpen(true)}
             theme={theme}
           />
         )}
@@ -374,12 +379,20 @@ export function App() {
         theme={theme}
       />
 
+      {/* Buy Me a Coffee Support Modal */}
+      <SupportModal
+        isOpen={isSupportOpen}
+        onClose={() => setIsSupportOpen(false)}
+        theme={theme}
+      />
+
       {/* Footer */}
       <Footer
         onSelectTool={handleSelectTool}
         onOpenSecurityAuditor={() => setIsSecurityAuditorOpen(true)}
         onOpenShortcuts={() => setIsShortcutsOpen(true)}
         onOpenOwnerConsole={() => setIsOwnerConsoleOpen(true)}
+        onOpenSupport={() => setIsSupportOpen(true)}
         theme={theme}
       />
     </div>

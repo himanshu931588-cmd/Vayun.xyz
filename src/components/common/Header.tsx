@@ -16,7 +16,8 @@ import {
   Keyboard,
   ShieldCheck,
   Network,
-  Key
+  Key,
+  Coffee
 } from 'lucide-react';
 import { getStoredApiKey } from '../../utils/geminiApi';
 
@@ -32,6 +33,7 @@ interface HeaderProps {
   onOpenSecurityAuditor?: () => void;
   onOpenShortcuts?: () => void;
   onOpenApiSettings?: () => void;
+  onOpenSupport?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -44,7 +46,8 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenCommandPalette,
   onOpenSecurityAuditor,
   onOpenShortcuts,
-  onOpenApiSettings
+  onOpenApiSettings,
+  onOpenSupport
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isLight = theme === 'light';
@@ -234,6 +237,22 @@ export const Header: React.FC<HeaderProps> = ({
             >
               {isLight ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
             </button>
+
+            {/* Support / Contribute Button */}
+            {onOpenSupport && (
+              <button
+                onClick={onOpenSupport}
+                title="Support Vayun.xyz on Buy Me a Coffee"
+                className={`px-2.5 py-1.5 rounded-full border text-xs font-mono flex items-center gap-1.5 transition-colors ${
+                  isLight 
+                    ? 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100' 
+                    : 'border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-850'
+                }`}
+              >
+                <Coffee className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Support</span>
+              </button>
+            )}
 
             {/* Zero Tracking & No Accounts Badge */}
             <div 

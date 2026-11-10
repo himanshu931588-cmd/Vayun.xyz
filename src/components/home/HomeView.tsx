@@ -22,7 +22,9 @@ import {
   Flame,
   Scale,
   Key,
-  X
+  X,
+  Coffee,
+  ExternalLink
 } from 'lucide-react';
 import { ToolCategory, ToolId } from '../../types';
 import { TOOLS } from '../../utils/toolsData';
@@ -35,6 +37,7 @@ interface HomeViewProps {
   selectedCategory: ToolCategory | 'all';
   onSelectCategory: (cat: ToolCategory | 'all') => void;
   onOpenApiSettings?: () => void;
+  onOpenSupport?: () => void;
   theme?: 'dark' | 'light';
 }
 
@@ -43,6 +46,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   selectedCategory,
   onSelectCategory,
   onOpenApiSettings,
+  onOpenSupport,
   theme = 'dark'
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -393,6 +397,55 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </button>
         </div>
       )}
+
+      {/* Community Contribution & Support Section */}
+      <div className={`p-6 sm:p-8 rounded-2xl border transition-all ${
+        isLight ? 'bg-neutral-50/70 border-neutral-200' : 'bg-neutral-950/70 border-neutral-800'
+      }`}>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center md:text-left max-w-xl">
+            <div className="flex items-center justify-center md:justify-start gap-2 text-xs font-mono text-neutral-400">
+              <Coffee className="w-4 h-4 text-amber-500" />
+              <span>Independent & Privacy-First Project</span>
+            </div>
+            <h3 className="text-lg sm:text-xl font-serif font-medium">
+              Contribute to Vayun.xyz
+            </h3>
+            <p className={`text-xs sm:text-sm leading-relaxed ${isLight ? 'text-neutral-600' : 'text-neutral-400'}`}>
+              Vayun.xyz is maintained independently with zero remote uploads, zero tracking, no accounts, and no paywalls. If these tools help your workflow, consider buying a coffee to support development and hosting.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+            {onOpenSupport && (
+              <button
+                onClick={onOpenSupport}
+                className={`px-4 py-2.5 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
+                  isLight 
+                    ? 'border-neutral-300 bg-white hover:bg-neutral-100 text-black' 
+                    : 'border-neutral-700 bg-neutral-900 hover:bg-neutral-800 text-white'
+                }`}
+              >
+                <span>Scan QR Code</span>
+              </button>
+            )}
+            <a
+              href="https://buymeacoffee.com/himanshu.mishra1185"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`px-5 py-2.5 rounded-xl text-xs font-mono font-medium flex items-center gap-2 transition-all shadow-sm ${
+                isLight 
+                  ? 'bg-black text-white hover:bg-neutral-800' 
+                  : 'bg-white text-black hover:bg-neutral-200'
+              }`}
+            >
+              <Coffee className="w-3.5 h-3.5" />
+              <span>Buy Me a Coffee</span>
+              <ExternalLink className="w-3.5 h-3.5 opacity-70" />
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -161,6 +161,16 @@ Contributions, suggestions, and issue reports are welcome. If you would like to 
 
 ---
 
+## Support and Donations
+
+Vayun.xyz is an independent, open project developed without advertising, tracking, or paywalls. If you find these tools helpful and would like to support ongoing development, maintenance, and hosting costs, you are welcome to buy a coffee:
+
+- Buy Me a Coffee: https://buymeacoffee.com/himanshu.mishra1185
+
+Every contribution is sincerely appreciated.
+
+---
+
 ## Contact and Support
 
 If you have questions, feedback, or need assistance, please feel free to open an issue on the GitHub repository:
