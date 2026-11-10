@@ -86,7 +86,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   });
 
   const getToolIcon = (iconName: string) => {
-    const props = { className: `w-4 h-4 ${isLight ? 'text-blue-600' : 'text-white'}` };
+    const props = { className: `w-4 h-4 shrink-0 ${isLight ? 'text-blue-600' : 'text-white'} stroke-[1.8]` };
     switch (iconName) {
       case 'Network': return <Network {...props} />;
       case 'ShieldCheck': return <ShieldCheck {...props} />;
@@ -162,13 +162,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('all');
                 setSearchQuery('');
               }}
-              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap ${
+              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap group ${
                 selectedCategory === 'all' && !searchQuery
                   ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
                   : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
               }`}
             >
-              <LayoutGrid className="w-3.5 h-3.5" />
+              <LayoutGrid className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
               All ({TOOLS.length})
             </button>
             <button
@@ -176,13 +176,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('developer');
                 setSearchQuery('');
               }}
-              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap ${
+              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap group ${
                 selectedCategory === 'developer' && !searchQuery
                   ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
                   : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
               }`}
             >
-              <Network className="w-3.5 h-3.5" />
+              <Network className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
               Developer Flow ({TOOLS.filter(t => t.category === 'developer').length})
             </button>
             <button
@@ -190,13 +190,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('pdf');
                 setSearchQuery('');
               }}
-              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap ${
+              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap group ${
                 selectedCategory === 'pdf' && !searchQuery
                   ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
                   : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
               }`}
             >
-              <FileText className="w-3.5 h-3.5" />
+              <FileText className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
               PDF Suite ({TOOLS.filter(t => t.category === 'pdf').length})
             </button>
             <button
@@ -204,13 +204,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('ai');
                 setSearchQuery('');
               }}
-              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap ${
+              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap group ${
                 selectedCategory === 'ai' && !searchQuery
                   ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
                   : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
               }`}
             >
-              <BrainCircuit className="w-3.5 h-3.5" />
+              <BrainCircuit className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
               AI Context ({TOOLS.filter(t => t.category === 'ai').length})
             </button>
             <button
@@ -218,13 +218,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('billing');
                 setSearchQuery('');
               }}
-              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap ${
+              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap group ${
                 selectedCategory === 'billing' && !searchQuery
                   ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
                   : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
               }`}
             >
-              <Receipt className="w-3.5 h-3.5" />
+              <Receipt className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
               Invoicing ({TOOLS.filter(t => t.category === 'billing').length})
             </button>
             <button
@@ -232,13 +232,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('tabular');
                 setSearchQuery('');
               }}
-              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap ${
+              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap group ${
                 selectedCategory === 'tabular' && !searchQuery
                   ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
                   : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
               }`}
             >
-              <Table className="w-3.5 h-3.5" />
+              <Table className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
               Tabular ({TOOLS.filter(t => t.category === 'tabular').length})
             </button>
           </div>

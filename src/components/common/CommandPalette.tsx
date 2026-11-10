@@ -61,7 +61,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   const isLight = theme === 'light';
 
   const getToolIcon = (iconName: string) => {
-    const props = { className: `w-3.5 h-3.5 stroke-[1.75] ${isLight ? 'text-black' : 'text-white'}` };
+    const props = { className: `w-3.5 h-3.5 shrink-0 stroke-[1.75] ${isLight ? 'text-blue-600' : 'text-white'}` };
     switch (iconName) {
       case 'Network': return <Network {...props} />;
       case 'ShieldCheck': return <ShieldCheck {...props} />;

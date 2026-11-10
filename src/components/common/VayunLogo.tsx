@@ -18,7 +18,7 @@ export const VayunLogo: React.FC<VayunLogoProps> = ({
   return (
     <div 
       className={`relative inline-flex items-center justify-center shrink-0 overflow-hidden ${
-        variant === 'squircle' ? 'rounded-lg shadow-sm border border-neutral-700/50' : ''
+        variant === 'squircle' ? 'rounded-lg shadow-xs border border-black/10 dark:border-white/15' : ''
       } ${className}`}
       style={{ width: dimension, height: dimension }}
     >

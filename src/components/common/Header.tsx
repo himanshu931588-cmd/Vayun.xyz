@@ -124,13 +124,13 @@ export const Header: React.FC<HeaderProps> = ({
                   onSelectTool('home');
                   onSelectCategory('all');
                 }}
-                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
+                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 group ${
                   currentTool === 'home' && selectedCategory === 'all'
                     ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
                     : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
                 }`}
               >
-                <LayoutGrid className="w-3.5 h-3.5" />
+                <LayoutGrid className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
                 <span>Overview</span>
               </button>
 
@@ -139,13 +139,13 @@ export const Header: React.FC<HeaderProps> = ({
                   onSelectTool('vayun-flow');
                   onSelectCategory('developer');
                 }}
-                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
+                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 group ${
                   isDeveloperTool
                     ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
                     : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
                 }`}
               >
-                <Network className="w-3.5 h-3.5 text-emerald-500" />
+                <Network className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
                 <span>Flow</span>
               </button>
 
@@ -154,13 +154,13 @@ export const Header: React.FC<HeaderProps> = ({
                   onSelectTool('merge-pdf');
                   onSelectCategory('pdf');
                 }}
-                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
+                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 group ${
                   isPdfTool
                     ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
                     : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
                 }`}
               >
-                <FileText className="w-3.5 h-3.5 text-blue-500" />
+                <FileText className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
                 <span>PDF</span>
               </button>
 
@@ -169,13 +169,13 @@ export const Header: React.FC<HeaderProps> = ({
                   onSelectTool('thread-rescuer');
                   onSelectCategory('ai');
                 }}
-                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
+                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 group ${
                   isAiTool
                     ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
                     : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
                 }`}
               >
-                <BrainCircuit className="w-3.5 h-3.5 text-purple-500" />
+                <BrainCircuit className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
                 <span>AI</span>
               </button>
 
@@ -184,13 +184,13 @@ export const Header: React.FC<HeaderProps> = ({
                   onSelectTool('invoice-maker');
                   onSelectCategory('billing');
                 }}
-                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
+                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 group ${
                   isBillingTool
                     ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
                     : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
                 }`}
               >
-                <Receipt className="w-3.5 h-3.5 text-amber-500" />
+                <Receipt className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
                 <span>Invoicing</span>
               </button>
 
@@ -199,13 +199,13 @@ export const Header: React.FC<HeaderProps> = ({
                   onSelectTool('clean-csv');
                   onSelectCategory('tabular');
                 }}
-                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
+                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 group ${
                   isTabularTool
                     ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
                     : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
                 }`}
               >
-                <Table className="w-3.5 h-3.5 text-cyan-500" />
+                <Table className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
                 <span>Tabular</span>
               </button>
             </nav>
@@ -223,7 +223,7 @@ export const Header: React.FC<HeaderProps> = ({
                   : 'border-neutral-800 bg-neutral-900/70 text-neutral-300 hover:bg-neutral-850 hover:border-neutral-700'
               }`}
             >
-              <Search className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" />
+              <Search className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity shrink-0" />
               <span className="hidden sm:inline text-xs">Search</span>
               <kbd className={`px-1 py-0.2 rounded text-[10px] font-mono border ${
                 isLight 
@@ -245,7 +245,7 @@ export const Header: React.FC<HeaderProps> = ({
                     : 'border-neutral-800 bg-neutral-900/70 text-neutral-300 hover:text-white hover:bg-neutral-850 hover:border-neutral-700'
                 }`}
               >
-                <Puzzle className="w-3.5 h-3.5 text-emerald-500" />
+                <Puzzle className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity shrink-0" />
                 <span className="hidden lg:inline">Extension</span>
               </button>
             )}
@@ -262,9 +262,9 @@ export const Header: React.FC<HeaderProps> = ({
               aria-label="Toggle Theme"
             >
               {isLight ? (
-                <Moon className="w-3.5 h-3.5 transition-transform group-hover:rotate-12 text-slate-700" />
+                <Moon className="w-3.5 h-3.5 shrink-0 transition-transform group-hover:rotate-12 text-slate-700" />
               ) : (
-                <Sun className="w-3.5 h-3.5 text-amber-300 transition-transform group-hover:rotate-45" />
+                <Sun className="w-3.5 h-3.5 shrink-0 transition-transform group-hover:rotate-45 text-neutral-300 group-hover:text-white" />
               )}
             </button>
 
@@ -278,7 +278,7 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
               aria-label="Toggle Navigation Menu"
             >
-              {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              {isMobileMenuOpen ? <X className="w-4 h-4 shrink-0" /> : <Menu className="w-4 h-4 shrink-0" />}
             </button>
           </div>
         </div>
@@ -325,7 +325,7 @@ export const Header: React.FC<HeaderProps> = ({
                   : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
               }`}
             >
-              <Network className="w-4 h-4 text-emerald-400 shrink-0" />
+              <Network className="w-4 h-4 opacity-80 shrink-0" />
               <div>
                 <div className="font-semibold">Developer Flow</div>
                 <div className="text-[10px] opacity-70">Flow & Viva</div>
@@ -344,7 +344,7 @@ export const Header: React.FC<HeaderProps> = ({
                   : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
               }`}
             >
-              <FileText className="w-4 h-4 text-blue-400 shrink-0" />
+              <FileText className="w-4 h-4 opacity-80 shrink-0" />
               <div>
                 <div className="font-semibold">PDF Suite</div>
                 <div className="text-[10px] opacity-70">Split & Merge</div>
@@ -363,7 +363,7 @@ export const Header: React.FC<HeaderProps> = ({
                   : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
               }`}
             >
-              <BrainCircuit className="w-4 h-4 text-purple-400 shrink-0" />
+              <BrainCircuit className="w-4 h-4 opacity-80 shrink-0" />
               <div>
                 <div className="font-semibold">AI Context</div>
                 <div className="text-[10px] opacity-70">Tokens & Prompt</div>
@@ -382,7 +382,7 @@ export const Header: React.FC<HeaderProps> = ({
                   : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
               }`}
             >
-              <Receipt className="w-4 h-4 text-amber-400 shrink-0" />
+              <Receipt className="w-4 h-4 opacity-80 shrink-0" />
               <div>
                 <div className="font-semibold">Invoicing</div>
                 <div className="text-[10px] opacity-70">Invoices & PayLinks</div>
@@ -401,7 +401,7 @@ export const Header: React.FC<HeaderProps> = ({
                   : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
               }`}
             >
-              <Table className="w-4 h-4 text-cyan-400 shrink-0" />
+              <Table className="w-4 h-4 opacity-80 shrink-0" />
               <div>
                 <div className="font-semibold">Tabular</div>
                 <div className="text-[10px] opacity-70">CSV & Tables</div>
@@ -424,7 +424,7 @@ export const Header: React.FC<HeaderProps> = ({
                   isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
                 }`}
               >
-                <Key className="w-4 h-4 text-emerald-400 shrink-0" />
+                <Key className="w-4 h-4 opacity-80 shrink-0" />
                 <div>
                   <div className="font-semibold">API Key</div>
                   <div className="text-[10px] opacity-70">{hasApiKey ? 'Connected' : 'Configure'}</div>
@@ -442,7 +442,7 @@ export const Header: React.FC<HeaderProps> = ({
                   isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
                 }`}
               >
-                <Puzzle className="w-4 h-4 text-emerald-400 shrink-0" />
+                <Puzzle className="w-4 h-4 opacity-80 shrink-0" />
                 <div>
                   <div className="font-semibold">Extension</div>
                   <div className="text-[10px] opacity-70">Chrome & Edge</div>
@@ -460,7 +460,7 @@ export const Header: React.FC<HeaderProps> = ({
                   isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
                 }`}
               >
-                <LifeBuoy className="w-4 h-4 text-cyan-400 shrink-0" />
+                <LifeBuoy className="w-4 h-4 opacity-80 shrink-0" />
                 <div>
                   <div className="font-semibold">Helpdesk</div>
                   <div className="text-[10px] opacity-70">FAQ & Diagnostics</div>
@@ -478,7 +478,7 @@ export const Header: React.FC<HeaderProps> = ({
                   isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
                 }`}
               >
-                <Coffee className="w-4 h-4 text-amber-400 shrink-0" />
+                <Coffee className="w-4 h-4 opacity-80 shrink-0" />
                 <div>
                   <div className="font-semibold">Support</div>
                   <div className="text-[10px] opacity-70">Buy Me a Coffee</div>
@@ -496,7 +496,7 @@ export const Header: React.FC<HeaderProps> = ({
                   isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
                 }`}
               >
-                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <ShieldCheck className="w-4 h-4 opacity-80 shrink-0" />
                 <div>
                   <div className="font-semibold">Zero-Upload RAM Security Guarantee</div>
                   <div className="text-[10px] opacity-70">100% Client-side execution audit</div>

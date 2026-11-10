@@ -74,7 +74,7 @@ export const Footer: React.FC<FooterProps> = ({
                     : 'border-neutral-800 bg-neutral-900 hover:bg-neutral-850 text-neutral-200'
                 }`}
               >
-                <Coffee className="w-3.5 h-3.5 text-amber-500" />
+                <Coffee className="w-3.5 h-3.5 opacity-70 shrink-0" />
                 <span>Buy Me a Coffee</span>
               </button>
 
@@ -87,7 +87,7 @@ export const Footer: React.FC<FooterProps> = ({
                       : 'border-neutral-800 bg-neutral-900/50 hover:bg-neutral-850 text-neutral-300'
                   }`}
                 >
-                  <Puzzle className="w-3.5 h-3.5 text-emerald-500" />
+                  <Puzzle className="w-3.5 h-3.5 opacity-70 shrink-0" />
                   <span>Browser Extension</span>
                 </button>
               )}
@@ -101,7 +101,7 @@ export const Footer: React.FC<FooterProps> = ({
                       : 'border-neutral-800 bg-neutral-900/50 hover:bg-neutral-850 text-neutral-300'
                   }`}
                 >
-                  <LifeBuoy className="w-3.5 h-3.5 text-blue-500" />
+                  <LifeBuoy className="w-3.5 h-3.5 opacity-70 shrink-0" />
                   <span>Helpdesk & FAQ</span>
                 </button>
               )}
@@ -111,7 +111,7 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Developer Flow */}
           <div>
             <h4 className={`font-mono text-xs uppercase mb-3 flex items-center gap-1.5 ${isLight ? 'text-slate-900 font-semibold' : 'text-neutral-300'}`}>
-              <Network className="w-3.5 h-3.5 text-emerald-500" />
+              <Network className="w-3.5 h-3.5 opacity-70 shrink-0" />
               Developer Flow
             </h4>
             <ul className="space-y-2 text-xs">
@@ -141,7 +141,7 @@ export const Footer: React.FC<FooterProps> = ({
           {/* PDF Suite */}
           <div>
             <h4 className={`font-mono text-xs uppercase mb-3 flex items-center gap-1.5 ${isLight ? 'text-slate-900 font-semibold' : 'text-neutral-300'}`}>
-              <FileText className="w-3.5 h-3.5 text-blue-500" />
+              <FileText className="w-3.5 h-3.5 opacity-70 shrink-0" />
               PDF Suite
             </h4>
             <ul className="space-y-2 text-xs">
@@ -176,7 +176,7 @@ export const Footer: React.FC<FooterProps> = ({
           {/* AI Context */}
           <div>
             <h4 className={`font-mono text-xs uppercase mb-3 flex items-center gap-1.5 ${isLight ? 'text-slate-900 font-semibold' : 'text-neutral-300'}`}>
-              <BrainCircuit className="w-3.5 h-3.5 text-purple-500" />
+              <BrainCircuit className="w-3.5 h-3.5 opacity-70 shrink-0" />
               AI Context
             </h4>
             <ul className="space-y-2 text-xs">
@@ -201,7 +201,7 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Invoicing & Tabular */}
           <div>
             <h4 className={`font-mono text-xs uppercase mb-3 flex items-center gap-1.5 ${isLight ? 'text-slate-900 font-semibold' : 'text-neutral-300'}`}>
-              <Table className="w-3.5 h-3.5 text-cyan-500" />
+              <Table className="w-3.5 h-3.5 opacity-70 shrink-0" />
               Billing & Data
             </h4>
             <ul className="space-y-2 text-xs">
@@ -239,20 +239,20 @@ export const Footer: React.FC<FooterProps> = ({
 
           <div className="flex items-center gap-4">
             {onOpenChatbot && (
-              <button onClick={onOpenChatbot} className="hover:underline flex items-center gap-1 text-purple-400">
-                <Bot className="w-3 h-3" />
+              <button onClick={onOpenChatbot} className="hover:underline flex items-center gap-1 text-slate-600 dark:text-neutral-300 hover:text-blue-600 dark:hover:text-white">
+                <Bot className="w-3 h-3 opacity-70 shrink-0" />
                 <span>Ask Vayun AI</span>
               </button>
             )}
             {onOpenHelpdesk && (
-              <button onClick={onOpenHelpdesk} className="hover:underline flex items-center gap-1">
-                <LifeBuoy className="w-3 h-3 text-cyan-400" />
+              <button onClick={onOpenHelpdesk} className="hover:underline flex items-center gap-1 text-slate-600 dark:text-neutral-300 hover:text-blue-600 dark:hover:text-white">
+                <LifeBuoy className="w-3 h-3 opacity-70 shrink-0" />
                 <span>Helpdesk</span>
               </button>
             )}
             {onOpenExtension && (
-              <button onClick={onOpenExtension} className="hover:underline flex items-center gap-1 text-emerald-400">
-                <Puzzle className="w-3 h-3" />
+              <button onClick={onOpenExtension} className="hover:underline flex items-center gap-1 text-slate-600 dark:text-neutral-300 hover:text-blue-600 dark:hover:text-white">
+                <Puzzle className="w-3 h-3 opacity-70 shrink-0" />
                 <span>Browser Extension</span>
               </button>
             )}
