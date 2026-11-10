@@ -87,7 +87,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   });
 
   const getToolIcon = (iconName: string) => {
-    const props = { className: `w-4 h-4 shrink-0 ${isLight ? 'text-blue-600' : 'text-white'} stroke-[1.8]` };
+    const props = { className: `w-5 h-5 shrink-0 ${isLight ? 'text-blue-600' : 'text-white'} stroke-[1.8]` };
     switch (iconName) {
       case 'Network': return <Network {...props} />;
       case 'ShieldCheck': return <ShieldCheck {...props} />;
@@ -132,26 +132,26 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
           {/* Universal Search Input */}
           <div className="relative w-full sm:w-80">
-            <Search className={`absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 ${
-              isLight ? 'text-slate-400' : 'text-neutral-600'
+            <Search className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 ${
+              isLight ? 'text-slate-400' : 'text-neutral-500'
             }`} />
             <input 
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search tools, formats, or tasks..."
-              className={`w-full pl-9 pr-8 py-2 rounded-xl text-xs transition-colors focus:outline-hidden ${
+              className={`w-full pl-10 pr-9 py-2.5 rounded-xl text-xs sm:text-[13px] transition-colors focus:outline-hidden ${
                 isLight 
                   ? 'bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:border-blue-500 shadow-xs' 
-                  : 'bg-neutral-950 border border-neutral-800 text-white placeholder-neutral-600 focus:border-neutral-500'
+                  : 'bg-neutral-950 border border-neutral-800 text-white placeholder-neutral-500 focus:border-neutral-500'
               }`}
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-900 dark:hover:text-white"
               >
-                <X className="w-3.5 h-3.5" />
+                <X className="w-4 h-4" />
               </button>
             )}
           </div>
@@ -163,84 +163,84 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('all');
                 setSearchQuery('');
               }}
-              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap group ${
+              className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap group ${
                 selectedCategory === 'all' && !searchQuery
                   ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
                   : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
               }`}
             >
-              <LayoutGrid className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
-              All ({TOOLS.length})
+              <LayoutGrid className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
+              <span>All ({TOOLS.length})</span>
             </button>
             <button
               onClick={() => {
                 onSelectCategory('developer');
                 setSearchQuery('');
               }}
-              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap group ${
+              className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap group ${
                 selectedCategory === 'developer' && !searchQuery
                   ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
                   : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
               }`}
             >
-              <Network className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
-              Developer Flow ({TOOLS.filter(t => t.category === 'developer').length})
+              <Network className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
+              <span>Developer Flow ({TOOLS.filter(t => t.category === 'developer').length})</span>
             </button>
             <button
               onClick={() => {
                 onSelectCategory('pdf');
                 setSearchQuery('');
               }}
-              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap group ${
+              className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap group ${
                 selectedCategory === 'pdf' && !searchQuery
                   ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
                   : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
               }`}
             >
-              <FileText className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
-              PDF Suite ({TOOLS.filter(t => t.category === 'pdf').length})
+              <FileText className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
+              <span>PDF Suite ({TOOLS.filter(t => t.category === 'pdf').length})</span>
             </button>
             <button
               onClick={() => {
                 onSelectCategory('ai');
                 setSearchQuery('');
               }}
-              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap group ${
+              className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap group ${
                 selectedCategory === 'ai' && !searchQuery
                   ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
                   : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
               }`}
             >
-              <BrainCircuit className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
-              AI Context ({TOOLS.filter(t => t.category === 'ai').length})
+              <BrainCircuit className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
+              <span>AI Context ({TOOLS.filter(t => t.category === 'ai').length})</span>
             </button>
             <button
               onClick={() => {
                 onSelectCategory('billing');
                 setSearchQuery('');
               }}
-              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap group ${
+              className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap group ${
                 selectedCategory === 'billing' && !searchQuery
                   ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
                   : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
               }`}
             >
-              <Receipt className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
-              Invoicing ({TOOLS.filter(t => t.category === 'billing').length})
+              <Receipt className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
+              <span>Invoicing ({TOOLS.filter(t => t.category === 'billing').length})</span>
             </button>
             <button
               onClick={() => {
                 onSelectCategory('tabular');
                 setSearchQuery('');
               }}
-              className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5 whitespace-nowrap group ${
+              className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap group ${
                 selectedCategory === 'tabular' && !searchQuery
                   ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
                   : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
               }`}
             >
-              <Table className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
-              Tabular ({TOOLS.filter(t => t.category === 'tabular').length})
+              <Table className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
+              <span>Tabular ({TOOLS.filter(t => t.category === 'tabular').length})</span>
             </button>
           </div>
         </div>
@@ -276,7 +276,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <div className="space-y-3.5">
                 {/* Top Badge Strip: Crisp JetBrains Mono Labels */}
                 <div className="flex items-center justify-between">
-                  <div className={`p-2 rounded-lg border transition-colors ${
+                  <div className={`p-2.5 rounded-xl border transition-colors ${
                     isLight ? 'border-blue-100 bg-blue-50/70 text-blue-700 group-hover:bg-blue-600 group-hover:text-white' : 'border-neutral-800 bg-neutral-900 group-hover:bg-neutral-800'
                   }`}>
                     {getToolIcon(tool.icon)}
