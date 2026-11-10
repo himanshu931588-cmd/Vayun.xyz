@@ -13,7 +13,6 @@ import {
   Table,
   Menu,
   X,
-  Keyboard,
   ShieldCheck,
   Network,
   Key,
@@ -49,7 +48,6 @@ export const Header: React.FC<HeaderProps> = ({
   onToggleTheme,
   onOpenCommandPalette,
   onOpenSecurityAuditor,
-  onOpenShortcuts,
   onOpenApiSettings,
   onOpenSupport,
   onOpenExtension,
@@ -66,256 +64,284 @@ export const Header: React.FC<HeaderProps> = ({
     currentTool === 'vayun-break' || 
     currentTool === 'vayun-spec';
 
+  const isPdfTool =
+    selectedCategory === 'pdf' || 
+    currentTool === 'merge-pdf' || 
+    currentTool === 'split-pdf' || 
+    currentTool === 'compress-pdf' || 
+    currentTool === 'image-to-pdf' || 
+    currentTool === 'resume-builder';
+
+  const isAiTool =
+    selectedCategory === 'ai' || 
+    currentTool === 'thread-rescuer' || 
+    currentTool === 'token-slimmer' || 
+    currentTool === 'prompt-sanitizer';
+
+  const isBillingTool =
+    selectedCategory === 'billing' || 
+    currentTool === 'invoice-maker' || 
+    currentTool === 'paylink-view' || 
+    currentTool === 'receipt-matcher';
+
+  const isTabularTool =
+    selectedCategory === 'tabular' || 
+    currentTool === 'clean-csv' || 
+    currentTool === 'preserve-zeros' || 
+    currentTool === 'table-converter';
+
   return (
     <header className={`sticky top-0 z-40 w-full transition-colors ${
       isLight ? 'bg-white/95 border-b border-neutral-200' : 'bg-black/95 border-b border-neutral-800'
     } backdrop-blur-md`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-14 gap-4">
+        <div className="flex items-center justify-between h-14 gap-3">
           {/* Left Brand Mark & Main Nav */}
-          <div className="flex items-center gap-6 lg:gap-8 min-w-0 shrink-0">
+          <div className="flex items-center gap-3 xl:gap-5 min-w-0 shrink-0">
             {/* Clean Brand Mark */}
             <div 
               onClick={() => {
                 onSelectTool('home');
                 onSelectCategory('all');
               }}
-              className="flex items-center gap-2.5 cursor-pointer group select-none shrink-0 pr-2"
+              className="flex items-center gap-2.5 cursor-pointer group select-none shrink-0 pr-1 transition-transform active:scale-98"
+              title="Vayun.xyz Home"
             >
-              <VayunLogo size={28} className="transition-transform group-hover:scale-105 shrink-0" />
-              <VayunWordmark height={24} theme={theme} className="shrink-0" />
+              <VayunLogo size={26} className="transition-transform group-hover:scale-105 shrink-0" />
+              <VayunWordmark height={22} theme={theme} className="shrink-0" />
             </div>
 
-            {/* Categorized Navigation */}
-            <nav className="hidden lg:flex items-center gap-1 text-xs shrink-0">
+            {/* Categorized Navigation Segmented Bar */}
+            <nav className="hidden lg:flex items-center gap-1 text-xs shrink-0 font-medium">
               <button
                 onClick={() => {
                   onSelectTool('home');
                   onSelectCategory('all');
                 }}
-                className={`px-3 py-1.5 rounded transition-colors flex items-center gap-1.5 shrink-0 ${
+                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
                   currentTool === 'home' && selectedCategory === 'all'
-                    ? isLight ? 'text-black font-semibold bg-neutral-100' : 'text-white font-semibold bg-neutral-900'
-                    : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
+                    ? isLight ? 'text-black font-semibold bg-neutral-100 shadow-xs' : 'text-white font-semibold bg-neutral-900 border border-neutral-800 shadow-xs'
+                    : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
                 }`}
               >
                 <LayoutGrid className="w-3.5 h-3.5" />
                 <span>Overview</span>
               </button>
 
-            <button
-              onClick={() => {
-                onSelectTool('vayun-flow');
-                onSelectCategory('developer');
-              }}
-              className={`px-3 py-1.5 rounded transition-colors flex items-center gap-1.5 ${
-                isDeveloperTool
-                  ? isLight ? 'text-black font-semibold bg-neutral-100' : 'text-white font-semibold bg-neutral-900'
-                  : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
-              }`}
-            >
-              <Network className="w-3.5 h-3.5" />
-              <span>Developer Flow</span>
-            </button>
+              <button
+                onClick={() => {
+                  onSelectTool('vayun-flow');
+                  onSelectCategory('developer');
+                }}
+                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
+                  isDeveloperTool
+                    ? isLight ? 'text-black font-semibold bg-neutral-100 shadow-xs' : 'text-white font-semibold bg-neutral-900 border border-neutral-800 shadow-xs'
+                    : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                }`}
+              >
+                <Network className="w-3.5 h-3.5 text-emerald-400" />
+                <span><span className="hidden xl:inline">Developer </span>Flow</span>
+              </button>
 
-            <button
-              onClick={() => {
-                onSelectTool('merge-pdf');
-                onSelectCategory('pdf');
-              }}
-              className={`px-3 py-1.5 rounded transition-colors flex items-center gap-1.5 ${
-                selectedCategory === 'pdf' || currentTool === 'merge-pdf' || currentTool === 'split-pdf' || currentTool === 'compress-pdf' || currentTool === 'image-to-pdf' || currentTool === 'resume-builder'
-                  ? isLight ? 'text-black font-semibold bg-neutral-100' : 'text-white font-semibold bg-neutral-900'
-                  : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
-              }`}
-            >
-              <FileText className="w-3.5 h-3.5" />
-              PDF Suite
-            </button>
+              <button
+                onClick={() => {
+                  onSelectTool('merge-pdf');
+                  onSelectCategory('pdf');
+                }}
+                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
+                  isPdfTool
+                    ? isLight ? 'text-black font-semibold bg-neutral-100 shadow-xs' : 'text-white font-semibold bg-neutral-900 border border-neutral-800 shadow-xs'
+                    : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                }`}
+              >
+                <FileText className="w-3.5 h-3.5 text-blue-400" />
+                <span>PDF<span className="hidden xl:inline"> Suite</span></span>
+              </button>
 
-            <button
-              onClick={() => {
-                onSelectTool('thread-rescuer');
-                onSelectCategory('ai');
-              }}
-              className={`px-3 py-1.5 rounded transition-colors flex items-center gap-1.5 ${
-                selectedCategory === 'ai' || currentTool === 'thread-rescuer' || currentTool === 'token-slimmer' || currentTool === 'prompt-sanitizer'
-                  ? isLight ? 'text-black font-semibold bg-neutral-100' : 'text-white font-semibold bg-neutral-900'
-                  : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
-              }`}
-            >
-              <BrainCircuit className="w-3.5 h-3.5" />
-              AI Context
-            </button>
+              <button
+                onClick={() => {
+                  onSelectTool('thread-rescuer');
+                  onSelectCategory('ai');
+                }}
+                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
+                  isAiTool
+                    ? isLight ? 'text-black font-semibold bg-neutral-100 shadow-xs' : 'text-white font-semibold bg-neutral-900 border border-neutral-800 shadow-xs'
+                    : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                }`}
+              >
+                <BrainCircuit className="w-3.5 h-3.5 text-purple-400" />
+                <span>AI<span className="hidden xl:inline"> Context</span></span>
+              </button>
 
-            <button
-              onClick={() => {
-                onSelectTool('invoice-maker');
-                onSelectCategory('billing');
-              }}
-              className={`px-3 py-1.5 rounded transition-colors flex items-center gap-1.5 ${
-                selectedCategory === 'billing' || currentTool === 'invoice-maker' || currentTool === 'paylink-view' || currentTool === 'receipt-matcher'
-                  ? isLight ? 'text-black font-semibold bg-neutral-100' : 'text-white font-semibold bg-neutral-900'
-                  : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
-              }`}
-            >
-              <Receipt className="w-3.5 h-3.5" />
-              Invoicing
-            </button>
+              <button
+                onClick={() => {
+                  onSelectTool('invoice-maker');
+                  onSelectCategory('billing');
+                }}
+                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
+                  isBillingTool
+                    ? isLight ? 'text-black font-semibold bg-neutral-100 shadow-xs' : 'text-white font-semibold bg-neutral-900 border border-neutral-800 shadow-xs'
+                    : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                }`}
+              >
+                <Receipt className="w-3.5 h-3.5 text-amber-400" />
+                <span>Invoicing</span>
+              </button>
 
-            <button
-              onClick={() => {
-                onSelectTool('clean-csv');
-                onSelectCategory('tabular');
-              }}
-              className={`px-3 py-1.5 rounded transition-colors flex items-center gap-1.5 ${
-                selectedCategory === 'tabular' || currentTool === 'clean-csv' || currentTool === 'preserve-zeros' || currentTool === 'table-converter'
-                  ? isLight ? 'text-black font-semibold bg-neutral-100' : 'text-white font-semibold bg-neutral-900'
-                  : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
-              }`}
-            >
-              <Table className="w-3.5 h-3.5" />
-              <span>Tabular</span>
-            </button>
-          </nav>
-        </div>
+              <button
+                onClick={() => {
+                  onSelectTool('clean-csv');
+                  onSelectCategory('tabular');
+                }}
+                className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
+                  isTabularTool
+                    ? isLight ? 'text-black font-semibold bg-neutral-100 shadow-xs' : 'text-white font-semibold bg-neutral-900 border border-neutral-800 shadow-xs'
+                    : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                }`}
+              >
+                <Table className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Tabular</span>
+              </button>
+            </nav>
+          </div>
 
-          {/* Quick Actions */}
+          {/* Right Action Cluster */}
           <div className="flex items-center gap-2 shrink-0">
-            {/* AI API Button */}
-            {onOpenApiSettings && (
-              <button
-                onClick={onOpenApiSettings}
-                className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded border text-xs font-mono transition-colors ${
-                  hasApiKey
-                    ? isLight ? 'border-neutral-300 bg-neutral-100 text-black' : 'border-neutral-700 bg-neutral-900 text-white'
-                    : isLight 
-                    ? 'border-neutral-200 bg-neutral-50 text-neutral-600 hover:bg-neutral-100' 
-                    : 'border-neutral-800 bg-neutral-950 text-neutral-400 hover:bg-neutral-900'
-                }`}
-                title="Configure Gemini API Key"
-              >
-                <Key className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">{hasApiKey ? 'Gemini API' : 'API Key'}</span>
-              </button>
-            )}
-
-            {/* Zero-Upload RAM Auditor Trigger */}
-            {onOpenSecurityAuditor && (
-              <button
-                onClick={onOpenSecurityAuditor}
-                className={`hidden lg:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded border text-xs font-mono transition-colors ${
-                  isLight 
-                    ? 'border-neutral-200 bg-neutral-50 text-neutral-600 hover:bg-neutral-100' 
-                    : 'border-neutral-800 bg-neutral-950 text-neutral-400 hover:bg-neutral-900'
-                }`}
-                title="Zero-Upload RAM Security Guarantee"
-              >
-                <ShieldCheck className="w-3.5 h-3.5 text-neutral-500" />
-                <span>Zero-Upload RAM</span>
-              </button>
-            )}
-
             {/* Command Palette Trigger */}
             <button
               onClick={onOpenCommandPalette}
-              className={`px-2.5 py-1.5 rounded border text-xs font-mono flex items-center gap-2 transition-colors ${
+              title="Search tools, formats, or tasks (⌘K)"
+              className={`h-8 px-2.5 rounded-lg border text-xs font-mono flex items-center gap-2 transition-all active:scale-95 group ${
                 isLight 
-                  ? 'border-neutral-200 bg-neutral-50 text-neutral-600 hover:bg-neutral-100' 
-                  : 'border-neutral-800 bg-neutral-950 text-neutral-400 hover:bg-neutral-900'
+                  ? 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100 hover:border-neutral-300' 
+                  : 'border-neutral-800 bg-neutral-900/70 text-neutral-300 hover:bg-neutral-850 hover:border-neutral-700'
               }`}
             >
-              <Search className="w-3.5 h-3.5 opacity-60" />
+              <Search className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" />
               <span className="hidden sm:inline text-xs">Search</span>
-              <kbd className={`px-1 py-0.5 rounded text-[10px] border ${
-                isLight ? 'border-neutral-300 bg-white text-neutral-600' : 'border-neutral-700 bg-neutral-900 text-neutral-400'
+              <kbd className={`px-1.5 py-0.2 rounded text-[10px] font-mono border ${
+                isLight 
+                  ? 'border-neutral-300 bg-white text-neutral-600' 
+                  : 'border-neutral-700/80 bg-neutral-950 text-neutral-400'
               }`}>
                 ⌘K
               </kbd>
             </button>
 
-            {/* Theme Toggle Button */}
-            <button
-              onClick={onToggleTheme}
-              title={`Switch to ${isLight ? 'Dark' : 'Light'} Mode`}
-              className={`p-1.5 rounded border transition-colors ${
-                isLight 
-                  ? 'border-neutral-200 text-neutral-700 hover:bg-neutral-100' 
-                  : 'border-neutral-800 text-neutral-300 hover:bg-neutral-900'
-              }`}
-            >
-              {isLight ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
-            </button>
-
-            {/* Helpdesk Button */}
-            {onOpenHelpdesk && (
+            {/* Zero-Upload RAM Privacy Auditor */}
+            {onOpenSecurityAuditor && (
               <button
-                onClick={onOpenHelpdesk}
-                title="Open Vayun Helpdesk, Knowledge Base & Diagnostics"
-                className={`px-2.5 py-1.5 rounded-full border text-xs font-mono flex items-center gap-1.5 transition-colors ${
+                onClick={onOpenSecurityAuditor}
+                className={`h-8 px-2.5 rounded-lg border text-xs font-mono hidden md:inline-flex items-center gap-1.5 transition-all select-none active:scale-95 ${
                   isLight 
-                    ? 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100' 
-                    : 'border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-850'
+                    ? 'border-neutral-200 bg-neutral-50 hover:bg-neutral-100 text-neutral-700' 
+                    : 'border-neutral-800 bg-neutral-900/70 hover:bg-neutral-850 hover:border-neutral-700 text-neutral-300'
                 }`}
+                title="Zero Remote Uploads • 100% In-Memory RAM (Click to inspect security audit)"
               >
-                <LifeBuoy className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Helpdesk</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                <span className="hidden xl:inline">Zero-Upload RAM</span>
+                <span className="xl:hidden">RAM</span>
               </button>
             )}
 
-            {/* Browser Extension Button */}
-            {onOpenExtension && (
+            {/* AI API Key Pill */}
+            {onOpenApiSettings && (
               <button
-                onClick={onOpenExtension}
-                title="Install Vayun Browser Extension (Chrome, Edge, Brave, Arc)"
-                className={`px-2.5 py-1.5 rounded-full border text-xs font-mono flex items-center gap-1.5 transition-colors ${
-                  isLight 
-                    ? 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100' 
-                    : 'border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-850'
+                onClick={onOpenApiSettings}
+                className={`h-8 px-2.5 rounded-lg border text-xs font-mono hidden sm:inline-flex items-center gap-1.5 transition-all select-none active:scale-95 ${
+                  hasApiKey
+                    ? isLight 
+                      ? 'border-emerald-300 bg-emerald-50 text-emerald-800 hover:bg-emerald-100' 
+                      : 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20'
+                    : isLight 
+                      ? 'border-neutral-200 bg-neutral-50 hover:bg-neutral-100 text-neutral-700' 
+                      : 'border-neutral-800 bg-neutral-900/70 hover:bg-neutral-850 hover:border-neutral-700 text-neutral-400 hover:text-white'
                 }`}
+                title={hasApiKey ? 'Gemini 2.0 API Connected (Click to manage)' : 'Connect Google Gemini API Key'}
               >
-                <Puzzle className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Extension</span>
+                <Key className={`w-3.5 h-3.5 ${hasApiKey ? 'text-emerald-400' : 'text-neutral-400'}`} />
+                <span className="hidden xl:inline">{hasApiKey ? 'Gemini API' : 'API Key'}</span>
+                {hasApiKey && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />}
               </button>
             )}
 
-            {/* Support / Contribute Button */}
-            {onOpenSupport && (
-              <button
-                onClick={onOpenSupport}
-                title="Support Vayun.xyz on Buy Me a Coffee"
-                className={`px-2.5 py-1.5 rounded-full border text-xs font-mono flex items-center gap-1.5 transition-colors ${
-                  isLight 
-                    ? 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100' 
-                    : 'border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-850'
-                }`}
-              >
-                <Coffee className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Support</span>
-              </button>
-            )}
+            {/* Utility Icon Actions (Helpdesk, Extension, Support, Theme) */}
+            <div className="flex items-center gap-1.5">
+              {/* Helpdesk Button */}
+              {onOpenHelpdesk && (
+                <button
+                  onClick={onOpenHelpdesk}
+                  title="Helpdesk & Knowledge Base (H)"
+                  className={`h-8 w-8 rounded-lg border flex items-center justify-center transition-all select-none active:scale-95 group ${
+                    isLight 
+                      ? 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100 hover:border-neutral-300' 
+                      : 'border-neutral-800 bg-neutral-900/70 text-neutral-400 hover:text-white hover:bg-neutral-850 hover:border-neutral-700'
+                  }`}
+                  aria-label="Open Helpdesk"
+                >
+                  <LifeBuoy className="w-3.5 h-3.5 text-cyan-400 transition-transform group-hover:scale-110" />
+                </button>
+              )}
 
-            {/* Zero Tracking & No Accounts Badge */}
-            <div 
-              onClick={onOpenSecurityAuditor}
-              className={`hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-mono select-none cursor-pointer transition-colors ${
-                isLight 
-                  ? 'border-neutral-200 bg-neutral-100/70 text-neutral-700 hover:bg-neutral-200/60' 
-                  : 'border-neutral-800 bg-neutral-900/70 text-neutral-300 hover:bg-neutral-850'
-              }`}
-              title="Zero remote uploads, zero tracking, no accounts, no paywalls."
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>No Accounts • 100% Free</span>
+              {/* Browser Extension Button */}
+              {onOpenExtension && (
+                <button
+                  onClick={onOpenExtension}
+                  title="Browser Extension for Chrome & Edge"
+                  className={`h-8 w-8 rounded-lg border flex items-center justify-center transition-all select-none active:scale-95 group ${
+                    isLight 
+                      ? 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100 hover:border-neutral-300' 
+                      : 'border-neutral-800 bg-neutral-900/70 text-neutral-400 hover:text-white hover:bg-neutral-850 hover:border-neutral-700'
+                  }`}
+                  aria-label="Download Extension"
+                >
+                  <Puzzle className="w-3.5 h-3.5 text-emerald-400 transition-transform group-hover:scale-110" />
+                </button>
+              )}
+
+              {/* Support / Contribute Button */}
+              {onOpenSupport && (
+                <button
+                  onClick={onOpenSupport}
+                  title="Support Vayun.xyz on Buy Me a Coffee"
+                  className={`h-8 w-8 rounded-lg border flex items-center justify-center transition-all select-none active:scale-95 group ${
+                    isLight 
+                      ? 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100 hover:border-neutral-300' 
+                      : 'border-neutral-800 bg-neutral-900/70 text-neutral-400 hover:text-amber-400 hover:bg-neutral-850 hover:border-neutral-700'
+                  }`}
+                  aria-label="Buy Me a Coffee"
+                >
+                  <Coffee className="w-3.5 h-3.5 text-amber-400/90 transition-transform group-hover:scale-110" />
+                </button>
+              )}
+
+              {/* Theme Toggle Button */}
+              <button
+                onClick={onToggleTheme}
+                title={`Switch to ${isLight ? 'Dark' : 'Light'} Mode (D)`}
+                className={`h-8 w-8 rounded-lg border flex items-center justify-center transition-all select-none active:scale-95 group ${
+                  isLight 
+                    ? 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100 hover:border-neutral-300' 
+                    : 'border-neutral-800 bg-neutral-900/70 text-neutral-400 hover:text-white hover:bg-neutral-850 hover:border-neutral-700'
+                }`}
+                aria-label="Toggle Theme"
+              >
+                {isLight ? (
+                  <Moon className="w-3.5 h-3.5 transition-transform group-hover:rotate-12" />
+                ) : (
+                  <Sun className="w-3.5 h-3.5 text-amber-300 transition-transform group-hover:rotate-45" />
+                )}
+              </button>
             </div>
 
             {/* Mobile / Tablet Hamburger Menu Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(prev => !prev)}
-              className={`p-1.5 rounded border transition-colors lg:hidden flex items-center justify-center ${
+              className={`h-8 w-8 rounded-lg border transition-all lg:hidden flex items-center justify-center active:scale-95 ${
                 isLight 
-                  ? 'border-neutral-200 text-neutral-700 hover:bg-neutral-100' 
-                  : 'border-neutral-800 text-neutral-300 hover:bg-neutral-900'
+                  ? 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100' 
+                  : 'border-neutral-800 bg-neutral-900/70 text-neutral-300 hover:bg-neutral-850'
               }`}
               aria-label="Toggle Navigation Menu"
             >
@@ -327,9 +353,13 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile / Tablet Slide-down Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className={`lg:hidden border-b px-4 py-4 space-y-2 transition-colors ${
+        <div className={`lg:hidden border-b px-4 py-4 space-y-3 transition-colors ${
           isLight ? 'bg-white border-neutral-200 text-black' : 'bg-black border-neutral-900 text-white'
         }`}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 font-semibold px-1">
+            Workstation Suites
+          </div>
+
           <div className="grid grid-cols-2 gap-2 text-xs">
             <button
               onClick={() => {
@@ -337,7 +367,7 @@ export const Header: React.FC<HeaderProps> = ({
                 onSelectCategory('all');
                 setIsMobileMenuOpen(false);
               }}
-              className={`p-2.5 rounded border text-left flex items-center gap-2 ${
+              className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
                 currentTool === 'home' && selectedCategory === 'all'
                   ? isLight ? 'bg-black text-white border-black' : 'bg-white text-black border-white'
                   : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
@@ -356,13 +386,13 @@ export const Header: React.FC<HeaderProps> = ({
                 onSelectCategory('developer');
                 setIsMobileMenuOpen(false);
               }}
-              className={`p-2.5 rounded border text-left flex items-center gap-2 ${
+              className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
                 isDeveloperTool
                   ? isLight ? 'bg-black text-white border-black' : 'bg-white text-black border-white'
                   : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
               }`}
             >
-              <Network className="w-4 h-4 shrink-0" />
+              <Network className="w-4 h-4 text-emerald-400 shrink-0" />
               <div>
                 <div className="font-semibold">Developer Flow</div>
                 <div className="text-[10px] opacity-70">Flow & Viva</div>
@@ -375,16 +405,16 @@ export const Header: React.FC<HeaderProps> = ({
                 onSelectCategory('pdf');
                 setIsMobileMenuOpen(false);
               }}
-              className={`p-2.5 rounded border text-left flex items-center gap-2 ${
-                selectedCategory === 'pdf'
+              className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
+                isPdfTool
                   ? isLight ? 'bg-black text-white border-black' : 'bg-white text-black border-white'
                   : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
               }`}
             >
-              <FileText className="w-4 h-4 shrink-0" />
+              <FileText className="w-4 h-4 text-blue-400 shrink-0" />
               <div>
                 <div className="font-semibold">PDF Suite</div>
-                <div className="text-[10px] opacity-70">5 tools</div>
+                <div className="text-[10px] opacity-70">Split & Merge</div>
               </div>
             </button>
 
@@ -394,16 +424,16 @@ export const Header: React.FC<HeaderProps> = ({
                 onSelectCategory('ai');
                 setIsMobileMenuOpen(false);
               }}
-              className={`p-2.5 rounded border text-left flex items-center gap-2 ${
-                selectedCategory === 'ai'
+              className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
+                isAiTool
                   ? isLight ? 'bg-black text-white border-black' : 'bg-white text-black border-white'
                   : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
               }`}
             >
-              <BrainCircuit className="w-4 h-4 shrink-0" />
+              <BrainCircuit className="w-4 h-4 text-purple-400 shrink-0" />
               <div>
                 <div className="font-semibold">AI Context</div>
-                <div className="text-[10px] opacity-70">Tokens & sanitize</div>
+                <div className="text-[10px] opacity-70">Tokens & Prompt</div>
               </div>
             </button>
 
@@ -413,13 +443,13 @@ export const Header: React.FC<HeaderProps> = ({
                 onSelectCategory('billing');
                 setIsMobileMenuOpen(false);
               }}
-              className={`p-2.5 rounded border text-left flex items-center gap-2 ${
-                selectedCategory === 'billing'
+              className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
+                isBillingTool
                   ? isLight ? 'bg-black text-white border-black' : 'bg-white text-black border-white'
                   : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
               }`}
             >
-              <Receipt className="w-4 h-4 shrink-0" />
+              <Receipt className="w-4 h-4 text-amber-400 shrink-0" />
               <div>
                 <div className="font-semibold">Invoicing</div>
                 <div className="text-[10px] opacity-70">Invoices & PayLinks</div>
@@ -428,16 +458,39 @@ export const Header: React.FC<HeaderProps> = ({
 
             <button
               onClick={() => {
-                if (onOpenApiSettings) {
-                  onOpenApiSettings();
-                }
+                onSelectTool('clean-csv');
+                onSelectCategory('tabular');
                 setIsMobileMenuOpen(false);
               }}
-              className={`p-2.5 rounded border text-left flex items-center gap-2 ${
+              className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
+                isTabularTool
+                  ? isLight ? 'bg-black text-white border-black' : 'bg-white text-black border-white'
+                  : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+              }`}
+            >
+              <Table className="w-4 h-4 text-cyan-400 shrink-0" />
+              <div>
+                <div className="font-semibold">Tabular</div>
+                <div className="text-[10px] opacity-70">CSV & Tables</div>
+              </div>
+            </button>
+          </div>
+
+          <div className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 font-semibold px-1 pt-2">
+            Utilities & Integrations
+          </div>
+
+          <div className="grid grid-cols-2 gap-2 text-xs">
+            <button
+              onClick={() => {
+                if (onOpenApiSettings) onOpenApiSettings();
+                setIsMobileMenuOpen(false);
+              }}
+              className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
                 isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
               }`}
             >
-              <Key className="w-4 h-4 shrink-0" />
+              <Key className="w-4 h-4 text-emerald-400 shrink-0" />
               <div>
                 <div className="font-semibold">API Key</div>
                 <div className="text-[10px] opacity-70">{hasApiKey ? 'Connected' : 'Configure'}</div>
@@ -450,11 +503,11 @@ export const Header: React.FC<HeaderProps> = ({
                   onOpenExtension();
                   setIsMobileMenuOpen(false);
                 }}
-                className={`p-2.5 rounded border text-left flex items-center gap-2 ${
+                className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
                   isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
                 }`}
               >
-                <Puzzle className="w-4 h-4 shrink-0" />
+                <Puzzle className="w-4 h-4 text-emerald-400 shrink-0" />
                 <div>
                   <div className="font-semibold">Extension</div>
                   <div className="text-[10px] opacity-70">Chrome & Edge</div>
@@ -468,14 +521,50 @@ export const Header: React.FC<HeaderProps> = ({
                   onOpenHelpdesk();
                   setIsMobileMenuOpen(false);
                 }}
-                className={`p-2.5 rounded border text-left flex items-center gap-2 ${
+                className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
                   isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
                 }`}
               >
-                <LifeBuoy className="w-4 h-4 shrink-0" />
+                <LifeBuoy className="w-4 h-4 text-cyan-400 shrink-0" />
                 <div>
                   <div className="font-semibold">Helpdesk</div>
                   <div className="text-[10px] opacity-70">FAQ & Diagnostics</div>
+                </div>
+              </button>
+            )}
+
+            {onOpenSupport && (
+              <button
+                onClick={() => {
+                  onOpenSupport();
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
+                  isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                }`}
+              >
+                <Coffee className="w-4 h-4 text-amber-400 shrink-0" />
+                <div>
+                  <div className="font-semibold">Support</div>
+                  <div className="text-[10px] opacity-70">Buy Me a Coffee</div>
+                </div>
+              </button>
+            )}
+
+            {onOpenSecurityAuditor && (
+              <button
+                onClick={() => {
+                  onOpenSecurityAuditor();
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`col-span-2 p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
+                  isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                }`}
+              >
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div>
+                  <div className="font-semibold">Zero-Upload RAM Security Guarantee</div>
+                  <div className="text-[10px] opacity-70">100% Client-side execution audit</div>
                 </div>
               </button>
             )}
