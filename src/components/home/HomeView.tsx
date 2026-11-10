@@ -37,6 +37,7 @@ import { VayunLogo } from '../common/VayunLogo';
 import { VayunWordmark } from '../common/VayunWordmark';
 import { HeroSection3D } from './HeroSection3D';
 import { ToolCardLivePreview } from './ToolCardLivePreview';
+import { SnakeGameSection } from '../game/SnakeGameSection';
 
 interface HomeViewProps {
   onSelectTool: (id: ToolId) => void;
@@ -402,6 +403,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </a>
           </div>
         </div>
+      </div>
+
+      {/* Developer Arcade: Terminal Snake Game at Bottom of Page */}
+      <div id="arcade-snake">
+        <SnakeGameSection theme={theme} />
       </div>
     </div>
   );

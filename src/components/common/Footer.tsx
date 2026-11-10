@@ -22,7 +22,8 @@ import {
   Puzzle,
   LifeBuoy,
   Bot,
-  Download
+  Download,
+  Gamepad2
 } from 'lucide-react';
 
 interface FooterProps {
@@ -257,6 +258,19 @@ export const Footer: React.FC<FooterProps> = ({
                 <span>Install Options</span>
               </button>
             )}
+            <button 
+              onClick={() => {
+                const el = document.getElementById('arcade-snake');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' });
+                }
+              }} 
+              className="hover:underline flex items-center gap-1 text-slate-600 dark:text-neutral-300 hover:text-emerald-500 dark:hover:text-emerald-400"
+              title="Play Terminal Snake Game"
+            >
+              <Gamepad2 className="w-3 h-3 opacity-70 shrink-0" />
+              <span>Play Snake</span>
+            </button>
             {onOpenSecurityAuditor && (
               <button onClick={onOpenSecurityAuditor} className="hover:underline">
                 RAM Security Guarantee
