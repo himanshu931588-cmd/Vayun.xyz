@@ -40,6 +40,7 @@ interface HomeViewProps {
   onOpenApiSettings?: () => void;
   onOpenSupport?: () => void;
   onOpenExtension?: () => void;
+  onOpenHelpdesk?: () => void;
   theme?: 'dark' | 'light';
 }
 
@@ -50,6 +51,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   onOpenApiSettings,
   onOpenSupport,
   onOpenExtension,
+  onOpenHelpdesk,
   theme = 'dark'
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -110,6 +112,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         onSelectTool={onSelectTool}
         onOpenApiSettings={onOpenApiSettings}
         onOpenExtension={onOpenExtension}
+        onOpenHelpdesk={onOpenHelpdesk}
         hasApiKey={hasApiKey}
       />
 

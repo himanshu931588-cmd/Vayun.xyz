@@ -22,6 +22,7 @@ export const KeyboardShortcutsModal: React.FC<KeyboardShortcutsModalProps> = ({
     { key: 'R', desc: 'Launch Resume Builder with photo and PDF export' },
     { key: 'M', desc: 'Launch Merge PDF utility' },
     { key: 'I', desc: 'Launch Invoice Maker' },
+    { key: 'H', desc: 'Open Helpdesk, Knowledge Base & Diagnostics' },
     { key: '?', desc: 'Show this keyboard shortcuts guide' },
     { key: 'Esc', desc: 'Close any active modal or return to Overview' }
   ];

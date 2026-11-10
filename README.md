@@ -50,7 +50,13 @@ Vayun.xyz is a privacy-first web platform designed for developers, engineering s
 3. Enable the **Developer mode** switch in the top-right corner.
 4. Click **Load unpacked** and select the unzipped extension directory.
 
-### 6. Owner Administration
+### 6. Helpdesk, Knowledge Base, and System Diagnostics
+- **Searchable Knowledge Base:** Detailed explanations covering client-side RAM privacy architecture, high-capacity PDF extraction (up to 500+ pages), Gemini 2.0 Flash configuration, multi-file code tracing, and browser extension setup.
+- **Client Runtime Self-Test:** Live environment verification assessing WebAssembly support, client heap memory usage, Web Worker readiness, and local storage capabilities.
+- **Diagnostic State Reports:** One-click generation and clipboard copy of technical diagnostic state reports to assist in troubleshooting.
+- **Direct Support Integration:** Immediate pre-formatted GitHub issue submission and feedback forms for questions or bug reports.
+
+### 7. Owner Administration
 - **Owner Audit Logs:** Silent system event logging for the website administrator.
 - **Owner Command Console:** An administrative interface to review system health, download diagnostics, and run automated backups.
 

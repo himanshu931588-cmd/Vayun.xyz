@@ -19,7 +19,8 @@ import {
   Flame,
   Scale,
   Coffee,
-  Puzzle
+  Puzzle,
+  LifeBuoy
 } from 'lucide-react';
 
 interface FooterProps {
@@ -29,6 +30,7 @@ interface FooterProps {
   onOpenOwnerConsole?: () => void;
   onOpenSupport?: () => void;
   onOpenExtension?: () => void;
+  onOpenHelpdesk?: () => void;
   theme?: 'dark' | 'light';
 }
 
@@ -39,6 +41,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenOwnerConsole,
   onOpenSupport,
   onOpenExtension,
+  onOpenHelpdesk,
   theme = 'dark' 
 }) => {
   const isLight = theme === 'light';
@@ -83,6 +86,20 @@ export const Footer: React.FC<FooterProps> = ({
                 >
                   <Puzzle className="w-3.5 h-3.5" />
                   <span>Browser Extension</span>
+                </button>
+              )}
+
+              {onOpenHelpdesk && (
+                <button
+                  onClick={onOpenHelpdesk}
+                  className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-mono transition-all ${
+                    isLight 
+                      ? 'border-neutral-300 bg-white hover:bg-neutral-100 text-neutral-800' 
+                      : 'border-neutral-800 bg-neutral-900/50 hover:bg-neutral-850 text-neutral-300'
+                  }`}
+                >
+                  <LifeBuoy className="w-3.5 h-3.5" />
+                  <span>Helpdesk & FAQ</span>
                 </button>
               )}
             </div>
@@ -218,6 +235,12 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           <div className="flex items-center gap-4">
+            {onOpenHelpdesk && (
+              <button onClick={onOpenHelpdesk} className="hover:underline flex items-center gap-1">
+                <LifeBuoy className="w-3 h-3 text-cyan-400" />
+                <span>Helpdesk</span>
+              </button>
+            )}
             {onOpenExtension && (
               <button onClick={onOpenExtension} className="hover:underline flex items-center gap-1 text-emerald-400">
                 <Puzzle className="w-3 h-3" />

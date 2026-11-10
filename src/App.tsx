@@ -8,6 +8,7 @@ import { ApiSettingsModal } from './components/common/ApiSettingsModal';
 import { OwnerConsoleModal } from './components/common/OwnerConsoleModal';
 import { SupportModal } from './components/common/SupportModal';
 import { ExtensionModal } from './components/common/ExtensionModal';
+import { HelpdeskModal } from './components/common/HelpdeskModal';
 import { HomeView } from './components/home/HomeView';
 
 // Developer Flow & Viva Suite (Flagship)
@@ -52,6 +53,7 @@ export function App() {
   const [isOwnerConsoleOpen, setIsOwnerConsoleOpen] = useState(false);
   const [isSupportOpen, setIsSupportOpen] = useState(false);
   const [isExtensionOpen, setIsExtensionOpen] = useState(false);
+  const [isHelpdeskOpen, setIsHelpdeskOpen] = useState(false);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [savedTokensTotal, setSavedTokensTotal] = useState<number>(() => {
     const saved = localStorage.getItem('vayun_total_tokens_saved');
@@ -102,6 +104,9 @@ export function App() {
       } else if (e.key === '?' && !isInput) {
         e.preventDefault();
         setIsShortcutsOpen(prev => !prev);
+      } else if (e.key.toLowerCase() === 'h' && !isInput && !e.metaKey && !e.ctrlKey) {
+        e.preventDefault();
+        setIsHelpdeskOpen(prev => !prev);
       } else if (e.key.toLowerCase() === 'd' && !isInput && !e.metaKey && !e.ctrlKey) {
         e.preventDefault();
         setTheme(t => t === 'dark' ? 'light' : 'dark');
@@ -112,6 +117,7 @@ export function App() {
         setIsApiSettingsOpen(false);
         setIsSupportOpen(false);
         setIsExtensionOpen(false);
+        setIsHelpdeskOpen(false);
       }
     };
 
@@ -163,6 +169,7 @@ export function App() {
         onOpenApiSettings={() => setIsApiSettingsOpen(true)}
         onOpenSupport={() => setIsSupportOpen(true)}
         onOpenExtension={() => setIsExtensionOpen(true)}
+        onOpenHelpdesk={() => setIsHelpdeskOpen(true)}
       />
 
       {/* Main Content Workspace */}
@@ -175,6 +182,7 @@ export function App() {
             onOpenApiSettings={() => setIsApiSettingsOpen(true)}
             onOpenSupport={() => setIsSupportOpen(true)}
             onOpenExtension={() => setIsExtensionOpen(true)}
+            onOpenHelpdesk={() => setIsHelpdeskOpen(true)}
             theme={theme}
           />
         )}
@@ -354,6 +362,7 @@ export function App() {
         onSelectTool={handleSelectTool}
         onOpenOwnerConsole={() => setIsOwnerConsoleOpen(true)}
         onOpenExtension={() => setIsExtensionOpen(true)}
+        onOpenHelpdesk={() => setIsHelpdeskOpen(true)}
         theme={theme}
       />
 
@@ -399,6 +408,16 @@ export function App() {
         theme={theme}
       />
 
+      {/* Helpdesk & Knowledge Base Modal */}
+      <HelpdeskModal
+        isOpen={isHelpdeskOpen}
+        onClose={() => setIsHelpdeskOpen(false)}
+        onOpenApiSettings={() => setIsApiSettingsOpen(true)}
+        onOpenExtension={() => setIsExtensionOpen(true)}
+        onOpenSupport={() => setIsSupportOpen(true)}
+        theme={theme}
+      />
+
       {/* Footer */}
       <Footer
         onSelectTool={handleSelectTool}
@@ -407,6 +426,7 @@ export function App() {
         onOpenOwnerConsole={() => setIsOwnerConsoleOpen(true)}
         onOpenSupport={() => setIsSupportOpen(true)}
         onOpenExtension={() => setIsExtensionOpen(true)}
+        onOpenHelpdesk={() => setIsHelpdeskOpen(true)}
         theme={theme}
       />
     </div>

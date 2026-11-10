@@ -9,7 +9,8 @@ import {
   Activity,
   CheckCircle2,
   Lock,
-  Puzzle
+  Puzzle,
+  LifeBuoy
 } from 'lucide-react';
 import { ToolId } from '../../types';
 import { VayunLogo } from '../common/VayunLogo';
@@ -20,6 +21,7 @@ interface HeroSection3DProps {
   onSelectTool: (id: ToolId) => void;
   onOpenApiSettings?: () => void;
   onOpenExtension?: () => void;
+  onOpenHelpdesk?: () => void;
   hasApiKey: boolean;
 }
 
@@ -28,6 +30,7 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
   onSelectTool,
   onOpenApiSettings,
   onOpenExtension,
+  onOpenHelpdesk,
   hasApiKey
 }) => {
   const isLight = theme === 'light';
@@ -216,6 +219,21 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
               >
                 <Puzzle className="w-4 h-4 text-emerald-400" />
                 <span>Extension</span>
+              </button>
+            )}
+
+            {onOpenHelpdesk && (
+              <button
+                onClick={onOpenHelpdesk}
+                className={`px-4 py-3 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
+                  isLight 
+                    ? 'border-neutral-300 bg-white hover:bg-neutral-100 text-black' 
+                    : 'border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-white'
+                }`}
+                title="Open Helpdesk, Knowledge Base & Diagnostics"
+              >
+                <LifeBuoy className="w-4 h-4 text-cyan-400" />
+                <span>Helpdesk</span>
               </button>
             )}
 

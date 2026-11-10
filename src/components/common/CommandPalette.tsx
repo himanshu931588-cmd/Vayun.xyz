@@ -22,7 +22,8 @@ import {
   Network,
   Flame,
   Scale,
-  Puzzle
+  Puzzle,
+  LifeBuoy
 } from 'lucide-react';
 import { TOOLS } from '../../utils/toolsData';
 import { ToolId } from '../../types';
@@ -33,6 +34,7 @@ interface CommandPaletteProps {
   onSelectTool: (id: ToolId) => void;
   onOpenOwnerConsole?: () => void;
   onOpenExtension?: () => void;
+  onOpenHelpdesk?: () => void;
   theme?: 'dark' | 'light';
 }
 
@@ -42,6 +44,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   onSelectTool,
   onOpenOwnerConsole,
   onOpenExtension,
+  onOpenHelpdesk,
   theme = 'dark'
 }) => {
   const [query, setQuery] = useState('');
@@ -162,6 +165,28 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
 
         {/* Results List */}
         <div className="max-h-80 overflow-y-auto p-2 space-y-1">
+          {onOpenHelpdesk && (!cleanQuery || cleanQuery.includes('help') || cleanQuery.includes('desk') || cleanQuery.includes('faq') || cleanQuery.includes('support') || cleanQuery.includes('trouble') || cleanQuery.includes('guide')) && (
+            <div
+              onClick={() => {
+                onOpenHelpdesk();
+                onClose();
+              }}
+              className="flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-colors text-xs border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500/20 mb-2"
+            >
+              <div className="flex items-center gap-2.5">
+                <LifeBuoy className="w-4 h-4 text-cyan-400 shrink-0" />
+                <div>
+                  <div className="font-semibold text-white flex items-center gap-1.5 font-mono">
+                    <span>Helpdesk & Knowledge Base</span>
+                    <span className="text-[9px] px-1 rounded bg-cyan-500/30 text-cyan-300 font-bold">SUPPORT</span>
+                  </div>
+                  <div className="text-[10px] text-neutral-400 font-mono">Search FAQs, troubleshooting guides & runtime diagnostics</div>
+                </div>
+              </div>
+              <CornerDownLeft className="w-3.5 h-3.5 opacity-60 text-cyan-400" />
+            </div>
+          )}
+
           {onOpenExtension && (!cleanQuery || cleanQuery.includes('ext') || cleanQuery.includes('chrome') || cleanQuery.includes('edge') || cleanQuery.includes('brave') || cleanQuery.includes('plugin') || cleanQuery.includes('browser')) && (
             <div
               onClick={() => {

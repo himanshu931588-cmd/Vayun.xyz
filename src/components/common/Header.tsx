@@ -18,7 +18,8 @@ import {
   Network,
   Key,
   Coffee,
-  Puzzle
+  Puzzle,
+  LifeBuoy
 } from 'lucide-react';
 import { getStoredApiKey } from '../../utils/geminiApi';
 
@@ -36,6 +37,7 @@ interface HeaderProps {
   onOpenApiSettings?: () => void;
   onOpenSupport?: () => void;
   onOpenExtension?: () => void;
+  onOpenHelpdesk?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -50,7 +52,8 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenShortcuts,
   onOpenApiSettings,
   onOpenSupport,
-  onOpenExtension
+  onOpenExtension,
+  onOpenHelpdesk
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isLight = theme === 'light';
@@ -243,6 +246,22 @@ export const Header: React.FC<HeaderProps> = ({
             >
               {isLight ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
             </button>
+
+            {/* Helpdesk Button */}
+            {onOpenHelpdesk && (
+              <button
+                onClick={onOpenHelpdesk}
+                title="Open Vayun Helpdesk, Knowledge Base & Diagnostics"
+                className={`px-2.5 py-1.5 rounded-full border text-xs font-mono flex items-center gap-1.5 transition-colors ${
+                  isLight 
+                    ? 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100' 
+                    : 'border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-850'
+                }`}
+              >
+                <LifeBuoy className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Helpdesk</span>
+              </button>
+            )}
 
             {/* Browser Extension Button */}
             {onOpenExtension && (
@@ -439,6 +458,24 @@ export const Header: React.FC<HeaderProps> = ({
                 <div>
                   <div className="font-semibold">Extension</div>
                   <div className="text-[10px] opacity-70">Chrome & Edge</div>
+                </div>
+              </button>
+            )}
+
+            {onOpenHelpdesk && (
+              <button
+                onClick={() => {
+                  onOpenHelpdesk();
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`p-2.5 rounded border text-left flex items-center gap-2 ${
+                  isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                }`}
+              >
+                <LifeBuoy className="w-4 h-4 shrink-0" />
+                <div>
+                  <div className="font-semibold">Helpdesk</div>
+                  <div className="text-[10px] opacity-70">FAQ & Diagnostics</div>
                 </div>
               </button>
             )}
