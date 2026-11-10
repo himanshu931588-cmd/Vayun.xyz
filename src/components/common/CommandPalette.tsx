@@ -29,7 +29,8 @@ import {
   Award,
   Wind,
   KeyRound,
-  Cpu
+  Cpu,
+  Download
 } from 'lucide-react';
 import { TOOLS } from '../../utils/toolsData';
 import { ToolId } from '../../types';
@@ -222,25 +223,25 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
             </div>
           )}
 
-          {onOpenExtension && (!cleanQuery || cleanQuery.includes('ext') || cleanQuery.includes('chrome') || cleanQuery.includes('edge') || cleanQuery.includes('brave') || cleanQuery.includes('plugin') || cleanQuery.includes('browser')) && (
+          {onOpenExtension && (!cleanQuery || cleanQuery.includes('install') || cleanQuery.includes('download') || cleanQuery.includes('pwa') || cleanQuery.includes('app') || cleanQuery.includes('desktop') || cleanQuery.includes('ext') || cleanQuery.includes('chrome') || cleanQuery.includes('edge') || cleanQuery.includes('brave') || cleanQuery.includes('plugin') || cleanQuery.includes('browser') || cleanQuery.includes('cli') || cleanQuery.includes('offline')) && (
             <div
               onClick={() => {
                 onOpenExtension();
                 onClose();
               }}
-              className="flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-colors text-xs border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20 mb-2"
+              className="flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-colors text-xs border border-blue-500/30 bg-blue-500/10 text-blue-300 hover:bg-blue-500/20 mb-2"
             >
               <div className="flex items-center gap-2.5">
-                <Puzzle className="w-4 h-4 text-emerald-400 shrink-0" />
+                <Download className="w-4 h-4 text-blue-400 shrink-0" />
                 <div>
                   <div className="font-semibold text-white flex items-center gap-1.5 font-mono">
-                    <span>Vayun Browser Extension</span>
-                    <span className="text-[9px] px-1 rounded bg-emerald-500/30 text-emerald-300 font-bold">CHROME & EDGE</span>
+                    <span>Install Vayun Workstation</span>
+                    <span className="text-[9px] px-1 rounded bg-blue-500/30 text-blue-300 font-bold">PWA • EXT • CLI</span>
                   </div>
-                  <div className="text-[10px] text-neutral-400 font-mono">Download and load unpacked 1-click toolbar extension</div>
+                  <div className="text-[10px] text-neutral-400 font-mono">Desktop app, Chrome/Edge extension, NPX terminal CLI & offline bundle</div>
                 </div>
               </div>
-              <CornerDownLeft className="w-3.5 h-3.5 opacity-60 text-emerald-400" />
+              <CornerDownLeft className="w-3.5 h-3.5 opacity-60 text-blue-400" />
             </div>
           )}
 

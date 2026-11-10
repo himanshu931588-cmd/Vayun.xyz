@@ -18,7 +18,8 @@ import {
   LifeBuoy,
   Key,
   Coffee,
-  ShieldCheck
+  ShieldCheck,
+  Download
 } from 'lucide-react';
 import { getStoredApiKey } from '../../utils/geminiApi';
 
@@ -234,19 +235,19 @@ export const Header: React.FC<HeaderProps> = ({
               </kbd>
             </button>
 
-            {/* Extension Quick Access Button */}
+            {/* Install Quick Access Button (Desktop App, Extension, CLI) */}
             {onOpenExtension && (
               <button
                 onClick={onOpenExtension}
-                title="Browser Extension (Chrome & Edge)"
+                title="Install Vayun (Desktop App, Extension, Terminal CLI)"
                 className={`h-8 px-2.5 rounded-lg border text-xs font-mono hidden sm:inline-flex items-center gap-1.5 transition-all select-none active:scale-95 group ${
                   isLight 
                     ? 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 shadow-xs' 
                     : 'border-neutral-800 bg-neutral-900/70 text-neutral-300 hover:text-white hover:bg-neutral-850 hover:border-neutral-700'
                 }`}
               >
-                <Puzzle className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity shrink-0" />
-                <span className="hidden lg:inline">Extension</span>
+                <Download className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity shrink-0" />
+                <span className="hidden lg:inline">Install</span>
               </button>
             )}
 
@@ -442,10 +443,10 @@ export const Header: React.FC<HeaderProps> = ({
                   isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
                 }`}
               >
-                <Puzzle className="w-4 h-4 opacity-80 shrink-0" />
+                <Download className="w-4 h-4 opacity-80 shrink-0" />
                 <div>
-                  <div className="font-semibold">Extension</div>
-                  <div className="text-[10px] opacity-70">Chrome & Edge</div>
+                  <div className="font-semibold">Install Vayun</div>
+                  <div className="text-[10px] opacity-70">Desktop PWA, Extension & CLI</div>
                 </div>
               </button>
             )}

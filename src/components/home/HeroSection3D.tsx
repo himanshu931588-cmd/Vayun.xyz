@@ -9,7 +9,8 @@ import {
   CheckCircle2,
   Lock,
   Puzzle,
-  LifeBuoy
+  LifeBuoy,
+  Download
 } from 'lucide-react';
 import { ToolId } from '../../types';
 import { VayunLogo } from '../common/VayunLogo';
@@ -216,10 +217,10 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                     ? 'border-slate-200/90 bg-white hover:bg-slate-50 text-slate-700 shadow-xs hover:border-slate-300' 
                     : 'border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-white'
                 }`}
-                title="Download Vayun Browser Extension for Chrome, Edge, and Brave"
+                title="Install Vayun as a Desktop PWA, Browser Extension, or Terminal CLI"
               >
-                <Puzzle className={`w-4 h-4 ${isLight ? 'text-blue-600' : 'text-emerald-400'}`} />
-                <span>Extension</span>
+                <Download className="w-4 h-4 opacity-70 shrink-0" />
+                <span>Install App</span>
               </button>
             )}
 
@@ -233,7 +234,7 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                 }`}
                 title="Open Helpdesk, Knowledge Base & Diagnostics"
               >
-                <LifeBuoy className={`w-4 h-4 ${isLight ? 'text-blue-600' : 'text-cyan-400'}`} />
+                <LifeBuoy className="w-4 h-4 opacity-70 shrink-0" />
                 <span>Helpdesk</span>
               </button>
             )}

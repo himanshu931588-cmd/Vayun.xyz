@@ -7,7 +7,7 @@ import { KeyboardShortcutsModal } from './components/common/KeyboardShortcutsMod
 import { ApiSettingsModal } from './components/common/ApiSettingsModal';
 import { OwnerConsoleModal } from './components/common/OwnerConsoleModal';
 import { SupportModal } from './components/common/SupportModal';
-import { ExtensionModal } from './components/common/ExtensionModal';
+import { InstallModal } from './components/common/InstallModal';
 import { HelpdeskModal } from './components/common/HelpdeskModal';
 import { VayunChatbot } from './components/ai/VayunChatbot';
 import { HomeView } from './components/home/HomeView';
@@ -61,6 +61,7 @@ export function App() {
   const [isExtensionOpen, setIsExtensionOpen] = useState(false);
   const [isHelpdeskOpen, setIsHelpdeskOpen] = useState(false);
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [savedTokensTotal, setSavedTokensTotal] = useState<number>(() => {
     const saved = localStorage.getItem('vayun_total_tokens_saved');
@@ -98,6 +99,30 @@ export function App() {
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
+
+  // Listen for native PWA install prompt
+  useEffect(() => {
+    const handleBeforeInstall = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+    window.addEventListener('beforeinstallprompt', handleBeforeInstall);
+    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstall);
+  }, []);
+
+  const handleInstallPwa = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      try {
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+          setDeferredPrompt(null);
+        }
+      } catch (err) {
+        console.warn('PWA install prompt error', err);
+      }
+    }
+  };
 
   // Global Workstation Hotkeys (⌘K, ?, D, Esc)
   useEffect(() => {
@@ -454,10 +479,12 @@ export function App() {
         theme={theme}
       />
 
-      {/* Browser Extension Modal */}
-      <ExtensionModal
+      {/* Comprehensive Install & Extension Options Modal */}
+      <InstallModal
         isOpen={isExtensionOpen}
         onClose={() => setIsExtensionOpen(false)}
+        deferredPrompt={deferredPrompt}
+        onInstallPwa={handleInstallPwa}
         theme={theme}
       />
 

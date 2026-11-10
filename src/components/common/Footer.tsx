@@ -21,7 +21,8 @@ import {
   Coffee,
   Puzzle,
   LifeBuoy,
-  Bot
+  Bot,
+  Download
 } from 'lucide-react';
 
 interface FooterProps {
@@ -87,8 +88,8 @@ export const Footer: React.FC<FooterProps> = ({
                       : 'border-neutral-800 bg-neutral-900/50 hover:bg-neutral-850 text-neutral-300'
                   }`}
                 >
-                  <Puzzle className="w-3.5 h-3.5 opacity-70 shrink-0" />
-                  <span>Browser Extension</span>
+                  <Download className="w-3.5 h-3.5 opacity-70 shrink-0" />
+                  <span>Install App & Extension</span>
                 </button>
               )}
 
@@ -252,8 +253,8 @@ export const Footer: React.FC<FooterProps> = ({
             )}
             {onOpenExtension && (
               <button onClick={onOpenExtension} className="hover:underline flex items-center gap-1 text-slate-600 dark:text-neutral-300 hover:text-blue-600 dark:hover:text-white">
-                <Puzzle className="w-3 h-3 opacity-70 shrink-0" />
-                <span>Browser Extension</span>
+                <Download className="w-3 h-3 opacity-70 shrink-0" />
+                <span>Install Options</span>
               </button>
             )}
             {onOpenSecurityAuditor && (
