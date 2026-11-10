@@ -20,19 +20,22 @@ export const VayunWordmark: React.FC<VayunWordmarkProps> = ({
   const [imageError, setImageError] = useState(false);
   const isLight = theme === 'light';
 
-  // Sizing map (aspect ratio is 865 / 132 ≈ 6.55)
-  let resolvedHeight = 28;
+  // Sizing map (aspect ratio is 865 / 132 ≈ 6.553)
+  let resolvedHeight = 24;
   if (height) {
     resolvedHeight = height;
   } else if (size === 'sm') {
-    resolvedHeight = 22;
+    resolvedHeight = 20;
   } else if (size === 'md') {
-    resolvedHeight = 28;
+    resolvedHeight = 24;
   } else if (size === 'lg') {
-    resolvedHeight = 36;
+    resolvedHeight = 32;
   } else if (size === 'xl') {
-    resolvedHeight = 48;
+    resolvedHeight = 44;
   }
+
+  // Exact pixel width calculated to prevent any layout overflow or overlapping
+  const resolvedWidth = Math.round(resolvedHeight * (865 / 132));
 
   // Pre-rendered pure white (#ffffff) for dark theme, pure black (#000000) for light theme
   // Zero CSS filter dependency to guarantee 100% visibility on all browsers & displays
@@ -41,7 +44,7 @@ export const VayunWordmark: React.FC<VayunWordmarkProps> = ({
   return (
     <div 
       className={`inline-flex items-center justify-start select-none shrink-0 ${className}`}
-      style={{ height: `${resolvedHeight}px`, minWidth: `${Math.round(resolvedHeight * 4.5)}px` }}
+      style={{ height: `${resolvedHeight}px`, width: `${resolvedWidth}px`, minWidth: `${resolvedWidth}px` }}
     >
       {!imageError ? (
         <img
@@ -50,8 +53,8 @@ export const VayunWordmark: React.FC<VayunWordmarkProps> = ({
           onError={() => setImageError(true)}
           style={{ 
             height: `${resolvedHeight}px`, 
-            width: 'auto',
-            maxHeight: '100%',
+            width: `${resolvedWidth}px`,
+            maxWidth: 'none',
             display: 'block'
           }}
           className="object-contain transition-opacity duration-150 opacity-95 hover:opacity-100"

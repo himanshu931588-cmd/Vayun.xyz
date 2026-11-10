@@ -65,35 +65,37 @@ export const Header: React.FC<HeaderProps> = ({
       isLight ? 'bg-white/95 border-b border-neutral-200' : 'bg-black/95 border-b border-neutral-800'
     } backdrop-blur-md`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-14">
-          {/* Clean Brand Mark */}
-          <div 
-            onClick={() => {
-              onSelectTool('home');
-              onSelectCategory('all');
-            }}
-            className="flex items-center gap-2 cursor-pointer group select-none"
-          >
-            <VayunLogo size={28} className="transition-transform group-hover:scale-105" />
-            <VayunWordmark height={26} theme={theme} />
-          </div>
-
-          {/* Categorized Navigation */}
-          <nav className="hidden md:flex items-center gap-1 text-xs">
-            <button
+        <div className="flex items-center justify-between h-14 gap-4">
+          {/* Left Brand Mark & Main Nav */}
+          <div className="flex items-center gap-6 lg:gap-8 min-w-0 shrink-0">
+            {/* Clean Brand Mark */}
+            <div 
               onClick={() => {
                 onSelectTool('home');
                 onSelectCategory('all');
               }}
-              className={`px-3 py-1.5 rounded transition-colors flex items-center gap-1.5 ${
-                currentTool === 'home' && selectedCategory === 'all'
-                  ? isLight ? 'text-black font-semibold bg-neutral-100' : 'text-white font-semibold bg-neutral-900'
-                  : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
-              }`}
+              className="flex items-center gap-2.5 cursor-pointer group select-none shrink-0 pr-2"
             >
-              <LayoutGrid className="w-3.5 h-3.5" />
-              Overview
-            </button>
+              <VayunLogo size={28} className="transition-transform group-hover:scale-105 shrink-0" />
+              <VayunWordmark height={24} theme={theme} className="shrink-0" />
+            </div>
+
+            {/* Categorized Navigation */}
+            <nav className="hidden lg:flex items-center gap-1 text-xs shrink-0">
+              <button
+                onClick={() => {
+                  onSelectTool('home');
+                  onSelectCategory('all');
+                }}
+                className={`px-3 py-1.5 rounded transition-colors flex items-center gap-1.5 shrink-0 ${
+                  currentTool === 'home' && selectedCategory === 'all'
+                    ? isLight ? 'text-black font-semibold bg-neutral-100' : 'text-white font-semibold bg-neutral-900'
+                    : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
+                }`}
+              >
+                <LayoutGrid className="w-3.5 h-3.5" />
+                <span>Overview</span>
+              </button>
 
             <button
               onClick={() => {
@@ -167,12 +169,13 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               <Table className="w-3.5 h-3.5" />
-              Tabular
+              <span>Tabular</span>
             </button>
           </nav>
+        </div>
 
           {/* Quick Actions */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             {/* AI API Button */}
             {onOpenApiSettings && (
               <button
@@ -268,10 +271,10 @@ export const Header: React.FC<HeaderProps> = ({
               <span>No Accounts • 100% Free</span>
             </div>
 
-            {/* Mobile Hamburger Menu Toggle */}
+            {/* Mobile / Tablet Hamburger Menu Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(prev => !prev)}
-              className={`p-1.5 rounded border transition-colors md:hidden flex items-center justify-center ${
+              className={`p-1.5 rounded border transition-colors lg:hidden flex items-center justify-center ${
                 isLight 
                   ? 'border-neutral-200 text-neutral-700 hover:bg-neutral-100' 
                   : 'border-neutral-800 text-neutral-300 hover:bg-neutral-900'
@@ -284,9 +287,9 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* Mobile Slide-down Navigation Menu */}
+      {/* Mobile / Tablet Slide-down Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className={`md:hidden border-b px-4 py-4 space-y-2 transition-colors ${
+        <div className={`lg:hidden border-b px-4 py-4 space-y-2 transition-colors ${
           isLight ? 'bg-white border-neutral-200 text-black' : 'bg-black border-neutral-900 text-white'
         }`}>
           <div className="grid grid-cols-2 gap-2 text-xs">
