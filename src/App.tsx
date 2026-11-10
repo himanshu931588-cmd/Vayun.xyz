@@ -16,8 +16,11 @@ import { HomeView } from './components/home/HomeView';
 import { VayunFlowView } from './components/flow/VayunFlowView';
 import { VayunVivaView } from './components/viva/VayunVivaView';
 import { VayunBreakView } from './components/break/VayunBreakView';
+import { ChaosWindTunnelView } from './components/break/ChaosWindTunnelView';
 import { VayunSpecView } from './components/spec/VayunSpecView';
 import { InkGardenAsciiView } from './components/ascii/InkGardenAsciiView';
+import { AiSmellsRadarView } from './components/developer/AiSmellsRadarView';
+import { VivaDefenseBadgeView } from './components/developer/VivaDefenseBadgeView';
 
 // Classic PDF Suite & Resume
 import { MergePdfView } from './components/pdf/MergePdfView';
@@ -30,6 +33,8 @@ import { ResumeBuilderView } from './components/resume/ResumeBuilderView';
 import { ThreadRescuerView } from './components/ai/ThreadRescuerView';
 import { TokenSlimmerView } from './components/ai/TokenSlimmerView';
 import { PromptSanitizerView } from './components/ai/PromptSanitizerView';
+import { SecretDetonatorView } from './components/ai/SecretDetonatorView';
+import { LocalWebGpuBrainView } from './components/ai/LocalWebGpuBrainView';
 
 // Invoicing & Micro-Transactions
 import { InvoiceMakerView } from './components/invoice/InvoiceMakerView';
@@ -198,6 +203,7 @@ export function App() {
           <VayunFlowView
             onBack={() => handleSelectTool('home')}
             onNavigateToViva={() => handleSelectTool('vayun-viva')}
+            onNavigateToRadar={() => handleSelectTool('ai-smells-radar')}
             onOpenApiSettings={() => setIsApiSettingsOpen(true)}
             theme={theme}
           />
@@ -207,6 +213,7 @@ export function App() {
           <VayunVivaView
             onBack={() => handleSelectTool('home')}
             onNavigateToFlow={() => handleSelectTool('vayun-flow')}
+            onNavigateToBadge={() => handleSelectTool('viva-defense-badge')}
             onOpenApiSettings={() => setIsApiSettingsOpen(true)}
             theme={theme}
           />
@@ -231,6 +238,30 @@ export function App() {
         {currentTool === 'ascii-art' && (
           <InkGardenAsciiView
             onBack={() => handleSelectTool('home')}
+            theme={theme}
+          />
+        )}
+
+        {currentTool === 'ai-smells-radar' && (
+          <AiSmellsRadarView
+            onBack={() => handleSelectTool('home')}
+            onNavigateToFlow={() => handleSelectTool('vayun-flow')}
+            theme={theme}
+          />
+        )}
+
+        {currentTool === 'viva-defense-badge' && (
+          <VivaDefenseBadgeView
+            onBack={() => handleSelectTool('home')}
+            onNavigateToViva={() => handleSelectTool('vayun-viva')}
+            theme={theme}
+          />
+        )}
+
+        {currentTool === 'chaos-wind-tunnel' && (
+          <ChaosWindTunnelView
+            onBack={() => handleSelectTool('home')}
+            onNavigateToBreak={() => handleSelectTool('vayun-break')}
             theme={theme}
           />
         )}
@@ -292,6 +323,21 @@ export function App() {
         {currentTool === 'prompt-sanitizer' && (
           <PromptSanitizerView
             onBack={() => handleSelectTool('home')}
+            theme={theme}
+          />
+        )}
+
+        {currentTool === 'secret-detonator' && (
+          <SecretDetonatorView
+            onBack={() => handleSelectTool('home')}
+            theme={theme}
+          />
+        )}
+
+        {currentTool === 'webgpu-brain' && (
+          <LocalWebGpuBrainView
+            onBack={() => handleSelectTool('home')}
+            onOpenApiSettings={() => setIsApiSettingsOpen(true)}
             theme={theme}
           />
         )}

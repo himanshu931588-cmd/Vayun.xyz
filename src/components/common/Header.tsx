@@ -62,7 +62,10 @@ export const Header: React.FC<HeaderProps> = ({
     currentTool === 'vayun-flow' || 
     currentTool === 'vayun-viva' || 
     currentTool === 'vayun-break' || 
-    currentTool === 'vayun-spec';
+    currentTool === 'vayun-spec' ||
+    currentTool === 'ai-smells-radar' ||
+    currentTool === 'viva-defense-badge' ||
+    currentTool === 'chaos-wind-tunnel';
 
   const isPdfTool =
     selectedCategory === 'pdf' || 
@@ -76,7 +79,9 @@ export const Header: React.FC<HeaderProps> = ({
     selectedCategory === 'ai' || 
     currentTool === 'thread-rescuer' || 
     currentTool === 'token-slimmer' || 
-    currentTool === 'prompt-sanitizer';
+    currentTool === 'prompt-sanitizer' ||
+    currentTool === 'secret-detonator' ||
+    currentTool === 'webgpu-brain';
 
   const isBillingTool =
     selectedCategory === 'billing' || 

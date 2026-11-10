@@ -6,6 +6,9 @@ export type ToolId =
   | 'vayun-break'
   | 'vayun-spec'
   | 'ascii-art'
+  | 'ai-smells-radar'
+  | 'viva-defense-badge'
+  | 'chaos-wind-tunnel'
   // Classic Document & Context Tools
   | 'merge-pdf'
   | 'split-pdf'
@@ -15,6 +18,8 @@ export type ToolId =
   | 'thread-rescuer'
   | 'token-slimmer'
   | 'prompt-sanitizer'
+  | 'secret-detonator'
+  | 'webgpu-brain'
   | 'invoice-maker'
   | 'receipt-matcher'
   | 'clean-csv'

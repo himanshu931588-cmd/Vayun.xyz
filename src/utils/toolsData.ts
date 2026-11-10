@@ -50,6 +50,42 @@ export const TOOLS: ToolMeta[] = [
     keywords: ['spec', 'api', 'contracts', 'schema', 'architecture', 'endpoints', 'trade-offs', 'database', 'model', 'pre-code', 'design', 'openapi', 'rest']
   },
   {
+    id: 'ai-smells-radar',
+    name: 'AI Smells & Logic Radar',
+    tagline: 'Detects fragile AI patterns, unhandled promises, and memory leaks locally.',
+    category: 'developer',
+    categoryName: 'Developer Flow',
+    icon: 'Radar',
+    description: 'Client-side AST and semantic parser scanning for AI code hallucinations, missing error boundaries, silent promise leaks, and unoptimized re-renders 100% in browser RAM.',
+    seoSlug: 'ai-smells-radar',
+    popular: true,
+    keywords: ['radar', 'smells', 'ai hallucination', 'copilot', 'cursor', 'leak', 'memory leak', 'unhandled promise', 'fragility', 'ast', 'scanner', 'code audit', 'n+1', 'anti-pattern']
+  },
+  {
+    id: 'viva-defense-badge',
+    name: 'Viva Defense Badge',
+    tagline: 'Generates an auditable GitHub badge proving you can defend your repository.',
+    category: 'developer',
+    categoryName: 'Developer Flow',
+    icon: 'Award',
+    description: 'Generate cryptographic, client-verified SVG proof badges for GitHub READMEs. Proves to recruiters and professors that you defended your architecture against Socratic examination.',
+    seoSlug: 'viva-defense-badge',
+    popular: true,
+    keywords: ['badge', 'viva', 'defense', 'github', 'readme', 'proof', 'cryptographic', 'audit', 'portfolio', 'placement', 'internship', 'student', 'verified by vayun', 'shield']
+  },
+  {
+    id: 'chaos-wind-tunnel',
+    name: 'Chaos Wind Tunnel',
+    tagline: 'Simulates dropped packets, race conditions, and corrupted state in browser RAM.',
+    category: 'developer',
+    categoryName: 'Developer Flow',
+    icon: 'Wind',
+    description: 'Interactive turbulence testing sandbox. Subject your TypeScript and JavaScript logic to race conditions, 3G network latency, abrupt socket drops, and fuzz payloads.',
+    seoSlug: 'chaos-wind-tunnel',
+    popular: true,
+    keywords: ['chaos', 'wind tunnel', 'vayun', 'turbulence', 'race condition', 'dropped packets', 'slow 3g', 'latency', 'resilience', 'stress test', 'socket drop', 'malformed json', 'fuzz']
+  },
+  {
     id: 'ascii-art',
     name: 'Ink Garden ASCII',
     tagline: 'Canvas2D raster visualizer & ASCII engine',
@@ -158,6 +194,30 @@ export const TOOLS: ToolMeta[] = [
     description: 'Automatically redact API keys, JWT tokens, IP addresses, emails, and credentials before pasting into LLM chats.',
     seoSlug: 'prompt-sanitizer',
     keywords: ['prompt', 'sanitizer', 'mask', 'redact', 'api key', 'secret', 'jwt', 'credentials', 'password', 'privacy', 'security']
+  },
+  {
+    id: 'secret-detonator',
+    name: 'Secret Detonator & Rehydrator',
+    tagline: 'Strips API keys and PII before prompting LLMs, rehydrating them locally upon return.',
+    category: 'ai',
+    categoryName: 'AI Context',
+    icon: 'KeyRound',
+    description: 'Two-way clipboard sanitizer: transforms live API keys, JWTs, DB credentials, and PII into realistic mock tokens for safe AI queries, and reverses them back in browser RAM when the AI responds.',
+    seoSlug: 'secret-detonator',
+    popular: true,
+    keywords: ['secret', 'detonator', 'rehydrator', 'api keys', 'strip', 'pii', 'openai', 'anthropic', 'jwt', 'env', 'safe prompt', 'clipboard', 'sanitize', 'de-identify']
+  },
+  {
+    id: 'webgpu-brain',
+    name: 'Local WebGPU Brain',
+    tagline: 'Runs offline code-analysis models directly on the user\'s graphics card.',
+    category: 'ai',
+    categoryName: 'AI Context',
+    icon: 'Cpu',
+    description: 'Client-side hardware acceleration via Chrome WebGPU and WebLLM. Run offline code intelligence and chat models directly on your GPU with 0 bytes transmitted over the network.',
+    seoSlug: 'local-webgpu-brain',
+    popular: true,
+    keywords: ['webgpu', 'webllm', 'local ai', 'offline', 'gpu', 'llama', 'deepseek', 'qwen', 'on-device', 'zero upload', 'vram', 'browser llm', 'inference']
   },
 
   // Billing & Micro-Transactions

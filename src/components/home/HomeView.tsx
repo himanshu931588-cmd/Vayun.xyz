@@ -24,7 +24,11 @@ import {
   Key,
   X,
   Coffee,
-  ExternalLink
+  ExternalLink,
+  Radar,
+  Award,
+  Wind,
+  KeyRound
 } from 'lucide-react';
 import { ToolCategory, ToolId } from '../../types';
 import { TOOLS } from '../../utils/toolsData';
@@ -100,6 +104,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
       case 'Table': return <Table {...props} />;
       case 'FileSpreadsheet': return <FileSpreadsheet {...props} />;
       case 'FileCode2': return <FileCode2 {...props} />;
+      case 'Radar': return <Radar {...props} />;
+      case 'Award': return <Award {...props} />;
+      case 'Wind': return <Wind {...props} />;
+      case 'KeyRound': return <KeyRound {...props} />;
+      case 'Cpu': return <Cpu {...props} />;
       default: return <BrainCircuit {...props} />;
     }
   };

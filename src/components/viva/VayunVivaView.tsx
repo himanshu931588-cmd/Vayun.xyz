@@ -23,6 +23,7 @@ import { getStoredApiKey, evaluateVivaWithAi } from '../../utils/geminiApi';
 interface VayunVivaViewProps {
   onBack: () => void;
   onNavigateToFlow?: () => void;
+  onNavigateToBadge?: () => void;
   onOpenApiSettings?: () => void;
   theme?: 'dark' | 'light';
 }
@@ -30,6 +31,7 @@ interface VayunVivaViewProps {
 export const VayunVivaView: React.FC<VayunVivaViewProps> = ({
   onBack,
   onNavigateToFlow,
+  onNavigateToBadge,
   onOpenApiSettings,
   theme = 'dark'
 }) => {
@@ -277,6 +279,19 @@ export const VayunVivaView: React.FC<VayunVivaViewProps> = ({
             <Award className="w-3.5 h-3.5" />
             <span>Scorecard</span>
           </button>
+
+          {onNavigateToBadge && (
+            <button
+              onClick={onNavigateToBadge}
+              className={`px-3 py-1.5 rounded text-xs font-mono flex items-center gap-1.5 border transition-colors ${
+                isLight ? 'border-[#0A2540] bg-[#0A2540] text-white' : 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400'
+              }`}
+              title="Generate Verified by Vayun GitHub README badge"
+            >
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>GitHub Badge</span>
+            </button>
+          )}
         </div>
       </div>
 

@@ -20,6 +20,9 @@ Vayun.xyz is an anti-black-box workstation designed for developers, engineering 
 ## Features
 
 ### 1. Developer Flow and Code Defense
+- **AI Smells & Logic Radar:** Client-side AST and semantic parser scanning for AI code hallucinations (missing edge-case guards, unhandled promises, loose null checks) and silent memory leaks.
+- **Viva Defense Badge:** Cryptographic SHA-256 proof badge generator for GitHub READMEs, proving you defended repository architecture against Socratic examination.
+- **Chaos Wind Tunnel:** Interactive turbulence testing sandbox in browser RAM to stress-test logic against synthetic race conditions, slow 3G jitter, socket drops, and fuzz payloads.
 - **Vayun Flow:** Inspect and trace code execution paths across multiple files in a clear visual graph.
 - **Vayun Viva:** Interactive questions to test understanding of your own code before reviews or interviews.
 - **Vayun Break:** Identifies common edge cases, potential null pointers, and logic gaps in code snippets.
@@ -33,11 +36,13 @@ Vayun.xyz is an anti-black-box workstation designed for developers, engineering 
 - **Resume Builder:** Professional ATS-friendly resume creator supporting 6 formats (Classic Executive, Modern Tech, Two-Column Split, Minimalist Swiss, Engineering ATS, and Academic CV) with live A4 preview and client-side vector PDF export.
 
 ### 3. AI and Context Utilities
-- **Vayun AI Chatbot:** An in-browser AI copilot named Vayun accessible via the floating assistant widget or `⌘J` / `Ctrl+J`. It answers questions across all workstation tools, explains client-side RAM privacy, assists with code debugging, and provides one-click tool launch actions. Powered by Gemini 2.0 Flash when configured, with a comprehensive built-in offline knowledge engine.
+- **Secret Detonator & Rehydrator:** Two-way clipboard sanitizer that converts live API keys, JWTs, DB credentials, and PII into realistic mock tokens for safe AI queries, and reverses them back in browser RAM when the AI responds.
+- **Local WebGPU Brain:** On-device hardware-accelerated code analysis and reasoning models (Llama 3.2 1B, DeepSeek R1 1.5B, Qwen 2.5 Coder 0.5B) powered by Chrome WebGPU and WebLLM with 0 bytes transmitted over the network.
+- **Vayun AI Chatbot:** An in-browser AI copilot named Vayun accessible via the floating assistant widget or `⌘J` / `Ctrl+J`. Powered by Gemini 2.0 Flash or local WebGPU, with a comprehensive built-in offline knowledge engine.
 - **High-Speed LLM Inference:** Powered by Gemini 2.0 Flash and Flash-Lite models with an in-memory response cache for instant generation.
-- **Token Estimator:** Count tokens and estimate inference costs across major language model providers.
+- **Token Slimmer:** Reduce code prompt token cost by up to 60% by stripping comments, debug console calls, and extra spacing.
 - **Prompt Sanitizer:** Automatically detect and remove secrets, passwords, and sensitive keys from prompts.
-- **Context Rescuer:** Re-index and organize lengthy conversation threads into structured reference cards.
+- **Thread Rescuer:** Re-index and organize lengthy conversation threads into structured reference cards.
 
 ### 4. Business and Productivity
 - **Invoice Generator:** Create clean, printable PDF invoices directly inside the browser.

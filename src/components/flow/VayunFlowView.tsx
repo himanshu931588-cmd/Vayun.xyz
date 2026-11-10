@@ -11,7 +11,8 @@ import {
   CheckCircle2,
   Lock,
   Upload,
-  Plus
+  Plus,
+  Radar
 } from 'lucide-react';
 import { RepoProject, CodeFile, CallGraphNode, TraceStep, LogicHotspot } from '../../types';
 import { PRESET_PROJECTS, parseCustomCodeToProject } from '../../utils/codeAnalysisEngine';
@@ -19,6 +20,7 @@ import { PRESET_PROJECTS, parseCustomCodeToProject } from '../../utils/codeAnaly
 interface VayunFlowViewProps {
   onBack: () => void;
   onNavigateToViva?: () => void;
+  onNavigateToRadar?: () => void;
   onOpenApiSettings?: () => void;
   theme?: 'dark' | 'light';
 }
@@ -26,6 +28,7 @@ interface VayunFlowViewProps {
 export const VayunFlowView: React.FC<VayunFlowViewProps> = ({
   onBack,
   onNavigateToViva,
+  onNavigateToRadar,
   onOpenApiSettings,
   theme = 'dark'
 }) => {
@@ -221,6 +224,18 @@ export const VayunFlowView: React.FC<VayunFlowViewProps> = ({
             <Upload className="w-3.5 h-3.5" />
             <span>Analyze Custom Code</span>
           </button>
+
+          {onNavigateToRadar && (
+            <button
+              onClick={onNavigateToRadar}
+              className={`px-3 py-1.5 rounded text-xs font-mono font-medium flex items-center gap-1.5 transition-colors ${
+                isLight ? 'border border-[#0A2540] bg-[#0A2540] text-white hover:bg-[#071829]' : 'border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20'
+              }`}
+            >
+              <Radar className="w-3.5 h-3.5" />
+              <span>AI Smells Radar</span>
+            </button>
+          )}
 
           {onNavigateToViva && (
             <button

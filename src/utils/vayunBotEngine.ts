@@ -18,6 +18,11 @@ CORE PRINCIPLES OF VAYUN.XYZ:
 3. Anti-Black-Box Philosophy: We empower developers to understand their actual code AST, control flow, Big-O complexity, and failure modes instead of blindly relying on autocomplete.
 
 TOOLS IN THE VAYUN WORKSTATION:
+- AI Smells & Logic Radar (tool:ai-smells-radar): Scans AST locally to detect fragile AI code patterns, unhandled promises, and memory leaks.
+- Viva Defense Badge (tool:viva-defense-badge): Generates cryptographic proof badges for GitHub READMEs proving you can defend your codebase.
+- Chaos Wind Tunnel (tool:chaos-wind-tunnel): Live in-browser turbulence simulation for race conditions, 3G packet delays, and socket drops.
+- Secret Detonator & Rehydrator (tool:secret-detonator): Two-way prompt scrubber that strips API keys and PII before prompting LLMs and reverses them locally upon return.
+- Local WebGPU Brain (tool:webgpu-brain): Runs offline code-analysis models directly on the user's graphics card via Chrome WebGPU.
 - Vayun Flow (tool:vayun-flow): Multi-file AST call graph generator and runtime trace scrubber. Visualizes function hops, state mutations, and API route flows.
 - Vayun Viva (tool:vayun-viva): Socratic technical examiner simulator. Asks 3 tiers of probing architectural questions about the developer's real code.
 - Vayun Break (tool:vayun-break): Wind-tunnel bug injection sandbox for practicing real-world debugging.
@@ -27,7 +32,7 @@ TOOLS IN THE VAYUN WORKSTATION:
 - Merge PDF (tool:merge-pdf): In-browser multi-PDF document joiner.
 - Compress PDF (tool:compress-pdf): Client-side PDF stream optimization and size reduction.
 - Image to PDF (tool:image-to-pdf): Convert PNG/JPEG galleries directly into PDFs.
-- Resume Builder (tool:resume-builder): ATS-friendly, clean executive resume builder with live preview and PDF export.
+- Resume Builder (tool:resume-builder): ATS-friendly, clean executive resume builder with live preview, 6 templates, and vector PDF export.
 - Token Slimmer (tool:token-slimmer): AI prompt token compressor preserving semantic meaning.
 - Prompt Sanitizer (tool:prompt-sanitizer): Scans prompts and redacts API keys, credentials, and PII.
 - Thread Rescuer (tool:thread-rescuer): Re-indexes lengthy LLM context threads into structured cards.
@@ -149,6 +154,63 @@ Once installed, you can highlight any code snippet on GitHub or LeetCode and rig
 
 Your key is stored solely in your local browser \`localStorage\` and communicated directly to Google's HTTPS endpoint.`,
       suggestedTools: ['home']
+    };
+  }
+
+  if (q.includes('radar') || q.includes('smell') || q.includes('hallucinat') || q.includes('fragil') || q.includes('copilot') || q.includes('cursor')) {
+    return {
+      reply: `**AI Smells & Logic Radar (tool:ai-smells-radar):**
+- **AI Fragility Score:** Evaluates code blocks produced by Copilot, Cursor, or ChatGPT to flag missing edge-case guards, unhandled null traversals, and unbounded async calls.
+- **Silent Leak Detector:** Identifies uncleaned intervals, dangling EventSources, and stream leaks before they cause V8 heap crashes in production.
+- **1-Click Hardening:** Review the explanation for why AI models hallucinate the pattern and apply safe, tested code fixes instantly in your browser RAM.`,
+      suggestedTools: ['ai-smells-radar', 'vayun-flow']
+    };
+  }
+
+  if (q.includes('badge') || q.includes('proof') || q.includes('readme') || q.includes('portfolio') || q.includes('verified')) {
+    return {
+      reply: `**Viva Defense Badge (tool:viva-defense-badge):**
+- Generate an auditable SVG badge and cryptographic SHA-256 proof token for your GitHub README.
+- Proves to recruiters, hiring managers, and university professors that you genuinely comprehend and can defend the architecture of your repository against Socratic examination.
+- Includes 1-click Markdown embed code and recruiter verification portal.`,
+      suggestedTools: ['viva-defense-badge', 'vayun-viva']
+    };
+  }
+
+  if (q.includes('wind tunnel') || q.includes('chaos') || q.includes('race condition') || q.includes('latency') || q.includes('turbulence')) {
+    return {
+      reply: `**Chaos Wind Tunnel (tool:chaos-wind-tunnel):**
+- Interactive turbulence testing sandbox in browser RAM (inspired by Vayun, the Sanskrit principle of wind).
+- Subject your TypeScript or JavaScript handlers to:
+  - **[Inject Race Condition]:** 5 concurrent out-of-order execution promises.
+  - **[Simulate Slow 3G / High Latency]:** Injects 2400ms synthetic jitter to test AbortController deadlines.
+  - **[Drop Database / Socket Connection]:** Abrupt TCP drop to verify exponential backoff.
+  - **[Send Malformed JSON Payload]:** Corrupted schemas, NaN, and unexpected nulls.
+- Live aerodynamic airspeed dial and real-time resilience pass score.`,
+      suggestedTools: ['chaos-wind-tunnel', 'vayun-break']
+    };
+  }
+
+  if (q.includes('detonat') || q.includes('secret') || q.includes('rehydrat') || q.includes('mask') || q.includes('api key') || q.includes('scrub')) {
+    return {
+      reply: `**Secret Detonator & Rehydrator (tool:secret-detonator):**
+- **One-Click Clipboard Sanitizer:** Strips live OpenAI keys, Anthropic keys, AWS credentials, JWTs, and database URLs, replacing them with realistic mock tokens.
+- **Safe Prompting:** Paste clean code into ChatGPT or Claude with 0 risk of leaking enterprise credentials or PII.
+- **Local Rehydration:** Paste the AI model's response back into Vayun to reverse the mock tokens back to your authentic secrets locally in browser RAM!`,
+      suggestedTools: ['secret-detonator', 'prompt-sanitizer']
+    };
+  }
+
+  if (q.includes('webgpu') || q.includes('local ai') || q.includes('offline model') || q.includes('llama') || q.includes('deepseek') || q.includes('qwen')) {
+    return {
+      reply: `**Local WebGPU Brain (tool:webgpu-brain):**
+- Hardware-accelerated offline LLM inference directly on your graphics card via Chrome WebGPU and WebLLM.
+- Supported model architectures:
+  - **Llama 3.2 1B (Meta AI):** Fast reasoning and code logic defense.
+  - **DeepSeek R1 1.5B (Distill):** Deep chain-of-thought logic and edge-case deduction.
+  - **Qwen 2.5 Coder 0.5B:** Ultra-compact model running on integrated laptop GPUs with zero latency.
+- 100% offline, zero network egress, no API key required.`,
+      suggestedTools: ['webgpu-brain']
     };
   }
 

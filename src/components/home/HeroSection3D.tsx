@@ -10,7 +10,9 @@ import {
   CheckCircle2,
   Lock,
   Puzzle,
-  LifeBuoy
+  LifeBuoy,
+  Radar,
+  Wind
 } from 'lucide-react';
 import { ToolId } from '../../types';
 import { VayunLogo } from '../common/VayunLogo';
@@ -195,6 +197,32 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
               <Network className="w-4 h-4 transition-transform group-hover:scale-110" />
               <span>Launch Vayun Flow</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </button>
+
+            <button
+              onClick={() => onSelectTool('ai-smells-radar')}
+              className={`px-4 py-3 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
+                isLight 
+                  ? 'border-[#0A2540]/30 bg-white hover:bg-[#0A2540] hover:text-white text-[#0A2540] shadow-xs' 
+                  : 'border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-white'
+              }`}
+              title="Detect AI code hallucinations, missing guards & memory leaks locally"
+            >
+              <Radar className="w-4 h-4 text-emerald-400" />
+              <span>AI Smells Radar</span>
+            </button>
+
+            <button
+              onClick={() => onSelectTool('chaos-wind-tunnel')}
+              className={`px-4 py-3 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
+                isLight 
+                  ? 'border-[#0A2540]/30 bg-white hover:bg-[#0A2540] hover:text-white text-[#0A2540] shadow-xs' 
+                  : 'border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-white'
+              }`}
+              title="Stress-test code with race conditions, 3G delays & dropped sockets"
+            >
+              <Wind className="w-4 h-4 text-cyan-400" />
+              <span>Chaos Wind Tunnel</span>
             </button>
 
             <button
