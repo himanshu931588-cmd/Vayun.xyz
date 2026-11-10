@@ -5,10 +5,7 @@ import {
   FileText, 
   Key, 
   ArrowRight, 
-  Sparkles,
-  Terminal,
   Cpu,
-  Layers,
   Activity,
   CheckCircle2,
   Lock
@@ -354,21 +351,6 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
               <div className="text-neutral-500">
                 Latency: 8ms
               </div>
-            </div>
-
-            {/* Interactive 3D floating badge */}
-            <div 
-              style={{
-                transform: 'translateZ(30px)'
-              }}
-              className={`absolute -bottom-3 -right-3 px-3 py-1.5 rounded-full border shadow-lg text-[10px] font-mono font-semibold flex items-center gap-1.5 ${
-                isLight 
-                  ? 'bg-black text-white border-neutral-800' 
-                  : 'bg-white text-black border-neutral-200'
-              }`}
-            >
-              <Sparkles className="w-3 h-3 text-amber-400" />
-              <span>3D Interactive Engine</span>
             </div>
           </div>
         </div>
