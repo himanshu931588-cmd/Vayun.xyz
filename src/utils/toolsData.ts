@@ -256,7 +256,19 @@ export const TOOLS: ToolMeta[] = [
     keywords: ['receipt', 'matcher', 'expense', 'photo', 'ocr', 'items', 'extract', 'bills', 'scan']
   },
 
-  // Tabular Data Scrubbing
+  // Tabular Data Scrubbing & Analytics
+  {
+    id: 'data-analytics',
+    name: 'Data Insights & PPT Deck AI',
+    tagline: '10-second executive insights & slide decks from PDF/CSV',
+    category: 'tabular',
+    categoryName: 'Tabular & Analytics',
+    icon: 'Presentation',
+    description: 'Upload any PDF report or CSV spreadsheet to extract high-impact metrics, trend anomalies, and a 5-slide PowerPoint deck ready to present or export in under 10 seconds.',
+    seoSlug: 'data-insights-ppt',
+    popular: true,
+    keywords: ['data', 'analytics', 'insights', 'ppt', 'powerpoint', 'slides', 'presentation', 'csv', 'pdf', 'deck', 'statistics', 'charts', 'executive', 'summary', 'report', 'viva']
+  },
   {
     id: 'clean-csv',
     name: 'Clean CSV',

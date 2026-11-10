@@ -94,7 +94,8 @@ export const Header: React.FC<HeaderProps> = ({
     selectedCategory === 'tabular' || 
     currentTool === 'clean-csv' || 
     currentTool === 'preserve-zeros' || 
-    currentTool === 'table-converter';
+    currentTool === 'table-converter' ||
+    currentTool === 'data-analytics';
 
   return (
     <header className={`sticky top-0 z-40 w-full transition-colors ${

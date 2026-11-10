@@ -25,6 +25,7 @@ export type ToolId =
   | 'clean-csv'
   | 'preserve-zeros'
   | 'table-converter'
+  | 'data-analytics'
   | 'paylink-view';
 
 export type ToolCategory = 'developer' | 'pdf' | 'ai' | 'billing' | 'tabular';

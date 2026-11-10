@@ -213,6 +213,11 @@ export const Footer: React.FC<FooterProps> = ({
                 </button>
               </li>
               <li>
+                <button onClick={() => onSelectTool('data-analytics')} className={`transition-colors flex items-center gap-1.5 font-medium ${isLight ? 'text-blue-600 hover:text-blue-700' : 'text-blue-400 hover:text-white'}`}>
+                  Data Insights & PPT AI
+                </button>
+              </li>
+              <li>
                 <button onClick={() => onSelectTool('clean-csv')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Clean CSV
                 </button>

@@ -118,6 +118,11 @@ const TOOL_SPECS: Record<string, ToolSpec> = {
     telemetry: 'Trims whitespace & prunes blank rows',
     metric: 'Delimited'
   },
+  'data-analytics': {
+    specBadge: '10S PPT SYNTHESIS',
+    telemetry: 'Turns PDF & CSV into 5-slide executive decks',
+    metric: '< 10s Speed'
+  },
   'preserve-zeros': {
     specBadge: 'ID PRESERVER',
     telemetry: 'Prevents Excel truncation of leading zeros',

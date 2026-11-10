@@ -28,7 +28,8 @@ import {
   Radar,
   Award,
   Wind,
-  KeyRound
+  KeyRound,
+  Presentation
 } from 'lucide-react';
 import { ToolCategory, ToolId } from '../../types';
 import { TOOLS } from '../../utils/toolsData';
@@ -112,6 +113,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       case 'Award': return <Award {...props} />;
       case 'Wind': return <Wind {...props} />;
       case 'KeyRound': return <KeyRound {...props} />;
+      case 'Presentation': return <Presentation {...props} />;
       case 'Cpu': return <Cpu {...props} />;
       default: return <BrainCircuit {...props} />;
     }

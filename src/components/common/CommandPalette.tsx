@@ -30,7 +30,8 @@ import {
   Wind,
   KeyRound,
   Cpu,
-  Download
+  Download,
+  Presentation
 } from 'lucide-react';
 import { TOOLS } from '../../utils/toolsData';
 import { ToolId } from '../../types';
@@ -85,6 +86,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       case 'Award': return <Award {...props} />;
       case 'Wind': return <Wind {...props} />;
       case 'KeyRound': return <KeyRound {...props} />;
+      case 'Presentation': return <Presentation {...props} />;
       case 'Cpu': return <Cpu {...props} />;
       default: return <FileText {...props} />;
     }

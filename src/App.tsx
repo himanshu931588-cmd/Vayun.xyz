@@ -45,6 +45,7 @@ import { ReceiptMatcherView } from './components/invoice/ReceiptMatcherView';
 import { CleanCsvView } from './components/tabular/CleanCsvView';
 import { PreserveZerosView } from './components/tabular/PreserveZerosView';
 import { TableConverterView } from './components/tabular/TableConverterView';
+import { DataAnalyticsView } from './components/analytics/DataAnalyticsView';
 
 import { ToolCategory, ToolId, InvoiceData, InvoiceItem } from './types';
 import { decodePayLink } from './utils/invoiceStorage';
@@ -427,6 +428,14 @@ export function App() {
         {currentTool === 'table-converter' && (
           <TableConverterView
             onBack={() => handleSelectTool('home')}
+            theme={theme}
+          />
+        )}
+
+        {currentTool === 'data-analytics' && (
+          <DataAnalyticsView
+            onBack={() => handleSelectTool('home')}
+            onOpenApiSettings={() => setIsApiSettingsOpen(true)}
             theme={theme}
           />
         )}
