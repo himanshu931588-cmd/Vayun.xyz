@@ -36,6 +36,7 @@ import { getStoredApiKey } from '../../utils/geminiApi';
 import { VayunLogo } from '../common/VayunLogo';
 import { VayunWordmark } from '../common/VayunWordmark';
 import { HeroSection3D } from './HeroSection3D';
+import { ToolCardLivePreview } from './ToolCardLivePreview';
 
 interface HomeViewProps {
   onSelectTool: (id: ToolId) => void;
@@ -265,50 +266,62 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <div
               key={tool.id}
               onClick={() => onSelectTool(tool.id)}
-              className={`p-5 rounded-lg border transition-all cursor-pointer group flex flex-col justify-between ${
+              className={`p-5 rounded-2xl border transition-all cursor-pointer group flex flex-col justify-between space-y-4 ${
                 isLight 
-                  ? 'bg-white border-slate-200 hover:border-[#0A2540] hover:shadow-md' 
-                  : 'bg-neutral-950 border-neutral-800 hover:border-neutral-500 hover:bg-neutral-900/60'
+                  ? 'bg-white border-slate-200 hover:border-[#0A2540] hover:shadow-lg hover:shadow-blue-950/5' 
+                  : 'bg-neutral-950 border-neutral-800 hover:border-neutral-500 hover:bg-neutral-900/60 hover:shadow-xl hover:shadow-black/60'
               }`}
             >
-              <div className="space-y-3">
+              <div className="space-y-3.5">
+                {/* Top Badge Strip: Crisp JetBrains Mono Labels */}
                 <div className="flex items-center justify-between">
-                  <div className={`p-1.5 rounded border transition-colors ${
+                  <div className={`p-2 rounded-lg border transition-colors ${
                     isLight ? 'border-slate-200 bg-slate-50 group-hover:bg-[#0A2540] group-hover:text-white' : 'border-neutral-800 bg-neutral-900 group-hover:bg-neutral-800'
                   }`}>
                     {getToolIcon(tool.icon)}
                   </div>
-                  <span className={`text-[11px] font-mono ${
-                    isLight ? 'text-slate-500 font-medium' : 'text-neutral-500'
+                  <span className={`text-[11px] font-mono font-medium tracking-wide uppercase px-2 py-0.5 rounded border ${
+                    isLight ? 'border-slate-200 bg-slate-50 text-slate-600' : 'border-neutral-800 bg-neutral-900 text-neutral-400'
                   }`}>
                     {tool.categoryName}
                   </span>
                 </div>
 
+                {/* Editorial Serif Headline Paired with Crisp Mono Tagline */}
                 <div>
-                  <h3 className={`text-base font-semibold tracking-tight transition-colors ${
-                    isLight ? 'text-slate-900 group-hover:text-[#0A2540]' : 'text-white group-hover:text-white'
+                  <h3 className={`text-lg font-serif font-bold tracking-tight transition-colors leading-snug ${
+                    isLight ? 'text-slate-950 group-hover:text-[#0A2540]' : 'text-white group-hover:text-white'
                   }`}>
                     {tool.name}
                   </h3>
-                  <p className={`text-xs mt-0.5 font-mono ${
-                    isLight ? 'text-[#0A2540]/80 font-medium' : 'text-neutral-400'
+                  <p className={`text-xs mt-1 font-mono font-medium ${
+                    isLight ? 'text-[#0A2540]/80' : 'text-neutral-400'
                   }`}>
                     {tool.tagline}
                   </p>
                 </div>
 
+                {/* Description */}
                 <p className={`text-xs leading-relaxed ${
-                  isLight ? 'text-slate-600' : 'text-neutral-400'
+                  isLight ? 'text-slate-600 font-normal' : 'text-neutral-400'
                 }`}>
                   {tool.description}
                 </p>
+
+                {/* Miniature Live Interactive Preview Appliance */}
+                <div className="pt-1">
+                  <ToolCardLivePreview toolId={tool.id} isLight={isLight} />
+                </div>
               </div>
 
-              <div className={`mt-5 pt-3 border-t flex items-center justify-between text-xs font-mono transition-colors ${
+              {/* Bottom Card Action Footer */}
+              <div className={`pt-3 border-t flex items-center justify-between text-xs font-mono transition-colors ${
                 isLight ? 'border-slate-100 text-[#0A2540]/70 group-hover:text-[#0A2540] font-semibold' : 'border-neutral-900 text-neutral-400 group-hover:text-white'
               }`}>
-                <span>Open tool</span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Launch appliance</span>
+                </span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </div>
             </div>
