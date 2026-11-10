@@ -3,7 +3,15 @@ import { VivaQuestion, CodeFile } from '../types';
 const STORAGE_KEY_API_KEY = 'vayun_gemini_api_key';
 const STORAGE_KEY_MODEL = 'vayun_gemini_model';
 
-export type GeminiModelId = 'gemini-1.5-flash' | 'gemini-2.0-flash' | 'gemini-1.5-pro';
+export type GeminiModelId = 
+  | 'gemini-2.0-flash' 
+  | 'gemini-2.0-flash-lite' 
+  | 'gemini-1.5-flash' 
+  | 'gemini-1.5-flash-8b' 
+  | 'gemini-1.5-pro';
+
+// Fast in-memory cache for instant responses (0ms response time for repeated queries)
+const responseCache = new Map<string, string>();
 
 export function getStoredApiKey(): string {
   try {
@@ -28,12 +36,19 @@ export function saveStoredApiKey(key: string): void {
 export function getStoredModel(): GeminiModelId {
   try {
     const saved = localStorage.getItem(STORAGE_KEY_MODEL);
-    if (saved === 'gemini-2.0-flash' || saved === 'gemini-1.5-pro' || saved === 'gemini-1.5-flash') {
+    const validModels: GeminiModelId[] = [
+      'gemini-2.0-flash', 
+      'gemini-2.0-flash-lite', 
+      'gemini-1.5-flash', 
+      'gemini-1.5-flash-8b', 
+      'gemini-1.5-pro'
+    ];
+    if (saved && validModels.includes(saved as GeminiModelId)) {
       return saved as GeminiModelId;
     }
-    return 'gemini-1.5-flash';
+    return 'gemini-2.0-flash'; // Default to the ultra-fast next-gen model
   } catch {
-    return 'gemini-1.5-flash';
+    return 'gemini-2.0-flash';
   }
 }
 
@@ -47,7 +62,7 @@ export function saveStoredModel(model: GeminiModelId): void {
 
 export async function testGeminiApiKey(
   apiKey: string, 
-  model: GeminiModelId = 'gemini-1.5-flash'
+  model: GeminiModelId = 'gemini-2.0-flash'
 ): Promise<{ success: boolean; message: string }> {
   const cleanKey = apiKey.trim();
   if (!cleanKey) {
@@ -87,7 +102,7 @@ export async function testGeminiApiKey(
     const data = await response.json();
     const replyText = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
     if (replyText.toLowerCase().includes('verified') || replyText.trim().length > 0) {
-      return { success: true, message: `Successfully connected to Google Gemini (${model})!` };
+      return { success: true, message: `Successfully connected to Google Gemini (${model})! Ready for instant low-latency inference.` };
     }
 
     return { success: true, message: `Connected to Gemini API successfully.` };
@@ -110,6 +125,13 @@ export async function callGemini(
   }
 
   const activeModel = model || getStoredModel();
+  const cacheKey = `${activeModel}:${systemInstruction || ''}:${prompt}`;
+  
+  // Instant 0ms response if cached
+  if (responseCache.has(cacheKey)) {
+    return responseCache.get(cacheKey)!;
+  }
+
   const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${activeModel}:generateContent?key=${apiKey}`;
 
   const payload: any = {
@@ -119,7 +141,7 @@ export async function callGemini(
       }
     ],
     generationConfig: {
-      temperature: 0.3,
+      temperature: 0.2, // Lower temperature for instant, deterministic tokens
       maxOutputTokens: 1024
     }
   };
@@ -146,6 +168,9 @@ export async function callGemini(
   if (!text) {
     throw new Error('Empty response from Gemini API');
   }
+
+  // Cache for future instant lookups
+  responseCache.set(cacheKey, text);
   return text;
 }
 

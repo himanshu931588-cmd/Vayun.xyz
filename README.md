@@ -24,11 +24,12 @@ Vayun.xyz is a privacy-first web platform designed for developers, engineering s
 
 ### 2. Document and PDF Suite
 - **Merge PDF:** Combine multiple PDF files into a single organized document.
-- **Split PDF:** Separate specific page ranges into standalone files.
+- **Split & Extract PDF:** High-capacity extraction supporting multi-hundred page ranges (e.g. 1-100, 1-500), fixed-size chunking (every 10, 25, or 50 pages), and individual page separation with batch downloads.
 - **Compress PDF:** Reduce file size while preserving legibility.
-- **Page Extraction:** Extract individual pages or reorder document layouts.
+- **Image to PDF:** Convert image files directly into formatted PDF documents in browser memory.
 
 ### 3. AI and Context Utilities
+- **High-Speed LLM Inference:** Powered by Gemini 2.0 Flash and Flash-Lite models with an in-memory response cache for instant generation.
 - **Token Estimator:** Count tokens and estimate inference costs across major language model providers.
 - **Prompt Sanitizer:** Automatically detect and remove secrets, passwords, and sensitive keys from prompts.
 - **Context Rescuer:** Re-index and organize lengthy conversation threads into structured reference cards.

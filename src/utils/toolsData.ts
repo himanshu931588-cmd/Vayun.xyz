@@ -90,13 +90,14 @@ export const TOOLS: ToolMeta[] = [
   {
     id: 'split-pdf',
     name: 'Split & Extract PDF',
-    tagline: 'Separate pages or extract ranges',
+    tagline: 'High-capacity ranges, chunks & single pages',
     category: 'pdf',
     categoryName: 'PDF Suite',
     icon: 'Scissors',
-    description: 'Extract specific page ranges (e.g. 1-4, 8) or split multi-page documents into standalone single-page files.',
+    description: 'Extract high-capacity page ranges (e.g. 1-100, 1-500), split into fixed chunks (every 10 or 50 pages), or separate all pages. 100% in-browser RAM execution.',
     seoSlug: 'split-pdf',
-    keywords: ['split', 'extract', 'pdf', 'pages', 'range', 'cut', 'separate', 'select']
+    popular: true,
+    keywords: ['split', 'extract', 'pdf', 'pages', 'range', 'chunks', 'batch', 'cut', 'separate', 'select']
   },
   {
     id: 'compress-pdf',

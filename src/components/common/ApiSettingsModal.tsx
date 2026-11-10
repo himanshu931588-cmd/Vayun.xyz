@@ -156,12 +156,14 @@ export const ApiSettingsModal: React.FC<ApiSettingsModalProps> = ({
           {/* Model Selector */}
           <div className="space-y-1.5">
             <label className="text-xs font-mono font-medium block">
-              Active Gemini Model
+              Active Gemini Model (Instant Inference)
             </label>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
               {[
-                { id: 'gemini-1.5-flash', label: '1.5 Flash', tag: 'Fast & Free' },
-                { id: 'gemini-2.0-flash', label: '2.0 Flash', tag: 'Next-Gen' },
+                { id: 'gemini-2.0-flash', label: '2.0 Flash', tag: 'Fastest (Default)' },
+                { id: 'gemini-2.0-flash-lite', label: '2.0 Flash Lite', tag: 'Instant Speed' },
+                { id: 'gemini-1.5-flash', label: '1.5 Flash', tag: 'Reliable & Free' },
+                { id: 'gemini-1.5-flash-8b', label: '1.5 Flash-8B', tag: 'Low Latency' },
                 { id: 'gemini-1.5-pro', label: '1.5 Pro', tag: 'Deep Reasoning' }
               ].map(m => (
                 <button

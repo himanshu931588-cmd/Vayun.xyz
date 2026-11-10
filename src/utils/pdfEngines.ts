@@ -74,6 +74,43 @@ export async function splitAllPdfPages(file: File): Promise<{ pageNum: number; b
 }
 
 /**
+ * Splits a PDF into multiple fixed-size chunks (e.g. 5, 10, 25, 50, 100 pages per chunk)
+ */
+export async function splitPdfIntoChunks(
+  file: File, 
+  chunkSize: number
+): Promise<{ partIndex: number; startPage: number; endPage: number; bytes: Uint8Array }[]> {
+  const arrayBuffer = await file.arrayBuffer();
+  const srcDoc = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
+  const total = srcDoc.getPageCount();
+  const results: { partIndex: number; startPage: number; endPage: number; bytes: Uint8Array }[] = [];
+
+  const actualChunkSize = Math.max(1, chunkSize);
+  let partIndex = 1;
+
+  for (let i = 0; i < total; i += actualChunkSize) {
+    const end = Math.min(i + actualChunkSize, total);
+    const indices: number[] = [];
+    for (let p = i; p < end; p++) indices.push(p);
+
+    const chunkDoc = await PDFDocument.create();
+    const copiedPages = await chunkDoc.copyPages(srcDoc, indices);
+    copiedPages.forEach(page => chunkDoc.addPage(page));
+
+    const bytes = await chunkDoc.save();
+    results.push({
+      partIndex,
+      startPage: i + 1,
+      endPage: end,
+      bytes
+    });
+    partIndex++;
+  }
+
+  return results;
+}
+
+/**
  * Compresses a PDF by stripping unreferenced metadata, object dictionary compression, and stream cleaning
  */
 export async function compressPdf(
