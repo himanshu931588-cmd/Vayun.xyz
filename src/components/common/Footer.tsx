@@ -45,9 +45,9 @@ export const Footer: React.FC<FooterProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
           <div className="col-span-2 space-y-3">
-            <div className="flex items-center gap-2">
-              <VayunLogo size={22} />
-              <VayunWordmark height={20} theme={theme} />
+            <div className="flex items-center gap-2.5">
+              <VayunLogo size={24} />
+              <VayunWordmark height={24} theme={theme} />
             </div>
             <p className={`text-xs leading-relaxed max-w-sm ${isLight ? 'text-neutral-500' : 'text-neutral-400'}`}>
               The Anti-Black-Box Developer & Defense Platform for Coding Students. 100% in-browser execution, zero remote uploads.

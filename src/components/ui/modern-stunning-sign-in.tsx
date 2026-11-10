@@ -164,7 +164,7 @@ const SignIn1: React.FC<SignIn1Props> = ({
 
         {/* Title Wordmark */}
         <div className="mb-2">
-          <VayunWordmark height={28} theme="dark" />
+          <VayunWordmark height={32} theme="dark" />
         </div>
         <p className="text-xs text-neutral-400 mb-5 text-center font-mono">
           {mode === 'signup' ? 'Create an account to save your progress' : 'Welcome back, sign in to your workspace'}

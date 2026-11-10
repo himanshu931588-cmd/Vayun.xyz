@@ -105,9 +105,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
       }`}>
         <div className="max-w-3xl space-y-4">
           <div className="flex items-center gap-3">
-            <VayunLogo size={36} />
-            <div className="flex items-center gap-2">
-              <VayunWordmark height={26} theme={theme} />
+            <VayunLogo size={40} />
+            <div className="flex items-center gap-2.5">
+              <VayunWordmark height={32} theme={theme} />
               <span className="text-neutral-500 font-mono text-xs">/</span>
               <span className="text-neutral-400 font-mono text-xs">anti-black-box</span>
             </div>
