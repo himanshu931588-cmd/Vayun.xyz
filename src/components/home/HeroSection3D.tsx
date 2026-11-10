@@ -79,7 +79,7 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
       onMouseLeave={handleMouseLeave}
       className={`relative rounded-3xl border overflow-hidden transition-all duration-300 ${
         isLight
-          ? 'bg-gradient-to-b from-white via-neutral-50/80 to-neutral-100/60 border-neutral-200/90 shadow-xl shadow-neutral-200/50'
+          ? 'bg-gradient-to-b from-white via-slate-50 to-blue-50/40 border-[#0A2540]/20 shadow-2xl shadow-[#0A2540]/10'
           : 'bg-gradient-to-b from-neutral-950 via-[#0d0e12] to-black border-neutral-800/80 shadow-2xl shadow-black/80'
       }`}
     >
@@ -89,10 +89,10 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
         style={{
           background: isHovering
             ? `radial-gradient(750px circle at ${mouse.x}% ${mouse.y}%, ${
-                isLight ? 'rgba(0,0,0,0.035)' : 'rgba(255,255,255,0.06)'
+                isLight ? 'rgba(10,37,64,0.06)' : 'rgba(255,255,255,0.06)'
               }, transparent 80%)`
             : `radial-gradient(600px circle at 50% 50%, ${
-                isLight ? 'rgba(0,0,0,0.015)' : 'rgba(255,255,255,0.025)'
+                isLight ? 'rgba(10,37,64,0.025)' : 'rgba(255,255,255,0.025)'
               }, transparent 80%)`,
           opacity: 1
         }}
@@ -100,9 +100,9 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
 
       {/* Cyber Grid Reflection Mesh */}
       <div 
-        className="pointer-events-none absolute inset-0 opacity-[0.025]"
+        className={`pointer-events-none absolute inset-0 ${isLight ? 'opacity-[0.04]' : 'opacity-[0.025]'}`}
         style={{
-          backgroundImage: `linear-gradient(${isLight ? '#000' : '#fff'} 1px, transparent 1px), linear-gradient(90deg, ${isLight ? '#000' : '#fff'} 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(${isLight ? '#0A2540' : '#fff'} 1px, transparent 1px), linear-gradient(90deg, ${isLight ? '#0A2540' : '#fff'} 1px, transparent 1px)`,
           backgroundSize: '36px 36px'
         }}
       />
@@ -120,9 +120,9 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
               <VayunWordmark height={28} theme={theme} />
             </div>
 
-            <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium ${
+            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-[11px] font-mono font-semibold tracking-wide ${
               isLight 
-                ? 'bg-neutral-100 border-neutral-200 text-neutral-700' 
+                ? 'bg-[#0A2540] border-[#0A2540] text-white shadow-sm' 
                 : 'bg-white/5 border-white/10 text-neutral-300'
             }`}>
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -130,40 +130,54 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
             </div>
           </div>
 
-          {/* Main Headline */}
+          {/* Main Tagline & Headline */}
           <div className="space-y-3">
-            <h1 className="text-3xl sm:text-5xl lg:text-5xl font-serif tracking-tight leading-[1.12]">
+            <div className={`inline-block text-xs font-mono font-bold tracking-widest uppercase px-2.5 py-0.5 rounded ${
+              isLight
+                ? 'bg-[#0A2540]/10 text-[#0A2540] border border-[#0A2540]/20'
+                : 'bg-white/10 text-neutral-300 border border-white/10'
+            }`}>
+              Zero-Knowledge Engineering • 100% Client-Side RAM
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl lg:text-5xl font-serif tracking-tight leading-[1.12] text-slate-950 dark:text-white">
               Understand Every Line <br className="hidden sm:inline" />
-              <span className={`italic font-serif ${isLight ? 'text-neutral-800' : 'text-neutral-200'}`}>
+              <span className={`italic font-serif ${isLight ? 'text-[#0A2540]' : 'text-neutral-200'}`}>
                 You Ship to Production.
               </span>
             </h1>
 
             <p className={`text-sm sm:text-base leading-relaxed max-w-xl ${
-              isLight ? 'text-neutral-600' : 'text-neutral-400'
+              isLight ? 'text-slate-800 font-normal' : 'text-neutral-400'
             }`}>
-              The developer workstation for coding students and software engineers. Trace multi-file runtime logic in <strong>Vayun Flow</strong> and defend code in interactive Socratic <strong>Vayun Viva</strong> simulations.
+              The developer workstation built for engineers and students who refuse to ship blind. Trace multi-file runtime logic in <strong className={isLight ? 'text-[#0A2540] font-semibold' : 'text-white'}>Vayun Flow</strong> and defend code in interactive Socratic <strong className={isLight ? 'text-[#0A2540] font-semibold' : 'text-white'}>Vayun Viva</strong> simulations.
             </p>
           </div>
 
           {/* Core Architecture Trust Badges */}
           <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
             <span className={`px-2.5 py-1 rounded-md border flex items-center gap-1.5 ${
-              isLight ? 'border-neutral-200 bg-white text-neutral-700' : 'border-neutral-800 bg-neutral-900/80 text-neutral-300'
+              isLight 
+                ? 'border-[#0A2540]/25 bg-white text-[#0A2540] font-semibold shadow-xs' 
+                : 'border-neutral-800 bg-neutral-900/80 text-neutral-300'
             }`}>
-              <Lock className="w-3 h-3 text-emerald-400" />
+              <Lock className={`w-3.5 h-3.5 ${isLight ? 'text-[#0A2540]' : 'text-emerald-400'}`} />
               <span>Zero Remote Uploads</span>
             </span>
             <span className={`px-2.5 py-1 rounded-md border flex items-center gap-1.5 ${
-              isLight ? 'border-neutral-200 bg-white text-neutral-700' : 'border-neutral-800 bg-neutral-900/80 text-neutral-300'
+              isLight 
+                ? 'border-[#0A2540]/25 bg-white text-[#0A2540] font-semibold shadow-xs' 
+                : 'border-neutral-800 bg-neutral-900/80 text-neutral-300'
             }`}>
-              <Cpu className="w-3 h-3 text-cyan-400" />
+              <Cpu className={`w-3.5 h-3.5 ${isLight ? 'text-[#0A2540]' : 'text-cyan-400'}`} />
               <span>100% In-Memory RAM</span>
             </span>
             <span className={`px-2.5 py-1 rounded-md border flex items-center gap-1.5 ${
-              isLight ? 'border-neutral-200 bg-white text-neutral-700' : 'border-neutral-800 bg-neutral-900/80 text-neutral-300'
+              isLight 
+                ? 'border-[#0A2540]/25 bg-white text-[#0A2540] font-semibold shadow-xs' 
+                : 'border-neutral-800 bg-neutral-900/80 text-neutral-300'
             }`}>
-              <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+              <CheckCircle2 className={`w-3.5 h-3.5 ${isLight ? 'text-[#0A2540]' : 'text-emerald-400'}`} />
               <span>No Accounts • No Paywalls</span>
             </span>
           </div>
@@ -172,9 +186,9 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <button
               onClick={() => onSelectTool('vayun-flow')}
-              className={`px-5 py-3 rounded-xl text-xs font-mono font-medium flex items-center gap-2.5 transition-all shadow-md group ${
+              className={`px-5 py-3 rounded-xl text-xs font-mono font-semibold flex items-center gap-2.5 transition-all shadow-md group ${
                 isLight 
-                  ? 'bg-black text-white hover:bg-neutral-800 hover:shadow-lg' 
+                  ? 'bg-[#0A2540] text-white hover:bg-[#071829] shadow-lg shadow-[#0A2540]/25 border border-[#0A2540]' 
                   : 'bg-white text-black hover:bg-neutral-200 hover:shadow-lg hover:shadow-white/10'
               }`}
             >
@@ -187,7 +201,7 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
               onClick={() => onSelectTool('vayun-viva')}
               className={`px-4 py-3 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
                 isLight 
-                  ? 'border-neutral-300 bg-white hover:bg-neutral-100 text-black' 
+                  ? 'border-[#0A2540]/30 bg-white hover:bg-[#0A2540] hover:text-white text-[#0A2540] shadow-xs' 
                   : 'border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-white'
               }`}
             >
@@ -199,7 +213,7 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
               onClick={() => onSelectTool('resume-builder')}
               className={`px-4 py-3 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
                 isLight 
-                  ? 'border-neutral-300 bg-white hover:bg-neutral-100 text-black' 
+                  ? 'border-[#0A2540]/30 bg-white hover:bg-[#0A2540] hover:text-white text-[#0A2540] shadow-xs' 
                   : 'border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-white'
               }`}
             >
@@ -212,12 +226,12 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                 onClick={onOpenExtension}
                 className={`px-4 py-3 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
                   isLight 
-                    ? 'border-neutral-300 bg-white hover:bg-neutral-100 text-black' 
+                    ? 'border-[#0A2540]/30 bg-white hover:bg-[#0A2540] hover:text-white text-[#0A2540] shadow-xs' 
                     : 'border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-white'
                 }`}
                 title="Download Vayun Browser Extension for Chrome, Edge, and Brave"
               >
-                <Puzzle className="w-4 h-4 text-emerald-400" />
+                <Puzzle className={`w-4 h-4 ${isLight ? 'text-[#0A2540]' : 'text-emerald-400'}`} />
                 <span>Extension</span>
               </button>
             )}
@@ -227,12 +241,12 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                 onClick={onOpenHelpdesk}
                 className={`px-4 py-3 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
                   isLight 
-                    ? 'border-neutral-300 bg-white hover:bg-neutral-100 text-black' 
+                    ? 'border-[#0A2540]/30 bg-white hover:bg-[#0A2540] hover:text-white text-[#0A2540] shadow-xs' 
                     : 'border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-white'
                 }`}
                 title="Open Helpdesk, Knowledge Base & Diagnostics"
               >
-                <LifeBuoy className="w-4 h-4 text-cyan-400" />
+                <LifeBuoy className={`w-4 h-4 ${isLight ? 'text-[#0A2540]' : 'text-cyan-400'}`} />
                 <span>Helpdesk</span>
               </button>
             )}
@@ -242,7 +256,7 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                 onClick={onOpenApiSettings}
                 className={`px-3 py-3 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
                   isLight 
-                    ? 'border-neutral-200 bg-neutral-50 hover:bg-neutral-100 text-neutral-700' 
+                    ? 'border-[#0A2540]/25 bg-white hover:bg-slate-100 text-[#0A2540]' 
                     : 'border-neutral-800/80 bg-neutral-900/40 hover:bg-neutral-900 text-neutral-300'
                 }`}
                 title="Configure Gemini API Key"
@@ -265,23 +279,29 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
               transformStyle: 'preserve-3d',
               transition: isHovering ? 'transform 0.1s ease-out' : 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)'
             }}
-            className={`w-full max-w-md rounded-2xl border p-5 shadow-2xl relative select-none backdrop-blur-md ${
+            className={`w-full max-w-md rounded-2xl border p-5 shadow-2xl relative select-none backdrop-blur-md overflow-hidden ${
               isLight
-                ? 'bg-white/90 border-neutral-200/90 shadow-neutral-300/40'
+                ? 'bg-white border-2 border-[#0A2540]/30 shadow-2xl shadow-[#0A2540]/15'
                 : 'bg-neutral-900/80 border-white/10 shadow-black/80'
             }`}
           >
-            {/* Top macOS-style window header */}
-            <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+            {/* Top window header */}
+            <div className={`flex items-center justify-between pb-3.5 mb-4 border-b ${
+              isLight 
+                ? '-mx-5 -mt-5 px-5 pt-3.5 bg-[#0A2540] text-white border-[#0A2540]' 
+                : 'border-white/10'
+            }`}>
               <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-                <span className="text-[11px] font-mono text-neutral-400 ml-2">vayun-flow://inspect</span>
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500/90" />
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500/90" />
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/90" />
+                <span className={`text-[11px] font-mono ml-2 ${isLight ? 'text-white/80 font-medium' : 'text-neutral-400'}`}>
+                  vayun-flow://inspect
+                </span>
               </div>
-              <div className="flex items-center gap-1.5 text-[10px] font-mono text-emerald-400">
+              <div className="flex items-center gap-1.5 text-[10px] font-mono">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span>ACTIVE TRACE</span>
+                <span className={isLight ? 'text-emerald-300 font-semibold' : 'text-emerald-400'}>ACTIVE TRACE</span>
               </div>
             </div>
 
@@ -290,7 +310,9 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
               
               {/* Connecting Wire SVG with animated pulse dot */}
               <svg 
-                className="absolute left-6 top-6 bottom-6 w-8 pointer-events-none stroke-neutral-500/30"
+                className={`absolute left-6 top-6 bottom-6 w-8 pointer-events-none ${
+                  isLight ? 'stroke-[#0A2540]/30' : 'stroke-neutral-500/30'
+                }`}
                 fill="none"
               >
                 <path d="M 4 10 L 4 110" strokeDasharray="3 3" strokeWidth="1.5" />
@@ -299,12 +321,20 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
               {/* Node 1: Entry Point */}
               <div className={`p-3 rounded-xl border transition-all flex items-center justify-between ${
                 pulseStep === 0 || pulseStep === 1
-                  ? isLight ? 'bg-neutral-100 border-neutral-400' : 'bg-white/10 border-white/30 shadow-md'
-                  : isLight ? 'bg-neutral-50 border-neutral-200' : 'bg-neutral-950/80 border-neutral-800'
+                  ? isLight 
+                    ? 'bg-[#0A2540] text-white border-[#0A2540] shadow-md' 
+                    : 'bg-white/10 border-white/30 shadow-md'
+                  : isLight 
+                    ? 'bg-slate-50 border-[#0A2540]/20 text-[#0A2540]' 
+                    : 'bg-neutral-950/80 border-neutral-800'
               }`}>
                 <div className="flex items-center gap-3">
                   <div className={`w-7 h-7 rounded-lg flex items-center justify-center font-mono text-xs font-bold ${
-                    pulseStep === 0 ? 'bg-emerald-500 text-black' : isLight ? 'bg-neutral-200 text-black' : 'bg-neutral-800 text-white'
+                    pulseStep === 0 
+                      ? isLight ? 'bg-white text-[#0A2540]' : 'bg-emerald-500 text-black' 
+                      : isLight 
+                        ? 'bg-[#0A2540] text-white' 
+                        : 'bg-neutral-800 text-white'
                   }`}>
                     01
                   </div>
@@ -312,12 +342,18 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                     <div className="text-xs font-mono font-semibold flex items-center gap-1.5">
                       <span>main.ts &rarr; handleRequest()</span>
                     </div>
-                    <div className="text-[10px] font-mono text-neutral-400">
+                    <div className={`text-[10px] font-mono ${
+                      (pulseStep === 0 || pulseStep === 1) && isLight ? 'text-white/80' : 'text-neutral-400'
+                    }`}>
                       Multi-file execution root
                     </div>
                   </div>
                 </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
+                  (pulseStep === 0 || pulseStep === 1) && isLight
+                    ? 'bg-white/20 text-white border-white/40 font-semibold'
+                    : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                }`}>
                   200 OK
                 </span>
               </div>
@@ -325,12 +361,20 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
               {/* Node 2: Socratic Defense Check */}
               <div className={`p-3 rounded-xl border transition-all flex items-center justify-between ${
                 pulseStep === 2
-                  ? isLight ? 'bg-neutral-100 border-neutral-400' : 'bg-white/10 border-white/30 shadow-md'
-                  : isLight ? 'bg-neutral-50 border-neutral-200' : 'bg-neutral-950/80 border-neutral-800'
+                  ? isLight 
+                    ? 'bg-[#0A2540] text-white border-[#0A2540] shadow-md' 
+                    : 'bg-white/10 border-white/30 shadow-md'
+                  : isLight 
+                    ? 'bg-slate-50 border-[#0A2540]/20 text-[#0A2540]' 
+                    : 'bg-neutral-950/80 border-neutral-800'
               }`}>
                 <div className="flex items-center gap-3">
                   <div className={`w-7 h-7 rounded-lg flex items-center justify-center font-mono text-xs font-bold ${
-                    pulseStep === 2 ? 'bg-cyan-500 text-black' : isLight ? 'bg-neutral-200 text-black' : 'bg-neutral-800 text-white'
+                    pulseStep === 2 
+                      ? isLight ? 'bg-white text-[#0A2540]' : 'bg-cyan-500 text-black' 
+                      : isLight 
+                        ? 'bg-[#0A2540] text-white' 
+                        : 'bg-neutral-800 text-white'
                   }`}>
                     02
                   </div>
@@ -338,12 +382,18 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                     <div className="text-xs font-mono font-semibold">
                       viva_defense.ts &rarr; verify()
                     </div>
-                    <div className="text-[10px] font-mono text-neutral-400">
+                    <div className={`text-[10px] font-mono ${
+                      pulseStep === 2 && isLight ? 'text-white/80' : 'text-neutral-400'
+                    }`}>
                       Socratic logic examination
                     </div>
                   </div>
                 </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
+                  pulseStep === 2 && isLight
+                    ? 'bg-white/20 text-white border-white/40 font-semibold'
+                    : 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20'
+                }`}>
                   DEFENDED
                 </span>
               </div>
@@ -351,12 +401,20 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
               {/* Node 3: Zero-Upload Local Memory Isolation */}
               <div className={`p-3 rounded-xl border transition-all flex items-center justify-between ${
                 pulseStep === 3
-                  ? isLight ? 'bg-neutral-100 border-neutral-400' : 'bg-white/10 border-white/30 shadow-md'
-                  : isLight ? 'bg-neutral-50 border-neutral-200' : 'bg-neutral-950/80 border-neutral-800'
+                  ? isLight 
+                    ? 'bg-[#0A2540] text-white border-[#0A2540] shadow-md' 
+                    : 'bg-white/10 border-white/30 shadow-md'
+                  : isLight 
+                    ? 'bg-slate-50 border-[#0A2540]/20 text-[#0A2540]' 
+                    : 'bg-neutral-950/80 border-neutral-800'
               }`}>
                 <div className="flex items-center gap-3">
                   <div className={`w-7 h-7 rounded-lg flex items-center justify-center font-mono text-xs font-bold ${
-                    pulseStep === 3 ? 'bg-amber-400 text-black' : isLight ? 'bg-neutral-200 text-black' : 'bg-neutral-800 text-white'
+                    pulseStep === 3 
+                      ? isLight ? 'bg-white text-[#0A2540]' : 'bg-amber-400 text-black' 
+                      : isLight 
+                        ? 'bg-[#0A2540] text-white' 
+                        : 'bg-neutral-800 text-white'
                   }`}>
                     03
                   </div>
@@ -364,12 +422,18 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                     <div className="text-xs font-mono font-semibold">
                       ram_sandbox.wasm
                     </div>
-                    <div className="text-[10px] font-mono text-neutral-400">
+                    <div className={`text-[10px] font-mono ${
+                      pulseStep === 3 && isLight ? 'text-white/80' : 'text-neutral-400'
+                    }`}>
                       Client-side RAM execution
                     </div>
                   </div>
                 </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-400/10 text-amber-300 border border-amber-400/20">
+                <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
+                  pulseStep === 3 && isLight
+                    ? 'bg-white/20 text-white border-white/40 font-semibold'
+                    : 'bg-amber-400/10 text-amber-300 border-amber-400/20'
+                }`}>
                   0 UPLOADS
                 </span>
               </div>
@@ -378,13 +442,13 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
 
             {/* Bottom Telemetry Bar */}
             <div className={`mt-4 pt-3 border-t flex items-center justify-between text-[10px] font-mono ${
-              isLight ? 'border-neutral-200 text-neutral-500' : 'border-white/10 text-neutral-400'
+              isLight ? 'border-[#0A2540]/15 text-[#0A2540] font-medium' : 'border-white/10 text-neutral-400'
             }`}>
               <div className="flex items-center gap-1.5">
-                <Activity className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+                <Activity className={`w-3.5 h-3.5 ${isLight ? 'text-[#0A2540]' : 'text-emerald-400'} animate-pulse`} />
                 <span>Memory: 14.8 MB (RAM only)</span>
               </div>
-              <div className="text-neutral-500">
+              <div className={isLight ? 'text-[#0A2540]/80 font-medium' : 'text-neutral-500'}>
                 Latency: 8ms
               </div>
             </div>

@@ -1,6 +1,9 @@
 # Vayun.xyz
 
-Vayun.xyz is a privacy-first web platform designed for developers, engineering students, and professionals. It provides browser-based tools for code flow inspection, document processing, token analysis, and invoice creation without transmitting sensitive user data to external servers.
+> **Understand Every Line You Ship to Production.**  
+> *Zero-Knowledge Engineering • Zero Remote Uploads • 100% Client-Side RAM*
+
+Vayun.xyz is an anti-black-box workstation designed for developers, engineering students, and privacy-conscious professionals. It provides high-performance browser-based tools for multi-file code flow inspection, Socratic Viva defense exams, document processing, token analysis, and ATS resume creation without transmitting sensitive user data to external servers.
 
 ---
 
