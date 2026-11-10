@@ -1,0 +1,265 @@
+import Papa from 'papaparse';
+
+export interface TabularData {
+  headers: string[];
+  rows: string[][];
+  errors?: string[];
+}
+
+export interface DeduplicateOptions {
+  keyColumnIndex: number; // -1 for entire row
+  trimWhitespace: boolean;
+  removeEmptyRows: boolean;
+  caseSensitive: boolean;
+}
+
+export interface DeduplicateResult {
+  data: TabularData;
+  originalRowCount: number;
+  cleanedRowCount: number;
+  duplicatesRemoved: number;
+  emptyRowsRemoved: number;
+}
+
+export function parseCsvString(csvText: string): Promise<TabularData> {
+  return new Promise((resolve) => {
+    Papa.parse<string[]>(csvText, {
+      skipEmptyLines: false,
+      complete: (results) => {
+        const rawData = results.data as string[][];
+        if (!rawData || rawData.length === 0) {
+          resolve({ headers: [], rows: [] });
+          return;
+        }
+
+        const headers = (rawData[0] || []).map(h => String(h || '').trim());
+        const rows = rawData.slice(1).map(row => 
+          // normalize row length to match headers
+          headers.map((_, i) => String(row[i] !== undefined && row[i] !== null ? row[i] : ''))
+        );
+
+        resolve({ headers, rows });
+      },
+      error: (err: any) => {
+        resolve({ headers: [], rows: [], errors: [err?.message || 'CSV parse error'] });
+      }
+    });
+  });
+}
+
+export function deduplicateAndClean(
+  data: TabularData,
+  options: DeduplicateOptions
+): DeduplicateResult {
+  const originalRowCount = data.rows.length;
+  let emptyRowsRemoved = 0;
+  let duplicatesRemoved = 0;
+
+  const seenKeys = new Set<string>();
+  const cleanedRows: string[][] = [];
+
+  for (const rawRow of data.rows) {
+    // 1. Process cells
+    const processedRow = rawRow.map(cell => options.trimWhitespace ? cell.trim() : cell);
+
+    // 2. Check empty row
+    const isEmpty = processedRow.every(cell => cell.length === 0);
+    if (options.removeEmptyRows && isEmpty) {
+      emptyRowsRemoved++;
+      continue;
+    }
+
+    // 3. Deduplicate
+    let key = '';
+    if (options.keyColumnIndex >= 0 && options.keyColumnIndex < processedRow.length) {
+      key = processedRow[options.keyColumnIndex];
+    } else {
+      // Entire row
+      key = processedRow.join('|||');
+    }
+
+    if (!options.caseSensitive) {
+      key = key.toLowerCase();
+    }
+
+    if (seenKeys.has(key)) {
+      duplicatesRemoved++;
+    } else {
+      seenKeys.add(key);
+      cleanedRows.push(processedRow);
+    }
+  }
+
+  return {
+    data: {
+      headers: data.headers,
+      rows: cleanedRows
+    },
+    originalRowCount,
+    cleanedRowCount: cleanedRows.length,
+    duplicatesRemoved,
+    emptyRowsRemoved
+  };
+}
+
+export interface PreserveZerosOptions {
+  targetColumnIndices: number[];
+  targetLength: number; // e.g. 5 for ZIP, 10 for Phone, or 0 for auto
+  mode: 'pad' | 'excelFormula' | 'quotes'; // '01742' vs '="01742"' vs '"01742"'
+}
+
+export function preserveLeadingZeros(
+  data: TabularData,
+  options: PreserveZerosOptions
+): TabularData {
+  const newRows = data.rows.map(row => {
+    return row.map((cell, colIndex) => {
+      if (!options.targetColumnIndices.includes(colIndex)) {
+        return cell;
+      }
+
+      const trimmed = cell.trim();
+      if (!trimmed || !/^\d+$/.test(trimmed)) {
+        return cell;
+      }
+
+      let padded = trimmed;
+      if (options.targetLength > 0 && trimmed.length < options.targetLength) {
+        padded = trimmed.padStart(options.targetLength, '0');
+      }
+
+      if (options.mode === 'excelFormula') {
+        return `="${padded}"`;
+      } else if (options.mode === 'quotes') {
+        return `"${padded}"`;
+      }
+      return padded;
+    });
+  });
+
+  return {
+    headers: data.headers,
+    rows: newRows
+  };
+}
+
+export function detectZeroStrippedColumns(data: TabularData): number[] {
+  const candidates: number[] = [];
+  
+  data.headers.forEach((header, colIndex) => {
+    const lower = header.toLowerCase();
+    if (
+      lower.includes('zip') ||
+      lower.includes('postal') ||
+      lower.includes('phone') ||
+      lower.includes('code') ||
+      lower.includes('pin') ||
+      lower.includes('ssn') ||
+      lower.includes('ein')
+    ) {
+      candidates.push(colIndex);
+      return;
+    }
+
+    // Check sample values: 3 to 4 digit numbers that might be US ZIP codes (e.g. MA/NJ ZIPs starting with 0)
+    const samples = data.rows.slice(0, 20).map(r => (r[colIndex] || '').trim()).filter(Boolean);
+    if (samples.length > 3 && samples.every(s => /^\d{3,4}$/.test(s))) {
+      candidates.push(colIndex);
+    }
+  });
+
+  return candidates;
+}
+
+export function convertToSqlInsert(
+  data: TabularData, 
+  tableName: string = 'imported_records'
+): string {
+  if (data.rows.length === 0) return `-- No records found in tabular data`;
+
+  const cleanTableName = tableName.trim().replace(/[^a-zA-Z0-9_]/g, '_') || 'imported_records';
+  const columnsList = data.headers
+    .map(h => `\`${h.replace(/[`"'\s]/g, '_') || 'col'}\``)
+    .join(', ');
+
+  const statements: string[] = [];
+  statements.push(`-- Generated by vayun.xyz Tabular Studio`);
+  statements.push(`-- Total records: ${data.rows.length}`);
+  statements.push(`\nINSERT INTO \`${cleanTableName}\` (${columnsList}) VALUES`);
+
+  const valuesRows = data.rows.map(row => {
+    const formattedValues = row.map(cell => {
+      if (cell === null || cell === undefined || cell === '') {
+        return 'NULL';
+      }
+      // If purely numeric without leading zeroes (excluding single 0)
+      if (/^-?\d+(\.\d+)?$/.test(cell) && !(cell.length > 1 && cell.startsWith('0') && !cell.includes('.'))) {
+        return cell;
+      }
+      // Escape SQL string
+      const escaped = cell.replace(/'/g, "''").replace(/\\/g, '\\\\');
+      return `'${escaped}'`;
+    });
+    return `  (${formattedValues.join(', ')})`;
+  });
+
+  statements.push(valuesRows.join(',\n') + ';');
+  return statements.join('\n');
+}
+
+export function convertToJsonArray(data: TabularData): string {
+  const jsonObjects = data.rows.map(row => {
+    const obj: Record<string, string | number | null> = {};
+    data.headers.forEach((header, index) => {
+      const val = row[index];
+      if (val === undefined || val === '') {
+        obj[header || `col_${index}`] = null;
+      } else if (/^-?\d+$/.test(val) && val.length < 15 && !(val.length > 1 && val.startsWith('0'))) {
+        obj[header || `col_${index}`] = parseInt(val, 10);
+      } else if (/^-?\d+\.\d+$/.test(val)) {
+        obj[header || `col_${index}`] = parseFloat(val);
+      } else {
+        obj[header || `col_${index}`] = val;
+      }
+    });
+    return obj;
+  });
+
+  return JSON.stringify(jsonObjects, null, 2);
+}
+
+export function convertToMarkdownTable(data: TabularData): string {
+  if (data.headers.length === 0) return '';
+
+  const headerLine = `| ${data.headers.join(' | ')} |`;
+  const separatorLine = `| ${data.headers.map(() => '---').join(' | ')} |`;
+  const rowLines = data.rows.map(row => {
+    const sanitizedCells = row.map(c => (c || '').replace(/\|/g, '\\|').replace(/\n/g, ' '));
+    return `| ${sanitizedCells.join(' | ')} |`;
+  });
+
+  return [headerLine, separatorLine, ...rowLines].join('\n');
+}
+
+export function convertToHtmlTable(data: TabularData): string {
+  const thead = `  <thead>\n    <tr class="bg-slate-100 dark:bg-slate-800 text-left">\n${data.headers.map(h => `      <th class="p-3 border font-semibold">${escapeHtml(h)}</th>`).join('\n')}\n    </tr>\n  </thead>`;
+  
+  const tbody = `  <tbody>\n${data.rows.map(row => `    <tr class="border-b hover:bg-slate-50 dark:hover:bg-slate-800/50">\n${row.map(cell => `      <td class="p-3 border">${escapeHtml(cell)}</td>`).join('\n')}\n    </tr>`).join('\n')}\n  </tbody>`;
+
+  return `<table class="min-w-full border-collapse border border-slate-300 dark:border-slate-700 text-sm">\n${thead}\n${tbody}\n</table>`;
+}
+
+function escapeHtml(str: string): string {
+  return (str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+export function exportToCsvString(data: TabularData): string {
+  return Papa.unparse({
+    fields: data.headers,
+    data: data.rows
+  });
+}
