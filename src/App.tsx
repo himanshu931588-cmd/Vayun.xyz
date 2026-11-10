@@ -163,7 +163,7 @@ export function App() {
 
   return (
     <div className={`min-h-screen flex flex-col font-sans transition-colors ${
-      isLight ? 'bg-white bg-grid-light text-neutral-900 selection:bg-neutral-200 selection:text-black' : 'bg-black bg-grid-dark text-neutral-100 selection:bg-neutral-800 selection:text-white'
+      isLight ? 'bg-[#f8fafc] bg-grid-light text-slate-900 selection:bg-blue-100 selection:text-blue-900' : 'bg-black bg-grid-dark text-neutral-100 selection:bg-neutral-800 selection:text-white'
     }`}>
       {/* Top Header */}
       <Header

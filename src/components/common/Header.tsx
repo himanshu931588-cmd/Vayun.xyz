@@ -97,7 +97,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className={`sticky top-0 z-40 w-full transition-colors ${
-      isLight ? 'bg-white/95 border-b border-neutral-200' : 'bg-black/95 border-b border-neutral-800'
+      isLight ? 'bg-white/90 border-b border-slate-200/80 shadow-xs' : 'bg-black/95 border-b border-neutral-800'
     } backdrop-blur-md`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-14 gap-4">
@@ -126,8 +126,8 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
                   currentTool === 'home' && selectedCategory === 'all'
-                    ? isLight ? 'text-black font-semibold bg-neutral-100' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
-                    : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                    ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
+                    : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
                 }`}
               >
                 <LayoutGrid className="w-3.5 h-3.5" />
@@ -141,11 +141,11 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
                   isDeveloperTool
-                    ? isLight ? 'text-black font-semibold bg-neutral-100' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
-                    : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                    ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
+                    : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
                 }`}
               >
-                <Network className="w-3.5 h-3.5 text-emerald-400" />
+                <Network className="w-3.5 h-3.5 text-emerald-500" />
                 <span>Flow</span>
               </button>
 
@@ -156,11 +156,11 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
                   isPdfTool
-                    ? isLight ? 'text-black font-semibold bg-neutral-100' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
-                    : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                    ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
+                    : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
                 }`}
               >
-                <FileText className="w-3.5 h-3.5 text-blue-400" />
+                <FileText className="w-3.5 h-3.5 text-blue-500" />
                 <span>PDF</span>
               </button>
 
@@ -171,11 +171,11 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
                   isAiTool
-                    ? isLight ? 'text-black font-semibold bg-neutral-100' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
-                    : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                    ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
+                    : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
                 }`}
               >
-                <BrainCircuit className="w-3.5 h-3.5 text-purple-400" />
+                <BrainCircuit className="w-3.5 h-3.5 text-purple-500" />
                 <span>AI</span>
               </button>
 
@@ -186,11 +186,11 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
                   isBillingTool
-                    ? isLight ? 'text-black font-semibold bg-neutral-100' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
-                    : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                    ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
+                    : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
                 }`}
               >
-                <Receipt className="w-3.5 h-3.5 text-amber-400" />
+                <Receipt className="w-3.5 h-3.5 text-amber-500" />
                 <span>Invoicing</span>
               </button>
 
@@ -201,11 +201,11 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className={`h-8 px-2.5 rounded-lg transition-all flex items-center gap-1.5 shrink-0 select-none active:scale-95 ${
                   isTabularTool
-                    ? isLight ? 'text-black font-semibold bg-neutral-100' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
-                    : isLight ? 'text-neutral-600 hover:text-black hover:bg-neutral-50' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                    ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
+                    : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
                 }`}
               >
-                <Table className="w-3.5 h-3.5 text-cyan-400" />
+                <Table className="w-3.5 h-3.5 text-cyan-500" />
                 <span>Tabular</span>
               </button>
             </nav>
@@ -219,7 +219,7 @@ export const Header: React.FC<HeaderProps> = ({
               title="Search tools or commands (⌘K)"
               className={`h-8 px-2.5 rounded-lg border text-xs font-mono flex items-center gap-2 transition-all active:scale-95 group ${
                 isLight 
-                  ? 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100 hover:border-neutral-300' 
+                  ? 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 shadow-xs' 
                   : 'border-neutral-800 bg-neutral-900/70 text-neutral-300 hover:bg-neutral-850 hover:border-neutral-700'
               }`}
             >
@@ -227,7 +227,7 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="hidden sm:inline text-xs">Search</span>
               <kbd className={`px-1 py-0.2 rounded text-[10px] font-mono border ${
                 isLight 
-                  ? 'border-neutral-300 bg-white text-neutral-600' 
+                  ? 'border-slate-200 bg-slate-100 text-slate-600' 
                   : 'border-neutral-700 bg-neutral-950 text-neutral-400'
               }`}>
                 ⌘K
@@ -241,11 +241,11 @@ export const Header: React.FC<HeaderProps> = ({
                 title="Browser Extension (Chrome & Edge)"
                 className={`h-8 px-2.5 rounded-lg border text-xs font-mono hidden sm:inline-flex items-center gap-1.5 transition-all select-none active:scale-95 group ${
                   isLight 
-                    ? 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100 hover:border-neutral-300' 
+                    ? 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 shadow-xs' 
                     : 'border-neutral-800 bg-neutral-900/70 text-neutral-300 hover:text-white hover:bg-neutral-850 hover:border-neutral-700'
                 }`}
               >
-                <Puzzle className="w-3.5 h-3.5 text-emerald-400" />
+                <Puzzle className="w-3.5 h-3.5 text-emerald-500" />
                 <span className="hidden lg:inline">Extension</span>
               </button>
             )}
@@ -256,13 +256,13 @@ export const Header: React.FC<HeaderProps> = ({
               title={`Switch to ${isLight ? 'Dark' : 'Light'} Mode (D)`}
               className={`h-8 w-8 rounded-lg border flex items-center justify-center transition-all select-none active:scale-95 group ${
                 isLight 
-                  ? 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100 hover:border-neutral-300' 
+                  ? 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 shadow-xs' 
                   : 'border-neutral-800 bg-neutral-900/70 text-neutral-400 hover:text-white hover:bg-neutral-850 hover:border-neutral-700'
               }`}
               aria-label="Toggle Theme"
             >
               {isLight ? (
-                <Moon className="w-3.5 h-3.5 transition-transform group-hover:rotate-12" />
+                <Moon className="w-3.5 h-3.5 transition-transform group-hover:rotate-12 text-slate-700" />
               ) : (
                 <Sun className="w-3.5 h-3.5 text-amber-300 transition-transform group-hover:rotate-45" />
               )}
@@ -273,7 +273,7 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setIsMobileMenuOpen(prev => !prev)}
               className={`h-8 w-8 rounded-lg border transition-all md:hidden flex items-center justify-center active:scale-95 ${
                 isLight 
-                  ? 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100' 
+                  ? 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50' 
                   : 'border-neutral-800 bg-neutral-900/70 text-neutral-300 hover:bg-neutral-850'
               }`}
               aria-label="Toggle Navigation Menu"

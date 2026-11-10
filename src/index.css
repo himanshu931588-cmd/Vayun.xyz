@@ -38,8 +38,8 @@
 }
 
 .bg-grid-light {
-  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 /* Executive card interactive physics */

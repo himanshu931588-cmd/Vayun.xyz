@@ -51,7 +51,7 @@ export const Footer: React.FC<FooterProps> = ({
 
   return (
     <footer className={`mt-20 border-t text-xs transition-colors ${
-      isLight ? 'bg-neutral-50/50 border-neutral-200 text-neutral-600' : 'bg-black border-neutral-900 text-neutral-400'
+      isLight ? 'bg-white/80 border-slate-200/90 text-slate-600' : 'bg-black border-neutral-900 text-neutral-400'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
@@ -60,7 +60,7 @@ export const Footer: React.FC<FooterProps> = ({
               <VayunLogo size={24} />
               <VayunWordmark height={24} theme={theme} />
             </div>
-            <p className={`text-xs leading-relaxed max-w-sm ${isLight ? 'text-neutral-500' : 'text-neutral-400'}`}>
+            <p className={`text-xs leading-relaxed max-w-sm ${isLight ? 'text-slate-500' : 'text-neutral-400'}`}>
               The Anti-Black-Box Developer & Defense Platform. Zero remote uploads, zero tracking, no accounts, no paywalls.
             </p>
 
@@ -70,11 +70,11 @@ export const Footer: React.FC<FooterProps> = ({
                 onClick={onOpenSupport}
                 className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-mono transition-all ${
                   isLight 
-                    ? 'border-neutral-300 bg-neutral-100 hover:bg-neutral-200 text-neutral-800' 
+                    ? 'border-slate-200 bg-white hover:bg-slate-50 text-slate-800 shadow-xs' 
                     : 'border-neutral-800 bg-neutral-900 hover:bg-neutral-850 text-neutral-200'
                 }`}
               >
-                <Coffee className="w-3.5 h-3.5" />
+                <Coffee className="w-3.5 h-3.5 text-amber-500" />
                 <span>Buy Me a Coffee</span>
               </button>
 
@@ -83,11 +83,11 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={onOpenExtension}
                   className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-mono transition-all ${
                     isLight 
-                      ? 'border-neutral-300 bg-white hover:bg-neutral-100 text-neutral-800' 
+                      ? 'border-slate-200 bg-white hover:bg-slate-50 text-slate-800 shadow-xs' 
                       : 'border-neutral-800 bg-neutral-900/50 hover:bg-neutral-850 text-neutral-300'
                   }`}
                 >
-                  <Puzzle className="w-3.5 h-3.5" />
+                  <Puzzle className="w-3.5 h-3.5 text-emerald-500" />
                   <span>Browser Extension</span>
                 </button>
               )}
@@ -97,11 +97,11 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={onOpenHelpdesk}
                   className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-mono transition-all ${
                     isLight 
-                      ? 'border-neutral-300 bg-white hover:bg-neutral-100 text-neutral-800' 
+                      ? 'border-slate-200 bg-white hover:bg-slate-50 text-slate-800 shadow-xs' 
                       : 'border-neutral-800 bg-neutral-900/50 hover:bg-neutral-850 text-neutral-300'
                   }`}
                 >
-                  <LifeBuoy className="w-3.5 h-3.5" />
+                  <LifeBuoy className="w-3.5 h-3.5 text-blue-500" />
                   <span>Helpdesk & FAQ</span>
                 </button>
               )}
@@ -110,28 +110,28 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Developer Flow */}
           <div>
-            <h4 className={`font-mono text-xs uppercase mb-3 flex items-center gap-1.5 ${isLight ? 'text-neutral-700' : 'text-neutral-300'}`}>
-              <Network className="w-3.5 h-3.5" />
+            <h4 className={`font-mono text-xs uppercase mb-3 flex items-center gap-1.5 ${isLight ? 'text-slate-900 font-semibold' : 'text-neutral-300'}`}>
+              <Network className="w-3.5 h-3.5 text-emerald-500" />
               Developer Flow
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => onSelectTool('vayun-flow')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-black' : 'hover:text-white'}`}>
+                <button onClick={() => onSelectTool('vayun-flow')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Vayun Flow
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectTool('vayun-viva')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-black' : 'hover:text-white'}`}>
+                <button onClick={() => onSelectTool('vayun-viva')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Vayun Viva Defense
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectTool('vayun-break')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-black' : 'hover:text-white'}`}>
+                <button onClick={() => onSelectTool('vayun-break')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Vayun Break
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectTool('vayun-spec')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-black' : 'hover:text-white'}`}>
+                <button onClick={() => onSelectTool('vayun-spec')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Vayun Spec
                 </button>
               </li>
@@ -140,33 +140,33 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* PDF Suite */}
           <div>
-            <h4 className={`font-mono text-xs uppercase mb-3 flex items-center gap-1.5 ${isLight ? 'text-neutral-700' : 'text-neutral-300'}`}>
-              <FileText className="w-3.5 h-3.5" />
+            <h4 className={`font-mono text-xs uppercase mb-3 flex items-center gap-1.5 ${isLight ? 'text-slate-900 font-semibold' : 'text-neutral-300'}`}>
+              <FileText className="w-3.5 h-3.5 text-blue-500" />
               PDF Suite
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => onSelectTool('resume-builder')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-black' : 'hover:text-white'}`}>
+                <button onClick={() => onSelectTool('resume-builder')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Resume Builder
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectTool('merge-pdf')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-black' : 'hover:text-white'}`}>
+                <button onClick={() => onSelectTool('merge-pdf')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Merge PDF
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectTool('split-pdf')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-black' : 'hover:text-white'}`}>
+                <button onClick={() => onSelectTool('split-pdf')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Split PDF
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectTool('compress-pdf')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-black' : 'hover:text-white'}`}>
+                <button onClick={() => onSelectTool('compress-pdf')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Compress PDF
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectTool('image-to-pdf')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-black' : 'hover:text-white'}`}>
+                <button onClick={() => onSelectTool('image-to-pdf')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Image to PDF
                 </button>
               </li>
@@ -175,23 +175,23 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* AI Context */}
           <div>
-            <h4 className={`font-mono text-xs uppercase mb-3 flex items-center gap-1.5 ${isLight ? 'text-neutral-700' : 'text-neutral-300'}`}>
-              <BrainCircuit className="w-3.5 h-3.5" />
+            <h4 className={`font-mono text-xs uppercase mb-3 flex items-center gap-1.5 ${isLight ? 'text-slate-900 font-semibold' : 'text-neutral-300'}`}>
+              <BrainCircuit className="w-3.5 h-3.5 text-purple-500" />
               AI Context
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => onSelectTool('thread-rescuer')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-black' : 'hover:text-white'}`}>
+                <button onClick={() => onSelectTool('thread-rescuer')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Thread Rescuer
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectTool('token-slimmer')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-black' : 'hover:text-white'}`}>
+                <button onClick={() => onSelectTool('token-slimmer')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Token Slimmer
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectTool('prompt-sanitizer')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-black' : 'hover:text-white'}`}>
+                <button onClick={() => onSelectTool('prompt-sanitizer')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Prompt Sanitizer
                 </button>
               </li>
@@ -200,28 +200,28 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Invoicing & Tabular */}
           <div>
-            <h4 className={`font-mono text-xs uppercase mb-3 flex items-center gap-1.5 ${isLight ? 'text-neutral-700' : 'text-neutral-300'}`}>
-              <Table className="w-3.5 h-3.5" />
+            <h4 className={`font-mono text-xs uppercase mb-3 flex items-center gap-1.5 ${isLight ? 'text-slate-900 font-semibold' : 'text-neutral-300'}`}>
+              <Table className="w-3.5 h-3.5 text-cyan-500" />
               Billing & Data
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => onSelectTool('invoice-maker')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-black' : 'hover:text-white'}`}>
+                <button onClick={() => onSelectTool('invoice-maker')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Instant Invoice
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectTool('clean-csv')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-black' : 'hover:text-white'}`}>
+                <button onClick={() => onSelectTool('clean-csv')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Clean CSV
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectTool('preserve-zeros')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-black' : 'hover:text-white'}`}>
+                <button onClick={() => onSelectTool('preserve-zeros')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Preserve Zeros
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectTool('table-converter')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-black' : 'hover:text-white'}`}>
+                <button onClick={() => onSelectTool('table-converter')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Table Converter
                 </button>
               </li>
@@ -231,7 +231,7 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Bottom Bar */}
         <div className={`mt-12 pt-6 border-t flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono ${
-          isLight ? 'border-neutral-200 text-neutral-500' : 'border-neutral-900 text-neutral-400'
+          isLight ? 'border-slate-200 text-slate-500' : 'border-neutral-900 text-neutral-400'
         }`}>
           <div>
             © {new Date().getFullYear()} vayun.xyz • All operations execute client-side in RAM.

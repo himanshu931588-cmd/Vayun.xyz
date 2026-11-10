@@ -145,19 +145,25 @@ export const ToolCardLivePreview: React.FC<ToolCardLivePreviewProps> = ({ toolId
   return (
     <div className={`p-2.5 rounded-lg border font-mono text-[11px] select-none transition-colors ${
       isLight 
-        ? 'bg-[#0A2540]/5 border-[#0A2540]/15 text-[#0A2540]' 
+        ? 'bg-blue-50/60 border-blue-200/50 text-slate-700' 
         : 'bg-neutral-900/60 border-neutral-800 text-neutral-300'
     }`}>
-      <div className="flex items-center justify-between text-[10px] pb-1.5 mb-1.5 border-b border-black/5 dark:border-white/10">
-        <span className="font-bold tracking-wider uppercase text-[10px] opacity-80">
+      <div className={`flex items-center justify-between text-[10px] pb-1.5 mb-1.5 border-b ${
+        isLight ? 'border-blue-100' : 'border-neutral-800'
+      }`}>
+        <span className={`font-bold tracking-wider uppercase text-[10px] ${
+          isLight ? 'text-blue-900' : 'text-neutral-400'
+        }`}>
           {spec.specBadge}
         </span>
-        <span className={`font-semibold ${isLight ? 'text-[#0A2540]' : 'text-emerald-400'}`}>
+        <span className={`font-semibold ${isLight ? 'text-blue-700' : 'text-emerald-400'}`}>
           {spec.metric}
         </span>
       </div>
 
-      <div className="text-[11px] font-normal leading-tight opacity-90 truncate">
+      <div className={`text-[11px] font-normal leading-tight truncate ${
+        isLight ? 'text-slate-600' : 'opacity-90'
+      }`}>
         {spec.telemetry}
       </div>
     </div>
