@@ -9,6 +9,7 @@ import { OwnerConsoleModal } from './components/common/OwnerConsoleModal';
 import { SupportModal } from './components/common/SupportModal';
 import { ExtensionModal } from './components/common/ExtensionModal';
 import { HelpdeskModal } from './components/common/HelpdeskModal';
+import { VayunChatbot } from './components/ai/VayunChatbot';
 import { HomeView } from './components/home/HomeView';
 
 // Developer Flow & Viva Suite (Flagship)
@@ -54,6 +55,7 @@ export function App() {
   const [isSupportOpen, setIsSupportOpen] = useState(false);
   const [isExtensionOpen, setIsExtensionOpen] = useState(false);
   const [isHelpdeskOpen, setIsHelpdeskOpen] = useState(false);
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [savedTokensTotal, setSavedTokensTotal] = useState<number>(() => {
     const saved = localStorage.getItem('vayun_total_tokens_saved');
@@ -101,6 +103,9 @@ export function App() {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
         setIsCommandPaletteOpen(prev => !prev);
+      } else if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'j') {
+        e.preventDefault();
+        setIsChatbotOpen(prev => !prev);
       } else if (e.key === '?' && !isInput) {
         e.preventDefault();
         setIsShortcutsOpen(prev => !prev);
@@ -118,6 +123,7 @@ export function App() {
         setIsSupportOpen(false);
         setIsExtensionOpen(false);
         setIsHelpdeskOpen(false);
+        setIsChatbotOpen(false);
       }
     };
 
@@ -363,6 +369,7 @@ export function App() {
         onOpenOwnerConsole={() => setIsOwnerConsoleOpen(true)}
         onOpenExtension={() => setIsExtensionOpen(true)}
         onOpenHelpdesk={() => setIsHelpdeskOpen(true)}
+        onOpenChatbot={() => setIsChatbotOpen(true)}
         theme={theme}
       />
 
@@ -418,6 +425,15 @@ export function App() {
         theme={theme}
       />
 
+      {/* Vayun AI Chatbot Assistant */}
+      <VayunChatbot
+        isOpen={isChatbotOpen}
+        onToggle={() => setIsChatbotOpen(prev => !prev)}
+        onSelectTool={handleSelectTool}
+        onOpenApiSettings={() => setIsApiSettingsOpen(true)}
+        theme={theme}
+      />
+
       {/* Footer */}
       <Footer
         onSelectTool={handleSelectTool}
@@ -427,6 +443,7 @@ export function App() {
         onOpenSupport={() => setIsSupportOpen(true)}
         onOpenExtension={() => setIsExtensionOpen(true)}
         onOpenHelpdesk={() => setIsHelpdeskOpen(true)}
+        onOpenChatbot={() => setIsChatbotOpen(true)}
         theme={theme}
       />
     </div>

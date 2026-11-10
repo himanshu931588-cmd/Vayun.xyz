@@ -29,6 +29,7 @@ Vayun.xyz is a privacy-first web platform designed for developers, engineering s
 - **Image to PDF:** Convert image files directly into formatted PDF documents in browser memory.
 
 ### 3. AI and Context Utilities
+- **Vayun AI Chatbot:** An in-browser AI copilot named Vayun accessible via the floating assistant widget or `⌘J` / `Ctrl+J`. It answers questions across all workstation tools, explains client-side RAM privacy, assists with code debugging, and provides one-click tool launch actions. Powered by Gemini 2.0 Flash when configured, with a comprehensive built-in offline knowledge engine.
 - **High-Speed LLM Inference:** Powered by Gemini 2.0 Flash and Flash-Lite models with an in-memory response cache for instant generation.
 - **Token Estimator:** Count tokens and estimate inference costs across major language model providers.
 - **Prompt Sanitizer:** Automatically detect and remove secrets, passwords, and sensitive keys from prompts.

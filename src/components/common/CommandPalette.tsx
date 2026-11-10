@@ -23,7 +23,8 @@ import {
   Flame,
   Scale,
   Puzzle,
-  LifeBuoy
+  LifeBuoy,
+  Bot
 } from 'lucide-react';
 import { TOOLS } from '../../utils/toolsData';
 import { ToolId } from '../../types';
@@ -35,6 +36,7 @@ interface CommandPaletteProps {
   onOpenOwnerConsole?: () => void;
   onOpenExtension?: () => void;
   onOpenHelpdesk?: () => void;
+  onOpenChatbot?: () => void;
   theme?: 'dark' | 'light';
 }
 
@@ -45,6 +47,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   onOpenOwnerConsole,
   onOpenExtension,
   onOpenHelpdesk,
+  onOpenChatbot,
   theme = 'dark'
 }) => {
   const [query, setQuery] = useState('');
@@ -165,6 +168,28 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
 
         {/* Results List */}
         <div className="max-h-80 overflow-y-auto p-2 space-y-1">
+          {onOpenChatbot && (!cleanQuery || cleanQuery.includes('bot') || cleanQuery.includes('ai') || cleanQuery.includes('vayun') || cleanQuery.includes('chat') || cleanQuery.includes('ask') || cleanQuery.includes('copilot')) && (
+            <div
+              onClick={() => {
+                onOpenChatbot();
+                onClose();
+              }}
+              className="flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-colors text-xs border border-purple-500/30 bg-purple-500/10 text-purple-300 hover:bg-purple-500/20 mb-2"
+            >
+              <div className="flex items-center gap-2.5">
+                <Bot className="w-4 h-4 text-purple-400 shrink-0" />
+                <div>
+                  <div className="font-semibold text-white flex items-center gap-1.5 font-mono">
+                    <span>Ask Vayun AI Copilot</span>
+                    <span className="text-[9px] px-1 rounded bg-purple-500/30 text-purple-300 font-bold">ASSISTANT</span>
+                  </div>
+                  <div className="text-[10px] text-neutral-400 font-mono">Chat about all workstation tools, code debugging & PDF tasks (⌘J)</div>
+                </div>
+              </div>
+              <CornerDownLeft className="w-3.5 h-3.5 opacity-60 text-purple-400" />
+            </div>
+          )}
+
           {onOpenHelpdesk && (!cleanQuery || cleanQuery.includes('help') || cleanQuery.includes('desk') || cleanQuery.includes('faq') || cleanQuery.includes('support') || cleanQuery.includes('trouble') || cleanQuery.includes('guide')) && (
             <div
               onClick={() => {

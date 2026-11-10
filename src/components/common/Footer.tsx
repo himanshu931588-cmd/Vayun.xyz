@@ -20,7 +20,8 @@ import {
   Scale,
   Coffee,
   Puzzle,
-  LifeBuoy
+  LifeBuoy,
+  Bot
 } from 'lucide-react';
 
 interface FooterProps {
@@ -31,6 +32,7 @@ interface FooterProps {
   onOpenSupport?: () => void;
   onOpenExtension?: () => void;
   onOpenHelpdesk?: () => void;
+  onOpenChatbot?: () => void;
   theme?: 'dark' | 'light';
 }
 
@@ -42,6 +44,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenSupport,
   onOpenExtension,
   onOpenHelpdesk,
+  onOpenChatbot,
   theme = 'dark' 
 }) => {
   const isLight = theme === 'light';
@@ -235,6 +238,12 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           <div className="flex items-center gap-4">
+            {onOpenChatbot && (
+              <button onClick={onOpenChatbot} className="hover:underline flex items-center gap-1 text-purple-400">
+                <Bot className="w-3 h-3" />
+                <span>Ask Vayun AI</span>
+              </button>
+            )}
             {onOpenHelpdesk && (
               <button onClick={onOpenHelpdesk} className="hover:underline flex items-center gap-1">
                 <LifeBuoy className="w-3 h-3 text-cyan-400" />

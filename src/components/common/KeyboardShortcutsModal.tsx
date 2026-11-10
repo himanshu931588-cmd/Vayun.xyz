@@ -17,6 +17,7 @@ export const KeyboardShortcutsModal: React.FC<KeyboardShortcutsModalProps> = ({
 
   const shortcuts = [
     { key: '⌘K / Ctrl+K', desc: 'Open global command spotlight to jump to any tool' },
+    { key: '⌘J / Ctrl+J', desc: 'Ask Vayun AI Chatbot anything about tools, code, or privacy' },
     { key: 'D', desc: 'Toggle between pure black and pure white monochrome theme' },
     { key: '1 - 5', desc: 'Jump to category (Overview, PDF, AI, Invoices, Tabular)' },
     { key: 'R', desc: 'Launch Resume Builder with photo and PDF export' },
