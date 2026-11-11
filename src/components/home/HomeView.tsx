@@ -37,7 +37,6 @@ import { getStoredApiKey } from '../../utils/geminiApi';
 import { VayunLogo } from '../common/VayunLogo';
 import { VayunWordmark } from '../common/VayunWordmark';
 import { HeroSection3D } from './HeroSection3D';
-import { ToolCardLivePreview } from './ToolCardLivePreview';
 import { SnakeGameSection } from '../game/SnakeGameSection';
 
 interface HomeViewProps {
@@ -312,11 +311,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 }`}>
                   {tool.description}
                 </p>
-
-                {/* Miniature Live Interactive Preview Appliance */}
-                <div className="pt-1">
-                  <ToolCardLivePreview toolId={tool.id} isLight={isLight} />
-                </div>
               </div>
 
               {/* Bottom Card Action Footer */}
