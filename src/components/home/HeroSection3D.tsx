@@ -8,8 +8,7 @@ import {
   CheckCircle2, 
   Lock, 
   LifeBuoy, 
-  Download, 
-  Presentation 
+  Download 
 } from 'lucide-react';
 import { ToolId } from '../../types';
 import { VayunLogo } from '../common/VayunLogo';
@@ -123,7 +122,7 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
           <p className={`text-sm sm:text-base leading-relaxed max-w-2xl ${
             isLight ? 'text-slate-600 font-normal' : 'text-neutral-400'
           }`}>
-            Engineered for founders, CTOs, and high-velocity engineers. Generate 10-second McKinsey-grade pitch decks from PDF/CSV, eliminate AI code smells in <strong className={isLight ? 'text-slate-900 font-semibold' : 'text-white'}>Vayun Flow</strong>, and slash LLM API burn by 60%—without sending a single byte to an external cloud.
+            Engineered for founders, CTOs, and high-velocity engineers. Extract deep data insights from PDF/CSV, eliminate AI code smells in <strong className={isLight ? 'text-slate-900 font-semibold' : 'text-white'}>Vayun Flow</strong>, and slash LLM API burn by 60%—without sending a single byte to an external cloud.
           </p>
         </div>
 
@@ -158,28 +157,28 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
         {/* Action Buttons */}
         <div className="flex flex-wrap items-center gap-3 pt-2">
           <button
-            onClick={() => onSelectTool('data-analytics')}
+            onClick={() => onSelectTool('vayun-flow')}
             className={`px-5 py-3 rounded-xl text-xs font-mono font-semibold flex items-center gap-2.5 transition-all shadow-md group ${
               isLight 
                 ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30 border border-blue-600' 
                 : 'bg-white text-black hover:bg-neutral-200 hover:shadow-lg hover:shadow-white/10'
             }`}
           >
-            <Presentation className="w-4 h-4 transition-transform group-hover:scale-110" />
-            <span>10s Pitch Deck AI</span>
+            <Network className="w-4 h-4 transition-transform group-hover:scale-110" />
+            <span>Launch Vayun Flow</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
           </button>
 
           <button
-            onClick={() => onSelectTool('vayun-flow')}
+            onClick={() => onSelectTool('data-analytics')}
             className={`px-4 py-3 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
               isLight 
                 ? 'border-slate-200/90 bg-white hover:bg-slate-50 text-slate-700 shadow-xs hover:border-slate-300' 
                 : 'border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-white'
             }`}
           >
-            <Network className="w-4 h-4" />
-            <span>Launch Vayun Flow</span>
+            <Cpu className="w-4 h-4" />
+            <span>Data Insights</span>
           </button>
 
           <button

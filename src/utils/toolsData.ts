@@ -260,11 +260,11 @@ export const TOOLS: ToolMeta[] = [
   {
     id: 'data-analytics',
     name: 'Data Insights & PPT Deck AI',
-    tagline: '10-second executive insights & slide decks from PDF/CSV',
+    tagline: 'Executive insights & slide decks from PDF/CSV',
     category: 'tabular',
     categoryName: 'Tabular & Analytics',
     icon: 'Presentation',
-    description: 'Upload any PDF report or CSV spreadsheet to extract high-impact metrics, trend anomalies, and a 5-slide PowerPoint deck ready to present or export in under 10 seconds.',
+    description: 'Upload any PDF report or CSV spreadsheet to extract high-impact metrics, trend anomalies, and slide decks ready to present or export client-side.',
     seoSlug: 'data-insights-ppt',
     popular: true,
     keywords: ['data', 'analytics', 'insights', 'ppt', 'powerpoint', 'slides', 'presentation', 'csv', 'pdf', 'deck', 'statistics', 'charts', 'executive', 'summary', 'report', 'viva']
