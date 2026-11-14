@@ -131,7 +131,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       />
 
       {/* Toolbar & Filter Tabs */}
-      <div className={`pb-4 border-b ${isLight ? 'border-slate-200/80' : 'border-neutral-800'}`}>
+      <div id="tools-section" className={`pt-2 pb-4 border-b ${isLight ? 'border-slate-200/80' : 'border-neutral-800'}`}>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
           {/* Universal Search Input */}
           <div className="relative w-full sm:w-80">
@@ -143,10 +143,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search tools, formats, or tasks..."
-              className={`w-full pl-10 pr-9 py-2.5 rounded-xl text-xs sm:text-[13px] transition-colors focus:outline-hidden ${
+              className={`w-full pl-10 pr-9 py-2 rounded-xl text-xs sm:text-[13px] transition-colors focus:outline-hidden ${
                 isLight 
                   ? 'bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:border-blue-500 shadow-xs' 
-                  : 'bg-neutral-950 border border-neutral-800 text-white placeholder-neutral-500 focus:border-neutral-500'
+                  : 'bg-neutral-950 border border-neutral-800 text-white placeholder-neutral-500 focus:border-neutral-600'
               }`}
             />
             {searchQuery && (
@@ -160,19 +160,25 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </div>
 
           {/* Segmented Filter Pills */}
-          <div className="flex items-center gap-1.5 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0 no-scrollbar">
+          <div className={`p-1 rounded-2xl border flex items-center gap-1 w-full sm:w-auto overflow-x-auto no-scrollbar ${
+            isLight ? 'bg-slate-100/90 border-slate-200/90' : 'bg-neutral-950 border-neutral-800/80'
+          }`}>
             <button
               onClick={() => {
                 onSelectCategory('all');
                 setSearchQuery('');
               }}
-              className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap group ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'all' && !searchQuery
-                  ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
-                  : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
+                  ? isLight 
+                    ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
+                    : 'bg-neutral-800 text-white font-medium border border-neutral-700/60 shadow-xs'
+                  : isLight 
+                    ? 'text-slate-600 hover:text-slate-900 hover:bg-white/60' 
+                    : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
               }`}
             >
-              <LayoutGrid className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
+              <LayoutGrid className="w-4 h-4 shrink-0 opacity-80" />
               <span>All ({TOOLS.length})</span>
             </button>
             <button
@@ -180,13 +186,17 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('developer');
                 setSearchQuery('');
               }}
-              className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap group ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'developer' && !searchQuery
-                  ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
-                  : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
+                  ? isLight 
+                    ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
+                    : 'bg-neutral-800 text-white font-medium border border-neutral-700/60 shadow-xs'
+                  : isLight 
+                    ? 'text-slate-600 hover:text-slate-900 hover:bg-white/60' 
+                    : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
               }`}
             >
-              <Network className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
+              <Network className="w-4 h-4 shrink-0 opacity-80" />
               <span>Developer Flow ({TOOLS.filter(t => t.category === 'developer').length})</span>
             </button>
             <button
@@ -194,13 +204,17 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('pdf');
                 setSearchQuery('');
               }}
-              className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap group ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'pdf' && !searchQuery
-                  ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
-                  : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
+                  ? isLight 
+                    ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
+                    : 'bg-neutral-800 text-white font-medium border border-neutral-700/60 shadow-xs'
+                  : isLight 
+                    ? 'text-slate-600 hover:text-slate-900 hover:bg-white/60' 
+                    : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
               }`}
             >
-              <FileText className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
+              <FileText className="w-4 h-4 shrink-0 opacity-80" />
               <span>PDF Suite ({TOOLS.filter(t => t.category === 'pdf').length})</span>
             </button>
             <button
@@ -208,13 +222,17 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('ai');
                 setSearchQuery('');
               }}
-              className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap group ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'ai' && !searchQuery
-                  ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
-                  : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
+                  ? isLight 
+                    ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
+                    : 'bg-neutral-800 text-white font-medium border border-neutral-700/60 shadow-xs'
+                  : isLight 
+                    ? 'text-slate-600 hover:text-slate-900 hover:bg-white/60' 
+                    : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
               }`}
             >
-              <BrainCircuit className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
+              <BrainCircuit className="w-4 h-4 shrink-0 opacity-80" />
               <span>AI Context ({TOOLS.filter(t => t.category === 'ai').length})</span>
             </button>
             <button
@@ -222,13 +240,17 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('billing');
                 setSearchQuery('');
               }}
-              className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap group ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'billing' && !searchQuery
-                  ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
-                  : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
+                  ? isLight 
+                    ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
+                    : 'bg-neutral-800 text-white font-medium border border-neutral-700/60 shadow-xs'
+                  : isLight 
+                    ? 'text-slate-600 hover:text-slate-900 hover:bg-white/60' 
+                    : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
               }`}
             >
-              <Receipt className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
+              <Receipt className="w-4 h-4 shrink-0 opacity-80" />
               <span>Invoicing ({TOOLS.filter(t => t.category === 'billing').length})</span>
             </button>
             <button
@@ -236,13 +258,17 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('tabular');
                 setSearchQuery('');
               }}
-              className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap group ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'tabular' && !searchQuery
-                  ? isLight ? 'bg-blue-600 text-white font-semibold shadow-xs' : 'bg-white text-black font-medium'
-                  : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-neutral-400 hover:text-white'
+                  ? isLight 
+                    ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
+                    : 'bg-neutral-800 text-white font-medium border border-neutral-700/60 shadow-xs'
+                  : isLight 
+                    ? 'text-slate-600 hover:text-slate-900 hover:bg-white/60' 
+                    : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
               }`}
             >
-              <Table className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
+              <Table className="w-4 h-4 shrink-0 opacity-80" />
               <span>Tabular ({TOOLS.filter(t => t.category === 'tabular').length})</span>
             </button>
           </div>
@@ -265,27 +291,31 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
       {/* Grid of Tools — Clean, Minimalist, No Stickers */}
       {filteredTools.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {filteredTools.map((tool) => (
             <div
               key={tool.id}
               onClick={() => onSelectTool(tool.id)}
-              className={`p-5 rounded-2xl border transition-all cursor-pointer group flex flex-col justify-between space-y-4 ${
+              className={`p-6 rounded-2xl border transition-all duration-200 cursor-pointer group flex flex-col justify-between h-full min-h-[220px] ${
                 isLight 
-                  ? 'bg-white border-slate-200/90 hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-500/5' 
-                  : 'bg-neutral-950 border-neutral-800 hover:border-neutral-500 hover:bg-neutral-900/60 hover:shadow-xl hover:shadow-black/60'
+                  ? 'bg-white border-slate-200/90 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-0.5' 
+                  : 'bg-neutral-950 border-neutral-800/90 hover:border-neutral-700 hover:bg-neutral-900/40 hover:shadow-xl hover:shadow-black/60 hover:-translate-y-0.5'
               }`}
             >
               <div className="space-y-3.5">
                 {/* Top Badge Strip: Crisp JetBrains Mono Labels */}
                 <div className="flex items-center justify-between">
-                  <div className={`p-2.5 rounded-xl border transition-colors ${
-                    isLight ? 'border-blue-100 bg-blue-50/70 text-blue-700 group-hover:bg-blue-600 group-hover:text-white' : 'border-neutral-800 bg-neutral-900 group-hover:bg-neutral-800'
+                  <div className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all duration-200 ${
+                    isLight 
+                      ? 'border-blue-100 bg-blue-50/70 text-blue-700 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600' 
+                      : 'border-neutral-800 bg-neutral-900 text-white group-hover:bg-neutral-800 group-hover:border-neutral-700'
                   }`}>
                     {getToolIcon(tool.icon)}
                   </div>
-                  <span className={`text-[11px] font-mono font-medium tracking-wide uppercase px-2 py-0.5 rounded border ${
-                    isLight ? 'border-slate-200 bg-slate-50 text-slate-600' : 'border-neutral-800 bg-neutral-900 text-neutral-400'
+                  <span className={`text-[10px] font-mono font-medium tracking-wider uppercase px-2 py-0.5 rounded-md border ${
+                    isLight 
+                      ? 'border-slate-200/80 bg-slate-50 text-slate-600' 
+                      : 'border-neutral-800 bg-neutral-900 text-neutral-400'
                   }`}>
                     {tool.categoryName}
                   </span>
@@ -293,12 +323,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
                 {/* Editorial Serif Headline Paired with Crisp Mono Tagline */}
                 <div>
-                  <h3 className={`text-lg font-serif font-bold tracking-tight transition-colors leading-snug ${
-                    isLight ? 'text-slate-900 group-hover:text-blue-600' : 'text-white group-hover:text-white'
+                  <h3 className={`text-base sm:text-lg font-serif font-bold tracking-tight transition-colors leading-snug ${
+                    isLight ? 'text-slate-900 group-hover:text-blue-600' : 'text-white group-hover:text-neutral-200'
                   }`}>
                     {tool.name}
                   </h3>
-                  <p className={`text-xs mt-1 font-mono font-medium ${
+                  <p className={`text-xs mt-1 font-mono font-medium line-clamp-1 ${
                     isLight ? 'text-blue-700/80' : 'text-neutral-400'
                   }`}>
                     {tool.tagline}
@@ -306,7 +336,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 </div>
 
                 {/* Description */}
-                <p className={`text-xs leading-relaxed ${
+                <p className={`text-xs leading-relaxed line-clamp-2 ${
                   isLight ? 'text-slate-600 font-normal' : 'text-neutral-400'
                 }`}>
                   {tool.description}
@@ -314,10 +344,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </div>
 
               {/* Bottom Card Action Footer */}
-              <div className={`pt-3 border-t flex items-center justify-between text-xs font-mono transition-colors ${
-                isLight ? 'border-slate-100 text-blue-600 group-hover:text-blue-700 font-semibold' : 'border-neutral-900 text-neutral-400 group-hover:text-white'
+              <div className={`pt-3.5 border-t flex items-center justify-between text-xs font-mono transition-colors ${
+                isLight 
+                  ? 'border-slate-100 text-slate-500 group-hover:text-blue-600 font-medium' 
+                  : 'border-neutral-900 text-neutral-500 group-hover:text-neutral-200 font-medium'
               }`}>
-                <span>Open tool</span>
+                <span>Launch tool</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </div>
             </div>

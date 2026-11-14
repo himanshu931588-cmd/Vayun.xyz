@@ -42,7 +42,7 @@ const SPEEDS = {
 };
 
 export const SnakeGameSection: React.FC<SnakeGameSectionProps> = ({ theme = 'dark' }) => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
