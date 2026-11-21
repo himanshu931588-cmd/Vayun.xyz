@@ -1,39 +1,10 @@
 import React, { useState } from 'react';
 import { 
-  Layers,
-  Scissors,
-  FileArchive,
-  Image as ImageIcon,
-  BrainCircuit, 
-  Minimize2, 
-  ShieldCheck, 
-  Receipt, 
-  Link, 
-  Sparkles, 
-  Table, 
-  FileSpreadsheet, 
-  FileCode2, 
-  FileText,
-  LayoutGrid,
   ArrowRight,
   Search,
-  Cpu,
-  Network,
-  Flame,
-  Scale,
-  Key,
   X,
   Coffee,
-  ExternalLink,
-  Radar,
-  Award,
-  Wind,
-  KeyRound,
-  Presentation,
-  ArrowLeftRight,
-  Clock,
-  Palette,
-  Sliders
+  ExternalLink
 } from 'lucide-react';
 import { ToolCategory, ToolId } from '../../types';
 import { TOOLS } from '../../utils/toolsData';
@@ -92,41 +63,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
     return matchesName || matchesTagline || matchesDescription || matchesCategoryName || matchesSlug || matchesKeywords;
   });
 
-  const getToolIcon = (iconName: string) => {
-    const props = { className: `w-5 h-5 shrink-0 ${isLight ? 'text-blue-600' : 'text-white'} stroke-[1.8]` };
-    switch (iconName) {
-      case 'Network': return <Network {...props} />;
-      case 'ShieldCheck': return <ShieldCheck {...props} />;
-      case 'Flame': return <Flame {...props} />;
-      case 'Scale': return <Scale {...props} />;
-      case 'Layers': return <Layers {...props} />;
-      case 'Scissors': return <Scissors {...props} />;
-      case 'FileArchive': return <FileArchive {...props} />;
-      case 'Image': return <ImageIcon {...props} />;
-      case 'FileText': return <FileText {...props} />;
-      case 'BrainCircuit': return <BrainCircuit {...props} />;
-      case 'Minimize2': return <Minimize2 {...props} />;
-      case 'Receipt': return <Receipt {...props} />;
-      case 'Link': return <Link {...props} />;
-      case 'Sparkles': return <Sparkles {...props} />;
-      case 'Table': return <Table {...props} />;
-      case 'FileSpreadsheet': return <FileSpreadsheet {...props} />;
-      case 'FileCode2': return <FileCode2 {...props} />;
-      case 'Radar': return <Radar {...props} />;
-      case 'Award': return <Award {...props} />;
-      case 'Wind': return <Wind {...props} />;
-      case 'KeyRound': return <KeyRound {...props} />;
-      case 'Presentation': return <Presentation {...props} />;
-      case 'Cpu': return <Cpu {...props} />;
-      case 'ArrowLeftRight': return <ArrowLeftRight {...props} />;
-      case 'Clock': return <Clock {...props} />;
-      case 'Palette': return <Palette {...props} />;
-      case 'Sliders': return <Sliders {...props} />;
-      case 'Key': return <Key {...props} />;
-      default: return <BrainCircuit {...props} />;
-    }
-  };
-
   return (
     <div className="space-y-10 py-10 max-w-7xl mx-auto px-4 sm:px-6">
       {/* Interactive 3D Perspective Hero Header */}
@@ -177,7 +113,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('all');
                 setSearchQuery('');
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap select-none font-medium ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'all' && !searchQuery
                   ? isLight 
                     ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
@@ -187,7 +123,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
               }`}
             >
-              <LayoutGrid className="w-4 h-4 shrink-0 opacity-80" />
               <span>All ({TOOLS.length})</span>
             </button>
             <button
@@ -195,7 +130,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('convert');
                 setSearchQuery('');
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap select-none font-medium ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'convert' && !searchQuery
                   ? isLight 
                     ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
@@ -205,7 +140,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
               }`}
             >
-              <ArrowLeftRight className="w-4 h-4 shrink-0 opacity-80" />
               <span>Converters ({TOOLS.filter(t => t.category === 'convert').length})</span>
             </button>
             <button
@@ -213,7 +147,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('developer');
                 setSearchQuery('');
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap select-none font-medium ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'developer' && !searchQuery
                   ? isLight 
                     ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
@@ -223,7 +157,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
               }`}
             >
-              <Network className="w-4 h-4 shrink-0 opacity-80" />
               <span>Developer Flow ({TOOLS.filter(t => t.category === 'developer').length})</span>
             </button>
             <button
@@ -231,7 +164,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('pdf');
                 setSearchQuery('');
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap select-none font-medium ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'pdf' && !searchQuery
                   ? isLight 
                     ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
@@ -241,7 +174,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
               }`}
             >
-              <FileText className="w-4 h-4 shrink-0 opacity-80" />
               <span>PDF Suite ({TOOLS.filter(t => t.category === 'pdf').length})</span>
             </button>
             <button
@@ -249,7 +181,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('ai');
                 setSearchQuery('');
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap select-none font-medium ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'ai' && !searchQuery
                   ? isLight 
                     ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
@@ -259,7 +191,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
               }`}
             >
-              <BrainCircuit className="w-4 h-4 shrink-0 opacity-80" />
               <span>AI Context ({TOOLS.filter(t => t.category === 'ai').length})</span>
             </button>
             <button
@@ -267,7 +198,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('billing');
                 setSearchQuery('');
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap select-none font-medium ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'billing' && !searchQuery
                   ? isLight 
                     ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
@@ -277,7 +208,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
               }`}
             >
-              <Receipt className="w-4 h-4 shrink-0 opacity-80" />
               <span>Invoicing ({TOOLS.filter(t => t.category === 'billing').length})</span>
             </button>
             <button
@@ -285,7 +215,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSelectCategory('tabular');
                 setSearchQuery('');
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap select-none font-medium ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'tabular' && !searchQuery
                   ? isLight 
                     ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
@@ -295,7 +225,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
               }`}
             >
-              <Table className="w-4 h-4 shrink-0 opacity-80" />
               <span>Tabular ({TOOLS.filter(t => t.category === 'tabular').length})</span>
             </button>
           </div>
@@ -330,16 +259,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
               }`}
             >
               <div className="space-y-3.5">
-                {/* Top Badge Strip: Crisp JetBrains Mono Labels */}
+                {/* Top Category Badge */}
                 <div className="flex items-center justify-between">
-                  <div className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all duration-200 ${
-                    isLight 
-                      ? 'border-blue-100 bg-blue-50/70 text-blue-700 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600' 
-                      : 'border-neutral-800 bg-neutral-900 text-white group-hover:bg-neutral-800 group-hover:border-neutral-700'
-                  }`}>
-                    {getToolIcon(tool.icon)}
-                  </div>
-                  <span className={`text-[10px] font-mono font-medium tracking-wider uppercase px-2 py-0.5 rounded-md border ${
+                  <span className={`text-[10px] font-mono font-semibold tracking-wider uppercase px-2 py-0.5 rounded-md border ${
                     isLight 
                       ? 'border-slate-200/80 bg-slate-50 text-slate-600' 
                       : 'border-neutral-800 bg-neutral-900 text-neutral-400'

@@ -1,12 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { 
-  Network, 
   ArrowRight, 
-  Cpu, 
-  CheckCircle2, 
-  Lock, 
-  ArrowDown,
-  ArrowLeftRight
+  ArrowDown
 } from 'lucide-react';
 import { ToolId } from '../../types';
 
@@ -115,28 +110,25 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
 
         {/* Core Architecture Trust Badges */}
         <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
-          <span className={`px-2.5 py-1 rounded-md border flex items-center gap-1.5 ${
+          <span className={`px-2.5 py-1 rounded-md border ${
             isLight 
               ? 'border-slate-200/80 bg-white text-slate-700 font-medium shadow-xs' 
               : 'border-neutral-800 bg-neutral-900/80 text-neutral-300'
           }`}>
-            <Lock className={`w-3.5 h-3.5 ${isLight ? 'text-emerald-600' : 'text-emerald-400'}`} />
             <span>Zero Remote Uploads</span>
           </span>
-          <span className={`px-2.5 py-1 rounded-md border flex items-center gap-1.5 ${
+          <span className={`px-2.5 py-1 rounded-md border ${
             isLight 
               ? 'border-slate-200/80 bg-white text-slate-700 font-medium shadow-xs' 
               : 'border-neutral-800 bg-neutral-900/80 text-neutral-300'
           }`}>
-            <Cpu className={`w-3.5 h-3.5 ${isLight ? 'text-blue-600' : 'text-cyan-400'}`} />
             <span>100% In-Memory RAM</span>
           </span>
-          <span className={`px-2.5 py-1 rounded-md border flex items-center gap-1.5 ${
+          <span className={`px-2.5 py-1 rounded-md border ${
             isLight 
               ? 'border-slate-200/80 bg-white text-slate-700 font-medium shadow-xs' 
               : 'border-neutral-800 bg-neutral-900/80 text-neutral-300'
           }`}>
-            <CheckCircle2 className={`w-3.5 h-3.5 ${isLight ? 'text-emerald-600' : 'text-emerald-400'}`} />
             <span>Free for Early-Stage Startups</span>
           </span>
         </div>
@@ -151,7 +143,6 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                 : 'bg-white text-black hover:bg-neutral-200 hover:shadow-lg hover:shadow-white/10'
             }`}
           >
-            <Network className="w-4 h-4 transition-transform group-hover:scale-110" />
             <span>Launch Vayun Flow</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
           </button>
@@ -164,7 +155,6 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                 : 'border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-white'
             }`}
           >
-            <ArrowLeftRight className="w-4 h-4 text-blue-500" />
             <span>Vayun Convert (12 Tools)</span>
           </button>
 
