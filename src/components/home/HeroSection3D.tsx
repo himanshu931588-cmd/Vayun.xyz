@@ -1,7 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { 
   ArrowRight, 
-  ArrowDown
+  ArrowDown,
+  Sparkles,
+  Search
 } from 'lucide-react';
 import { ToolId } from '../../types';
 
@@ -38,6 +40,33 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
     }
   };
 
+  const flagshipSuites = [
+    {
+      id: 'vayun-flow' as ToolId,
+      name: 'Developer Flow',
+      tagline: 'AST call graphs & viva defense',
+      badge: 'Flagship'
+    },
+    {
+      id: 'vayun-convert' as ToolId,
+      name: 'Vayun Convert',
+      tagline: '12 client-side format converters',
+      badge: '12 Tools'
+    },
+    {
+      id: 'merge-pdf' as ToolId,
+      name: 'PDF & Documents',
+      tagline: 'Merge, split & vector compress',
+      badge: 'Client-side'
+    },
+    {
+      id: 'token-slimmer' as ToolId,
+      name: 'AI & Tokens',
+      tagline: 'Slim LLM context & save 40%',
+      badge: 'Cost Saver'
+    }
+  ];
+
   return (
     <div
       ref={containerRef}
@@ -49,7 +78,7 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
       }}
       className={`relative rounded-3xl border overflow-hidden transition-all duration-300 ${
         isLight
-          ? 'bg-[#FFFDF9]/95 border-[#E8E1D3] shadow-[0_20px_50px_rgba(10,38,24,0.04)] backdrop-blur-md'
+          ? 'bg-[#FFFDF9]/95 border-[#E8E1D3] shadow-[0_20px_50px_rgba(10,38,24,0.03)] backdrop-blur-md'
           : 'bg-gradient-to-b from-[#0A2419] via-[#061A12] to-[#04120C] border-[#133A27] shadow-2xl shadow-black/80'
       }`}
     >
@@ -78,63 +107,84 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
       />
 
       {/* Hero Content: Balanced, Authoritative, Minimal */}
-      <div className="relative z-10 p-6 sm:p-10 lg:p-12 max-w-4xl space-y-6">
+      <div className="relative z-10 p-6 sm:p-10 lg:p-12 space-y-8">
         
-        {/* Eyebrow Status Pill */}
-        <div className="flex items-center gap-2.5">
-          <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-mono font-medium tracking-wide ${
+        {/* Top Status & Verification Row */}
+        <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+          <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border tracking-wide ${
             isLight 
               ? 'bg-[#EFE9DC]/90 border-[#DDD3C1] text-[#0A2618] shadow-xs' 
               : 'bg-[#0D2E20]/80 border-[#194E36] text-[#A3C7B5]'
           }`}>
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            <span>Zero-Data-Leakage Workstation • 100% In-Browser RAM</span>
+            <span>Active Workstation • 100% In-Browser RAM</span>
+          </div>
+
+          <div className={`hidden sm:flex items-center gap-2 text-[11px] ${
+            isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'
+          }`}>
+            <span>Telemetry: Zero</span>
+            <span>•</span>
+            <span>Local Compute</span>
+            <span>•</span>
+            <span>No Accounts Required</span>
           </div>
         </div>
 
         {/* Main Headline & Description */}
-        <div className="space-y-3.5">
-          <h1 className="text-3xl sm:text-5xl lg:text-5xl font-serif tracking-tight leading-[1.12] text-[#0A2618] dark:text-[#FAF7F2]">
-            The Autonomous Intelligence Platform <br className="hidden sm:inline" />
+        <div className="space-y-4 max-w-3xl">
+          <h1 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-serif tracking-tight leading-[1.12] text-[#0A2618] dark:text-[#FAF7F2]">
+            The Autonomous Developer Workstation <br className="hidden sm:inline" />
             <span className={`italic font-serif ${isLight ? 'text-[#12432B]' : 'text-[#6EE7B7]'}`}>
-              for Fast-Moving Startups.
+              for High-Velocity Teams.
             </span>
           </h1>
 
-          <p className={`text-sm sm:text-base leading-relaxed max-w-2xl font-normal ${
+          <p className={`text-sm sm:text-base leading-relaxed font-normal max-w-2xl ${
             isLight ? 'text-[#2D4A39]' : 'text-[#8AA898]'
           }`}>
-            Built for founders, CTOs, and high-velocity engineers. Audit code architectures, extract deep data insights from PDF/CSV, eliminate AI smells, and slash LLM token costs—without sending a single byte to an external cloud.
+            Audit code architectures, convert developer formats, extract tabular intelligence, and slash LLM tokens in memory—with absolute zero remote data leakage.
           </p>
         </div>
 
-        {/* Core Architecture Trust Badges */}
-        <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
-          <span className={`px-2.5 py-1 rounded-md border ${
-            isLight 
-              ? 'border-[#E8E1D3] bg-[#FFFDF9] text-[#0A2618] font-medium shadow-xs' 
-              : 'border-[#123826] bg-[#0A2419] text-[#A3C7B5]'
-          }`}>
-            <span>Zero Remote Uploads</span>
-          </span>
-          <span className={`px-2.5 py-1 rounded-md border ${
-            isLight 
-              ? 'border-[#E8E1D3] bg-[#FFFDF9] text-[#0A2618] font-medium shadow-xs' 
-              : 'border-[#123826] bg-[#0A2419] text-[#A3C7B5]'
-          }`}>
-            <span>100% In-Memory RAM</span>
-          </span>
-          <span className={`px-2.5 py-1 rounded-md border ${
-            isLight 
-              ? 'border-[#E8E1D3] bg-[#FFFDF9] text-[#0A2618] font-medium shadow-xs' 
-              : 'border-[#123826] bg-[#0A2419] text-[#A3C7B5]'
-          }`}>
-            <span>Free for Early-Stage Startups</span>
-          </span>
+        {/* 4 Interactive Featured Suite Tiles */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-1">
+          {flagshipSuites.map((suite) => (
+            <div
+              key={suite.id}
+              onClick={() => onSelectTool(suite.id)}
+              className={`p-4 rounded-2xl border transition-all duration-200 cursor-pointer group flex flex-col justify-between ${
+                isLight 
+                  ? 'bg-white/80 border-[#E8E1D3] hover:border-[#1E5638] hover:bg-white hover:shadow-md hover:-translate-y-0.5' 
+                  : 'bg-[#0A2419]/80 border-[#123826] hover:border-[#1F593C] hover:bg-[#0D2E20] hover:shadow-lg hover:-translate-y-0.5'
+              }`}
+            >
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <span className={`text-[10px] font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded border ${
+                    isLight ? 'border-[#E8E1D3] bg-[#F5F0E6] text-[#2D4A39]' : 'border-[#123826] bg-[#061A12] text-[#8AA898]'
+                  }`}>
+                    {suite.badge}
+                  </span>
+                  <ArrowRight className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-emerald-600 dark:text-emerald-400" />
+                </div>
+                <h3 className={`text-sm font-serif font-bold tracking-tight pt-1 ${
+                  isLight ? 'text-[#0A2618] group-hover:text-[#12432B]' : 'text-[#FAF7F2] group-hover:text-[#6EE7B7]'
+                }`}>
+                  {suite.name}
+                </h3>
+                <p className={`text-xs font-mono line-clamp-1 ${
+                  isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'
+                }`}>
+                  {suite.tagline}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Clean, Focused Action Controls */}
-        <div className="flex flex-wrap items-center gap-3 pt-1">
+        <div className="flex flex-wrap items-center gap-3 pt-2">
           <button
             onClick={() => onSelectTool('vayun-flow')}
             className={`px-5 py-2.5 rounded-xl text-xs sm:text-[13px] font-mono font-semibold flex items-center gap-2 transition-all shadow-md active:scale-95 group ${
@@ -155,7 +205,7 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                 : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223] text-[#FAF7F2]'
             }`}
           >
-            <span>Vayun Convert (12 Tools)</span>
+            <span>Vayun Convert Hub</span>
           </button>
 
           <button
@@ -166,7 +216,7 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
                 : 'text-[#8AA898] hover:text-[#FAF7F2] hover:bg-[#0A2419]'
             }`}
           >
-            <span>Explore All Tools</span>
+            <span>All 22 Tools</span>
             <ArrowDown className="w-3.5 h-3.5 opacity-70" />
           </button>
         </div>

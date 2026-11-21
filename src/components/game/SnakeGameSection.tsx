@@ -463,20 +463,20 @@ export const SnakeGameSection: React.FC<SnakeGameSectionProps> = ({ theme = 'dar
   return (
     <div className={`rounded-2xl border transition-all overflow-hidden ${
       isLight 
-        ? 'bg-white border-slate-200/90 shadow-sm text-slate-900' 
-        : 'bg-[#0a0b0e] border-neutral-800 text-white'
+        ? 'bg-[#FFFDF9] border-[#E8E1D3] shadow-xs text-[#0A2618]' 
+        : 'bg-[#0A2419] border-[#123826] text-[#FAF7F2]'
     }`}>
       
       {/* Interactive Top Banner Header */}
       <div 
         onClick={() => setIsExpanded(prev => !prev)}
         className={`px-5 py-3.5 flex items-center justify-between cursor-pointer select-none transition-colors ${
-          isLight ? 'hover:bg-slate-50 border-b border-slate-100' : 'hover:bg-neutral-900/60 border-b border-neutral-800/80'
+          isLight ? 'hover:bg-[#FAF7F2] border-b border-[#E8E1D3]' : 'hover:bg-[#0D2E20] border-b border-[#123826]'
         }`}
       >
         <div className="flex items-center gap-3">
           <div className={`w-8 h-8 rounded-lg border flex items-center justify-center shrink-0 ${
-            isLight ? 'bg-blue-50 border-blue-200 text-blue-600' : 'bg-neutral-900 border-neutral-800 text-emerald-400'
+            isLight ? 'bg-[#EFE9DC] border-[#DDD3C1] text-[#0A2618]' : 'bg-[#061A12] border-[#194E36] text-[#6EE7B7]'
           }`}>
             <Gamepad2 className="w-4 h-4 stroke-[2]" />
           </div>
@@ -486,11 +486,13 @@ export const SnakeGameSection: React.FC<SnakeGameSectionProps> = ({ theme = 'dar
               <span className="text-xs font-mono font-bold tracking-tight">
                 Developer Arcade: Terminal Snake
               </span>
-              <span className="text-[10px] font-mono px-1.5 py-0.2 rounded uppercase font-semibold bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+              <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded uppercase font-semibold ${
+                isLight ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-emerald-950/40 text-emerald-400 border border-emerald-800/40'
+              }`}>
                 100% In-RAM
               </span>
             </div>
-            <p className="text-[11px] text-neutral-400 font-mono">
+            <p className={`text-[11px] font-mono ${isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'}`}>
               Take a mental break • Collect tokens, bug fixes & proofs
             </p>
           </div>
