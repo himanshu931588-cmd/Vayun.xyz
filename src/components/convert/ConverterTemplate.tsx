@@ -306,12 +306,14 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8 animate-fade-in">
       
       {/* Navigation & Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200/80 dark:border-neutral-800">
+      <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b ${
+        isLight ? 'border-[#E8E1D3]' : 'border-[#123826]'
+      }`}>
         <div className="flex items-center gap-3">
           <button
             onClick={onBack}
             className={`p-2.5 rounded-xl border transition-all active:scale-95 ${
-              isLight ? 'border-slate-200 hover:bg-slate-100 text-slate-700' : 'border-neutral-800 hover:bg-neutral-900 text-neutral-300'
+              isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6] text-[#0A2618]' : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223] text-[#FAF7F2]'
             }`}
             title="Back to Vayun Convert Hub"
           >
@@ -321,15 +323,15 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
           <div>
             <div className="flex items-center gap-2.5 flex-wrap">
               <span className={`px-2.5 py-0.5 rounded-md text-[10px] font-mono font-semibold uppercase tracking-wider border ${
-                isLight ? 'border-blue-200 bg-blue-50 text-blue-700' : 'border-blue-900/60 bg-blue-950/60 text-blue-400'
+                isLight ? 'border-[#DDD3C1] bg-[#EFE9DC] text-[#0A2618]' : 'border-[#194E36] bg-[#0D2E20] text-[#6EE7B7]'
               }`}>
                 {meta.group}
               </span>
-              <h1 className="text-xl sm:text-2xl font-serif font-bold tracking-tight text-slate-900 dark:text-white">
+              <h1 className="text-xl sm:text-2xl font-serif font-bold tracking-tight text-[#0A2618] dark:text-[#FAF7F2]">
                 {meta.name}
               </h1>
             </div>
-            <p className={`text-xs mt-1 font-mono ${isLight ? 'text-slate-500' : 'text-neutral-400'}`}>
+            <p className={`text-xs mt-1 font-mono ${isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'}`}>
               {meta.tagline}
             </p>
           </div>
@@ -338,7 +340,7 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
         {/* Security & Client-side guarantee badge */}
         <div className="flex items-center gap-2">
           <div className={`px-3 py-1.5 rounded-xl border text-xs font-mono flex items-center gap-2 ${
-            isLight ? 'border-emerald-200 bg-emerald-50/80 text-emerald-800' : 'border-emerald-900/60 bg-emerald-950/40 text-emerald-400'
+            isLight ? 'border-[#DDD3C1] bg-[#EFE9DC] text-[#0A2618]' : 'border-[#194E36] bg-[#0D2E20] text-[#A3C7B5]'
           }`}>
             <Lock className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
             <span>100% Client-Side RAM • Zero Server Uploads</span>
@@ -356,14 +358,14 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
             {/* Base64 options */}
             {toolId === 'base64-converter' && (
               <div className={`p-1 rounded-xl border flex items-center gap-1 ${
-                isLight ? 'bg-slate-100 border-slate-200' : 'bg-neutral-900 border-neutral-800'
+                isLight ? 'bg-[#EFE9DC] border-[#DDD3C1]' : 'bg-[#04120C] border-[#123826]'
               }`}>
                 <button
                   onClick={() => setBase64Mode('encode')}
                   className={`px-3 py-1 rounded-lg transition-all ${
                     base64Mode === 'encode'
-                      ? isLight ? 'bg-white text-blue-700 font-semibold shadow-xs' : 'bg-neutral-800 text-white font-medium'
-                      : 'text-neutral-400 hover:text-white'
+                      ? isLight ? 'bg-[#FFFDF9] text-[#0A2618] font-semibold shadow-xs' : 'bg-[#0D2E20] text-[#FAF7F2] font-semibold border border-[#194E36]'
+                      : isLight ? 'text-[#3B5445] hover:text-[#0A2618]' : 'text-[#8AA898] hover:text-white'
                   }`}
                 >
                   Encode to Base64
@@ -372,18 +374,20 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
                   onClick={() => setBase64Mode('decode')}
                   className={`px-3 py-1 rounded-lg transition-all ${
                     base64Mode === 'decode'
-                      ? isLight ? 'bg-white text-blue-700 font-semibold shadow-xs' : 'bg-neutral-800 text-white font-medium'
-                      : 'text-neutral-400 hover:text-white'
+                      ? isLight ? 'bg-[#FFFDF9] text-[#0A2618] font-semibold shadow-xs' : 'bg-[#0D2E20] text-[#FAF7F2] font-semibold border border-[#194E36]'
+                      : isLight ? 'text-[#3B5445] hover:text-[#0A2618]' : 'text-[#8AA898] hover:text-white'
                   }`}
                 >
                   Decode to Text
                 </button>
-                <label className="flex items-center gap-1.5 px-2 text-[11px] text-slate-500 cursor-pointer">
+                <label className={`flex items-center gap-1.5 px-2 text-[11px] cursor-pointer ${
+                  isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'
+                }`}>
                   <input
                     type="checkbox"
                     checked={base64UrlSafe}
                     onChange={(e) => setBase64UrlSafe(e.target.checked)}
-                    className="rounded text-blue-600"
+                    className="rounded text-emerald-600"
                   />
                   <span>URL-safe (-/_)</span>
                 </label>
@@ -393,14 +397,14 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
             {/* URL options */}
             {toolId === 'url-converter' && (
               <div className={`p-1 rounded-xl border flex items-center gap-1 ${
-                isLight ? 'bg-slate-100 border-slate-200' : 'bg-neutral-900 border-neutral-800'
+                isLight ? 'bg-[#EFE9DC] border-[#DDD3C1]' : 'bg-[#04120C] border-[#123826]'
               }`}>
                 <button
                   onClick={() => setUrlMode('encode')}
                   className={`px-3 py-1 rounded-lg transition-all ${
                     urlMode === 'encode'
-                      ? isLight ? 'bg-white text-blue-700 font-semibold shadow-xs' : 'bg-neutral-800 text-white font-medium'
-                      : 'text-neutral-400 hover:text-white'
+                      ? isLight ? 'bg-[#FFFDF9] text-[#0A2618] font-semibold shadow-xs' : 'bg-[#0D2E20] text-[#FAF7F2] font-semibold border border-[#194E36]'
+                      : isLight ? 'text-[#3B5445] hover:text-[#0A2618]' : 'text-[#8AA898] hover:text-white'
                   }`}
                 >
                   URL Encode
@@ -409,18 +413,20 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
                   onClick={() => setUrlMode('decode')}
                   className={`px-3 py-1 rounded-lg transition-all ${
                     urlMode === 'decode'
-                      ? isLight ? 'bg-white text-blue-700 font-semibold shadow-xs' : 'bg-neutral-800 text-white font-medium'
-                      : 'text-neutral-400 hover:text-white'
+                      ? isLight ? 'bg-[#FFFDF9] text-[#0A2618] font-semibold shadow-xs' : 'bg-[#0D2E20] text-[#FAF7F2] font-semibold border border-[#194E36]'
+                      : isLight ? 'text-[#3B5445] hover:text-[#0A2618]' : 'text-[#8AA898] hover:text-white'
                   }`}
                 >
                   URL Decode
                 </button>
-                <label className="flex items-center gap-1.5 px-2 text-[11px] text-slate-500 cursor-pointer">
+                <label className={`flex items-center gap-1.5 px-2 text-[11px] cursor-pointer ${
+                  isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'
+                }`}>
                   <input
                     type="checkbox"
                     checked={urlComponentOnly}
                     onChange={(e) => setUrlComponentOnly(e.target.checked)}
-                    className="rounded text-blue-600"
+                    className="rounded text-emerald-600"
                   />
                   <span>Component Only</span>
                 </label>
@@ -431,14 +437,14 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
             {toolId === 'px-to-rem' && (
               <div className="flex items-center gap-2">
                 <div className={`p-1 rounded-xl border flex items-center gap-1 ${
-                  isLight ? 'bg-slate-100 border-slate-200' : 'bg-neutral-900 border-neutral-800'
+                  isLight ? 'bg-[#EFE9DC] border-[#DDD3C1]' : 'bg-[#04120C] border-[#123826]'
                 }`}>
                   <button
                     onClick={() => setPxDirection('px-to-rem')}
                     className={`px-3 py-1 rounded-lg transition-all ${
                       pxDirection === 'px-to-rem'
-                        ? isLight ? 'bg-white text-blue-700 font-semibold shadow-xs' : 'bg-neutral-800 text-white font-medium'
-                        : 'text-neutral-400 hover:text-white'
+                        ? isLight ? 'bg-[#FFFDF9] text-[#0A2618] font-semibold shadow-xs' : 'bg-[#0D2E20] text-[#FAF7F2] font-semibold border border-[#194E36]'
+                        : isLight ? 'text-[#3B5445] hover:text-[#0A2618]' : 'text-[#8AA898] hover:text-white'
                     }`}
                   >
                     px → rem
@@ -447,8 +453,8 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
                     onClick={() => setPxDirection('rem-to-px')}
                     className={`px-3 py-1 rounded-lg transition-all ${
                       pxDirection === 'rem-to-px'
-                        ? isLight ? 'bg-white text-blue-700 font-semibold shadow-xs' : 'bg-neutral-800 text-white font-medium'
-                        : 'text-neutral-400 hover:text-white'
+                        ? isLight ? 'bg-[#FFFDF9] text-[#0A2618] font-semibold shadow-xs' : 'bg-[#0D2E20] text-[#FAF7F2] font-semibold border border-[#194E36]'
+                        : isLight ? 'text-[#3B5445] hover:text-[#0A2618]' : 'text-[#8AA898] hover:text-white'
                     }`}
                   >
                     rem → px
@@ -456,9 +462,9 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
                 </div>
 
                 <div className={`px-2.5 py-1 rounded-xl border flex items-center gap-1.5 ${
-                  isLight ? 'border-slate-200 bg-white' : 'border-neutral-800 bg-neutral-900'
+                  isLight ? 'border-[#E8E1D3] bg-[#FFFDF9]' : 'border-[#123826] bg-[#0A2419]'
                 }`}>
-                  <span className="text-slate-400">Base Font:</span>
+                  <span className={isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'}>Base Font:</span>
                   <input
                     type="number"
                     min="1"
@@ -467,7 +473,7 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
                     onChange={(e) => setBaseSize(Math.max(1, parseInt(e.target.value, 10) || 16))}
                     className="w-12 bg-transparent text-center font-bold focus:outline-hidden"
                   />
-                  <span className="text-slate-400">px</span>
+                  <span className={isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'}>px</span>
                 </div>
               </div>
             )}
@@ -475,9 +481,9 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
             {/* XML Root Tag option */}
             {toolId === 'json-to-xml' && (
               <div className={`px-2.5 py-1 rounded-xl border flex items-center gap-2 ${
-                isLight ? 'border-slate-200 bg-white' : 'border-neutral-800 bg-neutral-900'
+                isLight ? 'border-[#E8E1D3] bg-[#FFFDF9]' : 'border-[#123826] bg-[#0A2419]'
               }`}>
-                <span className="text-slate-400">Root Tag:</span>
+                <span className={isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'}>Root Tag:</span>
                 <input
                   type="text"
                   value={xmlRootTag}
@@ -493,11 +499,11 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
             <button
               onClick={() => setInput(meta.defaultSample)}
               className={`px-3 py-1.5 rounded-xl border flex items-center gap-1.5 transition-all select-none active:scale-95 ${
-                isLight ? 'border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-xs' : 'border-neutral-800 bg-neutral-900 hover:bg-neutral-800 text-neutral-300'
+                isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6] text-[#0A2618] shadow-xs' : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223] text-[#FAF7F2]'
               }`}
               title="Fill with worked sample data"
             >
-              <Sparkles className="w-3.5 h-3.5 text-blue-500" />
+              <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
               <span>Load Sample</span>
             </button>
 
@@ -507,8 +513,8 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
                 setOutput('');
                 setError(null);
               }}
-              className={`px-2.5 py-1.5 rounded-xl border transition-all text-slate-400 hover:text-slate-700 dark:hover:text-white ${
-                isLight ? 'border-slate-200 hover:bg-slate-50' : 'border-neutral-800 hover:bg-neutral-900'
+              className={`px-2.5 py-1.5 rounded-xl border transition-all ${
+                isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6] text-[#3B5445]' : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223] text-[#8AA898]'
               }`}
               title="Clear all fields"
             >
@@ -522,13 +528,15 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
           
           {/* Left Pane: Input */}
           <div className={`p-4 sm:p-5 rounded-2xl border flex flex-col justify-between space-y-3 ${
-            isLight ? 'bg-white border-slate-200/90 shadow-sm' : 'bg-neutral-950 border-neutral-800'
+            isLight ? 'bg-[#FFFDF9] border-[#E8E1D3] shadow-sm' : 'bg-[#0A2419] border-[#123826]'
           }`}>
-            <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-neutral-900 text-xs font-mono">
-              <span className="font-semibold text-slate-700 dark:text-neutral-300">
+            <div className={`flex items-center justify-between pb-2 border-b text-xs font-mono ${
+              isLight ? 'border-[#EFE9DC]' : 'border-[#123826]'
+            }`}>
+              <span className={`font-semibold ${isLight ? 'text-[#0A2618]' : 'text-[#FAF7F2]'}`}>
                 {meta.inputLabel}
               </span>
-              <div className="flex items-center gap-3 text-[11px] text-slate-400">
+              <div className={`flex items-center gap-3 text-[11px] ${isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'}`}>
                 <span>{input.length} chars</span>
                 <span>{(inputBytes / 1024).toFixed(1)} KB / 5 MB</span>
               </div>
@@ -543,16 +551,18 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
                 spellCheck={false}
                 className={`w-full h-full min-h-[320px] p-3 rounded-xl font-mono text-xs leading-relaxed resize-y focus:outline-hidden ${
                   isLight 
-                    ? 'bg-slate-50/70 border border-slate-200 text-slate-900 focus:border-blue-500' 
-                    : 'bg-black/60 border border-neutral-800 text-neutral-100 focus:border-neutral-600'
+                    ? 'bg-[#FAF7F2] border border-[#E8E1D3] text-[#0A2618] focus:border-[#1E5638]' 
+                    : 'bg-[#061A12]/80 border border-[#123826] text-[#E8F3ED] focus:border-[#226343]'
                 }`}
               />
             </div>
 
             {/* Input Action Controls: Keyboard hint & Convert button */}
             <div className="flex items-center justify-between pt-1 text-xs font-mono">
-              <div className="text-[11px] text-slate-400 hidden sm:flex items-center gap-1.5">
-                <kbd className="px-1.5 py-0.5 rounded border border-slate-200 dark:border-neutral-800 bg-slate-100 dark:bg-neutral-900 text-[10px]">
+              <div className={`text-[11px] hidden sm:flex items-center gap-1.5 ${isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'}`}>
+                <kbd className={`px-1.5 py-0.5 rounded border text-[10px] ${
+                  isLight ? 'border-[#DDD3C1] bg-[#EFE9DC] text-[#0A2618]' : 'border-[#194E36] bg-[#061A12] text-[#A3C7B5]'
+                }`}>
                   Ctrl+Enter
                 </kbd>
                 <span>to convert</span>
@@ -565,12 +575,12 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
                     onClick={handleSwap}
                     className={`px-3 py-2 rounded-xl border flex items-center gap-1.5 transition-all text-xs active:scale-95 ${
                       isLight 
-                        ? 'border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-xs' 
-                        : 'border-neutral-800 bg-neutral-900 hover:bg-neutral-800 text-neutral-300'
+                        ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6] text-[#0A2618] shadow-xs' 
+                        : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223] text-[#FAF7F2]'
                     }`}
                     title="Swap input and output direction"
                   >
-                    <ArrowLeftRight className="w-3.5 h-3.5 text-blue-500" />
+                    <ArrowLeftRight className="w-3.5 h-3.5 text-emerald-500" />
                     <span>Swap</span>
                   </button>
                 )}
@@ -579,8 +589,8 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
                   onClick={() => executeConversion(input)}
                   className={`px-4 py-2 rounded-xl font-semibold flex items-center gap-1.5 transition-all shadow-md active:scale-95 ${
                     isLight 
-                      ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-600/20' 
-                      : 'bg-white hover:bg-neutral-200 text-black'
+                      ? 'bg-[#0A2618] hover:bg-[#12432B] text-[#FAF7F2] shadow-[#0A2618]/20' 
+                      : 'bg-[#FAF7F2] hover:bg-[#EAE4D8] text-[#061A12] font-bold'
                   }`}
                 >
                   <Cpu className="w-3.5 h-3.5" />
@@ -592,10 +602,12 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
 
           {/* Right Pane: Output */}
           <div className={`p-4 sm:p-5 rounded-2xl border flex flex-col justify-between space-y-3 ${
-            isLight ? 'bg-white border-slate-200/90 shadow-sm' : 'bg-neutral-950 border-neutral-800'
+            isLight ? 'bg-[#FFFDF9] border-[#E8E1D3] shadow-sm' : 'bg-[#0A2419] border-[#123826]'
           }`}>
-            <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-neutral-900 text-xs font-mono">
-              <span className="font-semibold text-slate-700 dark:text-neutral-300">
+            <div className={`flex items-center justify-between pb-2 border-b text-xs font-mono ${
+              isLight ? 'border-[#EFE9DC]' : 'border-[#123826]'
+            }`}>
+              <span className={`font-semibold ${isLight ? 'text-[#0A2618]' : 'text-[#FAF7F2]'}`}>
                 {meta.outputLabel}
               </span>
               <div className="flex items-center gap-2">
@@ -603,10 +615,10 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
                   onClick={handleShare}
                   className={`px-2.5 py-1 rounded-lg border flex items-center gap-1 transition-all text-[11px] ${
                     shared 
-                      ? 'bg-emerald-500 text-white border-emerald-500' 
+                      ? 'bg-emerald-600 text-white border-emerald-600' 
                       : isLight 
-                      ? 'border-slate-200 hover:bg-slate-50 text-slate-600' 
-                      : 'border-neutral-800 hover:bg-neutral-900 text-neutral-400'
+                      ? 'border-[#E8E1D3] hover:bg-[#F5F0E6] text-[#0A2618]' 
+                      : 'border-[#123826] hover:bg-[#0E3223] text-[#A3C7B5]'
                   }`}
                   title="Copy shareable URL (encodes input in URL fragment, 100% private)"
                 >
@@ -619,10 +631,10 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
                   disabled={!output}
                   className={`px-2.5 py-1 rounded-lg border flex items-center gap-1 transition-all text-[11px] ${
                     !output 
-                      ? 'opacity-40 cursor-not-allowed border-slate-200 dark:border-neutral-800 text-slate-400' 
+                      ? 'opacity-40 cursor-not-allowed border-transparent text-[#7C9C8C]' 
                       : isLight 
-                      ? 'border-slate-200 hover:bg-slate-50 text-slate-700' 
-                      : 'border-neutral-800 hover:bg-neutral-900 text-neutral-300'
+                      ? 'border-[#E8E1D3] hover:bg-[#F5F0E6] text-[#0A2618]' 
+                      : 'border-[#123826] hover:bg-[#0E3223] text-[#FAF7F2]'
                   }`}
                   title={`Download as ${meta.downloadFilename}`}
                 >
@@ -637,10 +649,10 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
                     copied
                       ? 'bg-emerald-600 text-white border border-emerald-600'
                       : !output
-                      ? 'opacity-40 cursor-not-allowed bg-slate-200 dark:bg-neutral-800 text-slate-400'
+                      ? 'opacity-40 cursor-not-allowed bg-[#EFE9DC] dark:bg-[#061A12] text-[#8AA898]'
                       : isLight
-                      ? 'bg-blue-600 text-white hover:bg-blue-700'
-                      : 'bg-white text-black hover:bg-neutral-200'
+                      ? 'bg-[#0A2618] text-[#FAF7F2] hover:bg-[#12432B]'
+                      : 'bg-[#FAF7F2] text-[#061A12] hover:bg-[#EAE4D8]'
                   }`}
                   title="Copy to clipboard (Ctrl+Shift+C)"
                 >
@@ -652,7 +664,7 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
 
             {/* Error Message Box (never blank output on error) */}
             {error && (
-              <div className="p-3.5 rounded-xl border border-red-200 dark:border-red-900/60 bg-red-50 dark:bg-red-950/30 text-red-700 dark:text-red-400 text-xs font-mono flex items-start gap-2.5 animate-shake">
+              <div className="p-3.5 rounded-xl border border-red-300 dark:border-red-900/60 bg-red-50 dark:bg-red-950/30 text-red-700 dark:text-red-400 text-xs font-mono flex items-start gap-2.5 animate-shake">
                 <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-500" />
                 <div className="space-y-0.5">
                   <div className="font-bold">Conversion Error:</div>
@@ -671,8 +683,8 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
                 spellCheck={false}
                 className={`w-full h-full min-h-[320px] p-3 rounded-xl font-mono text-xs leading-relaxed resize-y focus:outline-hidden ${
                   isLight 
-                    ? 'bg-slate-50/70 border border-slate-200 text-slate-900' 
-                    : 'bg-black/60 border border-neutral-800 text-neutral-100'
+                    ? 'bg-[#FAF7F2] border border-[#E8E1D3] text-[#0A2618]' 
+                    : 'bg-[#061A12]/80 border border-[#123826] text-[#E8F3ED]'
                 }`}
               />
             </div>
@@ -681,7 +693,7 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
             {/* 1. Color Preview Swatch for HEX to RGB */}
             {toolId === 'hex-to-rgb' && colorData && (
               <div className={`p-3 rounded-xl border flex items-center gap-3 ${
-                isLight ? 'border-slate-200 bg-slate-50' : 'border-neutral-800 bg-neutral-900/60'
+                isLight ? 'border-[#E8E1D3] bg-[#FAF7F2]' : 'border-[#123826] bg-[#061A12]'
               }`}>
                 <div 
                   className="w-12 h-12 rounded-lg border shadow-xs shrink-0" 
@@ -689,7 +701,7 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
                 />
                 <div className="text-xs font-mono space-y-1">
                   <div className="font-bold">{colorData.hex}</div>
-                  <div className="text-[11px] text-slate-500">{colorData.rgb} • {colorData.hsl}</div>
+                  <div className={`text-[11px] ${isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'}`}>{colorData.rgb} • {colorData.hsl}</div>
                 </div>
                 <input
                   type="color"
@@ -705,8 +717,8 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
             {toolId === 'jwt-decoder' && jwtData && (
               <div className={`p-3.5 rounded-xl border text-xs font-mono space-y-2 ${
                 jwtData.isExpired 
-                  ? 'border-amber-200 bg-amber-50/70 text-amber-900 dark:border-amber-900/40 dark:bg-amber-950/20 dark:text-amber-400' 
-                  : 'border-emerald-200 bg-emerald-50/70 text-emerald-900 dark:border-emerald-900/40 dark:bg-emerald-950/20 dark:text-emerald-400'
+                  ? 'border-amber-300 bg-amber-50/70 text-amber-900 dark:border-amber-900/40 dark:bg-amber-950/20 dark:text-amber-400' 
+                  : 'border-emerald-300 bg-emerald-50/70 text-emerald-900 dark:border-emerald-900/40 dark:bg-emerald-950/20 dark:text-emerald-400'
               }`}>
                 <div className="flex items-center justify-between">
                   <span className="font-bold flex items-center gap-1.5">
@@ -728,7 +740,7 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
             {/* 3. INR Cheque Format Card */}
             {toolId === 'number-to-words-inr' && formattedInr && (
               <div className={`p-3 rounded-xl border flex items-center justify-between text-xs font-mono ${
-                isLight ? 'border-blue-200 bg-blue-50/60 text-blue-900' : 'border-blue-900/60 bg-blue-950/30 text-blue-300'
+                isLight ? 'border-[#DDD3C1] bg-[#EFE9DC] text-[#0A2618]' : 'border-[#194E36] bg-[#0D2E20] text-[#E8F3ED]'
               }`}>
                 <span>Formatted Currency:</span>
                 <span className="text-sm font-bold">{formattedInr}</span>
@@ -736,7 +748,9 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
             )}
 
             {/* Bottom Status bar */}
-            <div className="flex items-center justify-between pt-1 text-[11px] font-mono text-slate-400">
+            <div className={`flex items-center justify-between pt-1 text-[11px] font-mono ${
+              isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'
+            }`}>
               <span>{output ? `${output.split('\n').length} lines rendered` : 'Awaiting input...'}</span>
               <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-medium">
                 <Check className="w-3 h-3" />
@@ -749,57 +763,63 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
 
       {/* SEO Section: Explanation, Worked Example & FAQs */}
       <div className={`p-6 sm:p-8 rounded-3xl border space-y-8 ${
-        isLight ? 'bg-white border-slate-200/90 shadow-sm' : 'bg-neutral-950 border-neutral-800'
+        isLight ? 'bg-[#FFFDF9] border-[#E8E1D3] shadow-sm' : 'bg-[#0A2419] border-[#123826]'
       }`}>
         
         {/* Format Explanation */}
         <div className="space-y-3">
           <div className="flex items-center gap-2">
-            <BookOpen className="w-4.5 h-4.5 text-blue-500" />
-            <h2 className="text-base sm:text-lg font-serif font-bold tracking-tight text-slate-900 dark:text-white">
+            <BookOpen className="w-4.5 h-4.5 text-emerald-500" />
+            <h2 className="text-base sm:text-lg font-serif font-bold tracking-tight text-[#0A2618] dark:text-[#FAF7F2]">
               About {meta.name}
             </h2>
           </div>
-          <p className="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-neutral-400 max-w-4xl">
+          <p className={`text-xs sm:text-sm leading-relaxed max-w-4xl ${
+            isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'
+          }`}>
             {meta.explanation}
           </p>
         </div>
 
         {/* Worked Example */}
-        <div className="space-y-3 pt-2 border-t border-slate-100 dark:border-neutral-900">
+        <div className={`space-y-3 pt-2 border-t ${
+          isLight ? 'border-[#EFE9DC]' : 'border-[#123826]'
+        }`}>
           <div className="flex items-center gap-2">
             <Terminal className="w-4 h-4 text-emerald-500" />
-            <h3 className="text-sm font-serif font-bold tracking-tight text-slate-900 dark:text-white">
+            <h3 className="text-sm font-serif font-bold tracking-tight text-[#0A2618] dark:text-[#FAF7F2]">
               Worked Example: {meta.workedExample.title}
             </h3>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono">
             <div className={`p-3.5 rounded-xl border space-y-1.5 ${
-              isLight ? 'bg-slate-50 border-slate-200' : 'bg-black/60 border-neutral-800'
+              isLight ? 'bg-[#FAF7F2] border-[#E8E1D3]' : 'bg-[#061A12]/80 border-[#123826]'
             }`}>
-              <div className="text-[11px] text-slate-400 uppercase font-semibold">Input:</div>
+              <div className={`text-[11px] uppercase font-semibold ${isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'}`}>Input:</div>
               <pre className="overflow-x-auto whitespace-pre-wrap">{meta.workedExample.input}</pre>
             </div>
             <div className={`p-3.5 rounded-xl border space-y-1.5 ${
-              isLight ? 'bg-slate-50 border-slate-200' : 'bg-black/60 border-neutral-800'
+              isLight ? 'bg-[#FAF7F2] border-[#E8E1D3]' : 'bg-[#061A12]/80 border-[#123826]'
             }`}>
-              <div className="text-[11px] text-slate-400 uppercase font-semibold">Output:</div>
+              <div className={`text-[11px] uppercase font-semibold ${isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'}`}>Output:</div>
               <pre className="overflow-x-auto whitespace-pre-wrap">{meta.workedExample.output}</pre>
             </div>
           </div>
           {meta.workedExample.notes && (
-            <p className="text-[11px] text-slate-500 font-mono italic">
+            <p className={`text-[11px] font-mono italic ${isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'}`}>
               Note: {meta.workedExample.notes}
             </p>
           )}
         </div>
 
         {/* FAQs Accordion */}
-        <div className="space-y-4 pt-2 border-t border-slate-100 dark:border-neutral-900">
+        <div className={`space-y-4 pt-2 border-t ${
+          isLight ? 'border-[#EFE9DC]' : 'border-[#123826]'
+        }`}>
           <div className="flex items-center gap-2">
-            <HelpCircle className="w-4.5 h-4.5 text-blue-500" />
-            <h3 className="text-base font-serif font-bold tracking-tight text-slate-900 dark:text-white">
+            <HelpCircle className="w-4.5 h-4.5 text-emerald-500" />
+            <h3 className="text-base font-serif font-bold tracking-tight text-[#0A2618] dark:text-[#FAF7F2]">
               Frequently Asked Questions (FAQs)
             </h3>
           </div>
@@ -811,18 +831,20 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
                 <div
                   key={idx}
                   className={`rounded-xl border transition-colors ${
-                    isLight ? 'border-slate-200/80 bg-slate-50/50' : 'border-neutral-800/80 bg-neutral-900/30'
+                    isLight ? 'border-[#E8E1D3] bg-[#FAF7F2]/60' : 'border-[#123826] bg-[#061A12]/50'
                   }`}
                 >
                   <button
                     onClick={() => setActiveFaq(isOpen ? null : idx)}
-                    className="w-full px-4 py-3 text-left flex items-center justify-between gap-3 text-xs sm:text-sm font-semibold select-none text-slate-900 dark:text-neutral-200"
+                    className="w-full px-4 py-3 text-left flex items-center justify-between gap-3 text-xs sm:text-sm font-semibold select-none text-[#0A2618] dark:text-[#FAF7F2]"
                   >
                     <span>{faq.question}</span>
-                    {isOpen ? <ChevronUp className="w-4 h-4 shrink-0" /> : <ChevronDown className="w-4 h-4 shrink-0 text-slate-400" />}
+                    {isOpen ? <ChevronUp className="w-4 h-4 shrink-0" /> : <ChevronDown className="w-4 h-4 shrink-0 opacity-60" />}
                   </button>
                   {isOpen && (
-                    <div className="px-4 pb-3.5 pt-1 text-xs sm:text-[13px] leading-relaxed text-slate-600 dark:text-neutral-400 border-t border-slate-200/40 dark:border-neutral-800/40">
+                    <div className={`px-4 pb-3.5 pt-1 text-xs sm:text-[13px] leading-relaxed border-t ${
+                      isLight ? 'text-[#3B5445] border-[#E8E1D3]/50' : 'text-[#8AA898] border-[#123826]/50'
+                    }`}>
                       {faq.answer}
                     </div>
                   )}
@@ -834,8 +856,12 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
 
         {/* Related Converters in Same Group */}
         {meta.relatedToolIds.length > 0 && (
-          <div className="space-y-3 pt-2 border-t border-slate-100 dark:border-neutral-900">
-            <h3 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold">
+          <div className={`space-y-3 pt-2 border-t ${
+            isLight ? 'border-[#EFE9DC]' : 'border-[#123826]'
+          }`}>
+            <h3 className={`text-xs font-mono uppercase tracking-wider font-bold ${
+              isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'
+            }`}>
               Related {meta.group} Converters
             </h3>
             <div className="flex flex-wrap items-center gap-2">
@@ -848,11 +874,11 @@ export const ConverterTemplate: React.FC<ConverterTemplateProps> = ({
                     onClick={() => onNavigateToTool(relId)}
                     className={`px-3 py-1.5 rounded-xl border text-xs font-mono flex items-center gap-1.5 transition-all active:scale-95 ${
                       isLight 
-                        ? 'border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-xs' 
-                        : 'border-neutral-800 bg-neutral-900/60 hover:bg-neutral-800 text-neutral-300'
+                        ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6] text-[#0A2618] shadow-xs' 
+                        : 'border-[#123826] bg-[#061A12] hover:bg-[#0E3223] text-[#FAF7F2]'
                     }`}
                   >
-                    <ArrowLeftRight className="w-3 h-3 text-blue-500" />
+                    <ArrowLeftRight className="w-3 h-3 text-emerald-500" />
                     <span>{relMeta.name}</span>
                   </button>
                 );

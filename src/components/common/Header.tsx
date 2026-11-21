@@ -116,7 +116,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className={`sticky top-0 z-40 w-full transition-colors ${
-      isLight ? 'bg-white/90 border-b border-slate-200/80 shadow-xs' : 'bg-black/95 border-b border-neutral-800'
+      isLight ? 'bg-[#FAF7F2]/90 border-b border-[#E8E1D3] shadow-xs' : 'bg-[#061A12]/95 border-b border-[#123826]'
     } backdrop-blur-md`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 sm:h-[68px] gap-4">
@@ -145,8 +145,8 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className={`h-10 px-3 rounded-xl transition-all flex items-center gap-2 shrink-0 select-none active:scale-95 group ${
                   currentTool === 'home' && selectedCategory === 'all'
-                    ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
-                    : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                    ? isLight ? 'text-[#0A2618] font-semibold bg-[#EFE9DC]/90 border border-[#DDD3C1]' : 'text-[#FAF7F2] font-semibold bg-[#0D2E20] border border-[#194E36]'
+                    : isLight ? 'text-[#2D4A39] hover:text-[#0A2618] hover:bg-[#F2ECE1]' : 'text-[#8AA898] hover:text-[#FAF7F2] hover:bg-[#0A2419]'
                 }`}
               >
                 <LayoutGrid className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
@@ -160,8 +160,8 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className={`h-10 px-3 rounded-xl transition-all flex items-center gap-2 shrink-0 select-none active:scale-95 group ${
                   isConvertTool
-                    ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
-                    : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                    ? isLight ? 'text-[#0A2618] font-semibold bg-[#EFE9DC]/90 border border-[#DDD3C1]' : 'text-[#FAF7F2] font-semibold bg-[#0D2E20] border border-[#194E36]'
+                    : isLight ? 'text-[#2D4A39] hover:text-[#0A2618] hover:bg-[#F2ECE1]' : 'text-[#8AA898] hover:text-[#FAF7F2] hover:bg-[#0A2419]'
                 }`}
               >
                 <ArrowLeftRight className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
@@ -175,8 +175,8 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className={`h-10 px-3 rounded-xl transition-all flex items-center gap-2 shrink-0 select-none active:scale-95 group ${
                   isDeveloperTool
-                    ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
-                    : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                    ? isLight ? 'text-[#0A2618] font-semibold bg-[#EFE9DC]/90 border border-[#DDD3C1]' : 'text-[#FAF7F2] font-semibold bg-[#0D2E20] border border-[#194E36]'
+                    : isLight ? 'text-[#2D4A39] hover:text-[#0A2618] hover:bg-[#F2ECE1]' : 'text-[#8AA898] hover:text-[#FAF7F2] hover:bg-[#0A2419]'
                 }`}
               >
                 <Network className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
@@ -190,8 +190,8 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className={`h-10 px-3 rounded-xl transition-all flex items-center gap-2 shrink-0 select-none active:scale-95 group ${
                   isPdfTool
-                    ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
-                    : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                    ? isLight ? 'text-[#0A2618] font-semibold bg-[#EFE9DC]/90 border border-[#DDD3C1]' : 'text-[#FAF7F2] font-semibold bg-[#0D2E20] border border-[#194E36]'
+                    : isLight ? 'text-[#2D4A39] hover:text-[#0A2618] hover:bg-[#F2ECE1]' : 'text-[#8AA898] hover:text-[#FAF7F2] hover:bg-[#0A2419]'
                 }`}
               >
                 <FileText className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
@@ -205,8 +205,8 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className={`h-10 px-3 rounded-xl transition-all flex items-center gap-2 shrink-0 select-none active:scale-95 group ${
                   isAiTool
-                    ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
-                    : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                    ? isLight ? 'text-[#0A2618] font-semibold bg-[#EFE9DC]/90 border border-[#DDD3C1]' : 'text-[#FAF7F2] font-semibold bg-[#0D2E20] border border-[#194E36]'
+                    : isLight ? 'text-[#2D4A39] hover:text-[#0A2618] hover:bg-[#F2ECE1]' : 'text-[#8AA898] hover:text-[#FAF7F2] hover:bg-[#0A2419]'
                 }`}
               >
                 <BrainCircuit className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
@@ -220,8 +220,8 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className={`h-10 px-3 rounded-xl transition-all flex items-center gap-2 shrink-0 select-none active:scale-95 group ${
                   isBillingTool
-                    ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
-                    : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                    ? isLight ? 'text-[#0A2618] font-semibold bg-[#EFE9DC]/90 border border-[#DDD3C1]' : 'text-[#FAF7F2] font-semibold bg-[#0D2E20] border border-[#194E36]'
+                    : isLight ? 'text-[#2D4A39] hover:text-[#0A2618] hover:bg-[#F2ECE1]' : 'text-[#8AA898] hover:text-[#FAF7F2] hover:bg-[#0A2419]'
                 }`}
               >
                 <Receipt className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
@@ -235,8 +235,8 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className={`h-10 px-3 rounded-xl transition-all flex items-center gap-2 shrink-0 select-none active:scale-95 group ${
                   isTabularTool
-                    ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
-                    : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                    ? isLight ? 'text-[#0A2618] font-semibold bg-[#EFE9DC]/90 border border-[#DDD3C1]' : 'text-[#FAF7F2] font-semibold bg-[#0D2E20] border border-[#194E36]'
+                    : isLight ? 'text-[#2D4A39] hover:text-[#0A2618] hover:bg-[#F2ECE1]' : 'text-[#8AA898] hover:text-[#FAF7F2] hover:bg-[#0A2419]'
                 }`}
               >
                 <Table className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
@@ -253,16 +253,16 @@ export const Header: React.FC<HeaderProps> = ({
               title="Search tools or commands (⌘K)"
               className={`h-10 px-3.5 rounded-xl border text-xs sm:text-[13px] font-mono flex items-center gap-2 transition-all active:scale-95 group ${
                 isLight 
-                  ? 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 shadow-xs' 
-                  : 'border-neutral-800 bg-neutral-900/70 text-neutral-300 hover:bg-neutral-850 hover:border-neutral-700'
+                  ? 'border-[#E8E1D3] bg-[#FFFDF9] text-[#0A2618] hover:bg-[#F5F0E6] hover:border-[#DDD3C1] shadow-xs' 
+                  : 'border-[#123826] bg-[#0A2419]/90 text-[#A3C7B5] hover:text-white hover:bg-[#0E3223] hover:border-[#194E36]'
               }`}
             >
               <Search className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity shrink-0" />
               <span className="hidden sm:inline">Search</span>
               <kbd className={`px-1.5 py-0.5 rounded text-[10px] font-mono border ${
                 isLight 
-                  ? 'border-slate-200 bg-slate-100 text-slate-600' 
-                  : 'border-neutral-700 bg-neutral-950 text-neutral-400'
+                  ? 'border-[#DDD3C1] bg-[#F5F0E6] text-[#2D4A39]' 
+                  : 'border-[#194E36] bg-[#061A12] text-[#8AA898]'
               }`}>
                 ⌘K
               </kbd>
@@ -275,8 +275,8 @@ export const Header: React.FC<HeaderProps> = ({
                 title="Install Vayun (Desktop App, Extension, Terminal CLI)"
                 className={`h-10 px-3.5 rounded-xl border text-xs sm:text-[13px] font-mono hidden sm:inline-flex items-center gap-2 transition-all select-none active:scale-95 group ${
                   isLight 
-                    ? 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 shadow-xs' 
-                    : 'border-neutral-800 bg-neutral-900/70 text-neutral-300 hover:text-white hover:bg-neutral-850 hover:border-neutral-700'
+                    ? 'border-[#E8E1D3] bg-[#FFFDF9] text-[#0A2618] hover:bg-[#F5F0E6] hover:border-[#DDD3C1] shadow-xs' 
+                    : 'border-[#123826] bg-[#0A2419]/90 text-[#A3C7B5] hover:text-white hover:bg-[#0E3223] hover:border-[#194E36]'
                 }`}
               >
                 <Download className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity shrink-0" />
@@ -284,21 +284,21 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             )}
 
-            {/* Theme Toggle Button (Dark / Light) */}
+            {/* Theme Toggle Button (Dark Green / Cream) */}
             <button
               onClick={onToggleTheme}
-              title={`Switch to ${isLight ? 'Dark' : 'Light'} Mode (D)`}
+              title={`Switch to ${isLight ? 'Dark Green' : 'Cream'} Mode (D)`}
               className={`h-10 w-10 rounded-xl border flex items-center justify-center transition-all select-none active:scale-95 group ${
                 isLight 
-                  ? 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 shadow-xs' 
-                  : 'border-neutral-800 bg-neutral-900/70 text-neutral-400 hover:text-white hover:bg-neutral-850 hover:border-neutral-700'
+                  ? 'border-[#E8E1D3] bg-[#FFFDF9] text-[#0A2618] hover:bg-[#F5F0E6] hover:border-[#DDD3C1] shadow-xs' 
+                  : 'border-[#123826] bg-[#0A2419]/90 text-[#A3C7B5] hover:text-white hover:bg-[#0E3223] hover:border-[#194E36]'
               }`}
               aria-label="Toggle Theme"
             >
               {isLight ? (
-                <Moon className="w-4.5 h-4.5 shrink-0 transition-transform group-hover:rotate-12 text-slate-700" />
+                <Moon className="w-4.5 h-4.5 shrink-0 transition-transform group-hover:rotate-12 text-[#0A2618]" />
               ) : (
-                <Sun className="w-4.5 h-4.5 shrink-0 transition-transform group-hover:rotate-45 text-neutral-300 group-hover:text-white" />
+                <Sun className="w-4.5 h-4.5 shrink-0 transition-transform group-hover:rotate-45 text-[#6EE7B7] group-hover:text-white" />
               )}
             </button>
 
@@ -307,8 +307,8 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setIsMobileMenuOpen(prev => !prev)}
               className={`h-10 w-10 rounded-xl border transition-all md:hidden flex items-center justify-center active:scale-95 ${
                 isLight 
-                  ? 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50' 
-                  : 'border-neutral-800 bg-neutral-900/70 text-neutral-300 hover:bg-neutral-850'
+                  ? 'border-[#E8E1D3] bg-[#FFFDF9] text-[#0A2618] hover:bg-[#F5F0E6]' 
+                  : 'border-[#123826] bg-[#0A2419]/90 text-[#A3C7B5] hover:bg-[#0E3223]'
               }`}
               aria-label="Toggle Navigation Menu"
             >
@@ -321,9 +321,11 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Mobile Slide-down Navigation Menu */}
       {isMobileMenuOpen && (
         <div className={`md:hidden border-b px-4 py-4 space-y-3 transition-colors ${
-          isLight ? 'bg-white border-neutral-200 text-black' : 'bg-black border-neutral-900 text-white'
+          isLight ? 'bg-[#FAF7F2] border-[#E8E1D3] text-[#0A2618]' : 'bg-[#061A12] border-[#123826] text-[#E8F3ED]'
         }`}>
-          <div className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 font-semibold px-1">
+          <div className={`text-[10px] font-mono uppercase tracking-wider font-semibold px-1 ${
+            isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'
+          }`}>
             Workstation Suites
           </div>
 
@@ -336,8 +338,8 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
                 currentTool === 'home' && selectedCategory === 'all'
-                  ? isLight ? 'bg-black text-white border-black' : 'bg-white text-black border-white'
-                  : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                  ? isLight ? 'bg-[#0A2618] text-[#FAF7F2] border-[#0A2618]' : 'bg-[#FAF7F2] text-[#061A12] border-[#FAF7F2]'
+                  : isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6]' : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223]'
               }`}
             >
               <LayoutGrid className="w-4 h-4 shrink-0" />
@@ -349,14 +351,33 @@ export const Header: React.FC<HeaderProps> = ({
 
             <button
               onClick={() => {
+                onSelectTool('vayun-convert');
+                onSelectCategory('convert');
+                setIsMobileMenuOpen(false);
+              }}
+              className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
+                isConvertTool
+                  ? isLight ? 'bg-[#0A2618] text-[#FAF7F2] border-[#0A2618]' : 'bg-[#FAF7F2] text-[#061A12] border-[#FAF7F2]'
+                  : isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6]' : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223]'
+              }`}
+            >
+              <ArrowLeftRight className="w-4 h-4 opacity-80 shrink-0" />
+              <div>
+                <div className="font-semibold">Convert Hub</div>
+                <div className="text-[10px] opacity-70">12 Converters</div>
+              </div>
+            </button>
+
+            <button
+              onClick={() => {
                 onSelectTool('vayun-flow');
                 onSelectCategory('developer');
                 setIsMobileMenuOpen(false);
               }}
               className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
                 isDeveloperTool
-                  ? isLight ? 'bg-black text-white border-black' : 'bg-white text-black border-white'
-                  : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                  ? isLight ? 'bg-[#0A2618] text-[#FAF7F2] border-[#0A2618]' : 'bg-[#FAF7F2] text-[#061A12] border-[#FAF7F2]'
+                  : isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6]' : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223]'
               }`}
             >
               <Network className="w-4 h-4 opacity-80 shrink-0" />
@@ -374,8 +395,8 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
                 isPdfTool
-                  ? isLight ? 'bg-black text-white border-black' : 'bg-white text-black border-white'
-                  : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                  ? isLight ? 'bg-[#0A2618] text-[#FAF7F2] border-[#0A2618]' : 'bg-[#FAF7F2] text-[#061A12] border-[#FAF7F2]'
+                  : isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6]' : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223]'
               }`}
             >
               <FileText className="w-4 h-4 opacity-80 shrink-0" />
@@ -393,8 +414,8 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
                 isAiTool
-                  ? isLight ? 'bg-black text-white border-black' : 'bg-white text-black border-white'
-                  : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                  ? isLight ? 'bg-[#0A2618] text-[#FAF7F2] border-[#0A2618]' : 'bg-[#FAF7F2] text-[#061A12] border-[#FAF7F2]'
+                  : isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6]' : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223]'
               }`}
             >
               <BrainCircuit className="w-4 h-4 opacity-80 shrink-0" />
@@ -412,8 +433,8 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
                 isBillingTool
-                  ? isLight ? 'bg-black text-white border-black' : 'bg-white text-black border-white'
-                  : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                  ? isLight ? 'bg-[#0A2618] text-[#FAF7F2] border-[#0A2618]' : 'bg-[#FAF7F2] text-[#061A12] border-[#FAF7F2]'
+                  : isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6]' : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223]'
               }`}
             >
               <Receipt className="w-4 h-4 opacity-80 shrink-0" />
@@ -431,8 +452,8 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
                 isTabularTool
-                  ? isLight ? 'bg-black text-white border-black' : 'bg-white text-black border-white'
-                  : isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                  ? isLight ? 'bg-[#0A2618] text-[#FAF7F2] border-[#0A2618]' : 'bg-[#FAF7F2] text-[#061A12] border-[#FAF7F2]'
+                  : isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6]' : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223]'
               }`}
             >
               <Table className="w-4 h-4 opacity-80 shrink-0" />
@@ -443,7 +464,9 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </div>
 
-          <div className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 font-semibold px-1 pt-2">
+          <div className={`text-[10px] font-mono uppercase tracking-wider font-semibold px-1 pt-2 ${
+            isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'
+          }`}>
             Utilities & Integrations
           </div>
 
@@ -455,7 +478,7 @@ export const Header: React.FC<HeaderProps> = ({
                   setIsMobileMenuOpen(false);
                 }}
                 className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
-                  isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                  isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6]' : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223]'
                 }`}
               >
                 <Key className="w-4 h-4 opacity-80 shrink-0" />
@@ -473,7 +496,7 @@ export const Header: React.FC<HeaderProps> = ({
                   setIsMobileMenuOpen(false);
                 }}
                 className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
-                  isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                  isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6]' : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223]'
                 }`}
               >
                 <Download className="w-4 h-4 opacity-80 shrink-0" />
@@ -491,7 +514,7 @@ export const Header: React.FC<HeaderProps> = ({
                   setIsMobileMenuOpen(false);
                 }}
                 className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
-                  isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                  isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6]' : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223]'
                 }`}
               >
                 <LifeBuoy className="w-4 h-4 opacity-80 shrink-0" />
@@ -509,7 +532,7 @@ export const Header: React.FC<HeaderProps> = ({
                   setIsMobileMenuOpen(false);
                 }}
                 className={`p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
-                  isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                  isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6]' : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223]'
                 }`}
               >
                 <Coffee className="w-4 h-4 opacity-80 shrink-0" />
@@ -527,7 +550,7 @@ export const Header: React.FC<HeaderProps> = ({
                   setIsMobileMenuOpen(false);
                 }}
                 className={`col-span-2 p-2.5 rounded-lg border text-left flex items-center gap-2 transition-all ${
-                  isLight ? 'border-neutral-200 hover:bg-neutral-100' : 'border-neutral-800 hover:bg-neutral-900'
+                  isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] hover:bg-[#F5F0E6]' : 'border-[#123826] bg-[#0A2419] hover:bg-[#0E3223]'
                 }`}
               >
                 <ShieldCheck className="w-4 h-4 opacity-80 shrink-0" />

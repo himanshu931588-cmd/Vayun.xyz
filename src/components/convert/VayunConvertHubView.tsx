@@ -85,31 +85,31 @@ export const VayunConvertHubView: React.FC<VayunConvertHubViewProps> = ({
       {/* Vayun Convert Hero Banner */}
       <div className={`p-6 sm:p-10 rounded-3xl border relative overflow-hidden transition-all ${
         isLight
-          ? 'bg-gradient-to-br from-blue-50/80 via-white to-slate-50 border-slate-200/90 shadow-sm'
-          : 'bg-gradient-to-br from-neutral-950 via-[#0d0e14] to-black border-neutral-800 shadow-2xl'
+          ? 'bg-[#FFFDF9]/95 border-[#E8E1D3] shadow-sm'
+          : 'bg-gradient-to-br from-[#0A2419] via-[#061A12] to-[#04120C] border-[#133A27] shadow-2xl'
       }`}>
         <div className="max-w-3xl space-y-4">
           <div className="flex flex-wrap items-center gap-2.5">
             <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold border ${
-              isLight ? 'border-blue-200 bg-blue-100/70 text-blue-800' : 'border-blue-900/60 bg-blue-950/40 text-blue-400'
+              isLight ? 'border-[#DDD3C1] bg-[#EFE9DC] text-[#0A2618]' : 'border-[#194E36] bg-[#0D2E20] text-[#A3C7B5]'
             }`}>
-              <ArrowLeftRight className="w-3.5 h-3.5" />
+              <ArrowLeftRight className="w-3.5 h-3.5 text-emerald-500" />
               <span>Vayun Convert • Developer Converter Hub</span>
             </span>
-            <span className="text-[11px] font-mono text-slate-400">
+            <span className={`text-[11px] font-mono ${isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'}`}>
               PRD v0.1 • by Himanshu Mishra
             </span>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold tracking-tight text-[#0A2618] dark:text-[#FAF7F2] leading-tight">
             Developer Formats & Encodings <br className="hidden sm:inline" />
-            <span className={`italic font-serif ${isLight ? 'text-blue-600' : 'text-neutral-300'}`}>
+            <span className={`italic font-serif ${isLight ? 'text-[#12432B]' : 'text-[#6EE7B7]'}`}>
               Converted in One Click.
             </span>
           </h1>
 
           <p className={`text-xs sm:text-sm leading-relaxed max-w-2xl font-normal ${
-            isLight ? 'text-slate-600' : 'text-neutral-400'
+            isLight ? 'text-[#2D4A39]' : 'text-[#8AA898]'
           }`}>
             A free, fast, no-signup hub where developers convert data, configs, tokens, timestamps, and colors in one paste-and-click step. 100% client-side in your browser RAM with zero server telemetry.
           </p>
@@ -117,21 +117,21 @@ export const VayunConvertHubView: React.FC<VayunConvertHubViewProps> = ({
           {/* Guarantee Badges */}
           <div className="flex flex-wrap items-center gap-2 pt-2 text-xs font-mono">
             <span className={`px-2.5 py-1 rounded-lg border flex items-center gap-1.5 ${
-              isLight ? 'border-slate-200 bg-white text-slate-700 shadow-xs' : 'border-neutral-800 bg-neutral-900/80 text-neutral-300'
+              isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] text-[#0A2618] shadow-xs' : 'border-[#123826] bg-[#0A2419] text-[#A3C7B5]'
             }`}>
               <Lock className="w-3.5 h-3.5 text-emerald-500" />
               <span>Zero Server Uploads</span>
             </span>
             <span className={`px-2.5 py-1 rounded-lg border flex items-center gap-1.5 ${
-              isLight ? 'border-slate-200 bg-white text-slate-700 shadow-xs' : 'border-neutral-800 bg-neutral-900/80 text-neutral-300'
+              isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] text-[#0A2618] shadow-xs' : 'border-[#123826] bg-[#0A2419] text-[#A3C7B5]'
             }`}>
-              <Zap className="w-3.5 h-3.5 text-blue-500" />
+              <Zap className="w-3.5 h-3.5 text-emerald-500" />
               <span>Sub-2s Conversion</span>
             </span>
             <span className={`px-2.5 py-1 rounded-lg border flex items-center gap-1.5 ${
-              isLight ? 'border-slate-200 bg-white text-slate-700 shadow-xs' : 'border-neutral-800 bg-neutral-900/80 text-neutral-300'
+              isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] text-[#0A2618] shadow-xs' : 'border-[#123826] bg-[#0A2419] text-[#A3C7B5]'
             }`}>
-              <Share2 className="w-3.5 h-3.5 text-purple-500" />
+              <Share2 className="w-3.5 h-3.5 text-emerald-500" />
               <span>Private Shareable URLs</span>
             </span>
           </div>
@@ -139,10 +139,12 @@ export const VayunConvertHubView: React.FC<VayunConvertHubViewProps> = ({
       </div>
 
       {/* Universal Search Filter */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pb-2 border-b border-slate-200/80 dark:border-neutral-800">
+      <div className={`flex flex-col sm:flex-row items-center justify-between gap-3 pb-2 border-b ${
+        isLight ? 'border-[#E8E1D3]' : 'border-[#123826]'
+      }`}>
         <div className="relative w-full sm:w-96">
           <Search className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 ${
-            isLight ? 'text-slate-400' : 'text-neutral-500'
+            isLight ? 'text-[#718E7E]' : 'text-[#5A7A6A]'
           }`} />
           <input
             type="text"
@@ -151,18 +153,20 @@ export const VayunConvertHubView: React.FC<VayunConvertHubViewProps> = ({
             placeholder="Search all 12 converters (e.g. JSON, YAML, JWT, IST, INR)..."
             className={`w-full pl-10 pr-4 py-2.5 rounded-xl text-xs sm:text-[13px] font-mono transition-colors focus:outline-hidden ${
               isLight 
-                ? 'bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:border-blue-500 shadow-xs' 
-                : 'bg-neutral-950 border border-neutral-800 text-white placeholder-neutral-500 focus:border-neutral-600'
+                ? 'bg-[#FFFDF9] border border-[#E8E1D3] text-[#0A2618] placeholder-[#718E7E] focus:border-[#1E5638] shadow-xs' 
+                : 'bg-[#0A2419] border border-[#123826] text-[#FAF7F2] placeholder-[#5A7A6A] focus:border-[#226343]'
             }`}
           />
         </div>
 
-        <div className="text-xs font-mono text-slate-400 flex items-center gap-2">
+        <div className={`text-xs font-mono flex items-center gap-2 ${
+          isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'
+        }`}>
           <span>Showing {filteredConverters.length} of {converters.length} converters</span>
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="text-blue-500 hover:underline"
+              className="text-emerald-600 dark:text-emerald-400 hover:underline"
             >
               Clear
             </button>
@@ -181,22 +185,22 @@ export const VayunConvertHubView: React.FC<VayunConvertHubViewProps> = ({
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <div className={`p-2 rounded-xl border ${
-                    isLight ? 'border-blue-100 bg-blue-50 text-blue-600' : 'border-neutral-800 bg-neutral-900 text-blue-400'
+                    isLight ? 'border-[#DDD3C1] bg-[#EFE9DC] text-[#0A2618]' : 'border-[#194E36] bg-[#0D2E20] text-[#6EE7B7]'
                   }`}>
                     <GroupIcon className="w-4 h-4" />
                   </div>
                   <div>
-                    <h2 className="text-base sm:text-lg font-serif font-bold tracking-tight text-slate-900 dark:text-white">
+                    <h2 className="text-base sm:text-lg font-serif font-bold tracking-tight text-[#0A2618] dark:text-[#FAF7F2]">
                       {grp.name}
                     </h2>
-                    <p className={`text-xs ${isLight ? 'text-slate-500' : 'text-neutral-400'}`}>
+                    <p className={`text-xs ${isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'}`}>
                       {grp.description}
                     </p>
                   </div>
                 </div>
 
                 <span className={`text-[11px] font-mono font-semibold px-2 py-0.5 rounded border ${
-                  isLight ? 'border-slate-200 bg-white text-slate-600' : 'border-neutral-800 bg-neutral-900 text-neutral-400'
+                  isLight ? 'border-[#E8E1D3] bg-[#FFFDF9] text-[#0A2618]' : 'border-[#123826] bg-[#0A2419] text-[#A3C7B5]'
                 }`}>
                   {grp.items.length} {grp.items.length === 1 ? 'tool' : 'tools'}
                 </span>
@@ -210,14 +214,14 @@ export const VayunConvertHubView: React.FC<VayunConvertHubViewProps> = ({
                     onClick={() => onSelectTool(conv.id)}
                     className={`p-5 rounded-2xl border transition-all duration-200 cursor-pointer group flex flex-col justify-between min-h-[180px] ${
                       isLight 
-                        ? 'bg-white border-slate-200/90 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/5 hover:-translate-y-0.5' 
-                        : 'bg-neutral-950 border-neutral-800/90 hover:border-neutral-700 hover:bg-neutral-900/40 hover:shadow-xl hover:shadow-black/60 hover:-translate-y-0.5'
+                        ? 'bg-[#FFFDF9] border-[#E8E1D3] hover:border-[#1E5638] hover:shadow-lg hover:shadow-[#0A2618]/5 hover:-translate-y-0.5' 
+                        : 'bg-[#0A2419]/90 border-[#123826] hover:border-[#1F593C] hover:bg-[#0D2E20] hover:shadow-xl hover:shadow-black/60 hover:-translate-y-0.5'
                     }`}
                   >
                     <div className="space-y-2.5">
                       <div className="flex items-center justify-between">
                         <span className={`text-[10px] font-mono font-semibold tracking-wider uppercase px-2 py-0.5 rounded border ${
-                          isLight ? 'border-slate-200 bg-slate-50 text-slate-600' : 'border-neutral-800 bg-neutral-900 text-neutral-400'
+                          isLight ? 'border-[#E8E1D3] bg-[#F5F0E6] text-[#2D4A39]' : 'border-[#123826] bg-[#061A12] text-[#8AA898]'
                         }`}>
                           {conv.group}
                         </span>
@@ -228,13 +232,13 @@ export const VayunConvertHubView: React.FC<VayunConvertHubViewProps> = ({
                       </div>
 
                       <h3 className={`text-base font-serif font-bold tracking-tight transition-colors leading-snug ${
-                        isLight ? 'text-slate-900 group-hover:text-blue-600' : 'text-white group-hover:text-neutral-200'
+                        isLight ? 'text-[#0A2618] group-hover:text-[#12432B]' : 'text-[#FAF7F2] group-hover:text-[#6EE7B7]'
                       }`}>
                         {conv.name}
                       </h3>
 
                       <p className={`text-xs leading-relaxed line-clamp-2 ${
-                        isLight ? 'text-slate-500' : 'text-neutral-400'
+                        isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'
                       }`}>
                         {conv.tagline}
                       </p>
@@ -242,8 +246,8 @@ export const VayunConvertHubView: React.FC<VayunConvertHubViewProps> = ({
 
                     <div className={`pt-3 border-t flex items-center justify-between text-xs font-mono font-medium transition-colors ${
                       isLight 
-                        ? 'border-slate-100 text-slate-500 group-hover:text-blue-600' 
-                        : 'border-neutral-900 text-neutral-500 group-hover:text-neutral-200'
+                        ? 'border-[#EFE9DC] text-[#4A6354] group-hover:text-[#0A2618]' 
+                        : 'border-[#0E2C1D] text-[#698A7A] group-hover:text-[#FAF7F2]'
                     }`}>
                       <span>Launch converter</span>
                       <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />

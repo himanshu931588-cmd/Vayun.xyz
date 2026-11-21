@@ -213,7 +213,9 @@ export function App() {
 
   return (
     <div className={`min-h-screen flex flex-col font-sans transition-colors ${
-      isLight ? 'bg-[#f8fafc] bg-grid-light text-slate-900 selection:bg-blue-100 selection:text-blue-900' : 'bg-black bg-grid-dark text-neutral-100 selection:bg-neutral-800 selection:text-white'
+      isLight 
+        ? 'bg-[#FAF7F2] bg-grid-light text-[#0A2618] selection:bg-[#D4E8DC] selection:text-[#062013]' 
+        : 'bg-[#061A12] bg-grid-dark text-[#E8F3ED] selection:bg-[#16452F] selection:text-[#FAF7F2]'
     }`}>
       {/* Top Header */}
       <Header

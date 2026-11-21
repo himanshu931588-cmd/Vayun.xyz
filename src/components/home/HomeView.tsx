@@ -76,12 +76,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
       />
 
       {/* Toolbar & Filter Tabs */}
-      <div id="tools-section" className={`pt-2 pb-4 border-b ${isLight ? 'border-slate-200/80' : 'border-neutral-800'}`}>
+      <div id="tools-section" className={`pt-2 pb-4 border-b ${isLight ? 'border-[#E8E1D3]' : 'border-[#123826]'}`}>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
           {/* Universal Search Input */}
           <div className="relative w-full sm:w-80">
             <Search className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 ${
-              isLight ? 'text-slate-400' : 'text-neutral-500'
+              isLight ? 'text-[#5E7A6B]' : 'text-[#5A7A6A]'
             }`} />
             <input 
               type="text"
@@ -90,8 +90,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
               placeholder="Search tools, formats, or tasks..."
               className={`w-full pl-10 pr-9 py-2 rounded-xl text-xs sm:text-[13px] transition-colors focus:outline-hidden ${
                 isLight 
-                  ? 'bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:border-blue-500 shadow-xs' 
-                  : 'bg-neutral-950 border border-neutral-800 text-white placeholder-neutral-500 focus:border-neutral-600'
+                  ? 'bg-[#FFFDF9] border border-[#E8E1D3] text-[#0A2618] placeholder-[#718E7E] focus:border-[#1E5638] shadow-xs' 
+                  : 'bg-[#0A2419] border border-[#123826] text-[#FAF7F2] placeholder-[#5A7A6A] focus:border-[#226343]'
               }`}
             />
             {searchQuery && (
@@ -106,7 +106,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
           {/* Segmented Filter Pills */}
           <div className={`p-1 rounded-2xl border flex items-center gap-1 w-full sm:w-auto overflow-x-auto no-scrollbar ${
-            isLight ? 'bg-slate-100/90 border-slate-200/90' : 'bg-neutral-950 border-neutral-800/80'
+            isLight ? 'bg-[#EFE9DC]/90 border-[#DDD3C1]' : 'bg-[#04120C] border-[#123826]'
           }`}>
             <button
               onClick={() => {
@@ -116,11 +116,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
               className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'all' && !searchQuery
                   ? isLight 
-                    ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
-                    : 'bg-neutral-800 text-white font-medium border border-neutral-700/60 shadow-xs'
+                    ? 'bg-[#FFFDF9] text-[#0A2618] font-semibold shadow-xs border border-[#DDD3C1]' 
+                    : 'bg-[#0D2E20] text-[#FAF7F2] font-semibold border border-[#1B4D37] shadow-xs'
                   : isLight 
-                    ? 'text-slate-600 hover:text-slate-900 hover:bg-white/60' 
-                    : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
+                    ? 'text-[#3B5445] hover:text-[#0A2618] hover:bg-[#FAF7F2]/80' 
+                    : 'text-[#8AA898] hover:text-[#FAF7F2] hover:bg-[#0A2419]/60'
               }`}
             >
               <span>All ({TOOLS.length})</span>
@@ -133,11 +133,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
               className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'convert' && !searchQuery
                   ? isLight 
-                    ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
-                    : 'bg-neutral-800 text-white font-medium border border-neutral-700/60 shadow-xs'
+                    ? 'bg-[#FFFDF9] text-[#0A2618] font-semibold shadow-xs border border-[#DDD3C1]' 
+                    : 'bg-[#0D2E20] text-[#FAF7F2] font-semibold border border-[#1B4D37] shadow-xs'
                   : isLight 
-                    ? 'text-slate-600 hover:text-slate-900 hover:bg-white/60' 
-                    : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
+                    ? 'text-[#3B5445] hover:text-[#0A2618] hover:bg-[#FAF7F2]/80' 
+                    : 'text-[#8AA898] hover:text-[#FAF7F2] hover:bg-[#0A2419]/60'
               }`}
             >
               <span>Converters ({TOOLS.filter(t => t.category === 'convert').length})</span>
@@ -150,11 +150,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
               className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'developer' && !searchQuery
                   ? isLight 
-                    ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
-                    : 'bg-neutral-800 text-white font-medium border border-neutral-700/60 shadow-xs'
+                    ? 'bg-[#FFFDF9] text-[#0A2618] font-semibold shadow-xs border border-[#DDD3C1]' 
+                    : 'bg-[#0D2E20] text-[#FAF7F2] font-semibold border border-[#1B4D37] shadow-xs'
                   : isLight 
-                    ? 'text-slate-600 hover:text-slate-900 hover:bg-white/60' 
-                    : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
+                    ? 'text-[#3B5445] hover:text-[#0A2618] hover:bg-[#FAF7F2]/80' 
+                    : 'text-[#8AA898] hover:text-[#FAF7F2] hover:bg-[#0A2419]/60'
               }`}
             >
               <span>Developer Flow ({TOOLS.filter(t => t.category === 'developer').length})</span>
@@ -167,11 +167,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
               className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'pdf' && !searchQuery
                   ? isLight 
-                    ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
-                    : 'bg-neutral-800 text-white font-medium border border-neutral-700/60 shadow-xs'
+                    ? 'bg-[#FFFDF9] text-[#0A2618] font-semibold shadow-xs border border-[#DDD3C1]' 
+                    : 'bg-[#0D2E20] text-[#FAF7F2] font-semibold border border-[#1B4D37] shadow-xs'
                   : isLight 
-                    ? 'text-slate-600 hover:text-slate-900 hover:bg-white/60' 
-                    : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
+                    ? 'text-[#3B5445] hover:text-[#0A2618] hover:bg-[#FAF7F2]/80' 
+                    : 'text-[#8AA898] hover:text-[#FAF7F2] hover:bg-[#0A2419]/60'
               }`}
             >
               <span>PDF Suite ({TOOLS.filter(t => t.category === 'pdf').length})</span>
@@ -184,11 +184,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
               className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'ai' && !searchQuery
                   ? isLight 
-                    ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
-                    : 'bg-neutral-800 text-white font-medium border border-neutral-700/60 shadow-xs'
+                    ? 'bg-[#FFFDF9] text-[#0A2618] font-semibold shadow-xs border border-[#DDD3C1]' 
+                    : 'bg-[#0D2E20] text-[#FAF7F2] font-semibold border border-[#1B4D37] shadow-xs'
                   : isLight 
-                    ? 'text-slate-600 hover:text-slate-900 hover:bg-white/60' 
-                    : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
+                    ? 'text-[#3B5445] hover:text-[#0A2618] hover:bg-[#FAF7F2]/80' 
+                    : 'text-[#8AA898] hover:text-[#FAF7F2] hover:bg-[#0A2419]/60'
               }`}
             >
               <span>AI Context ({TOOLS.filter(t => t.category === 'ai').length})</span>
@@ -201,11 +201,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
               className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'billing' && !searchQuery
                   ? isLight 
-                    ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
-                    : 'bg-neutral-800 text-white font-medium border border-neutral-700/60 shadow-xs'
+                    ? 'bg-[#FFFDF9] text-[#0A2618] font-semibold shadow-xs border border-[#DDD3C1]' 
+                    : 'bg-[#0D2E20] text-[#FAF7F2] font-semibold border border-[#1B4D37] shadow-xs'
                   : isLight 
-                    ? 'text-slate-600 hover:text-slate-900 hover:bg-white/60' 
-                    : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
+                    ? 'text-[#3B5445] hover:text-[#0A2618] hover:bg-[#FAF7F2]/80' 
+                    : 'text-[#8AA898] hover:text-[#FAF7F2] hover:bg-[#0A2419]/60'
               }`}
             >
               <span>Invoicing ({TOOLS.filter(t => t.category === 'billing').length})</span>
@@ -218,11 +218,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
               className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all whitespace-nowrap select-none font-medium ${
                 selectedCategory === 'tabular' && !searchQuery
                   ? isLight 
-                    ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
-                    : 'bg-neutral-800 text-white font-medium border border-neutral-700/60 shadow-xs'
+                    ? 'bg-[#FFFDF9] text-[#0A2618] font-semibold shadow-xs border border-[#DDD3C1]' 
+                    : 'bg-[#0D2E20] text-[#FAF7F2] font-semibold border border-[#1B4D37] shadow-xs'
                   : isLight 
-                    ? 'text-slate-600 hover:text-slate-900 hover:bg-white/60' 
-                    : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
+                    ? 'text-[#3B5445] hover:text-[#0A2618] hover:bg-[#FAF7F2]/80' 
+                    : 'text-[#8AA898] hover:text-[#FAF7F2] hover:bg-[#0A2419]/60'
               }`}
             >
               <span>Tabular ({TOOLS.filter(t => t.category === 'tabular').length})</span>
@@ -254,8 +254,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
               onClick={() => onSelectTool(tool.id)}
               className={`p-6 rounded-2xl border transition-all duration-200 cursor-pointer group flex flex-col justify-between h-full min-h-[220px] ${
                 isLight 
-                  ? 'bg-white border-slate-200/90 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-0.5' 
-                  : 'bg-neutral-950 border-neutral-800/90 hover:border-neutral-700 hover:bg-neutral-900/40 hover:shadow-xl hover:shadow-black/60 hover:-translate-y-0.5'
+                  ? 'bg-[#FFFDF9] border-[#E8E1D3] hover:border-[#1E5638] hover:shadow-xl hover:shadow-[#0A2618]/5 hover:-translate-y-0.5' 
+                  : 'bg-[#0A2419]/90 border-[#123826] hover:border-[#1F593C] hover:bg-[#0D2E20] hover:shadow-xl hover:shadow-black/70 hover:-translate-y-0.5'
               }`}
             >
               <div className="space-y-3.5">
@@ -263,8 +263,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <div className="flex items-center justify-between">
                   <span className={`text-[10px] font-mono font-semibold tracking-wider uppercase px-2 py-0.5 rounded-md border ${
                     isLight 
-                      ? 'border-slate-200/80 bg-slate-50 text-slate-600' 
-                      : 'border-neutral-800 bg-neutral-900 text-neutral-400'
+                      ? 'border-[#E8E1D3] bg-[#F5F0E6] text-[#2D4A39]' 
+                      : 'border-[#123826] bg-[#061A12] text-[#8AA898]'
                   }`}>
                     {tool.categoryName}
                   </span>
@@ -273,12 +273,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 {/* Editorial Serif Headline Paired with Crisp Mono Tagline */}
                 <div>
                   <h3 className={`text-base sm:text-lg font-serif font-bold tracking-tight transition-colors leading-snug ${
-                    isLight ? 'text-slate-900 group-hover:text-blue-600' : 'text-white group-hover:text-neutral-200'
+                    isLight ? 'text-[#0A2618] group-hover:text-[#12432B]' : 'text-[#FAF7F2] group-hover:text-[#6EE7B7]'
                   }`}>
                     {tool.name}
                   </h3>
                   <p className={`text-xs mt-1 font-mono font-medium line-clamp-1 ${
-                    isLight ? 'text-blue-700/80' : 'text-neutral-400'
+                    isLight ? 'text-[#2D4A39]' : 'text-[#8AA898]'
                   }`}>
                     {tool.tagline}
                   </p>
@@ -286,7 +286,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
                 {/* Description */}
                 <p className={`text-xs leading-relaxed line-clamp-2 ${
-                  isLight ? 'text-slate-600 font-normal' : 'text-neutral-400'
+                  isLight ? 'text-[#3B5445] font-normal' : 'text-[#7C9C8C]'
                 }`}>
                   {tool.description}
                 </p>
@@ -295,8 +295,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
               {/* Bottom Card Action Footer */}
               <div className={`pt-3.5 border-t flex items-center justify-between text-xs font-mono transition-colors ${
                 isLight 
-                  ? 'border-slate-100 text-slate-500 group-hover:text-blue-600 font-medium' 
-                  : 'border-neutral-900 text-neutral-500 group-hover:text-neutral-200 font-medium'
+                  ? 'border-[#EFE9DC] text-[#4A6354] group-hover:text-[#0A2618] font-medium' 
+                  : 'border-[#0E2C1D] text-[#698A7A] group-hover:text-[#FAF7F2] font-medium'
               }`}>
                 <span>Launch tool</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -307,13 +307,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
       ) : (
         /* Empty Search State */
         <div className={`py-16 px-6 text-center rounded-2xl border ${
-          isLight ? 'bg-white border-slate-200 text-slate-800' : 'bg-neutral-950/50 border-neutral-800'
+          isLight ? 'bg-[#FFFDF9] border-[#E8E1D3] text-[#0A2618]' : 'bg-[#0A2419]/50 border-[#123826]'
         }`}>
-          <Search className="w-6 h-6 mx-auto text-slate-400 mb-2 opacity-50" />
+          <Search className="w-6 h-6 mx-auto text-[#718E7E] mb-2 opacity-50" />
           <h3 className="font-serif text-base font-semibold mb-1">
             No tools found matching "{searchQuery}"
           </h3>
-          <p className={`text-xs max-w-sm mx-auto mb-4 ${isLight ? 'text-slate-500' : 'text-neutral-400'}`}>
+          <p className={`text-xs max-w-sm mx-auto mb-4 ${isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'}`}>
             Try searching for terms like <strong>API</strong>, <strong>Flow</strong>, <strong>Viva</strong>, <strong>Resume</strong>, <strong>PDF</strong>, or <strong>Invoicing</strong>.
           </p>
 
@@ -323,7 +323,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               onSelectCategory('all');
             }}
             className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium ${
-              isLight ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-white text-black'
+              isLight ? 'bg-[#0A2618] text-[#FAF7F2] hover:bg-[#12432B]' : 'bg-[#FAF7F2] text-[#061A12]'
             }`}
           >
             Clear Search
@@ -333,22 +333,22 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
       {/* Community Contribution & Support Section */}
       <div className={`p-6 sm:p-8 rounded-2xl border transition-all ${
-        isLight ? 'bg-white/95 border-slate-200/90 shadow-sm' : 'bg-neutral-950/70 border-neutral-800'
+        isLight ? 'bg-[#FFFDF9]/95 border-[#E8E1D3] shadow-sm' : 'bg-[#0A2419]/70 border-[#123826]'
       }`}>
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center md:text-left max-w-xl">
             <div className={`flex items-center justify-center md:justify-start gap-2 text-xs font-mono ${
-              isLight ? 'text-slate-500' : 'text-neutral-400'
+              isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'
             }`}>
               <Coffee className="w-4 h-4 text-amber-500" />
               <span>Independent & Privacy-First Project</span>
             </div>
             <h3 className={`text-lg sm:text-xl font-serif font-bold ${
-              isLight ? 'text-slate-900' : 'text-white'
+              isLight ? 'text-[#0A2618]' : 'text-[#FAF7F2]'
             }`}>
               Contribute to Vayun.xyz
             </h3>
-            <p className={`text-xs sm:text-sm leading-relaxed ${isLight ? 'text-slate-600' : 'text-neutral-400'}`}>
+            <p className={`text-xs sm:text-sm leading-relaxed ${isLight ? 'text-[#3B5445]' : 'text-[#8AA898]'}`}>
               Vayun.xyz is maintained independently with zero remote uploads, zero tracking, no accounts, and no paywalls. If these tools help your workflow, consider buying a coffee to support development and hosting.
             </p>
           </div>
@@ -359,8 +359,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onClick={onOpenSupport}
                 className={`px-4 py-2.5 rounded-xl text-xs font-mono font-medium flex items-center gap-2 border transition-all ${
                   isLight 
-                    ? 'border-slate-200 bg-white hover:bg-slate-50 text-slate-800 shadow-xs' 
-                    : 'border-neutral-700 bg-neutral-900 hover:bg-neutral-800 text-white'
+                    ? 'border-[#DDD3C1] bg-[#FFFDF9] hover:bg-[#EFE9DC] text-[#0A2618] shadow-xs' 
+                    : 'border-[#123826] bg-[#0A2419] hover:bg-[#0F3625] text-[#FAF7F2]'
                 }`}
               >
                 <span>Scan QR Code</span>
@@ -372,8 +372,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
               rel="noopener noreferrer"
               className={`px-5 py-2.5 rounded-xl text-xs font-mono font-medium flex items-center gap-2 transition-all shadow-sm ${
                 isLight 
-                  ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-600/20' 
-                  : 'bg-white text-black hover:bg-neutral-200'
+                  ? 'bg-[#0A2618] text-[#FAF7F2] hover:bg-[#12432B]' 
+                  : 'bg-[#FAF7F2] text-[#061A12] hover:bg-[#EAE4D8]'
               }`}
             >
               <Coffee className="w-3.5 h-3.5" />

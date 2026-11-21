@@ -11,7 +11,7 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-black text-neutral-200 font-sans antialiased;
+    @apply bg-[#061A12] text-[#E8F3ED] font-sans antialiased;
     overflow-x: hidden;
     min-width: 320px;
   }
@@ -33,12 +33,12 @@
 
 /* Executive ambient grid background */
 .bg-grid-dark {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(110, 231, 183, 0.08) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 
 .bg-grid-light {
-  background-image: radial-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(10, 38, 24, 0.05) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
@@ -64,12 +64,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #262626;
+  background: #123826;
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #404040;
+  background: #1C5238;
 }
 
 /* Print styling for Invoice & Resume vector perfection */
