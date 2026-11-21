@@ -23,7 +23,8 @@ import {
   LifeBuoy,
   Bot,
   Download,
-  Gamepad2
+  Gamepad2,
+  ArrowLeftRight
 } from 'lucide-react';
 
 interface FooterProps {
@@ -230,6 +231,46 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button onClick={() => onSelectTool('table-converter')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
                   Table Converter
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Vayun Convert Hub */}
+          <div>
+            <h4 className={`font-mono text-xs uppercase mb-3 flex items-center gap-1.5 ${isLight ? 'text-slate-900 font-semibold' : 'text-neutral-300'}`}>
+              <ArrowLeftRight className="w-3.5 h-3.5 opacity-70 shrink-0" />
+              Vayun Convert
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <button onClick={() => onSelectTool('vayun-convert')} className={`transition-colors flex items-center gap-1.5 font-medium ${isLight ? 'text-blue-600 hover:text-blue-700' : 'text-blue-400 hover:text-white'}`}>
+                  Convert Hub (12)
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onSelectTool('json-to-csv')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
+                  JSON to CSV
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onSelectTool('json-to-yaml')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
+                  JSON to YAML
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onSelectTool('jwt-decoder')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
+                  JWT Decoder
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onSelectTool('unix-timestamp')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
+                  Unix to IST/UTC
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onSelectTool('number-to-words-inr')} className={`transition-colors flex items-center gap-1.5 ${isLight ? 'hover:text-blue-600' : 'hover:text-white'}`}>
+                  INR to Words
                 </button>
               </li>
             </ul>

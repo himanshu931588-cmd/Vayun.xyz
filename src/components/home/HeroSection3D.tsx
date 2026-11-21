@@ -5,7 +5,8 @@ import {
   Cpu, 
   CheckCircle2, 
   Lock, 
-  ArrowDown
+  ArrowDown,
+  ArrowLeftRight
 } from 'lucide-react';
 import { ToolId } from '../../types';
 
@@ -156,15 +157,15 @@ export const HeroSection3D: React.FC<HeroSection3DProps> = ({
           </button>
 
           <button
-            onClick={() => onSelectTool('data-analytics')}
+            onClick={() => onSelectTool('vayun-convert')}
             className={`px-4 py-2.5 rounded-xl text-xs sm:text-[13px] font-mono font-medium flex items-center gap-2 border transition-all active:scale-95 ${
               isLight 
                 ? 'border-slate-200/90 bg-white hover:bg-slate-50 text-slate-700 shadow-xs hover:border-slate-300' 
                 : 'border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-white'
             }`}
           >
-            <Cpu className="w-4 h-4 opacity-80" />
-            <span>Data Insights AI</span>
+            <ArrowLeftRight className="w-4 h-4 text-blue-500" />
+            <span>Vayun Convert (12 Tools)</span>
           </button>
 
           <button

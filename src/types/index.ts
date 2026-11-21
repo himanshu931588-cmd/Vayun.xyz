@@ -9,6 +9,20 @@ export type ToolId =
   | 'ai-smells-radar'
   | 'viva-defense-badge'
   | 'chaos-wind-tunnel'
+  // Vayun Convert – Developer Converter Hub (PRD)
+  | 'vayun-convert'
+  | 'json-to-csv'
+  | 'csv-to-json'
+  | 'json-to-yaml'
+  | 'yaml-to-json'
+  | 'json-to-xml'
+  | 'base64-converter'
+  | 'url-converter'
+  | 'jwt-decoder'
+  | 'unix-timestamp'
+  | 'number-to-words-inr'
+  | 'hex-to-rgb'
+  | 'px-to-rem'
   // Classic Document & Context Tools
   | 'merge-pdf'
   | 'split-pdf'
@@ -28,7 +42,7 @@ export type ToolId =
   | 'data-analytics'
   | 'paylink-view';
 
-export type ToolCategory = 'developer' | 'pdf' | 'ai' | 'billing' | 'tabular';
+export type ToolCategory = 'developer' | 'convert' | 'pdf' | 'ai' | 'billing' | 'tabular';
 
 export interface ToolMeta {
   id: ToolId;

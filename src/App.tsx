@@ -22,6 +22,10 @@ import { InkGardenAsciiView } from './components/ascii/InkGardenAsciiView';
 import { AiSmellsRadarView } from './components/developer/AiSmellsRadarView';
 import { VivaDefenseBadgeView } from './components/developer/VivaDefenseBadgeView';
 
+// Vayun Convert Hub & Converters (PRD)
+import { VayunConvertHubView } from './components/convert/VayunConvertHubView';
+import { ConverterTemplate } from './components/convert/ConverterTemplate';
+
 // Classic PDF Suite & Resume
 import { MergePdfView } from './components/pdf/MergePdfView';
 import { SplitPdfView } from './components/pdf/SplitPdfView';
@@ -82,7 +86,7 @@ export function App() {
     }
   }, [theme]);
 
-  // Check URL hash for direct PayLink on mount
+  // Check URL hash for direct routing or PayLink on mount
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
@@ -92,6 +96,21 @@ export function App() {
         if (decoded) {
           setActivePayLinkInvoice(decoded);
           setCurrentTool('paylink-view');
+        }
+      } else if (hash.startsWith('#')) {
+        const rawRoute = hash.slice(1).split('?')[0];
+        if (rawRoute === 'convert' || rawRoute === 'vayun-convert') {
+          setCurrentTool('vayun-convert');
+          setSelectedCategory('convert');
+        } else if (
+          [
+            'json-to-csv', 'csv-to-json', 'json-to-yaml', 'yaml-to-json', 'json-to-xml',
+            'base64-converter', 'url-converter', 'jwt-decoder',
+            'unix-timestamp', 'number-to-words-inr', 'hex-to-rgb', 'px-to-rem'
+          ].includes(rawRoute as any)
+        ) {
+          setCurrentTool(rawRoute as ToolId);
+          setSelectedCategory('convert');
         }
       }
     };
@@ -172,6 +191,11 @@ export function App() {
 
   const handleSelectTool = (id: ToolId) => {
     setCurrentTool(id);
+    if (id === 'home') {
+      window.history.pushState(null, '', window.location.pathname);
+    } else {
+      window.location.hash = '#' + id;
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -289,6 +313,28 @@ export function App() {
             onBack={() => handleSelectTool('home')}
             onNavigateToBreak={() => handleSelectTool('vayun-break')}
             theme={theme}
+          />
+        )}
+
+        {/* Vayun Convert Hub & 12 Converters (PRD) */}
+        {currentTool === 'vayun-convert' && (
+          <VayunConvertHubView
+            onBack={() => handleSelectTool('home')}
+            onSelectTool={handleSelectTool}
+            theme={theme}
+          />
+        )}
+
+        {[
+          'json-to-csv', 'csv-to-json', 'json-to-yaml', 'yaml-to-json', 'json-to-xml',
+          'base64-converter', 'url-converter', 'jwt-decoder',
+          'unix-timestamp', 'number-to-words-inr', 'hex-to-rgb', 'px-to-rem'
+        ].includes(currentTool) && (
+          <ConverterTemplate
+            toolId={currentTool}
+            theme={theme}
+            onBack={() => handleSelectTool('vayun-convert')}
+            onNavigateToTool={handleSelectTool}
           />
         )}
 

@@ -19,7 +19,8 @@ import {
   Key,
   Coffee,
   ShieldCheck,
-  Download
+  Download,
+  ArrowLeftRight
 } from 'lucide-react';
 import { getStoredApiKey } from '../../utils/geminiApi';
 
@@ -57,6 +58,22 @@ export const Header: React.FC<HeaderProps> = ({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isLight = theme === 'light';
   const hasApiKey = Boolean(getStoredApiKey());
+
+  const isConvertTool = 
+    selectedCategory === 'convert' ||
+    currentTool === 'vayun-convert' ||
+    currentTool === 'json-to-csv' ||
+    currentTool === 'csv-to-json' ||
+    currentTool === 'json-to-yaml' ||
+    currentTool === 'yaml-to-json' ||
+    currentTool === 'json-to-xml' ||
+    currentTool === 'base64-converter' ||
+    currentTool === 'url-converter' ||
+    currentTool === 'jwt-decoder' ||
+    currentTool === 'unix-timestamp' ||
+    currentTool === 'number-to-words-inr' ||
+    currentTool === 'hex-to-rgb' ||
+    currentTool === 'px-to-rem';
 
   const isDeveloperTool = 
     selectedCategory === 'developer' || 
@@ -134,6 +151,21 @@ export const Header: React.FC<HeaderProps> = ({
               >
                 <LayoutGrid className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
                 <span>Overview</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  onSelectTool('vayun-convert');
+                  onSelectCategory('convert');
+                }}
+                className={`h-10 px-3 rounded-xl transition-all flex items-center gap-2 shrink-0 select-none active:scale-95 group ${
+                  isConvertTool
+                    ? isLight ? 'text-blue-700 font-semibold bg-blue-50/80 border border-blue-200/50' : 'text-white font-semibold bg-neutral-900 border border-neutral-800'
+                    : isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70' : 'text-neutral-400 hover:text-white hover:bg-neutral-900/60'
+                }`}
+              >
+                <ArrowLeftRight className="w-4.5 h-4.5 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity" />
+                <span>Convert</span>
               </button>
 
               <button

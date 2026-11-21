@@ -1,6 +1,157 @@
 import { ToolMeta } from '../types';
 
 export const TOOLS: ToolMeta[] = [
+  // Vayun Convert – Developer Converter Hub (PRD)
+  {
+    id: 'vayun-convert',
+    name: 'Vayun Convert Hub',
+    tagline: '12 in-browser converters for data, code, tokens & timestamps',
+    category: 'convert',
+    categoryName: 'Converters',
+    icon: 'ArrowLeftRight',
+    description: 'Fast, free, no-signup hub to convert JSON, YAML, CSV, Base64, JWT, timestamps, INR numbers to words, and CSS colors in one click. 100% in-browser RAM with zero server telemetry.',
+    seoSlug: 'convert',
+    popular: true,
+    keywords: ['convert', 'converter', 'json', 'yaml', 'csv', 'xml', 'base64', 'jwt', 'timestamp', 'epoch', 'inr', 'lakh', 'crore', 'hex', 'rgb', 'rem', 'px']
+  },
+  {
+    id: 'json-to-csv',
+    name: 'JSON to CSV',
+    tagline: 'Convert JSON arrays and nested objects into spreadsheet CSVs',
+    category: 'convert',
+    categoryName: 'Converters',
+    icon: 'Table',
+    description: 'Flatten structured JSON documents into clean, RFC 4180 compliant CSV tables compatible with Excel, Sheets, and Pandas.',
+    seoSlug: 'json-to-csv',
+    popular: true,
+    keywords: ['json to csv', 'json', 'csv', 'spreadsheet', 'excel', 'convert json', 'flatten json', 'table', 'export']
+  },
+  {
+    id: 'csv-to-json',
+    name: 'CSV to JSON',
+    tagline: 'Transform CSV spreadsheets into structured JSON arrays',
+    category: 'convert',
+    categoryName: 'Converters',
+    icon: 'FileCode2',
+    description: 'Parse comma, tab, or semicolon separated tables into JSON arrays with auto-detected types for numbers and booleans.',
+    seoSlug: 'csv-to-json',
+    popular: true,
+    keywords: ['csv to json', 'csv', 'json', 'parse csv', 'table to json', 'import csv', 'developer']
+  },
+  {
+    id: 'json-to-yaml',
+    name: 'JSON to YAML',
+    tagline: 'Convert JSON configs into clean, readable YAML manifests',
+    category: 'convert',
+    categoryName: 'Converters',
+    icon: 'Layers',
+    description: 'Format JSON configurations into standardized YAML with 2-space indentation for Docker, Kubernetes, and CI/CD manifests.',
+    seoSlug: 'json-to-yaml',
+    keywords: ['json to yaml', 'yaml', 'json', 'docker', 'kubernetes', 'helm', 'k8s', 'manifest', 'config']
+  },
+  {
+    id: 'yaml-to-json',
+    name: 'YAML to JSON',
+    tagline: 'Parse YAML documents into formatted JSON with syntax verification',
+    category: 'convert',
+    categoryName: 'Converters',
+    icon: 'FileCode2',
+    description: 'Parse YAML documents and Helm manifests into JSON with precise line and column error messages for indentation mistakes.',
+    seoSlug: 'yaml-to-json',
+    keywords: ['yaml to json', 'yaml', 'json', 'parse yaml', 'yaml syntax', 'k8s to json']
+  },
+  {
+    id: 'json-to-xml',
+    name: 'JSON to XML',
+    tagline: 'Convert JSON payloads into formatted XML with customizable root tag',
+    category: 'convert',
+    categoryName: 'Converters',
+    icon: 'FileCode2',
+    description: 'Generate well-formed XML documents from JSON structures with proper XML declaration and entity escaping.',
+    seoSlug: 'json-to-xml',
+    keywords: ['json to xml', 'xml', 'json', 'xml generator', 'api xml', 'soap']
+  },
+  {
+    id: 'base64-converter',
+    name: 'Base64 Encode & Decode',
+    tagline: 'Bidirectional UTF-8 safe Base64 encoder and decoder',
+    category: 'convert',
+    categoryName: 'Converters',
+    icon: 'Key',
+    description: 'Encode and decode Base64 strings with full UTF-8 Unicode and emoji safety. Supports standard and URL-safe Base64.',
+    seoSlug: 'base64',
+    popular: true,
+    keywords: ['base64', 'encode base64', 'decode base64', 'utf8', 'unicode', 'binary', 'ascii']
+  },
+  {
+    id: 'url-converter',
+    name: 'URL Encode & Decode',
+    tagline: 'Encode and decode URI query parameters and special characters',
+    category: 'convert',
+    categoryName: 'Converters',
+    icon: 'Link',
+    description: 'Convert spaces, ampersands, and reserved characters into percent-encoded URI strings and decode query parameters.',
+    seoSlug: 'url-encode-decode',
+    keywords: ['url encode', 'url decode', 'uricomponent', 'percent encoding', 'query param', 'uri']
+  },
+  {
+    id: 'jwt-decoder',
+    name: 'JWT Token Decoder',
+    tagline: 'Inspect JSON Web Token headers, claims and expiration in browser RAM',
+    category: 'convert',
+    categoryName: 'Converters',
+    icon: 'ShieldCheck',
+    description: 'Decode JWT tokens client-side. Inspect algorithm, payload claims, expiration (exp), and validity status without transmitting tokens.',
+    seoSlug: 'jwt-decode',
+    popular: true,
+    keywords: ['jwt', 'json web token', 'decode jwt', 'jwt claims', 'jwt exp', 'jwt token', 'bearer', 'auth', 'security']
+  },
+  {
+    id: 'unix-timestamp',
+    name: 'Unix Timestamp to Date',
+    tagline: 'Convert epoch seconds/ms to human dates in IST and UTC',
+    category: 'convert',
+    categoryName: 'Converters',
+    icon: 'Clock',
+    description: 'Convert Unix epoch timestamps to human-readable dates in Indian Standard Time (IST) and UTC with relative time calculations.',
+    seoSlug: 'unix-timestamp',
+    popular: true,
+    keywords: ['unix timestamp', 'timestamp to date', 'epoch', 'ist', 'utc', 'epoch converter', 'time', 'milliseconds', 'seconds']
+  },
+  {
+    id: 'number-to-words-inr',
+    name: 'Number to Words (INR Lakh / Crore)',
+    tagline: 'Convert numbers and currency to Indian words with Lakhs and Crores',
+    category: 'convert',
+    categoryName: 'Converters',
+    icon: 'Sparkles',
+    description: 'Format invoices, cheques, and financial numbers into words following the Indian Numbering System (Crore, Lakh, Rupees, Paise).',
+    seoSlug: 'number-to-words-inr',
+    popular: true,
+    keywords: ['number to words', 'inr to words', 'lakh', 'crore', 'rupees to words', 'cheque format', 'gst invoice words', 'indian number format']
+  },
+  {
+    id: 'hex-to-rgb',
+    name: 'HEX to RGB & HSL',
+    tagline: 'Convert HEX color codes to RGB, RGBA, and HSL with live swatch',
+    category: 'convert',
+    categoryName: 'Converters',
+    icon: 'Palette',
+    description: 'Convert hexadecimal web colors to RGB, RGBA, and HSL values with a live color preview swatch and CSS copy buttons.',
+    seoSlug: 'hex-to-rgb',
+    keywords: ['hex to rgb', 'color converter', 'rgb', 'hsl', 'rgba', 'hex color', 'css color', 'palette']
+  },
+  {
+    id: 'px-to-rem',
+    name: 'px to rem / rem to px',
+    tagline: 'Convert pixel values to rem units with adjustable base font size',
+    category: 'convert',
+    categoryName: 'Converters',
+    icon: 'Sliders',
+    description: 'Convert pixels to accessible rem units and vice-versa with custom root font size (default 16px) and Tailwind class suggestions.',
+    seoSlug: 'px-to-rem',
+    keywords: ['px to rem', 'rem to px', 'pixels to rem', 'css units', 'tailwind rem', 'font size converter', 'responsive typography']
+  },
   // Developer Flow & Viva Suite
   {
     id: 'vayun-flow',

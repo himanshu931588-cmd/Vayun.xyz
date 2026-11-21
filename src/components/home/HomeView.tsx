@@ -29,7 +29,11 @@ import {
   Award,
   Wind,
   KeyRound,
-  Presentation
+  Presentation,
+  ArrowLeftRight,
+  Clock,
+  Palette,
+  Sliders
 } from 'lucide-react';
 import { ToolCategory, ToolId } from '../../types';
 import { TOOLS } from '../../utils/toolsData';
@@ -114,6 +118,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
       case 'KeyRound': return <KeyRound {...props} />;
       case 'Presentation': return <Presentation {...props} />;
       case 'Cpu': return <Cpu {...props} />;
+      case 'ArrowLeftRight': return <ArrowLeftRight {...props} />;
+      case 'Clock': return <Clock {...props} />;
+      case 'Palette': return <Palette {...props} />;
+      case 'Sliders': return <Sliders {...props} />;
+      case 'Key': return <Key {...props} />;
       default: return <BrainCircuit {...props} />;
     }
   };
@@ -180,6 +189,24 @@ export const HomeView: React.FC<HomeViewProps> = ({
             >
               <LayoutGrid className="w-4 h-4 shrink-0 opacity-80" />
               <span>All ({TOOLS.length})</span>
+            </button>
+            <button
+              onClick={() => {
+                onSelectCategory('convert');
+                setSearchQuery('');
+              }}
+              className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] transition-all flex items-center gap-2 whitespace-nowrap select-none font-medium ${
+                selectedCategory === 'convert' && !searchQuery
+                  ? isLight 
+                    ? 'bg-white text-blue-700 font-semibold shadow-xs border border-slate-200/60' 
+                    : 'bg-neutral-800 text-white font-medium border border-neutral-700/60 shadow-xs'
+                  : isLight 
+                    ? 'text-slate-600 hover:text-slate-900 hover:bg-white/60' 
+                    : 'text-neutral-400 hover:text-white hover:bg-neutral-900/40'
+              }`}
+            >
+              <ArrowLeftRight className="w-4 h-4 shrink-0 opacity-80" />
+              <span>Converters ({TOOLS.filter(t => t.category === 'convert').length})</span>
             </button>
             <button
               onClick={() => {

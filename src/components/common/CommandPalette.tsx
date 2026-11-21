@@ -31,7 +31,12 @@ import {
   KeyRound,
   Cpu,
   Download,
-  Presentation
+  Presentation,
+  ArrowLeftRight,
+  Clock,
+  Palette,
+  Sliders,
+  Key
 } from 'lucide-react';
 import { TOOLS } from '../../utils/toolsData';
 import { ToolId } from '../../types';
@@ -88,6 +93,11 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       case 'KeyRound': return <KeyRound {...props} />;
       case 'Presentation': return <Presentation {...props} />;
       case 'Cpu': return <Cpu {...props} />;
+      case 'ArrowLeftRight': return <ArrowLeftRight {...props} />;
+      case 'Clock': return <Clock {...props} />;
+      case 'Palette': return <Palette {...props} />;
+      case 'Sliders': return <Sliders {...props} />;
+      case 'Key': return <Key {...props} />;
       default: return <FileText {...props} />;
     }
   };
